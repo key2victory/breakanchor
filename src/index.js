@@ -4,7 +4,7 @@ import { createRoot } from "react-dom/client";
 
 import App from "./App";
 import {
-  //createHashRouter,
+  createHashRouter,
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
@@ -22,7 +22,7 @@ import {
   PageSample4,
 } from "./PageSamples";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "*",
     Component: App,
@@ -62,7 +62,7 @@ const router = createBrowserRouter([
     ],
   },
 ]);
-console.log(samplePaths);
+
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
