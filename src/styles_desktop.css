@@ -2,7 +2,9 @@
   .main-content {
     grid-template-columns: [hero] 40% [content] minmax(auto, 1fr);
   }
-
+  .main-content.sample {
+    grid-template-columns: [content] minmax(auto, 1fr);
+  }
   .hero,
   .hero-d {
     position: absolute;
@@ -16,12 +18,10 @@
     grid-column: hero / span 1;
     grid-row: content / span 1;
   }
-
   .desktop-col {
     display: flex;
     flex-direction: column;
   }
-
   .desktop-row {
     display: flex;
     flex-direction: row;
