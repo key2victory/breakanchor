@@ -1,0 +1,29 @@
+@media screen and (min-width: 1024px) {
+  .main-content {
+    grid-template-columns: [hero] 40% [content] minmax(auto, 1fr);
+  }
+
+  .hero,
+  .hero-d {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40vw;
+    height: 80vh;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding: 2rem;
+    grid-column: hero / span 1;
+    grid-row: content / span 1;
+  }
+
+  .desktop-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .desktop-row {
+    display: flex;
+    flex-direction: row;
+  }
+}

@@ -1,0 +1,61 @@
+@media screen and (max-width: 699px) {
+  :root {
+    font-size: 16px; /*clamp(16px, 1.5vw, 48px);*/
+  }
+
+  .hero {
+    position: static;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-end;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 0;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .hero.top {
+    height: auto;
+    min-height: auto;
+  }
+
+  .hero.bottom {
+    min-height: 500px;
+  }
+
+  .main-content {
+    grid-template-columns: [content] minmax(auto, 1fr);
+  }
+
+  .scroll-zone {
+    /*
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    width: auto;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+    overflow-x: visible;
+    overflow-y: scroll;*/
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .mobile-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-row {
+    display: flex;
+    flex-direction: row;
+  }
+}
