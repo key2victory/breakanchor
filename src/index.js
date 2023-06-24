@@ -16,7 +16,7 @@ import { PageCalendar } from "./PageCalendar";
 import { PageIntuitive } from "./PageIntuitive";
 import { PageLockOut } from "./PageLockOut";
 import {
-  samplePages,
+  samplePaths,
   PageSample0,
   PageSample1,
   PageSample2,
@@ -41,16 +41,16 @@ const router = createBrowserRouter([
       { path: "audiohand", Component: PageAudiohand },
       { path: "intuitive", Component: PageIntuitive },
       { path: "loto", Component: PageLockOut },
-      { path: samplePages[0].path, Component: PageSample0 },
-      { path: samplePages[1].path, Component: PageSample1 },
-      { path: samplePages[2].path, Component: PageSample2 },
-      { path: samplePages[3].path, Component: PageSample3 },
-      { path: samplePages[4].path, Component: PageSample4 },
+      { path: samplePaths[0], Component: PageSample0 },
+      { path: samplePaths[1], Component: PageSample1 },
+      { path: samplePaths[2], Component: PageSample2 },
+      { path: samplePaths[3], Component: PageSample3 },
+      { path: samplePaths[4], Component: PageSample4 },
     ],
   },
   { path: "about", Component: PageAbout },
 ]);
-
+console.log(samplePaths);
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 

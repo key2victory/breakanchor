@@ -85,8 +85,11 @@ export default function AppNav({ showNav, onClickExit }) {
           </Link>
         ))}{" "}
         {samplePages.map((item, index) => (
-          <Link key={`${item.path}-${index}`} to={item.path} style={linkStyle}>
-            {" "}
+          <Link
+            key={`${item.path}-${index}`}
+            to={`/${item.path}`}
+            style={linkStyle}
+          >
             {item.title}{" "}
           </Link>
         ))}{" "}
