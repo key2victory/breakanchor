@@ -1,7 +1,8 @@
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { memo, useState, useEffect, Fragment } from "react";
+import { Link } from "react-router-dom";
+import { memo } from "react";
 import { pages } from "./Pages";
 import { samplePages } from "./PageSamples";
+import { CgMenu, CgClose } from "react-icons/cg";
 import "./styles.css";
 
 export const AppHeader = memo(function AppHeader({ onMenuClick }) {
@@ -12,11 +13,16 @@ export const AppHeader = memo(function AppHeader({ onMenuClick }) {
         className="pointer"
         style={{
           fontSize: "1.5rem",
+          display: "flex",
+          flexFlow: "row nowrap",
+          alignItems: "center",
+          gap: "1rem",
         }}
         onClick={() => {
           onMenuClick();
         }}
       >
+        <CgMenu />
         menu{" "}
       </span>{" "}
     </div>
@@ -37,12 +43,10 @@ export default function AppNav({ showNav, onClickExit }) {
         top: 0,
         right: 0,
         bottom: 0,
-        //  background: "hsla(0,0%,0%,80%)",
         display: "flex",
         flexFlow: "row nowrap",
         justifyContent: "stretch",
         alignItems: "stretch",
-        // width: "100%",
         zIndex: 10,
       }}
     >
@@ -75,6 +79,17 @@ export default function AppNav({ showNav, onClickExit }) {
           onClickExit();
         }}
       >
+        <div
+          style={{
+            marginLeft: "auto",
+            cursor: "pointer",
+          }}
+          onClick={() => {
+            onClickExit();
+          }}
+        >
+          <CgClose />
+        </div>{" "}
         <Link to={"/"} style={linkStyle}>
           About Me{" "}
         </Link>{" "}
