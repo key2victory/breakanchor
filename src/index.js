@@ -4,11 +4,9 @@ import { createRoot } from "react-dom/client";
 
 import App from "./App";
 import {
+  //createHashRouter,
   createBrowserRouter,
-  Link,
-  Route,
   RouterProvider,
-  Routes,
 } from "react-router-dom";
 import PageAbout from "./PageAbout";
 import { PageAudiohand } from "./PageAudiohand";
@@ -28,6 +26,21 @@ const router = createBrowserRouter([
   {
     path: "*",
     Component: App,
+    children: [
+      {
+        index: true,
+        Component: PageAbout,
+      },
+      { path: "calendar", Component: PageCalendar },
+      { path: "audiohand", Component: PageAudiohand },
+      { path: "intuitive", Component: PageIntuitive },
+      { path: "loto", Component: PageLockOut },
+      { path: samplePaths[0], Component: PageSample0 },
+      { path: samplePaths[1], Component: PageSample1 },
+      { path: samplePaths[2], Component: PageSample2 },
+      { path: samplePaths[3], Component: PageSample3 },
+      { path: samplePaths[4], Component: PageSample4 },
+    ],
   },
   {
     path: "/",
@@ -48,7 +61,6 @@ const router = createBrowserRouter([
       { path: samplePaths[4], Component: PageSample4 },
     ],
   },
-  { path: "about", Component: PageAbout },
 ]);
 console.log(samplePaths);
 const rootElement = document.getElementById("root");
