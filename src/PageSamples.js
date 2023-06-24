@@ -55,10 +55,10 @@ function PageSample({ index }) {
 
 export const PageSample0 = () => <PageSample index={0} />;
 
-export const PageSample1 = memo(<PageSample index={1} />);
+export const PageSample1 = () => <PageSample index={1} />;
 
-export const PageSample2 = memo(<PageSample index={2} />);
+export const PageSample2 = () => <PageSample index={2} />;
 
-export const PageSample3 = memo(<PageSample index={3} />);
+export const PageSample3 = () => <PageSample index={3} />;
 
-export const PageSample4 = memo(<PageSample index={4} />);
+export const PageSample4 = () => <PageSample index={4} />;
