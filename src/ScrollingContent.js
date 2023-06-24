@@ -65,7 +65,7 @@ export default function ScrollingContent({
             left: 0,
             right: 0,*/
             height: "auto",
-            padding: ".5rem 0 1rem 0",
+            padding: "0.5rem 0 0.5rem 1rem",
             color: "hsl(0,0%,100%)",
             //background: `linear-gradient(0deg, transparent 0%, ${background} 20%)`,
             zIndex: 10,
@@ -80,7 +80,7 @@ export default function ScrollingContent({
         <div
           style={{
             height: "1rem",
-            padding: ".5rem 0 1rem 0",
+            // padding: ".5rem 0 1rem 0",
             background: `linear-gradient(0deg, transparent 0%, ${background} 80%)`,
             zIndex: 10
           }}

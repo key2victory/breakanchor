@@ -55,6 +55,7 @@ const Card1 = ({ content }) => (
             <Fragment>
               {v_detail.label ? (
                 <span
+                  key={i_detail}
                   style={{
                     marginTop: ".25rem"
                   }}
@@ -132,6 +133,7 @@ const Card = ({ content }) => (
             <Fragment>
               {v_detail.label ? (
                 <span
+                  key={i_detail}
                   style={{
                     color: "hsl(0,0%,60%)"
                     // fontSize: ".9rem"
@@ -182,7 +184,7 @@ export default function CardCol({ content }) {
         {content.section}
       </h3>
       {content.items.map((item, index) => (
-        <Card key={index} content={item} />
+        <Card1 key={index} content={item} />
       ))}
     </div>
   );
