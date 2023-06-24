@@ -1,4 +1,6 @@
 import { memo, useState, useEffect } from "react";
+//import { Anchor, Button, PageHeader } from "grommet";
+import { Header, ButtonLink } from "./PageElements";
 
 export const samplePages = [
   {
@@ -6,9 +8,10 @@ export const samplePages = [
     path: "clearance-tracker",
     src: "./samples/ClearanceTrackerUnframed/index.html",
     devices: ["desktop"],
+    tags: ["med"],
   },
   {
-    title: "Compliance",
+    title: "Compliance Works",
     path: "compliance",
     src: "./samples/ComplianceUnframed/index.html",
     devices: ["desktop"],
@@ -39,9 +42,21 @@ export const samplePages = [
 
 export const samplePaths = samplePages.map((item, index) => item.path);
 
-function PageSample({ index }) {
+function PageSample(props) {
   return (
-    <div className="main-content">
+    <div className="sample-content">
+      <Header
+        title={samplePages[props.index].title}
+        subtitle=""
+        color="hsl(0,0%,70%)"
+        style={{ gridColumn: "content / span 1", gridRowStart: "title" }}
+      ></Header>{" "}
+      {/* <PageHeader
+                    title="Page Title"
+                    subtitle="A subtitle for the page."
+                    parent={<Anchor label="Parent Page" />}
+                    actions={<Button label="Edit" primary />}
+                  />*/}{" "}
       <iframe
         title="Sample"
         name="mockframe"
@@ -50,12 +65,8 @@ function PageSample({ index }) {
           gridRow: "content / span 1",
           width: "100%",
           height: "100%",
-          top: 0,
-          right: 0,
-          bottom: 0,
-          left: 0,
         }}
-        src={samplePages[index].src}
+        src={samplePages[props.index].src}
       />{" "}
     </div>
   );

@@ -56,6 +56,7 @@ body,
   background: hsla(0, 0%, 0%, 0%);
   transition: background 0.5s, width 0s 0.5s;
 }
+
 .overlay.show {
   width: 100%;
   background: hsla(0, 0%, 0%, 30%);
@@ -67,6 +68,7 @@ body,
   transform: translateX(100%);
   transition-duration: 0.5s;
 }
+
 .app-nav.show {
   transform: translateX(0);
 }
@@ -90,6 +92,21 @@ body,
   max-height: 100%;
   max-width: 100%;
   margin-left: auto;
+}
+
+.sample-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: grid;
+  grid-template-rows: [header] 64px [title] 64px [content] minmax(0, 1fr);
+  grid-template-columns: [content] minmax(auto, 1fr);
+  overflow: hidden;
+  text-align: left;
+  padding: 1rem;
+  z-index: 0;
 }
 
 .main-content {
@@ -151,6 +168,7 @@ body,
   display: flex;
   flex-direction: row;
 }
+
 /*.row {
   display: flex;
   flex-flow: row wrap;
@@ -207,7 +225,6 @@ body,
   backdrop-filter: blur(50px);*/
   /*background: hsl(56, 100%, 92%);
    width: 400px;*/
-
   height: auto;
   max-height: 7rem;
   flex-grow: 1;
@@ -291,7 +308,8 @@ body,
 }
 
 .keyframe1 {
-  animation-name: cycle1of3; /*6s linear 0s infinite normal running;*/
+  animation-name: cycle1of3;
+  /*6s linear 0s infinite normal running;*/
   z-index: 3;
 }
 
@@ -299,6 +317,7 @@ body,
   animation-name: cycle2of3;
   z-index: 2;
 }
+
 .keyframe3 {
   animation-name: cycle3of3;
   z-index: 1;
@@ -318,6 +337,7 @@ body,
     opacity: 0;
   }
 }
+
 @keyframes cycle2of3 {
   0% {
     opacity: 0;
@@ -338,6 +358,7 @@ body,
     opacity: 0;
   }
 }
+
 @keyframes cycle3of3 {
   0% {
     opacity: 0;
@@ -367,6 +388,7 @@ body,
     opacity: 0;
   }
 }
+
 @keyframes cycle2of4 {
   5% {
     opacity: 1;
@@ -393,6 +415,7 @@ h1 {
   margin: 0;
   padding: 0;
 }
+
 h2 {
   font-size: 2rem;
   line-height: 2rem;
@@ -400,12 +423,14 @@ h2 {
   margin: 0;
   padding: 0;
 }
+
 h3 {
   font-size: 1.5rem;
   font-weight: 300;
   margin: 0;
   padding: 0;
 }
+
 h4 {
   font-size: 1.1rem;
   margin: 0;

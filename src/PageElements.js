@@ -7,7 +7,7 @@ export const Note = memo(function Note({
   background,
   color = "black",
   collapse = true,
-  style
+  style,
 }) {
   const [open, setOpen] = useState(false);
   return (
@@ -20,7 +20,7 @@ export const Note = memo(function Note({
         }
       }}
     >
-      <h4>{title}</h4>
+      <h4> {title} </h4>{" "}
       <span style={{ position: "relative", overflow: "hidden" }}>
         <span
           style={{
@@ -29,11 +29,11 @@ export const Note = memo(function Note({
             left: 0,
             bottom: 0,
             right: 0,
-            background: `linear-gradient(0deg, ${background} 0%, transparent 100%)`
+            background: `linear-gradient(0deg, ${background} 0%, transparent 100%)`,
           }}
-        />
-        {description}
-      </span>
+        />{" "}
+        {description}{" "}
+      </span>{" "}
     </div>
   );
 });
@@ -42,7 +42,7 @@ export const Caption = memo(function Caption({
   src,
   imgStyle,
   alt,
-  containerStyle
+  containerStyle,
 }) {
   return (
     <div className="image" style={{ ...containerStyle }}>
@@ -52,11 +52,11 @@ export const Caption = memo(function Caption({
         style={{
           // backgroundImage: `url(${content.src})`,
           // aspectRatio: content.aspectRatio,
-          ...imgStyle
+          ...imgStyle,
         }}
         alt={alt}
-      />
-      {alt}
+      />{" "}
+      {alt}{" "}
     </div>
   );
 });
@@ -71,7 +71,7 @@ export const Column = memo(function Column({ children, style }) {
         minWidth: 0,
         minHeight: 0,
         height: "100%",
-        ...style
+        ...style,
 
         // flexGrow: 1,
         // flexShrink: 1,
@@ -87,7 +87,7 @@ export const Column = memo(function Column({ children, style }) {
         // flexBasis: 1
       }}
     >
-      {children}
+      {children}{" "}
     </div>
   );
 });
@@ -100,8 +100,8 @@ export const Row = memo(function Row({
     gap: "1rem",
     minWidth: 0,
     justifyContent: "stretch",
-    alignItems: "flex-start"
-  }
+    alignItems: "flex-start",
+  },
 }) {
   return (
     <div
@@ -113,7 +113,7 @@ export const Row = memo(function Row({
         // justifyContent: "stretch",
         // alignItems: "flex-start",
 
-        ...style
+        ...style,
 
         // display: "grid",
         // gridTemplateRows: "auto",
@@ -127,7 +127,7 @@ export const Row = memo(function Row({
         // flexBasis: 0
       }}
     >
-      {children}
+      {children}{" "}
     </div>
   );
 });
@@ -138,15 +138,15 @@ export const Group = memo(function Group({ children, className, style }) {
       className={`group ${className}`}
       style={{
         /*display: "flex",
-        flexWrap: "nowrap",
-        gap: "1rem",
-        minWidth: 0,
-        justifyContent: "stretch",
-        alignItems: "flex-start",*/
-        ...style
+                        flexWrap: "nowrap",
+                        gap: "1rem",
+                        minWidth: 0,
+                        justifyContent: "stretch",
+                        alignItems: "flex-start",*/
+        ...style,
       }}
     >
-      {children}
+      {children}{" "}
     </div>
   );
 });
@@ -157,76 +157,52 @@ export const Header = memo(function Header({
   title2,
   subtitle,
   color,
-  // background,
-  children
+  style,
+  children,
 }) {
   return (
-    //<Fragment>
     <div
       style={{
-        // display: "flex",
-        // flexFlow: "row wrap",
-        // justifyContent: "space-between",
-        // alignItems: "flex-start",
-        // gap: "1rem",
         display: "grid",
         gridTemplateColumns: "1fr auto",
         height: "auto",
-        //padding: "1.5rem 0 0.5rem 1rem",
-        // margin: "0 3rem 0 0",
         color: color,
         zIndex: 10,
-        overflow: "visible"
+        overflow: "visible",
+        ...style,
       }}
     >
       <span style={{ display: "flex", flexFlow: "column nowrap" }}>
         <h1 style={{ color: color }}>
+          {" "}
           {title2 ? (
             <Fragment>
               <span style={{ display: "flex", flexFlow: "row wrap" }}>
                 <span
                   style={{
                     marginRight: ".6rem",
-                    color: color
+                    color: color,
                   }}
                 >
-                  {title1}
-                </span>
+                  {title1}{" "}
+                </span>{" "}
                 <span
                   style={{
-                    color: color
+                    color: color,
                   }}
                 >
-                  {title2}
-                </span>
-              </span>
+                  {title2}{" "}
+                </span>{" "}
+              </span>{" "}
             </Fragment>
           ) : (
             title
-          )}
-        </h1>
-        <h3 style={{ color: color }}>{subtitle}</h3>
-      </span>
-      {children}
+          )}{" "}
+        </h1>{" "}
+        <h3 style={{ color: color }}> {subtitle} </h3>{" "}
+      </span>{" "}
+      {children}{" "}
     </div>
-
-    /*   <div
-        style={{
-          overflow: "visible",
-          height: "1px",
-          width: "auto",
-          margin: "0 3rem 0 0",
-          zIndex: 10
-        }}
-      >
-        <div
-          style={{
-            height: "1rem",
-            background: `linear-gradient(0deg, transparent 0%, ${background} 90%)`
-          }}
-        />
-      </div>
-        </Fragment>*/
   );
 });
 
@@ -234,7 +210,7 @@ export const ButtonLink = memo(function ButtonLink({
   line1,
   line2,
   url,
-  color
+  color,
 }) {
   const text = {
     x: 0,
@@ -243,7 +219,7 @@ export const ButtonLink = memo(function ButtonLink({
     fontFamily: "sans-serif",
     size1: 16,
     size2: 18,
-    size3: 16
+    size3: 16,
   };
 
   return (
@@ -260,7 +236,7 @@ export const ButtonLink = memo(function ButtonLink({
         //gap: ".25rem",
         // minWidth: 0,
         width: "max-content",
-        height: "min-content" //"48px"
+        height: "min-content", //"48px"
       }}
       href={url}
       target="_blank"
@@ -271,77 +247,33 @@ export const ButtonLink = memo(function ButtonLink({
           color: { color },
           fontFamily: text.fontFamily,
           fontSize: `${text.size1}px`,
-          width: "auto"
+          width: "auto",
         }}
       >
-        {line1}
-      </span>
+        {line1}{" "}
+      </span>{" "}
       <span
         style={{
           color: { color },
           fontFamily: text.fontFamily,
           fontSize: `${text.size2}px`,
           width: "auto",
-          marginLeft: ".1rem"
+          marginLeft: ".1rem",
         }}
       >
-        {line2}
+        {line2}{" "}
         <span
           style={{
             width: "min-content",
             color: { color },
             fontFamily: text.fontFamily,
             fontSize: `${text.size1}px`,
-            margin: "0 0.1rem 0 .2rem"
+            margin: "0 0.1rem 0 .2rem",
           }}
         >
           ↗
-        </span>
-      </span>
+        </span>{" "}
+      </span>{" "}
     </a>
   );
 });
-/*
-<svg
-        width="120"
-        height="48"
-        viewBox="0 0 120 48"
-        preserveAspectRatio="xMinYMin meet"
-      >
-        <text
-          textLength={text.textLength}
-          fontSize={text.size1}
-          fontFamily={text.fontFamily}
-          fill={color}
-          dominantBaseline="hanging"
-          x={text.x}
-          y={text.y}
-        >
-          {line1}
-        </text>
-        <text
-          textLength={text.textLength}
-          fontSize={text.size2}
-          fontFamily={text.fontFamily}
-          fill={color}
-          dominantBaseline="hanging"
-          x={text.x}
-          y={text.y}
-          dy={18}
-        >
-          {line2}
-        </text>
-        <text
-          fontSize={text.size3}
-          fontFamily={text.fontFamily}
-          fill={color}
-          dominantBaseline="hanging"
-          x={text.x}
-          y={text.y}
-          dy={20}
-          dx={82}
-        >
-          ↗
-        </text>
-      </svg>
-*/
