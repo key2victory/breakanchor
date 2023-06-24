@@ -36,16 +36,32 @@ export const samplePages = [{
     }
 ];
 
-export const PageSample = memo(function PageSample({ index }) {
+function PageSample({ index }) {
     return ( <
         div className = "main-content" >
         <
-        iframe name = "mockframe"
+        iframe title = "Sample"
+        name = "mockframe"
         className = ""
         style = {
             { position: "absolute", top: 0, right: 0, bottom: 0, left: 0 } }
-        src = { sample[index].src }
-        />  < /
-        div >
+        src = { samplePages[index].src }
+        />{" "} <
+        /div>
     );
-});
+}
+
+export const PageSample0 = memo( < PageSample index = { 0 }
+        />);
+
+        export const PageSample1 = memo( < PageSample index = { 1 }
+                />);
+
+                export const PageSample2 = memo( < PageSample index = { 2 }
+                        />);
+
+                        export const PageSample3 = memo( < PageSample index = { 3 }
+                                />);
+
+                                export const PageSample4 = memo( < PageSample index = { 4 }
+                                        />);
