@@ -1,12 +1,64 @@
 import { memo, useState, useEffect, Fragment } from "react";
-import { createPath } from "react-router-dom";
+
+import {
+  MdOutlineSmartphone,
+  MdOutlineTablet,
+  MdOutlineLaptop,
+  MdOutlineComputer,
+} from "react-icons/md";
+
+function IconTag({ icon }) {
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexFlow: "row nowrap",
+        borderRadius: ".5rem",
+        padding: ".5rem",
+        background: "hsl(0,0%,30%)",
+      }}
+    >
+      {icon === "phone" ? (
+        <MdOutlineSmartphone />
+      ) : icon === "tablet" ? (
+        <MdOutlineTablet />
+      ) : icon === "desktop" ? (
+        <MdOutlineComputer />
+      ) : null}{" "}
+      <span> {icon} </span>{" "}
+    </div>
+  );
+}
+
+/*const IconTag = ({ icon }) => {
+  const IconList = {
+    phone: MdOutlineSmartphone,
+   tablet: MdOutlineTablet,
+   desktop: MdOutlineComputer,
+  };
+  const Icon = IconList[icon];
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexFlow: "row nowrap",
+        borderRadius: "1rem",
+        background: "hsl(0,0%,30%)"
+      }}
+    >
+      <Icon />
+      <span>{icon}</span>
+    </div>
+  );
+};*/
 
 export const Note = memo(function Note({
   title,
   description,
   background,
   color = "black",
-  collapse = true,
+  collapse = false,
   style,
 }) {
   const [open, setOpen] = useState(false);
@@ -50,8 +102,6 @@ export const Caption = memo(function Caption({
         src={`${src}`}
         width="100%"
         style={{
-          // backgroundImage: `url(${content.src})`,
-          // aspectRatio: content.aspectRatio,
           ...imgStyle,
         }}
         alt={alt}
@@ -72,19 +122,6 @@ export const Column = memo(function Column({ children, style }) {
         minHeight: 0,
         height: "100%",
         ...style,
-
-        // flexGrow: 1,
-        // flexShrink: 1,
-        // flexBasis: 0
-
-        //  display: "grid",
-        // gridTemplateColumns: "1fr",
-        //  gridTemplateRows: `repeat(${content.length}, 1fr)`,
-        //   rowGap: "1rem",
-        // minWidth: 0,
-        // flexGrow: 2,
-        // flexShrink: 2,
-        // flexBasis: 1
       }}
     >
       {children}{" "}
@@ -106,25 +143,7 @@ export const Row = memo(function Row({
   return (
     <div
       style={{
-        // display: "flex",
-        // flexFlow: "row nowrap",
-        // gap: "1rem",
-        // minWidth: 0,
-        // justifyContent: "stretch",
-        // alignItems: "flex-start",
-
         ...style,
-
-        // display: "grid",
-        // gridTemplateRows: "auto",
-        // gridTemplateColumns: "minmax(0,1fr)",
-        // gridAutoColumns: "minmax(0,1fr)",
-        // columnGap: "1rem",
-        // height: "auto",
-
-        // flexGrow: 1,
-        // flexShrink: 1,
-        // flexBasis: 0
       }}
     >
       {children}{" "}
@@ -137,12 +156,6 @@ export const Group = memo(function Group({ children, className, style }) {
     <div
       className={`group ${className}`}
       style={{
-        /*display: "flex",
-                        flexWrap: "nowrap",
-                        gap: "1rem",
-                        minWidth: 0,
-                        justifyContent: "stretch",
-                        alignItems: "flex-start",*/
         ...style,
       }}
     >
