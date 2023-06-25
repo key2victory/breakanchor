@@ -1,10 +1,10 @@
-import { memo, useState, useEffect, Fragment } from "react";
-import "./styles.css";
+import { memo } from "react";
+import "./styles-keyframes.css";
 
 export const HeroIntuitive = memo(function HeroIntuitive() {
   const positionScreen = {
     x: "0",
-    y: "0"
+    y: "0",
   };
   const positionBeam = {
     //"0,281, 500,281, 337,352 162,352"
@@ -13,12 +13,12 @@ export const HeroIntuitive = memo(function HeroIntuitive() {
     x3: 260, //337
     x4: 200, //162
     y1: 281,
-    y2: 352
+    y2: 352,
   };
   const positionDevice = {
     x: "153",
     y: "352",
-    borderRadius: "10px"
+    borderRadius: "10px",
   };
 
   const screenWidth = "500"; //"807"; //16
@@ -27,12 +27,12 @@ export const HeroIntuitive = memo(function HeroIntuitive() {
   const beamColor = {
     stop1: "hsla(250,50%,60%,60%)",
     stop2: "hsla(240,80%,90%,40%)",
-    stop3: "hsla(230,100%,80%,60%)"
+    stop3: "hsla(230,100%,80%,60%)",
   };
 
   const Device = () => (
     <svg
-      viewBox="0 0 500 500" //"0 0 779 1513"
+      viewBox="0 0 500 500"
       preserveAspectRatio="xMidYMin meet"
       style={{
         position: "relative",
@@ -42,12 +42,10 @@ export const HeroIntuitive = memo(function HeroIntuitive() {
         height: "auto",
 
         minWidth: "300px",
-        //maxWidth: "100%",
         minHeight: "300px",
-        // maxHeight: "100%",
 
-        aspectRatio: "1 / 1", //"779 / 1513",
-        overflow: "hidden"
+        aspectRatio: "1 / 1",
+        overflow: "hidden",
       }}
     >
       <defs>
@@ -56,20 +54,20 @@ export const HeroIntuitive = memo(function HeroIntuitive() {
             offset="0%"
             stopColor={beamColor.stop1}
             //stop-opacity="0.2"
-          />
+          />{" "}
           <stop
             offset="40%"
             stopColor={beamColor.stop2} //stop-opacity="0.1"
-          />
+          />{" "}
           <stop
             offset="60%"
             stopColor={beamColor.stop2} //stop-opacity="0.2"
-          />
+          />{" "}
           <stop
             offset="100%"
             stopColor={beamColor.stop3} //stop-opacity="0.3"
-          />
-        </linearGradient>
+          />{" "}
+        </linearGradient>{" "}
         <radialGradient
           id="GradientPad"
           cx="0.48"
@@ -83,15 +81,14 @@ export const HeroIntuitive = memo(function HeroIntuitive() {
           <stop offset="50%" stopColor="hsla(40,100%,90%,30%)" />
           <stop offset="70%" stopColor="hsla(40,100%,90%,30%)" />
           <stop offset="100%" stopColor="hsla(40,100%,90%,50%)" />
-        </radialGradient>
-      </defs>
+        </radialGradient>{" "}
+      </defs>{" "}
       {/* <rect
-        width="668"
-        height="980"
-        style={{ ...positionScreen }}
-        fill="#000"
-     />*/}
-
+                    width="668"
+                    height="980"
+                    style={{ ...positionScreen }}
+                    fill="#000"
+                 />*/}
       <image
         href="./img/intuitive-24.png"
         width={screenWidth} //"668" //"380"
@@ -100,9 +97,9 @@ export const HeroIntuitive = memo(function HeroIntuitive() {
         alt=""
         className="image cycle keyframe3"
         style={{
-          ...positionScreen
+          ...positionScreen,
         }}
-      />
+      />{" "}
       <image
         href="./img/intuitive-35.png"
         width={screenWidth} //"668"
@@ -111,10 +108,9 @@ export const HeroIntuitive = memo(function HeroIntuitive() {
         alt=""
         className="image cycle keyframe2"
         style={{
-          ...positionScreen
+          ...positionScreen,
         }}
       />
-
       <image
         href="./img/intuitive-40.png"
         width={screenWidth} //"668" //"380"
@@ -123,9 +119,9 @@ export const HeroIntuitive = memo(function HeroIntuitive() {
         alt=""
         className="image cycle keyframe1"
         style={{
-          ...positionScreen
+          ...positionScreen,
         }}
-      />
+      />{" "}
       <polygon
         points={`${positionBeam.x1},${positionBeam.y1}, ${positionBeam.x2},${positionBeam.y1}, ${positionBeam.x3},${positionBeam.y2}, ${positionBeam.x4},${positionBeam.y2}`} //"0,281, 500,281, 337,352 162,352"
         fill="url(#GradientPad)" //"hsla(0,0%,0%,20%)"
@@ -138,9 +134,9 @@ export const HeroIntuitive = memo(function HeroIntuitive() {
         alt=""
         style={{
           filter: "drop-shadow(-2px 4px 2px hsla(0, 0%, 0%, 20%))",
-          ...positionDevice
+          ...positionDevice,
         }}
-      />
+      />{" "}
     </svg>
   );
 
@@ -151,7 +147,7 @@ export const HeroIntuitive = memo(function HeroIntuitive() {
         paddingLeft: "calc(1vw * 1vw)",
         paddingBottom: "calc(1vw * 1vw)",
         alignItems: "stretch",
-        justifyContent: "stretch"
+        justifyContent: "stretch",
       }}
     >
       <Device />
