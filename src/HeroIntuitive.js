@@ -1,4 +1,4 @@
-import { memo } from "react";
+import {memo} from "react";
 import "./styles-keyframes.css";
 
 export const HeroIntuitive = memo(function HeroIntuitive() {
@@ -16,7 +16,7 @@ export const HeroIntuitive = memo(function HeroIntuitive() {
     y2: 352,
   };
   const positionDevice = {
-    x: "153",
+    x: "183", //"153",
     y: "352",
     borderRadius: "10px",
   };
@@ -25,9 +25,9 @@ export const HeroIntuitive = memo(function HeroIntuitive() {
   const screenHeight = "281"; //"454"; //9
 
   const beamColor = {
-    stop1: "hsla(250,50%,60%,60%)",
+    stop1: "hsla(250,50%,60%,80%)",
     stop2: "hsla(240,80%,90%,40%)",
-    stop3: "hsla(230,100%,80%,60%)",
+    stop3: "hsla(230,100%,80%,80%)",
   };
 
   const Device = () => (
@@ -96,9 +96,8 @@ export const HeroIntuitive = memo(function HeroIntuitive() {
         //aspectRatio="378 / 648"
         alt=""
         className="image cycle keyframe3"
-        style={{
-          ...positionScreen,
-        }}
+        x={positionScreen.x}
+        y={positionScreen.y}
       />{" "}
       <image
         href="./img/intuitive-35.png"
@@ -107,9 +106,8 @@ export const HeroIntuitive = memo(function HeroIntuitive() {
         // aspectRatio="378 / 648"
         alt=""
         className="image cycle keyframe2"
-        style={{
-          ...positionScreen,
-        }}
+        x={positionScreen.x}
+        y={positionScreen.y}
       />
       <image
         href="./img/intuitive-40.png"
@@ -118,9 +116,8 @@ export const HeroIntuitive = memo(function HeroIntuitive() {
         //aspectRatio="378 / 648"
         alt=""
         className="image cycle keyframe1"
-        style={{
-          ...positionScreen,
-        }}
+        x={positionScreen.x}
+        y={positionScreen.y}
       />{" "}
       <polygon
         points={`${positionBeam.x1},${positionBeam.y1}, ${positionBeam.x2},${positionBeam.y1}, ${positionBeam.x3},${positionBeam.y2}, ${positionBeam.x4},${positionBeam.y2}`} //"0,281, 500,281, 337,352 162,352"
@@ -129,13 +126,15 @@ export const HeroIntuitive = memo(function HeroIntuitive() {
       <image
         className="device-frame"
         href={projector}
-        width="194" //"129" 30% //"258" 60% //"387"
-        height="136" //"90" //"180" //"271"
+        width="129" //"194" //"129" 30% //"258" 60% //"387"
+        height="90" //"136" //"90" //"180" //"271"
         alt=""
         style={{
           filter: "drop-shadow(-2px 4px 2px hsla(0, 0%, 0%, 20%))",
-          ...positionDevice,
+          borderRadius: positionDevice.borderRadius,
         }}
+        x={positionDevice.x}
+        y={positionDevice.y}
       />{" "}
     </svg>
   );
