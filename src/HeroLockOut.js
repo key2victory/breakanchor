@@ -23,7 +23,7 @@ export const HeroLockOut = memo(function HeroLockOut() {
 
         minWidth: "180px",
         maxWidth: "100%",
-        minHeight: "366px",
+        minHeight: "100%",
         maxHeight: "100%",
         overflow: "hidden",
       }}
