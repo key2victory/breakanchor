@@ -1,12 +1,13 @@
-import { memo, useState, useEffect } from "react";
+import {memo, useState, useEffect} from "react";
 //import { Anchor, Button, PageHeader } from "grommet";
-import { Header, ButtonLink } from "./PageElements";
+import {Header, ButtonLink} from "./PageElements";
 
 export const samplePages = [
   {
     title: "Clearance Tracker",
     path: "clearance-tracker",
     src: "./samples/ClearanceTrackerUnframed/index.html",
+    aspectRatio: "1678 / 1153",
     devices: ["desktop"],
     tags: ["med"],
   },
@@ -14,6 +15,7 @@ export const samplePages = [
     title: "Compliance Works",
     path: "compliance",
     src: "./samples/ComplianceUnframed/index.html",
+    aspectRatio: "1640 / 1024",
     devices: ["desktop"],
     tags: ["med"],
   },
@@ -21,6 +23,7 @@ export const samplePages = [
     title: "Conference Manager",
     path: "conference-manager",
     src: "./samples/ConferenceManagerUnframed/index.html",
+    aspectRatio: "1680 / 1105",
     devices: ["desktop"],
     tags: ["high"],
   },
@@ -28,6 +31,7 @@ export const samplePages = [
     title: "Interview Kiosk",
     path: "interview-kiosk",
     src: "./samples/InterviewKioskUnframed/index.html",
+    aspectRatio: "2048 / 1536",
     devices: ["tablet"],
     tags: ["high"],
   },
@@ -35,6 +39,7 @@ export const samplePages = [
     title: "Lead Time Manager",
     path: "lead-time-manager",
     src: "./samples/LTMUnframed/index.html",
+    aspectRatio: "1280 / 800",
     devices: ["desktop"],
     tags: ["low"],
   },
@@ -49,14 +54,14 @@ function PageSample(props) {
         title={samplePages[props.index].title}
         subtitle=""
         color="hsl(0,0%,70%)"
-        style={{ gridColumn: "content / span 1", gridRowStart: "title" }}
+        style={{gridColumn: "content / span 1", gridRowStart: "title"}}
       ></Header>{" "}
       {/* <PageHeader
-                    title="Page Title"
-                    subtitle="A subtitle for the page."
-                    parent={<Anchor label="Parent Page" />}
-                    actions={<Button label="Edit" primary />}
-                  />*/}{" "}
+                                                                                                                                            title="Page Title"
+                                                                                                                                            subtitle="A subtitle for the page."
+                                                                                                                                            parent={<Anchor label="Parent Page" />}
+                                                                                                                                            actions={<Button label="Edit" primary />}
+                                                                                                                                          />*/}{" "}
       <iframe
         title="Sample"
         name="mockframe"
@@ -64,7 +69,8 @@ function PageSample(props) {
         style={{
           gridRow: "content / span 1",
           width: "100%",
-          height: "100%",
+          maxWidth: "100%",
+          maxHeight: "100%",
         }}
         src={samplePages[props.index].src}
       />{" "}
