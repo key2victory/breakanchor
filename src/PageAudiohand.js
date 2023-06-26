@@ -1,18 +1,7 @@
-import { memo, useState, useEffect, Fragment } from "react";
-import {
-  Header,
-  ButtonLink,
-  Note,
-  Caption,
-  Column,
-  Row,
-  Group
-} from "./PageElements";
-//import CardCol from "./CardCol";
-//import CardRow from "./CardRow";
+import {memo} from "react";
+import {Header, ButtonLink, Note, Group} from "./PageElements";
 
-import { AppHeader } from "./AppNav";
-import { HeroAudiohand } from "./HeroAudiohand";
+import {HeroAudiohand} from "./HeroAudiohand";
 import "./styles.css";
 
 export const PageAudiohand = memo(function Page_Audiohand({
@@ -20,13 +9,13 @@ export const PageAudiohand = memo(function Page_Audiohand({
   subtitle,
   background,
   row,
-  column
+  column,
 }) {
   const bg = {
     background:
       "linear-gradient(90deg, hsla(337,86%,51%,100%) 0%, hsla(338,100%,61%,100%) 100%)",
     background1: "hsla(337,86%,51%,100%)",
-    background2: "hsla(338,100%,61%,100%)"
+    background2: "hsla(338,100%,61%,100%)",
   };
 
   return (
@@ -35,9 +24,9 @@ export const PageAudiohand = memo(function Page_Audiohand({
         className="page-bg"
         style={{
           background:
-            "linear-gradient(90deg, hsla(337,86%,51%,100%) 0%, hsla(338,100%,61%,100%) 100%)"
+            "linear-gradient(90deg, hsla(337,86%,51%,100%) 0%, hsla(338,100%,61%,100%) 100%)",
         }}
-      />
+      />{" "}
       <div className="scroll-zone">
         <Header
           title="Audiohand"
@@ -52,7 +41,6 @@ export const PageAudiohand = memo(function Page_Audiohand({
             url="https://apps.apple.com/us/app/audiohand/id973166513?platform=iphone"
           />
         </Header>
-
         <Group className="desktop-row tablet-row mobile-col">
           <Note
             title="Problem"
@@ -67,27 +55,27 @@ export const PageAudiohand = memo(function Page_Audiohand({
             //background="hsl(338,100%,90%)"
             //background="hsl(338,80%,86%)"
           />
-        </Group>
+        </Group>{" "}
         <Group className="desktop-row tablet-row mobile-col">
           <Group className="row">
             <img className="image shadow" src="./img/audiohand-01.png" alt="" />
             <img className="image shadow" src="./img/audiohand-02.png" alt="" />
-          </Group>
+          </Group>{" "}
           <Group className="row">
             <img className="image shadow" src="./img/audiohand-03.png" alt="" />
             <img className="image shadow" src="./img/audiohand-04.png" alt="" />
-          </Group>
-        </Group>
+          </Group>{" "}
+        </Group>{" "}
         <Group>
           <img className="image shadow" src="./img/audiohand-05.png" alt="" />
           <img className="image shadow" src="./img/audiohand-06.png" alt="" />
           <img className="image shadow" src="./img/audiohand-07.png" alt="" />
-        </Group>
+        </Group>{" "}
         <Group>
           <img className="image shadow" src="./img/audiohand-08.png" alt="" />
           <img className="image shadow" src="./img/audiohand-09.png" alt="" />
           <img className="image shadow" src="./img/audiohand-10.png" alt="" />
-        </Group>
+        </Group>{" "}
         <Group>
           <div
             style={{
@@ -98,7 +86,7 @@ export const PageAudiohand = memo(function Page_Audiohand({
               gridColumnGap: "1rem",
               flexGrow: 1,
               flexShrink: 1,
-              flexBasis: 0
+              flexBasis: 0,
             }}
           >
             <img
@@ -108,7 +96,7 @@ export const PageAudiohand = memo(function Page_Audiohand({
               style={{
                 //aspectRatio: "189 / 325"
                 gridColumn: "1 / span 1",
-                gridRow: "1 / span 2"
+                gridRow: "1 / span 2",
               }}
               width="100%"
             />
@@ -119,7 +107,7 @@ export const PageAudiohand = memo(function Page_Audiohand({
               style={{
                 //aspectRatio: "189 / 325"
                 gridColumn: "2 / span 1",
-                gridRow: "1 / span 1"
+                gridRow: "1 / span 1",
               }}
               width="100%"
               // width="135"
@@ -134,16 +122,16 @@ export const PageAudiohand = memo(function Page_Audiohand({
               style={{
                 //aspectRatio: "189 / 325"
                 gridColumn: "2 / span 1",
-                gridRow: "2 / span 1"
+                gridRow: "2 / span 1",
               }}
               width="100%"
               //width="675"
               //height="389"
             />
-          </div>
-        </Group>
+          </div>{" "}
+        </Group>{" "}
         <HeroAudiohand />
-      </div>
+      </div>{" "}
     </div>
   );
 });

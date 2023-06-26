@@ -39,7 +39,7 @@ export const samplePages = [
     title: "Lead Time Manager",
     path: "lead-time-manager",
     src: "./samples/LTMUnframed/index.html",
-    aspectRatio: "1280 / 800",
+    aspectRatio: "1280 / 800", //357/224 //100% /62.5%
     devices: ["desktop"],
     tags: ["low"],
   },
@@ -57,23 +57,37 @@ function PageSample(props) {
         style={{gridColumn: "content / span 1", gridRowStart: "title"}}
       ></Header>{" "}
       {/* <PageHeader
-                                                                                                                                            title="Page Title"
-                                                                                                                                            subtitle="A subtitle for the page."
-                                                                                                                                            parent={<Anchor label="Parent Page" />}
-                                                                                                                                            actions={<Button label="Edit" primary />}
-                                                                                                                                          />*/}{" "}
-      <iframe
-        title="Sample"
-        name="mockframe"
-        className=""
+                    title="Page Title"
+                    subtitle="A subtitle for the page."
+                    parent={<Anchor label="Parent Page" />}
+                    actions={<Button label="Edit" primary />}
+                  />*/}{" "}
+      <div
         style={{
           gridRow: "content / span 1",
           width: "100%",
-          maxWidth: "100%",
-          maxHeight: "100%",
+          height: "100%",
         }}
-        src={samplePages[props.index].src}
-      />{" "}
+      >
+        <div
+          style={{
+            aspectRatio: samplePages[props.index].aspectRatio,
+            margin: "auto",
+            maxWidth: "100%",
+            maxHeight: "100%",
+          }}
+        >
+          <iframe
+            title="Sample"
+            name="mockframe"
+            className="sample"
+            style={{}}
+            width="100%"
+            height="100%"
+            src={samplePages[props.index].src}
+          />{" "}
+        </div>{" "}
+      </div>{" "}
     </div>
   );
 }

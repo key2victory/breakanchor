@@ -1,35 +1,34 @@
-import { memo, useState, useEffect, Fragment } from "react";
-import "./styles.css";
+import {memo} from "react";
 import "./styles-keyframes.css";
 
 export const CalendarTv = memo(function CalendarTv() {
   const positionScreen = {
     x: "60",
-    y: "270"
+    y: "270",
   };
   const text = {
     fill: "#000",
     font: "sans-serif",
-    fontSize: "40px"
+    fontSize: "40px",
     //textLength: "500"
   };
   const lineHeight = 50;
   const caption1 = {
     x: 240,
-    y: 160
+    y: 160,
   };
   const caption2 = {
     x: 240,
-    y: 260
+    y: 260,
   };
   const caption3 = {
     x: 240,
-    y: 75
+    y: 75,
   };
 
   const textNum = {
     fill: "#000",
-    font: "bold 64px sans-serif"
+    font: "bold 64px sans-serif",
     //fontSize: "8vh"
   };
   const Device = () => (
@@ -45,7 +44,7 @@ export const CalendarTv = memo(function CalendarTv() {
         maxWidth: "100%",
         minHeight: 0,
         maxHeight: "100%",
-        overflow: "hidden"
+        overflow: "hidden",
       }}
     >
       <image
@@ -84,19 +83,18 @@ export const CalendarTv = memo(function CalendarTv() {
         />
         <circle cx="300" cy="280" r="50" fill="#fff" />
         <text x="282" y="305" style={textNum}>
-          3
-        </text>
+          3{" "}
+        </text>{" "}
         <text style={text} x={caption3.x} y={caption3.y}>
-          high priority events
-        </text>
+          high priority events{" "}
+        </text>{" "}
         <text style={text} x={caption3.x} y={caption3.y} dy={lineHeight}>
-          for upcoming months,
-        </text>
+          for upcoming months,{" "}
+        </text>{" "}
         <text style={text} x={caption3.x} y={caption3.y} dy={lineHeight * 2}>
-          grouped by week
-        </text>
+          grouped by week{" "}
+        </text>{" "}
       </g>
-
       <g className="cycle-20s keyframe show-only2" transform="translate(0,0)">
         <rect
           className="cover-area-3"
@@ -116,7 +114,6 @@ export const CalendarTv = memo(function CalendarTv() {
           //fill="none"
           fill="#000"
         />
-
         <rect
           className="caption-2"
           rx="20"
@@ -128,18 +125,18 @@ export const CalendarTv = memo(function CalendarTv() {
         />
         <circle cx="300" cy="110" r="50" fill="#fff" />
         <text x="280" y="135" style={textNum}>
-          2
-        </text>
+          2{" "}
+        </text>{" "}
         <text style={text} x={caption2.x} y={caption2.y}>
-          daily forecast graph
-        </text>
+          daily forecast graph{" "}
+        </text>{" "}
         <text style={text} x={caption2.x} y={caption2.y} dy={lineHeight}>
-          in relation to medium
-        </text>
+          in relation to medium{" "}
+        </text>{" "}
         <text style={text} x={caption2.x} y={caption2.y} dy={lineHeight * 2}>
-          priority events
-        </text>
-      </g>
+          priority events{" "}
+        </text>{" "}
+      </g>{" "}
       <g className="cycle-20s keyframe show-only1" transform="translate(0,0)">
         <rect
           className="cover-area-3"
@@ -159,7 +156,6 @@ export const CalendarTv = memo(function CalendarTv() {
           //fill="none"
           fill="#000"
         />
-
         <rect
           className="caption-1"
           rx="20"
@@ -171,18 +167,18 @@ export const CalendarTv = memo(function CalendarTv() {
         />
         <circle cx="130" cy="160" r="50" fill="#fff" />
         <text x="110" y="185" style={textNum}>
-          1
-        </text>
+          1{" "}
+        </text>{" "}
         <text style={text} x={caption1.x} y={caption1.y}>
-          hourly forecast
-        </text>
+          hourly forecast{" "}
+        </text>{" "}
         <text style={text} x={caption1.x} y={caption1.y} dy={lineHeight}>
-          in relation to
-        </text>
+          in relation to{" "}
+        </text>{" "}
         <text style={text} x={caption1.x} y={caption1.y} dy={lineHeight * 2}>
-          daily events
-        </text>
-      </g>
+          daily events{" "}
+        </text>{" "}
+      </g>{" "}
     </svg>
   );
 

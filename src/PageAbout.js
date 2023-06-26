@@ -1,12 +1,10 @@
-import { memo, useState, useEffect, Fragment } from "react";
-
-import { AppHeader } from "./AppNav";
+import {memo, useState, useEffect, Fragment} from "react";
 import HeroAbout from "./HeroAbout";
-import { Header, ButtonLink, Note, Caption, Column, Row } from "./PageElements";
+import {Header, ButtonLink, Note, Caption, Column, Row} from "./PageElements";
 
 const present = new Date().getFullYear();
 
-function CardSection({ title, children, style }) {
+function CardSection({title, children, style}) {
   return (
     <div
       className="card"
@@ -16,58 +14,55 @@ function CardSection({ title, children, style }) {
         gap: "1rem",
         background: "hsl(0,0%,40%)",
         padding: "1rem",
-        ...style
+        ...style,
       }}
     >
-      <h3 style={{ color: "hsl(0,0%,100%)" }}>{title}</h3>
-      {children}
+      <h3 style={{color: "hsl(0,0%,100%)"}}> {title} </h3> {children}{" "}
     </div>
   );
 }
 
-const CardSummary = ({ content, style }) => (
+const CardSummary = ({content, style}) => (
   <div
     style={{
       display: "flex",
       flexFlow: "column nowrap",
       gap: ".25rem",
-      ...style
+      ...style,
     }}
   >
-    <h4>{content.title}</h4>
-    <span>{content.subtitle}</span>
+    <h4> {content.title} </h4> <span> {content.subtitle} </span>{" "}
     {content.dates.length === 2 ? (
       <span
         style={{
           display: "flex",
           flexFlow: "row wrap",
           color: "hsl(0,0%,60%)",
-          gap: ".25rem"
+          gap: ".25rem",
         }}
       >
-        <span>{content.dates[0]}</span>
-        <span>-</span>
-        <span>{content.dates[1]}</span>
+        <span> {content.dates[0]} </span> <span> - </span>{" "}
+        <span> {content.dates[1]} </span>{" "}
       </span>
     ) : (
       <span
         style={{
           display: "flex",
           flexFlow: "row wrap",
-          color: "hsl(0,0%,60%)"
+          color: "hsl(0,0%,60%)",
         }}
       >
-        {content.dates.join(", ")}
+        {content.dates.join(", ")}{" "}
       </span>
-    )}
+    )}{" "}
   </div>
 );
 
-const CardDetails = ({ content }) => {
-  const ProjectDetails = ({ content, style }) => (
+const CardDetails = ({content}) => {
+  const ProjectDetails = ({content, style}) => (
     <span
       style={{
-        ...style
+        ...style,
       }}
     >
       {content.label ? (
@@ -75,42 +70,41 @@ const CardDetails = ({ content }) => {
           style={{
             width: "100%",
             padding: "0 0 .25rem 0",
-            color: "hsl(0,0%,60%)"
+            color: "hsl(0,0%,60%)",
             // fontSize: ".9rem"
           }}
         >
-          {content.label}
+          {content.label}{" "}
         </span>
-      ) : null}
+      ) : null}{" "}
       {content.items.map((item, index) => (
         <span
           key={`content-item-${index}`}
           style={{
             display: "flex",
-            flexFlow: "row nowrap"
+            flexFlow: "row nowrap",
           }}
         >
           <span
             style={{
               color: "hsl(0,0%,60%)",
               fontSize: "1.5rem",
-              lineHeight: "1.2rem"
+              lineHeight: "1.2rem",
             }}
           >
             •
           </span>
-
           <span
             key={index}
             style={{
               fontSize: ".9rem",
-              margin: "0 .5rem 0 .5rem"
+              margin: "0 .5rem 0 .5rem",
             }}
           >
-            {item}
-          </span>
+            {item}{" "}
+          </span>{" "}
         </span>
-      ))}
+      ))}{" "}
     </span>
   );
 
@@ -123,17 +117,17 @@ const CardDetails = ({ content }) => {
         display: "flex",
         flexFlow: "row wrap",
         margin: "1rem 1rem 1.5rem 1rem",
-        gap: ".25rem"
+        gap: ".25rem",
       }}
     >
-      <CardSummary content={content} style={{ minWidth: "45%" }} />
+      <CardSummary content={content} style={{minWidth: "45%"}} />{" "}
       <div
         style={{
           minWidth: "300px",
           maxWidth: "400px",
           display: "flex",
           flexFlow: "column nowrap",
-          gap: "1rem"
+          gap: "1rem",
         }}
       >
         {content.details
@@ -147,7 +141,7 @@ const CardDetails = ({ content }) => {
                     display: "flex",
                     flexFlow: "row wrap",
                     justifyContent: "flex-start",
-                    alignItems: "stretch"
+                    alignItems: "stretch",
                   }}
                 />
               ) : (
@@ -160,13 +154,13 @@ const CardDetails = ({ content }) => {
                     gap: ".25rem",
                     padding: 0,
                     margin: 0,
-                    fontSize: ".9rem"
+                    fontSize: ".9rem",
                   }}
                 />
               )
             )
-          : null}
-      </div>
+          : null}{" "}
+      </div>{" "}
     </div>
   );
 };
@@ -189,37 +183,37 @@ export default function PageAbout(props) {
         style={{
           // background: "linear-gradient(90deg, #f9b446 0%, #FEC107 100%)"
           background: `linear-gradient(45deg, ${color1} 25%, ${color2} 0, ${color2} 50%, ${color1} 0, ${color1} 75%, ${color2} 0)`,
-          backgroundSize: "30px 30px"
+          backgroundSize: "30px 30px",
           //   "repeating-linear-gradient(30deg, hsla(0,0%,100%,.1), hsla(0,0%,100%,.1) 15px, transparent 0, transparent 30px)"
         }}
-      />
+      />{" "}
       <div
         className="page-bg"
         style={{
-          background: `linear-gradient(31deg, ${color1} 25%, ${color2} 0, ${color2} 50%, ${color1} 0, ${color1} 75%, ${color2} 0) center / 50px 30px`
+          background: `linear-gradient(31deg, ${color1} 25%, ${color2} 0, ${color2} 50%, ${color1} 0, ${color1} 75%, ${color2} 0) center / 50px 30px`,
         }}
-      />
+      />{" "}
       <div className="scroll-zone">
         <HeroAbout />
-
         <CardSection title="Education">
+          {" "}
           {resume.education.map((item, index) => (
             <div
               key={`resume-edu-${index}`}
               className="card"
-              style={{ background: "hsl(0,0%,100%)", maxWidth: "400px" }}
+              style={{background: "hsl(0,0%,100%)", maxWidth: "400px"}}
             >
-              <CardSummary key={index} content={item} />
+              <CardSummary key={index} content={item} />{" "}
             </div>
-          ))}
+          ))}{" "}
         </CardSection>
-
         <CardSection title="Experience">
+          {" "}
           {resume.experience.map((item, index) => (
             <CardDetails key={`resume-xp-${index}`} content={item} />
-          ))}
-        </CardSection>
-      </div>
+          ))}{" "}
+        </CardSection>{" "}
+      </div>{" "}
     </div>
   );
 }
@@ -229,13 +223,13 @@ const resume = {
     {
       title: "Watkins College of Art, Design, & Film",
       subtitle: "Bachelor of Fine Arts, Graphic Design",
-      dates: [2006, 2010]
+      dates: [2006, 2010],
     },
     {
       title: "Governor’s School for the Arts",
       subtitle: "Middle Tennessee State University",
-      dates: [2005]
-    }
+      dates: [2005],
+    },
   ],
   experience: [
     {
@@ -251,10 +245,10 @@ const resume = {
             "Landscan",
             "Oak Ridge National Lab",
             "RESolution",
-            "Sandia National Lab"
-          ]
-        }
-      ]
+            "Sandia National Lab",
+          ],
+        },
+      ],
     },
     {
       title: "Bechtel National",
@@ -263,8 +257,8 @@ const resume = {
       details: [
         {
           items: [
-            "Collaborated with developers and business analysts to produce user-centric software solutions for web, iOS,  Android, and Windows"
-          ]
+            "Collaborated with developers and business analysts to produce user-centric software solutions for web, iOS,  Android, and Windows",
+          ],
         },
         {
           label: "Projects",
@@ -279,8 +273,8 @@ const resume = {
             "PD@Bechtel",
             "Security Clearance Tracker",
             "SPECS",
-            "UPF"
-          ]
+            "UPF",
+          ],
         },
         {
           label: "Awards",
@@ -288,10 +282,10 @@ const resume = {
             "LeadR+ award for “Best Pitch Delivery” for IS&T Hackathon presentation",
             "LeadR+2 award for ES&H interactive reporting materials",
             "LeadeR+4 award for PD@Bechtel designs and contributions",
-            "LeadeR+2 award for delivering UI design in record time for iHUB project"
-          ]
-        }
-      ]
+            "LeadeR+2 award for delivering UI design in record time for iHUB project",
+          ],
+        },
+      ],
     },
     {
       title: "Break Anchor",
@@ -304,18 +298,18 @@ const resume = {
             "UI design for mobile and web-based software",
             "Logo, branding, advertising, and sales materials",
             "Vectorizations and screen print formatting",
-            "Illustration designs and apparel"
-          ]
-        }
-      ]
+            "Illustration designs and apparel",
+          ],
+        },
+      ],
     },
     {
       title: "Audiohand",
       subtitle: "Lead UX Designer",
       dates: [2014, 2016],
       details: [
-        { items: ["UX conceptual design", "UI design for mobile software"] }
-      ]
+        {items: ["UX conceptual design", "UI design for mobile software"]},
+      ],
     },
     {
       title: "Connection Point",
@@ -326,10 +320,10 @@ const resume = {
           items: [
             "UX conceptual design",
             "UI design for web-based software",
-            "Branding, advertising, and sales materials"
-          ]
-        }
-      ]
+            "Branding, advertising, and sales materials",
+          ],
+        },
+      ],
     },
     {
       title: "K-Town Apartments, LLC",
@@ -342,44 +336,44 @@ const resume = {
             "UI design for mobile and web-based software",
             "Branding, advertising, and sales materials",
             "Represented company for presentations and events",
-            "Met with clients for sales and support"
-          ]
-        }
-      ]
-    }
+            "Met with clients for sales and support",
+          ],
+        },
+      ],
+    },
   ],
   community: [
     {
       title: "What Makes UI Intuitive?",
       subtitle: "Event Speaker for CodeStock",
-      dates: [2022]
+      dates: [2022],
     },
     {
       title: "The UX Stack",
       subtitle: "Event Speaker for Scenic City Summit",
-      dates: [2019]
+      dates: [2019],
     },
     {
       title: "Design Mentor for What’s the Big Idea",
       subtitle: "Knoxville Entrepreneur Center",
-      dates: [2015, 2016, 2017, 2019]
+      dates: [2015, 2016, 2017, 2019],
     },
     {
       title: "UX Design: Bridging the Gap Between Expectations and Development",
       subtitle: "Event Speaker for CodeStock",
-      dates: [2016]
+      dates: [2016],
     },
     {
       title: "Design Mentor for CodeWorks",
       subtitle: "Knoxville Entrepreneur Center",
-      dates: [2015]
+      dates: [2015],
     },
     {
       title: "Design Mentor for MediaWorks",
       subtitle: "Knoxville Entrepreneur Center",
-      dates: [2015]
-    }
-  ]
+      dates: [2015],
+    },
+  ],
 };
 
 /*

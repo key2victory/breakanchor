@@ -1,7 +1,5 @@
-import { memo, useState, useEffect, Fragment } from "react";
+import {memo, useState, useEffect, Fragment} from "react";
 import "./styles.css";
-import Shuffle from "./Shuffle";
-//import "./device-frames.css";
 
 export default function HeroAbout() {
   const position = {
@@ -9,7 +7,7 @@ export default function HeroAbout() {
     top: "21%",
     left: "13%",
     width: "72%",
-    aspectRatio: "289 / 495"
+    aspectRatio: "289 / 495",
   };
 
   return (
@@ -24,21 +22,16 @@ export default function HeroAbout() {
         backgroundImage: "linear-gradient(hsl(0,0%,40%),hsl(0,0%,40%))",
         // backgroundSize: "100% 90%",
         backgroundPosition: "bottom",
-        backgroundRepeat: "no-repeat"
+        backgroundRepeat: "no-repeat",
       }}
     >
-      <img
-        width="200"
-        src="./img/jmc.png"
-        alt=""
-        style={{ margin: "0 2rem" }}
-      />
+      <img width="200" src="./img/jmc.png" alt="" style={{margin: "0 2rem"}} />{" "}
       <h1
         //className="card"
-        style={{ color: "hsl(0,0%,100%)", textAlign: "center" }}
+        style={{color: "hsl(0,0%,100%)", textAlign: "center"}}
       >
-        Janna Curtis
-      </h1>
+        Janna Curtis{" "}
+      </h1>{" "}
     </div>
   );
 }

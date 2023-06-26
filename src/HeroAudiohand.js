@@ -1,10 +1,10 @@
-import { memo, useState, useEffect, Fragment } from "react";
+import {memo} from "react";
 import "./styles.css";
 
 export const HeroAudiohand = memo(function HeroAudiohand() {
   const positionScreen = {
     x: "50",
-    y: "188"
+    y: "188",
     // x: "60",
     // y: "270"
     // width: "84%"
@@ -31,15 +31,15 @@ export const HeroAudiohand = memo(function HeroAudiohand() {
         maxHeight: "100%",
 
         aspectRatio: "591 / 1243", //"779 / 1513",
-        overflow: "hidden"
+        overflow: "hidden",
       }}
     >
       {/* <rect
-        width="668"
-        height="980"
-        style={{ ...positionScreen }}
-        fill="#000"
-     />*/}
+                    width="668"
+                    height="980"
+                    style={{ ...positionScreen }}
+                    fill="#000"
+                 />*/}{" "}
       <image
         className="device-frame"
         href={iphone} //"./img/frame-iphone.png"
@@ -47,7 +47,6 @@ export const HeroAudiohand = memo(function HeroAudiohand() {
         height="1243" //"1513"
         alt=""
       />
-
       <image
         href="./img/audiohand-01.png"
         width={screenWidth} //"668" //"380"
@@ -56,9 +55,9 @@ export const HeroAudiohand = memo(function HeroAudiohand() {
         alt=""
         className="image cycle keyframe3"
         style={{
-          ...positionScreen
+          ...positionScreen,
         }}
-      />
+      />{" "}
       <image
         href="./img/audiohand-02.png"
         width={screenWidth} //"668"
@@ -67,10 +66,9 @@ export const HeroAudiohand = memo(function HeroAudiohand() {
         alt=""
         className="image cycle keyframe2"
         style={{
-          ...positionScreen
+          ...positionScreen,
         }}
       />
-
       <image
         href="./img/audiohand-00.png"
         width={screenWidth} //"668" //"380"
@@ -79,9 +77,9 @@ export const HeroAudiohand = memo(function HeroAudiohand() {
         alt=""
         className="image cycle keyframe1"
         style={{
-          ...positionScreen
+          ...positionScreen,
         }}
-      />
+      />{" "}
     </svg>
   );
 
@@ -90,7 +88,7 @@ export const HeroAudiohand = memo(function HeroAudiohand() {
       className="hero bottom"
       style={{
         paddingLeft: "calc(1vw * 1vw)",
-        paddingBottom: "calc(1vw * 1vw)"
+        paddingBottom: "calc(1vw * 1vw)",
       }}
     >
       <Device />

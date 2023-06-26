@@ -1,14 +1,6 @@
-import { memo, useState, useEffect, Fragment } from "react";
-import {
-  Header,
-  ButtonLink,
-  Note,
-  Caption,
-  Column,
-  Row,
-  Group,
-} from "./PageElements";
-import { Sonim } from "./Sonim";
+import {memo} from "react";
+import {Header, ButtonLink, Note, Group} from "./PageElements";
+import {Sonim} from "./Sonim";
 import "./styles.css";
 
 export const PageLockOut = memo(function PageLockOut({
