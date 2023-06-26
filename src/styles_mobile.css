@@ -28,6 +28,9 @@
   .hero.bottom {
     min-height: 500px;
   }
+  .mobile-min-height-300 {
+    min-height: 300px;
+  }
   .main-content {
     grid-template-columns: [content] minmax(auto, 1fr);
   }

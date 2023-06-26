@@ -1,14 +1,10 @@
 import {memo} from "react";
-import "./styles.css";
+import "./styles-keyframes.css";
 
 export const HeroAudiohand = memo(function HeroAudiohand() {
   const positionScreen = {
     x: "50",
     y: "188",
-    // x: "60",
-    // y: "270"
-    // width: "84%"
-    // height: "auto"
   };
 
   const screenWidth = "498";
@@ -36,11 +32,11 @@ export const HeroAudiohand = memo(function HeroAudiohand() {
       }}
     >
       {/* <rect
-                                            width="668"
-                                            height="980"
-                                            style={{ ...positionScreen }}
-                                            fill="#000"
-                                         />*/}{" "}
+                                width="668"
+                                height="980"
+                                style={{ ...positionScreen }}
+                                fill="#000"
+                             />*/}{" "}
       <image
         className="device-frame"
         href={iphone} //"./img/frame-iphone.png"
@@ -52,35 +48,35 @@ export const HeroAudiohand = memo(function HeroAudiohand() {
         href="./img/audiohand-01.png"
         width={screenWidth} //"668" //"380"
         height={screenHeight} // height="655"
+        x="0" //{positionScreen.x}
+        y="0" //{positionScreen.y}
+        transform={`translate(${positionScreen.x},${positionScreen.y})`}
         //aspectRatio="378 / 648"
         alt=""
         className="image cycle keyframe3"
-        style={{
-          ...positionScreen,
-        }}
-      />{" "}
+      />
       <image
         href="./img/audiohand-02.png"
         width={screenWidth} //"668"
         height={screenHeight} //height="auto"
+        x="0" //{positionScreen.x}
+        y="0" //{positionScreen.y}
+        transform={`translate(${positionScreen.x},${positionScreen.y})`}
         // aspectRatio="378 / 648"
         alt=""
         className="image cycle keyframe2"
-        style={{
-          ...positionScreen,
-        }}
-      />{" "}
+      />
       <image
         href="./img/audiohand-00.png"
         width={screenWidth} //"668" //"380"
         height={screenHeight} //height="655"
+        x="0" //{positionScreen.x}
+        y="0" //{positionScreen.y}
+        transform={`translate(${positionScreen.x},${positionScreen.y})`}
         //aspectRatio="378 / 648"
         alt=""
         className="image cycle keyframe1"
-        style={{
-          ...positionScreen,
-        }}
-      />{" "}
+      />
     </svg>
   );
 

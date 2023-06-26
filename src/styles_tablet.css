@@ -31,6 +31,9 @@
   .hero.bottom {
     min-height: 500px;
   }
+  .tablet-min-height-500 {
+    min-height: 500px;
+  }
   .tablet-col {
     display: flex;
     flex-direction: column;

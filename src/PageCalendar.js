@@ -2,6 +2,7 @@ import {memo} from "react";
 import {Header, ButtonLink, Note, Group} from "./PageElements";
 
 import {HeroCalendar} from "./HeroCalendar";
+import {MdOutlineHeight} from "react-icons/md";
 
 export const PageCalendar = memo(function PageCalendar({
   title,
@@ -61,11 +62,10 @@ export const PageCalendar = memo(function PageCalendar({
         </Group>{" "}
         <Group>
           <img className="" src="" alt="" width="" height="" />
-        </Group>
+        </Group>{" "}
         <div
-          className="hero bottom"
+          className="hero mobile-min-height-300 tablet-min-height-500"
           style={{
-            // gridRow: "content / span 1",
             width: "100%",
             height: "100%",
           }}
