@@ -31,7 +31,7 @@ export const samplePages = [
     title: "Interview Kiosk",
     path: "interview-kiosk",
     src: "./samples/InterviewKioskUnframed/index.html",
-    aspectRatio: "2048 / 1536",
+    aspectRatio: "3 / 2", //"2048 / 1536",
     devices: ["tablet"],
     tags: ["high"],
   },
@@ -54,7 +54,11 @@ function PageSample(props) {
         title={samplePages[props.index].title}
         subtitle=""
         color="hsl(0,0%,70%)"
-        style={{gridColumn: "content / span 1", gridRowStart: "title"}}
+        style={{
+          gridColumn: "content / span 1",
+          gridRowStart: "title",
+          padding: "0 0 1rem 0",
+        }}
       ></Header>{" "}
       {/* <PageHeader
                     title="Page Title"

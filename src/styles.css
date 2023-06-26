@@ -101,7 +101,7 @@ body,
   bottom: 0;
   right: 0;
   display: grid;
-  grid-template-rows: [header] 64px [title] 64px [content] minmax(0, 1fr);
+  grid-template-rows: [header] 64px [title] auto [content] minmax(0, 1fr);
   grid-template-columns: [content] minmax(auto, 1fr);
   overflow: hidden;
   text-align: left;
