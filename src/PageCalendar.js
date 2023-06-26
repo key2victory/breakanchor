@@ -1,7 +1,7 @@
 import {memo} from "react";
 import {Header, ButtonLink, Note, Group} from "./PageElements";
-import {CalendarTv} from "./CalendarTv";
-import Room from "./Room";
+
+import {HeroCalendar} from "./HeroCalendar";
 
 export const PageCalendar = memo(function PageCalendar({
   title,
@@ -36,8 +36,15 @@ export const PageCalendar = memo(function PageCalendar({
           title="Priority Calendar"
           subtitle="Weather and events in perspective"
           color="hsl(0,0%,100%)"
-        />
-        <Group>
+        >
+          <ButtonLink
+            color="white"
+            line1="see the"
+            line2="live code"
+            url="https://tczkr5.csb.app/"
+          />
+        </Header>{" "}
+        <Group className="desktop-row tablet-row mobile-col">
           <Note
             title="Problem"
             description="When I wake up, I need to be aware of the day's agenda, so I can be in the right place at the right time. I also need to see the hourly weather forecast in relation to my scheduled appointments to determine what to wear, and I want to plan breaks to walk outside with my dog when the weather is nice enough between appointments. I may want to postpone if another day this week is expected to be nicer."
@@ -50,18 +57,34 @@ export const PageCalendar = memo(function PageCalendar({
           />
         </Group>{" "}
         <Group>
-          <CalendarTv />
+          <HeroCalendar />
         </Group>{" "}
         <Group>
           <img className="" src="" alt="" width="" height="" />
-        </Group>{" "}
-        <div className="hero bottom">
-          <img
-            width="100%"
-            src="./img/calendar-room.png"
-            style={{margin: "0 2rem"}}
-            alt=""
-          />
+        </Group>
+        <div
+          className="hero bottom"
+          style={{
+            // gridRow: "content / span 1",
+            width: "100%",
+            height: "100%",
+          }}
+        >
+          <div
+            style={{
+              aspectRatio: "369 / 319",
+              margin: "auto",
+              maxWidth: "100%",
+              maxHeight: "100%",
+            }}
+          >
+            <img
+              width="100%"
+              src="./img/calendar-room.png"
+              // style={{ margin: "0 2rem" }}
+              alt=""
+            />
+          </div>{" "}
         </div>{" "}
       </div>{" "}
     </div>

@@ -1,14 +1,22 @@
 import {memo} from "react";
+import "./styles.css";
 import "./styles-keyframes.css";
 
-export const CalendarTv = memo(function CalendarTv() {
+export const HeroCalendar = memo(function HeroCalendar() {
   const positionScreen = {
     x: "60",
     y: "270",
   };
+
+  const coverFill = [
+    "hsla(0,0%,0%,50%)",
+    "hsla(0,0%,0%,65%)",
+    "hsla(0,0%,0%,80%)",
+  ];
+
   const text = {
     fill: "#000",
-    font: "sans-serif",
+    fontFamily: "sans-serif",
     fontSize: "40px",
     //textLength: "500"
   };
@@ -28,8 +36,9 @@ export const CalendarTv = memo(function CalendarTv() {
 
   const textNum = {
     fill: "#000",
-    font: "bold 64px sans-serif",
-    //fontSize: "8vh"
+    fontFamily: "sans-serif",
+    fontSize: "64px",
+    fontWeight: "bold",
   };
   const Device = () => (
     <svg
@@ -60,38 +69,63 @@ export const CalendarTv = memo(function CalendarTv() {
           y="22"
           width="731"
           height="182"
-          //fill="none"
-          fill="#000"
-        />
+          fill={coverFill[2]}
+        />{" "}
         <rect
           className="cover-area-1"
           x="22"
           y="22"
           width="193"
           height="517"
-          //fill="none"
-          fill="#000"
-        />
+          fill={coverFill[2]}
+        />{" "}
         <rect
           className="caption-3"
           rx="20"
-          fill="#fff"
           x="215"
           y="22"
           width="450"
           height="185"
+          fill="#fff"
         />
         <circle cx="300" cy="280" r="50" fill="#fff" />
-        <text x="282" y="305" style={textNum}>
+        <text
+          x="282"
+          y="305"
+          fontFamily={textNum.fontFamily}
+          fill={textNum.fill}
+          fontSize={textNum.fontSize}
+          fontWeight={textNum.fontWeight}
+        >
           3{" "}
         </text>{" "}
-        <text style={text} x={caption3.x} y={caption3.y}>
+        <text
+          fill={text.fill}
+          fontFamily={text.fontFamily}
+          fontSize={text.fontSize}
+          x={caption3.x}
+          y={caption3.y}
+        >
           high priority events{" "}
         </text>{" "}
-        <text style={text} x={caption3.x} y={caption3.y} dy={lineHeight}>
+        <text
+          fill={text.fill}
+          fontFamily={text.fontFamily}
+          fontSize={text.fontSize}
+          x={caption3.x}
+          y={caption3.y}
+          dy={lineHeight}
+        >
           for upcoming months,{" "}
         </text>{" "}
-        <text style={text} x={caption3.x} y={caption3.y} dy={lineHeight * 2}>
+        <text
+          fill={text.fill}
+          fontFamily={text.fontFamily}
+          fontSize={text.fontSize}
+          x={caption3.x}
+          y={caption3.y}
+          dy={lineHeight * 2}
+        >
           grouped by week{" "}
         </text>{" "}
       </g>
@@ -102,38 +136,63 @@ export const CalendarTv = memo(function CalendarTv() {
           y="204"
           width="731"
           height="334"
-          //fill="none"
-          fill="#000"
-        />
+          fill={coverFill[1]}
+        />{" "}
         <rect
           className="cover-area-1"
           x="22"
           y="22"
           width="193"
           height="517"
-          //fill="none"
-          fill="#000"
+          fill={coverFill[1]}
         />
         <rect
           className="caption-2"
           rx="20"
-          fill="#fff"
           x="215"
           y="204"
           width="440"
           height="190"
+          fill="#fff"
         />
         <circle cx="300" cy="110" r="50" fill="#fff" />
-        <text x="280" y="135" style={textNum}>
+        <text
+          x="280"
+          y="135"
+          fontFamily={textNum.fontFamily}
+          fill={textNum.fill}
+          fontSize={textNum.fontSize}
+          fontWeight={textNum.fontWeight}
+        >
           2{" "}
         </text>{" "}
-        <text style={text} x={caption2.x} y={caption2.y}>
+        <text
+          fill={text.fill}
+          fontFamily={text.fontFamily}
+          fontSize={text.fontSize}
+          x={caption2.x}
+          y={caption2.y}
+        >
           daily forecast graph{" "}
         </text>{" "}
-        <text style={text} x={caption2.x} y={caption2.y} dy={lineHeight}>
+        <text
+          fill={text.fill}
+          fontFamily={text.fontFamily}
+          fontSize={text.fontSize}
+          x={caption2.x}
+          y={caption2.y}
+          dy={lineHeight}
+        >
           in relation to medium{" "}
         </text>{" "}
-        <text style={text} x={caption2.x} y={caption2.y} dy={lineHeight * 2}>
+        <text
+          fill={text.fill}
+          fontFamily={text.fontFamily}
+          fontSize={text.fontSize}
+          x={caption2.x}
+          y={caption2.y}
+          dy={lineHeight * 2}
+        >
           priority events{" "}
         </text>{" "}
       </g>{" "}
@@ -144,17 +203,15 @@ export const CalendarTv = memo(function CalendarTv() {
           y="204"
           width="731"
           height="334"
-          //fill="none"
-          fill="#000"
-        />
+          fill={coverFill[0]}
+        />{" "}
         <rect
           className="cover-area-2"
           x="215"
           y="22"
           width="731"
           height="182"
-          //fill="none"
-          fill="#000"
+          fill={coverFill[0]}
         />
         <rect
           className="caption-1"
@@ -166,16 +223,43 @@ export const CalendarTv = memo(function CalendarTv() {
           height="185"
         />
         <circle cx="130" cy="160" r="50" fill="#fff" />
-        <text x="110" y="185" style={textNum}>
+        <text
+          x="110"
+          y="185"
+          fontFamily={textNum.fontFamily}
+          fill={textNum.fill}
+          fontSize={textNum.fontSize}
+          fontWeight={textNum.fontWeight}
+        >
           1{" "}
         </text>{" "}
-        <text style={text} x={caption1.x} y={caption1.y}>
+        <text
+          fill={text.fill}
+          fontFamily={text.fontFamily}
+          fontSize={text.fontSize}
+          x={caption1.x}
+          y={caption1.y}
+        >
           hourly forecast{" "}
         </text>{" "}
-        <text style={text} x={caption1.x} y={caption1.y} dy={lineHeight}>
+        <text
+          fill={text.fill}
+          fontFamily={text.fontFamily}
+          fontSize={text.fontSize}
+          x={caption1.x}
+          y={caption1.y}
+          dy={lineHeight}
+        >
           in relation to{" "}
         </text>{" "}
-        <text style={text} x={caption1.x} y={caption1.y} dy={lineHeight * 2}>
+        <text
+          fill={text.fill}
+          fontFamily={text.fontFamily}
+          fontSize={text.fontSize}
+          x={caption1.x}
+          y={caption1.y}
+          dy={lineHeight * 2}
+        >
           daily events{" "}
         </text>{" "}
       </g>{" "}

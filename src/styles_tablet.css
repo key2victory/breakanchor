@@ -6,6 +6,9 @@
   .main-content {
     grid-template-columns: [content] minmax(auto, 1fr);
   }
+  .scroll-zone {
+    padding: 1rem 2rem 2rem 2rem;
+  }
   .hero {
     position: static;
     display: flex;
@@ -35,10 +38,6 @@
   .tablet-row {
     display: flex;
     flex-direction: row;
-  }
-  .scroll-zone {
-    gap: 1rem;
-    padding: 1rem;
   }
   .desktop-about {
     display: flex;

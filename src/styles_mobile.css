@@ -18,6 +18,9 @@
     overflow: hidden;
     z-index: 1;
   }
+  .scroll-zone {
+    padding: 2rem 10vw 2rem 1rem;
+  }
   .hero.top {
     height: auto;
     min-height: auto;

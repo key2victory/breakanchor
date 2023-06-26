@@ -17,6 +17,9 @@
     grid-column: hero / span 1;
     grid-row: content / span 1;
   }
+  .scroll-zone {
+    padding: 2rem 10vw 2rem 1rem;
+  }
   .desktop-col {
     display: flex;
     flex-direction: column;
