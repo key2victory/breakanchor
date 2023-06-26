@@ -1,8 +1,82 @@
 import {memo, useState, useEffect, Fragment} from "react";
+
+import {AppHeader} from "./AppNav";
 import HeroAbout from "./HeroAbout";
-import {Header, ButtonLink, Note, Caption, Column, Row} from "./PageElements";
+import {Header, ButtonLink, Note, Group} from "./PageElements";
+import {
+  MdSchool,
+  MdOutlineSchool,
+  MdWork,
+  MdWorkOutline,
+  MdEmojiEvents,
+  MdOutlineEmojiEvents,
+  MdCircle,
+} from "react-icons/md";
 
 const present = new Date().getFullYear();
+
+/*export const PageAbout = memo(function PageAbout({
+  title,
+  subtitle,
+  background,
+  row,
+  column
+}) {*/
+export default function PageAbout(props) {
+  const borderRadius = ".5rem";
+  const color1 = "hsl(0,0%,80%)";
+  const color2 = "hsl(0,0%,90%)";
+  return (
+    <div className="main-content">
+      <div
+        className="page-bg"
+        style={{
+          // background: "linear-gradient(90deg, #f9b446 0%, #FEC107 100%)"
+          background: `linear-gradient(45deg, ${color1} 25%, ${color2} 0, ${color2} 50%, ${color1} 0, ${color1} 75%, ${color2} 0)`,
+          backgroundSize: "30px 30px",
+          //   "repeating-linear-gradient(30deg, hsla(0,0%,100%,.1), hsla(0,0%,100%,.1) 15px, transparent 0, transparent 30px)"
+        }}
+      />{" "}
+      <div
+        className="page-bg"
+        style={{
+          background: `linear-gradient(31deg, ${color1} 25%, ${color2} 0, ${color2} 50%, ${color1} 0, ${color1} 75%, ${color2} 0) center / 50px 30px`,
+        }}
+      />{" "}
+      <div className="scroll-zone">
+        <HeroAbout />
+        <CardSection title="Education">
+          <Group
+            className="resume-timeline" //desktop-col tablet-col mobile-col"
+            style={
+              {
+                // background: "hsl(0,0%,100%)"
+              }
+            }
+          >
+            {resume.education.map((item, index) => (
+              <CardSummary key={`resume-edu-${index}`} content={item} />
+            ))}{" "}
+          </Group>{" "}
+        </CardSection>
+        <CardSection title="Experience">
+          <Group
+            className="resume-timeline desktop-resume tablet-resume mobile-resume"
+            style={
+              {
+                //  background: "hsl(0,0%,100%)"
+              }
+            }
+          >
+            {resume.experience.map((item, index) => (
+              <CardDetails key={`resume-xp-${index}`} content={item} />
+            ))}{" "}
+          </Group>{" "}
+        </CardSection>{" "}
+      </div>{" "}
+    </div>
+  );
+}
 
 function CardSection({title, children, style}) {
   return (
@@ -14,6 +88,8 @@ function CardSection({title, children, style}) {
         gap: "1rem",
         background: "hsl(0,0%,40%)",
         padding: "1rem",
+        minWidth: "300px",
+        maxWidth: "600px",
         ...style,
       }}
     >
@@ -22,40 +98,97 @@ function CardSection({title, children, style}) {
   );
 }
 
-const CardSummary = ({content, style}) => (
+const CardDates = ({content}) => (
   <div
     style={{
+      gridColumn: "1 / span 1",
       display: "flex",
-      flexFlow: "column nowrap",
-      gap: ".25rem",
-      ...style,
+      flexFlow: "row nowrap",
+      height: "100%",
     }}
   >
-    <h4> {content.title} </h4> <span> {content.subtitle} </span>{" "}
-    {content.dates.length === 2 ? (
-      <span
-        style={{
-          display: "flex",
-          flexFlow: "row wrap",
-          color: "hsl(0,0%,60%)",
-          gap: ".25rem",
-        }}
-      >
-        <span> {content.dates[0]} </span> <span> - </span>{" "}
-        <span> {content.dates[1]} </span>{" "}
-      </span>
-    ) : (
-      <span
-        style={{
-          display: "flex",
-          flexFlow: "row wrap",
-          color: "hsl(0,0%,60%)",
-        }}
-      >
-        {content.dates.join(", ")}{" "}
-      </span>
-    )}{" "}
+    <span
+      style={{
+        width: "100%",
+        display: "flex",
+        flexFlow: "row wrap",
+        alignItems: "flex-start",
+        justifyContent: "flex-end",
+        color: "hsl(0,0%,100%)",
+        //gap: ".25rem",
+        padding: ".5rem 0 0 0",
+        fontSize: "1.3rem",
+        // textAlign: "right"
+      }}
+    >
+      {content.dates.length === 2 ? (
+        <span
+          style={{
+            width: "min-content",
+          }}
+        >
+          <span style={{fontSize: "1rem"}}> {content.dates[0]} </span>{" "}
+          <span style={{margin: "0 .2rem"}}> - </span> {content.dates[1]}{" "}
+        </span>
+      ) : (
+        <span
+          style={{
+            width: "min-content",
+          }}
+        >
+          {content.dates.join(", ")}{" "}
+        </span>
+      )}{" "}
+    </span>{" "}
+    <span
+      style={{
+        width: "2px",
+        display: "flex",
+        flexFlow: "column nowrap",
+        alignItems: "center",
+        justifyContent: "flex-start",
+        height: "100%",
+        borderRight: "2px solid hsl(0,0%,80%)",
+        padding: ".7rem 0 0 0",
+        margin: "0 1rem 0 1rem",
+        color: "hsl(0,0%,100%)",
+        // gap: "0"
+      }}
+    >
+      <MdCircle style={{transform: "translateX(1px)"}} />{" "}
+    </span>{" "}
   </div>
+);
+
+const CardSummary = ({content, style}) => (
+  <Fragment>
+    <CardDates content={content} />
+    <div
+      style={{
+        gridColumn: "2 / span 1",
+        minWidth: "200px",
+        maxWidth: "400px",
+        display: "flex",
+        flexFlow: "column nowrap",
+        gap: ".25rem",
+        padding: ".5rem 0 2rem 0",
+      }}
+    >
+      <span
+        className="card"
+        style={{
+          display: "flex",
+          flexFlow: "column nowrap",
+          gap: ".75rem",
+          borderRadius: "0rem 1rem 1rem 1rem",
+          background: "hsl(0,0%,100%)",
+          padding: "1rem 1rem 1rem 1rem",
+        }}
+      >
+        <h4> {content.title} </h4> <h5> {content.subtitle} </h5>{" "}
+      </span>{" "}
+    </div>{" "}
+  </Fragment>
 );
 
 const CardDetails = ({content}) => {
@@ -109,114 +242,75 @@ const CardDetails = ({content}) => {
   );
 
   return (
-    <div
-      className="card"
-      style={{
-        background: "hsl(0,0%,100%)",
-
-        display: "flex",
-        flexFlow: "row wrap",
-        margin: "1rem 1rem 1.5rem 1rem",
-        gap: ".25rem",
-      }}
-    >
-      <CardSummary content={content} style={{minWidth: "45%"}} />{" "}
+    <Fragment>
+      <CardDates content={content} />
       <div
         style={{
-          minWidth: "300px",
+          gridColumn: "2 / span 1",
+          minWidth: "200px",
           maxWidth: "400px",
           display: "flex",
           flexFlow: "column nowrap",
-          gap: "1rem",
+          gap: ".75rem",
+          padding: "0 0 1rem 0",
         }}
       >
-        {content.details
-          ? content.details.map((v_detail, i_detail) =>
-              v_detail.label && v_detail.label === "Projects" ? (
-                <ProjectDetails
-                  key={`content-detail-${i_detail}`}
-                  content={v_detail}
-                  style={{
-                    fontSize: ".9rem",
-                    display: "flex",
-                    flexFlow: "row wrap",
-                    justifyContent: "flex-start",
-                    alignItems: "stretch",
-                  }}
-                />
-              ) : (
-                <ProjectDetails
-                  key={`content-detail-${i_detail}`}
-                  content={v_detail}
-                  style={{
-                    display: "flex",
-                    flexFlow: "column nowrap",
-                    gap: ".25rem",
-                    padding: 0,
-                    margin: 0,
-                    fontSize: ".9rem",
-                  }}
-                />
+        <div
+          className="card"
+          style={{
+            display: "flex",
+            flexFlow: "column nowrap",
+            gap: ".75rem",
+            borderRadius: "0rem 1rem 1rem 1rem",
+            background: "hsl(0,0%,100%)",
+            padding: ".25rem 1rem 1rem 1rem",
+          }}
+        >
+          <span
+            style={{
+              display: "flex",
+              flexFlow: "column nowrap",
+              gap: ".25rem",
+              padding: ".5rem 0 0 0",
+            }}
+          >
+            <h4> {content.title} </h4> <h5> {content.subtitle} </h5>{" "}
+          </span>{" "}
+          {content.details
+            ? content.details.map((v_detail, i_detail) =>
+                v_detail.label && v_detail.label === "Projects" ? (
+                  <ProjectDetails
+                    key={`content-detail-${i_detail}`}
+                    content={v_detail}
+                    style={{
+                      fontSize: ".9rem",
+                      display: "flex",
+                      flexFlow: "row wrap",
+                      justifyContent: "flex-start",
+                      alignItems: "stretch",
+                    }}
+                  />
+                ) : (
+                  <ProjectDetails
+                    key={`content-detail-${i_detail}`}
+                    content={v_detail}
+                    style={{
+                      display: "flex",
+                      flexFlow: "column nowrap",
+                      gap: ".25rem",
+                      padding: 0,
+                      margin: 0,
+                      fontSize: ".9rem",
+                    }}
+                  />
+                )
               )
-            )
-          : null}{" "}
+            : null}{" "}
+        </div>{" "}
       </div>{" "}
-    </div>
+    </Fragment>
   );
 };
-
-/*export const PageAbout = memo(function PageAbout({
-  title,
-  subtitle,
-  background,
-  row,
-  column
-}) {*/
-export default function PageAbout(props) {
-  const borderRadius = ".5rem";
-  const color1 = "hsl(0,0%,80%)";
-  const color2 = "hsl(0,0%,90%)";
-  return (
-    <div className="main-content">
-      <div
-        className="page-bg"
-        style={{
-          // background: "linear-gradient(90deg, #f9b446 0%, #FEC107 100%)"
-          background: `linear-gradient(45deg, ${color1} 25%, ${color2} 0, ${color2} 50%, ${color1} 0, ${color1} 75%, ${color2} 0)`,
-          backgroundSize: "30px 30px",
-          //   "repeating-linear-gradient(30deg, hsla(0,0%,100%,.1), hsla(0,0%,100%,.1) 15px, transparent 0, transparent 30px)"
-        }}
-      />{" "}
-      <div
-        className="page-bg"
-        style={{
-          background: `linear-gradient(31deg, ${color1} 25%, ${color2} 0, ${color2} 50%, ${color1} 0, ${color1} 75%, ${color2} 0) center / 50px 30px`,
-        }}
-      />{" "}
-      <div className="scroll-zone">
-        <HeroAbout />
-        <CardSection title="Education">
-          {" "}
-          {resume.education.map((item, index) => (
-            <div
-              key={`resume-edu-${index}`}
-              className="card"
-              style={{background: "hsl(0,0%,100%)", maxWidth: "400px"}}
-            >
-              <CardSummary key={index} content={item} />{" "}
-            </div>
-          ))}{" "}
-        </CardSection>
-        <CardSection title="Experience">
-          {" "}
-          {resume.experience.map((item, index) => (
-            <CardDetails key={`resume-xp-${index}`} content={item} />
-          ))}{" "}
-        </CardSection>{" "}
-      </div>{" "}
-    </div>
-  );
-}
 
 const resume = {
   education: [
@@ -375,270 +469,3 @@ const resume = {
     },
   ],
 };
-
-/*
-const CardDetails1 = ({ content }) => {
-  return (
-    <Fragment>
-      <CardItem content={content} />
-      <div
-        style={{
-          display: "flex",
-          flexFlow: "column nowrap",
-          padding: "1rem",
-          background: "hsl(0,0%,100%)",
-          gap: ".25rem"
-        }}
-      >
-        {content.details.map((v_detail, i_detail) => (
-          <Fragment>
-            {v_detail.label ? (
-              <span
-                key={i_detail}
-                style={{
-                  marginTop: ".25rem"
-                }}
-              >
-                {v_detail.label}
-              </span>
-            ) : null}
-            {v_detail.label && v_detail.label === "Projects" ? (
-              <span>{v_detail.items.join(" • ")}</span>
-            ) : (
-              <ul
-                style={{
-                  margin: 0
-                }}
-              >
-                {v_detail.items.map((item, index) => (
-                  <li key={index}>{item}</li>
-                ))}
-              </ul>
-            )}
-          </Fragment>
-        ))}
-      </div>
-    </Fragment>
-  );
-};
-
-const CardTimeline1 = ({ content }) => {
-  return (
-    <Fragment>
-      <span
-        style={{
-          gridColumn: "1 / span 1",
-          gridRow: "auto / span 1",
-          display: "flex",
-          flexFlow: "column nowrap",
-          color: "hsl(0,0%,60%)",
-          padding: "0 .5rem .5rem 0",
-          borderBottom: "2px dotted hsl(0,0%,80%)"
-        }}
-      >
-        {content.dates.length > 1 ? (
-          <Fragment>
-            <span>{content.dates[content.dates.length - 1]}</span>
-            <span>{content.dates[0]}-</span>
-          </Fragment>
-        ) : (
-          content.dates[0]
-        )}
-      </span>
-
-      <span
-        style={{
-          gridColumn: "2 / span 1",
-          gridRow: "auto / span 1",
-          padding: "0 0 .5rem .5rem",
-          // margin: "0 0 .5rem 0",
-          borderLeft: "2px dotted hsl(0,0%,80%)",
-          borderBottom: "2px dotted hsl(0,0%,80%)"
-        }}
-      >
-        <h4>{content.title}</h4>
-        <span>{content.subtitle}</span>
-        {content.dates.length > 2 ? (
-          <span
-            style={{
-              color: "hsl(0,0%,60%)"
-            }}
-          >
-            {content.dates.join(", ")}
-          </span>
-        ) : null}
-      </span>
-      <div
-        style={{
-          gridColumn: "2 / span 1",
-          gridRow: "auto / span 1",
-          display: "flex",
-          flexFlow: "column nowrap",
-          background: "hsl(0,0%,100%)",
-          gap: ".25rem",
-
-          borderLeft: "2px dotted hsl(0,0%,80%)",
-          padding: ".5rem 0 2rem .25rem"
-        }}
-      >
-        {content.details
-          ? content.details.map((v_detail, i_detail) => (
-              <Fragment>
-                {v_detail.label ? (
-                  <span
-                    key={i_detail}
-                    style={{
-                      color: "hsl(0,0%,60%)"
-                      // fontSize: ".9rem"
-                    }}
-                  >
-                    {v_detail.label}
-                  </span>
-                ) : null}
-                <ul
-                  style={{
-                    margin: "0 0 .5rem 0",
-                    paddingLeft: "1.25rem",
-                    fontSize: ".9rem"
-                  }}
-                >
-                  {v_detail.label && v_detail.label === "Projects" ? (
-                    <li>{v_detail.items.join(" • ")}</li>
-                  ) : (
-                    v_detail.items.map((item, index) => (
-                      <li key={index}>{item}</li>
-                    ))
-                  )}
-                </ul>
-              </Fragment>
-            ))
-          : null}
-      </div>
-    </Fragment>
-  );
-};
-
-const CardTimeline = ({ content }) => {
-  return (
-    <Fragment>
-      <span
-        style={{
-          gridColumn: "1 / span 1",
-          gridRow: "auto / span 1",
-          display: "flex",
-          flexFlow: "column nowrap",
-          color: "hsl(0,0%,60%)",
-          padding: "0 .5rem .5rem 0"
-          // borderBottom: "2px dotted hsl(0,0%,80%)"
-        }}
-      >
-        {content.dates.length > 1 ? (
-          <Fragment>
-            <span>{content.dates[content.dates.length - 1]}</span>
-            <span>{content.dates[0]}-</span>
-          </Fragment>
-        ) : (
-          content.dates[0]
-        )}
-      </span>
-
-      <span
-        style={{
-          gridColumn: "2 / span 1",
-          gridRow: "auto / span 1",
-          padding: "0 0 .5rem .5rem"
-          // margin: "0 0 .5rem 0",
-          // borderLeft: "2px dotted hsl(0,0%,80%)",
-          // borderBottom: "2px dotted hsl(0,0%,80%)"
-        }}
-      >
-        <h4>{content.title}</h4>
-        <span>{content.subtitle}</span>
-        {content.dates.length > 2 ? (
-          <span
-            style={{
-              color: "hsl(0,0%,60%)"
-            }}
-          >
-            {content.dates.join(", ")}
-          </span>
-        ) : null}
-      </span>
-      <div
-        style={{
-          gridColumn: "2 / span 1",
-          gridRow: "auto / span 1",
-          display: "flex",
-          flexFlow: "column nowrap",
-          background: "hsl(0,0%,100%)",
-          gap: ".25rem",
-          padding: ".5rem 0 2rem .25rem"
-        }}
-      >
-        {content.details
-          ? content.details.map((v_detail, i_detail) => (
-              <div
-                style={{
-                  display: "flex",
-                  flexFlow: "column nowrap",
-                  borderLeft: "4px solid hsl(0,0%,80%)",
-                  margin: "0 0 1rem 0",
-                  gap: ".25rem"
-                }}
-              >
-                {v_detail.label ? (
-                  <span
-                    key={i_detail}
-                    style={{
-                      padding: "0 0 0 .5rem",
-                      color: "hsl(0,0%,60%)"
-                      // fontSize: ".9rem"
-                    }}
-                  >
-                    {v_detail.label}
-                  </span>
-                ) : null}
-
-                {v_detail.label && v_detail.label === "Projects" ? (
-                  <div
-                    style={{
-                      // margin: "0 0 .5rem 0",
-                      paddingLeft: ".25rem",
-                      fontSize: ".9rem",
-                      display: "flex",
-                      flexFlow: "row wrap"
-                    }}
-                  >
-                    {v_detail.items.map((v_item, i_item) => (
-                      <span
-                        style={{
-                          background: "hsl(0,0%,92%)",
-                          padding: ".25rem .5rem",
-                          borderRadius: ".25rem",
-                          margin: ".2rem"
-                        }}
-                      >
-                        {v_item}
-                      </span>
-                    ))}
-                  </div>
-                ) : (
-                  <ul
-                    style={{
-                      padding: "0 0 0 1.25rem",
-                      margin: 0,
-                      fontSize: ".9rem"
-                    }}
-                  >
-                    {v_detail.items.map((item, index) => (
-                      <li key={index}>{item}</li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            ))
-          : null}
-      </div>
-    </Fragment>
-  );
-};*/
