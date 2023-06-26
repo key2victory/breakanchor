@@ -1,12 +1,12 @@
-import { memo, useState, useEffect, Fragment } from "react";
+import {memo} from "react";
 import "./styles.css";
-//import "./device-frames.css";
 
-export const Sonim = memo(function Sonim() {
+export const HeroLockOut = memo(function HeroLockOut() {
   const positionScreen = {
     x: "40",
     y: "120",
-    width: "205"
+    w: "205", //480
+    h: "342", //800
   };
 
   const Device = () => (
@@ -14,6 +14,7 @@ export const Sonim = memo(function Sonim() {
       viewBox="0 0 284 578"
       preserveAspectRatio="xMidYMin meet"
       style={{
+        boxSizing: "border-box",
         position: "relative",
         zIndex: 5,
 
@@ -24,57 +25,48 @@ export const Sonim = memo(function Sonim() {
         maxWidth: "100%",
         minHeight: "366px",
         maxHeight: "100%",
-        overflow: "hidden"
+        overflow: "hidden",
       }}
     >
       <rect
-        width="289"
-        height="340"
-        style={{ ...positionScreen }}
+        width={positionScreen.w}
+        height={positionScreen.h}
+        x="0" //{positionScreen.x}
+        y="0" //{positionScreen.y}
+        transform={`translate(${positionScreen.x},${positionScreen.y})`}
         fill="#000"
       />
       <image
         href="./img/loto-17a.png"
         alt=""
         className="image cycle keyframe3"
-        style={{
-          ...positionScreen
-        }}
-      />
-      <image
-        // href="./img/loto-16a.png"
-        alt=""
-        className="image cycle keyframe3"
-        style={{
-          ...positionScreen
-        }}
-      />
+        width={positionScreen.w}
+        height={positionScreen.h}
+        x="0" //{positionScreen.x}
+        y="0" //{positionScreen.y}
+        transform={`translate(${positionScreen.x},${positionScreen.y})`}
+      />{" "}
       <image
         href="./img/loto-15a.png"
         alt=""
         className="image cycle keyframe2"
-        style={{
-          ...positionScreen
-        }}
-      />
-
+        width={positionScreen.w}
+        height={positionScreen.h}
+        x="0" //{positionScreen.x}
+        y="0" //{positionScreen.y}
+        transform={`translate(${positionScreen.x},${positionScreen.y})`}
+      />{" "}
       <image
         href="./img/loto-14a.png"
         alt=""
         className="image cycle keyframe1"
-        style={{
-          ...positionScreen
-        }}
-      />
-      <image
-        href={glare} //"./img/frame-glare-sonimXP7.png"
-        width="284"
-        height="578"
-        alt=""
-        style={{
-          opacity: ".2"
-        }}
-      />
+        width={positionScreen.w}
+        height={positionScreen.h}
+        x="0" //{positionScreen.x}
+        y="0" //{positionScreen.y}
+        transform={`translate(${positionScreen.x},${positionScreen.y})`}
+      />{" "}
+      <image href={glare} width="284" height="578" alt="" opacity=".2" />
       <image href={sonim64} width="284" height="578" alt="" />
     </svg>
   );

@@ -19,6 +19,7 @@ export const HeroAudiohand = memo(function HeroAudiohand() {
       viewBox="0 0 591 1243" //"0 0 779 1513"
       preserveAspectRatio="xMidYMin meet"
       style={{
+        boxSizing: "border-box",
         position: "relative",
         zIndex: 5,
 
@@ -35,11 +36,11 @@ export const HeroAudiohand = memo(function HeroAudiohand() {
       }}
     >
       {/* <rect
-                    width="668"
-                    height="980"
-                    style={{ ...positionScreen }}
-                    fill="#000"
-                 />*/}{" "}
+                                            width="668"
+                                            height="980"
+                                            style={{ ...positionScreen }}
+                                            fill="#000"
+                                         />*/}{" "}
       <image
         className="device-frame"
         href={iphone} //"./img/frame-iphone.png"
@@ -68,7 +69,7 @@ export const HeroAudiohand = memo(function HeroAudiohand() {
         style={{
           ...positionScreen,
         }}
-      />
+      />{" "}
       <image
         href="./img/audiohand-00.png"
         width={screenWidth} //"668" //"380"

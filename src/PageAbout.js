@@ -104,6 +104,7 @@ const CardDates = ({content}) => (
       gridColumn: "1 / span 1",
       display: "flex",
       flexFlow: "row nowrap",
+      width: "100%",
       height: "100%",
     }}
   >
@@ -111,30 +112,50 @@ const CardDates = ({content}) => (
       style={{
         width: "100%",
         display: "flex",
-        flexFlow: "row wrap",
-        alignItems: "flex-start",
-        justifyContent: "flex-end",
+        flexFlow: "column nowrap",
+        alignItems: "flex-end",
+        justifyContent: "flex-start",
         color: "hsl(0,0%,100%)",
         //gap: ".25rem",
         padding: ".5rem 0 0 0",
-        fontSize: "1.3rem",
+
         // textAlign: "right"
       }}
     >
       {content.dates.length === 2 ? (
-        <span
-          style={{
-            width: "min-content",
-          }}
-        >
-          <span style={{fontSize: "1rem"}}> {content.dates[0]} </span>{" "}
-          <span style={{margin: "0 .2rem"}}> - </span> {content.dates[1]}{" "}
-        </span>
+        <Fragment>
+          <span
+            style={{
+              fontSize: "1rem",
+              width: "min-content",
+              height: "min-content",
+            }}
+          >
+            {content.dates[0]}
+            <span
+              style={{
+                fontSize: "1rem",
+                width: "auto",
+                height: "min-content",
+                margin: "0 .2rem",
+              }}
+            >
+              -
+            </span>{" "}
+          </span>{" "}
+          <span
+            style={{
+              fontSize: "1.3rem",
+              width: "min-content",
+              height: "min-content",
+            }}
+          >
+            {content.dates[1]}{" "}
+          </span>{" "}
+        </Fragment>
       ) : (
         <span
-          style={{
-            width: "min-content",
-          }}
+          style={{fontSize: "1.3rem", width: "min-content", height: "auto"}}
         >
           {content.dates.join(", ")}{" "}
         </span>

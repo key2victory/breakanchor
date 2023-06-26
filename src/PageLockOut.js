@@ -1,6 +1,6 @@
-import {memo} from "react";
+import {memo, useState, useEffect, Fragment} from "react";
 import {Header, ButtonLink, Note, Group} from "./PageElements";
-import {Sonim} from "./Sonim";
+import {HeroLockOut} from "./HeroLockOut";
 import "./styles.css";
 
 export const PageLockOut = memo(function PageLockOut({
@@ -71,7 +71,7 @@ export const PageLockOut = memo(function PageLockOut({
             alt=""
             width="100%"
             height="auto"
-            //aspectRatio="1015 / 328" //"1895 / 612"
+            // aspectRatio="1015 / 328" //"1895 / 612"
             style={
               {
                 //  gridColumn: "1 / span 1"
@@ -149,7 +149,7 @@ export const PageLockOut = memo(function PageLockOut({
           <img className="image shadow" src="./img/loto-13.png" alt="" />
         </Group>{" "}
         <div className="hero bottom">
-          <Sonim />
+          <HeroLockOut />
         </div>{" "}
       </div>{" "}
     </div>
