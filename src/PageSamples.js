@@ -1,5 +1,4 @@
 import {memo, useState, useEffect} from "react";
-//import { Anchor, Button, PageHeader } from "grommet";
 import {Header, ButtonLink} from "./PageElements";
 
 export const samplePages = [
@@ -8,7 +7,7 @@ export const samplePages = [
     path: "clearance-tracker",
     src: "./samples/ClearanceTrackerUnframed/index.html",
     aspectRatio: "1678 / 1153",
-    devices: ["desktop"],
+    devices: ["L"],
     tags: ["med"],
   },
   {
@@ -16,7 +15,7 @@ export const samplePages = [
     path: "compliance",
     src: "./samples/ComplianceUnframed/index.html",
     aspectRatio: "1640 / 1024",
-    devices: ["desktop"],
+    devices: ["L"],
     tags: ["med"],
   },
   {
@@ -24,7 +23,7 @@ export const samplePages = [
     path: "conference-manager",
     src: "./samples/ConferenceManagerUnframed/index.html",
     aspectRatio: "1680 / 1105",
-    devices: ["desktop"],
+    devices: ["L"],
     tags: ["high"],
   },
   {
@@ -32,7 +31,7 @@ export const samplePages = [
     path: "interview-kiosk",
     src: "./samples/InterviewKioskUnframed/index.html",
     aspectRatio: "3 / 2", //"2048 / 1536",
-    devices: ["tablet"],
+    devices: ["M"],
     tags: ["high"],
   },
   {
@@ -40,7 +39,7 @@ export const samplePages = [
     path: "lead-time-manager",
     src: "./samples/LTMUnframed/index.html",
     aspectRatio: "1280 / 800", //357/224 //100% /62.5%
-    devices: ["desktop"],
+    devices: ["L"],
     tags: ["low"],
   },
 ];
@@ -48,6 +47,8 @@ export const samplePages = [
 export const samplePaths = samplePages.map((item, index) => item.path);
 
 function PageSample(props) {
+  const color1 = "hsl(0,0%,100%)";
+  const color2 = "hsl(0,0%,95%)";
   return (
     <div className="sample-content">
       <Header
@@ -60,12 +61,12 @@ function PageSample(props) {
           padding: "0 0 1rem 0",
         }}
       ></Header>{" "}
-      {/* <PageHeader
-                    title="Page Title"
-                    subtitle="A subtitle for the page."
-                    parent={<Anchor label="Parent Page" />}
-                    actions={<Button label="Edit" primary />}
-                  />*/}{" "}
+      <div
+        className="page-bg"
+        style={{
+          background: `linear-gradient(31deg, ${color1} 25%, ${color2} 0, ${color2} 50%, ${color1} 0, ${color1} 75%, ${color2} 0) center / 50px 30px`,
+        }}
+      />{" "}
       <div
         style={{
           gridRow: "content / span 1",
@@ -76,7 +77,7 @@ function PageSample(props) {
         <div
           style={{
             aspectRatio: samplePages[props.index].aspectRatio,
-            margin: "auto",
+            margin: "0 auto auto 0",
             maxWidth: "100%",
             maxHeight: "100%",
           }}

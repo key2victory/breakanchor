@@ -1,13 +1,173 @@
-import { memo, useState, useEffect, Fragment } from "react";
+import {memo, useState, useEffect, Fragment} from "react";
 
 import {
   MdOutlineSmartphone,
   MdOutlineTablet,
   MdOutlineLaptop,
   MdOutlineComputer,
+  MdDevices,
+  MdOutlineDesignServices,
 } from "react-icons/md";
 
-function IconTag({ icon }) {
+import {
+  RiDeviceLine,
+  RiSlideshow3Line,
+  RiReactjsFill,
+  RiLayout5Line,
+  RiLayoutTopLine,
+  RiEdit2Line,
+} from "react-icons/ri";
+
+export const IconTag = memo(function IconTag({
+  icon,
+  textColor = "0,0%,40%",
+  bgColor = "0,0%,0%",
+  solid = "false",
+}) {
+  const IconList = {
+    presentation: RiLayoutTopLine, // RiSlideshow3Line,
+    reactjs: RiReactjsFill,
+    showcase: RiLayout5Line,
+    high: RiEdit2Line, //RiLayout5Line,
+    med: RiEdit2Line, //RiLayout5Line,
+    low: RiEdit2Line, //RiLayout5Line
+  };
+  const labelList = {
+    presentation: "speaker presentation",
+    high: "hi-fi mock",
+    med: "med-fi mock",
+    low: "lo-fi mock",
+  };
+  const Icon = IconList[icon] !== undefined ? IconList[icon] : RiDeviceLine;
+  const label = labelList[icon] !== undefined ? labelList[icon] : icon;
+
+  const chipStyle = solid
+    ? {
+        border: `2px solid hsla(${textColor},30%)`,
+        background: "hsla(0,0%,0%,0%)",
+        color: `hsla(${textColor},100%)`,
+      }
+    : {
+        border: "none",
+        background: `hsla(${bgColor},6%)`,
+        color: `hsla(${textColor},100%)`,
+      };
+  return (
+    <div
+      style={{
+        width: "fit-content",
+        flexGrow: 0,
+        flexShrink: 0,
+        display: "flex",
+        flexFlow: "row nowrap",
+        alignItems: "center",
+        justifyContent: "flex-start",
+        gap: ".5rem",
+        borderRadius: "2rem",
+        padding: ".2rem .6rem",
+        // border: `2px solid hsla(${color},50%)`,
+        // //background: "hsl(0,0%,0%,10%)",
+        // color: `hsla(${color},100%)`,
+        fontSize: "1rem",
+        ...chipStyle,
+      }}
+    >
+      <Icon />
+      <span> {label} </span>{" "}
+    </div>
+  );
+});
+
+export const DeviceSizes = memo(function DeviceSizes({
+  devices,
+  textColor = "0,0%,40%",
+  bgColor = "0,0%,0%",
+  solid = "false",
+}) {
+  const chipStyle = solid
+    ? {
+        border: `2px solid hsla(${textColor},30%)`,
+        background: "hsla(0,0%,0%,0%)",
+        color: `hsla(${textColor},100%)`,
+      }
+    : {
+        border: "none",
+        background: `hsla(${bgColor},6%)`,
+        color: `hsla(${textColor},100%)`,
+      };
+  const labelStyle = {
+    width: "100%",
+    // height: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    fontSize: ".8rem",
+  };
+  return (
+    <div
+      style={{
+        width: "fit-content",
+        //height: "auto",
+        flexGrow: 0,
+        flexShrink: 0,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "flex-start",
+        gap: ".25rem",
+        borderRadius: "2rem",
+        padding: ".2rem .6rem",
+        fontSize: "1rem",
+        ...chipStyle,
+      }}
+    >
+      {" "}
+      <RiDeviceLine
+        style={{
+          // width: "18px",
+          //height: "24px",
+          flexGrow: 0,
+          flexShrink: 0,
+        }}
+      />{" "}
+      {devices.map((item, index) => (
+        <span
+          style={{
+            ...labelStyle,
+            gridColumn: "1 / span 1",
+          }}
+        >
+          {item}{" "}
+        </span>
+      ))}{" "}
+      {/* <MdOutlineComputer
+                    style={{
+                      width: "30px",
+                      height: "32px",
+                      gridColumn: "1 / span 1",
+                      gridRow: "1 / span 1"
+                    }}
+                  />
+                  <MdOutlineTablet
+                    style={{
+                      width: "30px",
+                      height: "32px",
+                      gridColumn: "2 / span 1",
+                      gridRow: "1 / span 1"
+                    }}
+                  />
+                  <MdOutlineSmartphone
+                    style={{
+                      width: "28px",
+                      height: "32px",
+                      gridColumn: "3 / span 1",
+                      gridRow: "1 / span 1"
+                    }}
+                  />*/}{" "}
+    </div>
+  );
+});
+
+/*
   return (
     <div
       style={{
@@ -15,7 +175,7 @@ function IconTag({ icon }) {
         flexFlow: "row nowrap",
         borderRadius: ".5rem",
         padding: ".5rem",
-        background: "hsl(0,0%,30%)",
+        background: "hsl(0,0%,0%,10%)"
       }}
     >
       {icon === "phone" ? (
@@ -24,13 +184,13 @@ function IconTag({ icon }) {
         <MdOutlineTablet />
       ) : icon === "desktop" ? (
         <MdOutlineComputer />
-      ) : null}{" "}
-      <span> {icon} </span>{" "}
+      ) : null}
+      <span>{icon}</span>
     </div>
   );
-}
 
-/*const IconTag = ({ icon }) => {
+
+const IconTag = ({ icon }) => {
   const IconList = {
     phone: MdOutlineSmartphone,
    tablet: MdOutlineTablet,
@@ -65,7 +225,7 @@ export const Note = memo(function Note({
   return (
     <div
       className={`note ${!collapse ? "open" : open ? "open" : ""}`}
-      style={{ background: background, color: color, ...style }}
+      style={{background: background, color: color, ...style}}
       onClick={() => {
         if (collapse) {
           setOpen(!open);
@@ -73,7 +233,7 @@ export const Note = memo(function Note({
       }}
     >
       <h4> {title} </h4>{" "}
-      <span style={{ position: "relative", overflow: "hidden" }}>
+      <span style={{position: "relative", overflow: "hidden"}}>
         <span
           style={{
             position: "absolute",
@@ -97,11 +257,13 @@ export const Caption = memo(function Caption({
   containerStyle,
 }) {
   return (
-    <div className="image" style={{ ...containerStyle }}>
+    <div className="image" style={{...containerStyle}}>
       <img
         src={`${src}`}
         width="100%"
         style={{
+          // backgroundImage: `url(${content.src})`,
+          // aspectRatio: content.aspectRatio,
           ...imgStyle,
         }}
         alt={alt}
@@ -111,7 +273,7 @@ export const Caption = memo(function Caption({
   );
 });
 
-export const Column = memo(function Column({ children, style }) {
+export const Column = memo(function Column({children, style}) {
   return (
     <div
       style={{
@@ -151,7 +313,7 @@ export const Row = memo(function Row({
   );
 });
 
-export const Group = memo(function Group({ children, className, style }) {
+export const Group = memo(function Group({children, className, style}) {
   return (
     <div
       className={`group ${className}`}
@@ -185,12 +347,12 @@ export const Header = memo(function Header({
         ...style,
       }}
     >
-      <span style={{ display: "flex", flexFlow: "column nowrap" }}>
-        <h1 style={{ color: color }}>
+      <span style={{display: "flex", flexFlow: "column nowrap"}}>
+        <h1 style={{color: color}}>
           {" "}
           {title2 ? (
             <Fragment>
-              <span style={{ display: "flex", flexFlow: "row wrap" }}>
+              <span style={{display: "flex", flexFlow: "row wrap"}}>
                 <span
                   style={{
                     marginRight: ".6rem",
@@ -212,19 +374,14 @@ export const Header = memo(function Header({
             title
           )}{" "}
         </h1>{" "}
-        <h3 style={{ color: color }}> {subtitle} </h3>{" "}
+        <h3 style={{color: color}}> {subtitle} </h3>{" "}
       </span>{" "}
       {children}{" "}
     </div>
   );
 });
 
-export const ButtonLink = memo(function ButtonLink({
-  line1,
-  line2,
-  url,
-  color,
-}) {
+export const ButtonLink = memo(function ButtonLink({line1, line2, url, color}) {
   const text = {
     x: 0,
     y: 1,
@@ -245,11 +402,8 @@ export const ButtonLink = memo(function ButtonLink({
         flexGrow: 0,
         flexShrink: 0,
         flexBasis: "auto",
-
-        //gap: ".25rem",
-        // minWidth: 0,
         width: "max-content",
-        height: "min-content", //"48px"
+        height: "min-content",
       }}
       href={url}
       target="_blank"
@@ -257,7 +411,7 @@ export const ButtonLink = memo(function ButtonLink({
     >
       <span
         style={{
-          color: { color },
+          color: {color},
           fontFamily: text.fontFamily,
           fontSize: `${text.size1}px`,
           width: "auto",
@@ -267,7 +421,7 @@ export const ButtonLink = memo(function ButtonLink({
       </span>{" "}
       <span
         style={{
-          color: { color },
+          color: {color},
           fontFamily: text.fontFamily,
           fontSize: `${text.size2}px`,
           width: "auto",
@@ -278,7 +432,7 @@ export const ButtonLink = memo(function ButtonLink({
         <span
           style={{
             width: "min-content",
-            color: { color },
+            color: {color},
             fontFamily: text.fontFamily,
             fontSize: `${text.size1}px`,
             margin: "0 0.1rem 0 .2rem",

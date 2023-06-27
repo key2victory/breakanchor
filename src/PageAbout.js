@@ -2,14 +2,15 @@ import {memo, useState, useEffect, Fragment} from "react";
 
 import {AppHeader} from "./AppNav";
 import HeroAbout from "./HeroAbout";
+import {Logo} from "./Logo";
 import {Header, ButtonLink, Note, Group} from "./PageElements";
 import {
-  MdSchool,
-  MdOutlineSchool,
-  MdWork,
-  MdWorkOutline,
-  MdEmojiEvents,
-  MdOutlineEmojiEvents,
+  // MdSchool,
+  // MdOutlineSchool,
+  // MdWork,
+  // MdWorkOutline,
+  // MdEmojiEvents,
+  // MdOutlineEmojiEvents,
   MdCircle,
 } from "react-icons/md";
 
@@ -55,7 +56,7 @@ export default function PageAbout(props) {
             }
           >
             {resume.education.map((item, index) => (
-              <CardSummary key={`resume-edu-${index}`} content={item} />
+              <CardDetails key={`resume-edu-${index}`} content={item} />
             ))}{" "}
           </Group>{" "}
         </CardSection>
@@ -181,34 +182,137 @@ const CardDates = ({content}) => (
   </div>
 );
 
+const CardHeader = ({content}) => (
+  <span
+    style={{
+      display: "flex",
+      flexFlow: "column nowrap",
+      gap: ".25rem",
+      padding: "0",
+    }}
+  >
+    <h4> {content.title} </h4> <h5> {content.subtitle} </h5>{" "}
+  </span>
+);
+
+const TimelineBubble = ({content, children, style}) => {
+  const bubbleStyle = [
+    {
+      background: "hsl(0,0%,100%)",
+      padding: "1rem",
+      zIndex: 1,
+    },
+    {
+      borderRadius: "0", // 0 1rem 1rem",
+      background: "hsl(0,0%,90%)",
+      padding: "2rem 2rem 2rem 2rem",
+      margin: "-1rem 0 0 0",
+      zIndex: 0,
+    },
+  ];
+  if (children) {
+    return (
+      <div
+        className="box-shadow"
+        style={{
+          ...style,
+          width: "100%",
+          maxWidth: "400px",
+          display: "flex",
+          flexFlow: "column nowrap",
+          // columnGap: ".5rem",
+          // rowGap: ".75rem",
+          margin: "1rem 0",
+          borderRadius: "0rem 1rem 1rem 1rem",
+          overflow: "hidden",
+          //  ...bubbleStyle
+        }}
+      >
+        <div
+          style={{
+            //...style,
+            display: "grid",
+            gridTemplateColumns: "auto 1fr",
+            columnGap: ".8rem",
+            rowGap: ".75rem",
+            borderRadius: "0rem 1rem 0rem 0rem",
+            ...bubbleStyle[0],
+          }}
+        >
+          <span
+            style={{
+              display: "flex",
+              alignItems: "stretch",
+              justifyContent: "stretch",
+              width: "48px",
+              height: "48px",
+              background: "hsl(0,0%,90%)",
+              borderRadius: ".5rem",
+              // padding: ".1rem",
+              aspectRatio: "1/1",
+            }}
+          >
+            <Logo name={content.logo} />{" "}
+          </span>{" "}
+          <CardHeader content={content} />{" "}
+        </div>{" "}
+        <div
+          className="box-shadow"
+          style={{
+            display: "flex",
+            flexFlow: "column nowrap",
+            gap: ".75rem",
+            ...bubbleStyle[1],
+          }}
+        >
+          {children}{" "}
+        </div>{" "}
+      </div>
+    );
+  } else {
+    return (
+      <div
+        className="box-shadow"
+        style={{
+          width: "100%",
+
+          maxWidth: "400px",
+          margin: "1rem 0",
+          borderRadius: "0rem 1rem 1rem 1rem",
+          overflow: "hidden",
+          display: "grid",
+          gridTemplateColumns: "auto 1fr",
+          columnGap: ".8rem",
+          rowGap: ".75rem",
+          //  margin: ".5rem 0",
+          ...bubbleStyle[0],
+        }}
+      >
+        <span
+          style={{
+            display: "flex",
+            alignItems: "stretch",
+            justifyContent: "stretch",
+            width: "48px",
+            height: "48px",
+            background: "hsl(0,0%,90%)",
+            borderRadius: ".5rem",
+            // padding: ".1rem",
+            aspectRatio: "1/1",
+          }}
+        >
+          <Logo name={content.logo} />{" "}
+        </span>{" "}
+        <CardHeader content={content} />{" "}
+      </div>
+    );
+  }
+};
+
 const CardSummary = ({content, style}) => (
   <Fragment>
     <CardDates content={content} />
-    <div
-      style={{
-        gridColumn: "2 / span 1",
-        minWidth: "200px",
-        maxWidth: "400px",
-        display: "flex",
-        flexFlow: "column nowrap",
-        gap: ".25rem",
-        padding: ".5rem 0 2rem 0",
-      }}
-    >
-      <span
-        className="card"
-        style={{
-          display: "flex",
-          flexFlow: "column nowrap",
-          gap: ".75rem",
-          borderRadius: "0rem 1rem 1rem 1rem",
-          background: "hsl(0,0%,100%)",
-          padding: "1rem 1rem 1rem 1rem",
-        }}
-      >
-        <h4> {content.title} </h4> <h5> {content.subtitle} </h5>{" "}
-      </span>{" "}
-    </div>{" "}
+    <TimelineBubble content={content} />{" "}
   </Fragment>
 );
 
@@ -265,70 +369,39 @@ const CardDetails = ({content}) => {
   return (
     <Fragment>
       <CardDates content={content} />
-      <div
-        style={{
-          gridColumn: "2 / span 1",
-          minWidth: "200px",
-          maxWidth: "400px",
-          display: "flex",
-          flexFlow: "column nowrap",
-          gap: ".75rem",
-          padding: "0 0 1rem 0",
-        }}
-      >
-        <div
-          className="card"
-          style={{
-            display: "flex",
-            flexFlow: "column nowrap",
-            gap: ".75rem",
-            borderRadius: "0rem 1rem 1rem 1rem",
-            background: "hsl(0,0%,100%)",
-            padding: ".25rem 1rem 1rem 1rem",
-          }}
-        >
-          <span
-            style={{
-              display: "flex",
-              flexFlow: "column nowrap",
-              gap: ".25rem",
-              padding: ".5rem 0 0 0",
-            }}
-          >
-            <h4> {content.title} </h4> <h5> {content.subtitle} </h5>{" "}
-          </span>{" "}
-          {content.details
-            ? content.details.map((v_detail, i_detail) =>
-                v_detail.label && v_detail.label === "Projects" ? (
-                  <ProjectDetails
-                    key={`content-detail-${i_detail}`}
-                    content={v_detail}
-                    style={{
-                      fontSize: ".9rem",
-                      display: "flex",
-                      flexFlow: "row wrap",
-                      justifyContent: "flex-start",
-                      alignItems: "stretch",
-                    }}
-                  />
-                ) : (
-                  <ProjectDetails
-                    key={`content-detail-${i_detail}`}
-                    content={v_detail}
-                    style={{
-                      display: "flex",
-                      flexFlow: "column nowrap",
-                      gap: ".25rem",
-                      padding: 0,
-                      margin: 0,
-                      fontSize: ".9rem",
-                    }}
-                  />
-                )
+      <TimelineBubble content={content}>
+        {" "}
+        {content.details
+          ? content.details.map((v_detail, i_detail) =>
+              v_detail.label && v_detail.label === "Projects" ? (
+                <ProjectDetails
+                  key={`content-detail-${i_detail}`}
+                  content={v_detail}
+                  style={{
+                    fontSize: ".9rem",
+                    display: "flex",
+                    flexFlow: "row wrap",
+                    justifyContent: "flex-start",
+                    alignItems: "stretch",
+                  }}
+                />
+              ) : (
+                <ProjectDetails
+                  key={`content-detail-${i_detail}`}
+                  content={v_detail}
+                  style={{
+                    display: "flex",
+                    flexFlow: "column nowrap",
+                    gap: ".25rem",
+                    padding: 0,
+                    margin: 0,
+                    fontSize: ".9rem",
+                  }}
+                />
               )
-            : null}{" "}
-        </div>{" "}
-      </div>{" "}
+            )
+          : null}{" "}
+      </TimelineBubble>{" "}
     </Fragment>
   );
 };
@@ -339,11 +412,13 @@ const resume = {
       title: "Watkins College of Art, Design, & Film",
       subtitle: "Bachelor of Fine Arts, Graphic Design",
       dates: [2006, 2010],
+      logo: "watkins",
     },
     {
       title: "Governor’s School for the Arts",
       subtitle: "Middle Tennessee State University",
       dates: [2005],
+      logo: "gsfta",
     },
   ],
   experience: [
@@ -351,6 +426,7 @@ const resume = {
       title: "Cadre5",
       subtitle: "Sr. Product Designer",
       dates: [2019, present],
+      logo: "cadre5",
       details: [
         {
           label: "Projects",
@@ -369,6 +445,7 @@ const resume = {
       title: "Bechtel National",
       subtitle: "UX/UI Information Systems Senior",
       dates: [2016, 2019],
+      logo: "bechtel",
       details: [
         {
           items: [
@@ -406,6 +483,7 @@ const resume = {
       title: "Break Anchor",
       subtitle: "Owner, Lead Designer, Mentor",
       dates: [2009, 2017],
+      logo: "breakanchor",
       details: [
         {
           items: [
@@ -422,6 +500,7 @@ const resume = {
       title: "Audiohand",
       subtitle: "Lead UX Designer",
       dates: [2014, 2016],
+      logo: "audiohand",
       details: [
         {items: ["UX conceptual design", "UI design for mobile software"]},
       ],
@@ -430,6 +509,7 @@ const resume = {
       title: "Connection Point",
       subtitle: "Creative Director, UX Design",
       dates: [2014],
+      logo: "connectionpoint",
       details: [
         {
           items: [
@@ -444,6 +524,7 @@ const resume = {
       title: "K-Town Apartments, LLC",
       subtitle: "Chief Creative Officer, UX Design",
       dates: [2012, 2014],
+      logo: "ktown",
       details: [
         {
           items: [
