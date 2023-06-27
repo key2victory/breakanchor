@@ -134,8 +134,8 @@ export default function AppNav({showNav, onClickExit}) {
           }}
         >
           <CgClose />
-        </div>
-        <NavLink item={{path: "/", title: "About Me"}} />{" "}
+        </div>{" "}
+        <NavLink item={{path: "", title: "About Me"}} />{" "}
         {pages.map((item, index) => (
           <NavLink
             key={`${item.path}-${index}`}
@@ -143,8 +143,8 @@ export default function AppNav({showNav, onClickExit}) {
             style={{borderTop: "2px solid hsla(0,0%,0%,10%)"}}
           />
           /* <Link key={`${item.path}-${index}`} to={item.path} style={linkStyle}>
-                  {item.title}
-                </Link>*/
+                        {item.title}
+                      </Link>*/
         ))}{" "}
         {samplePages.map((item, index) => (
           <NavLink
