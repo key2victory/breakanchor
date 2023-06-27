@@ -83,12 +83,13 @@ export const HeroIntuitive = memo(function HeroIntuitive() {
           <stop offset="100%" stopColor="hsla(40,100%,90%,50%)" />
         </radialGradient>{" "}
       </defs>{" "}
-      {/* <rect
-                    width="668"
-                    height="980"
-                    style={{ ...positionScreen }}
-                    fill="#000"
-                 />*/}
+      <rect
+        width={screenWidth}
+        height={screenHeight}
+        x={positionScreen.x}
+        y={positionScreen.y}
+        fill="#212121"
+      />
       <image
         href="./img/intuitive-24.png"
         width={screenWidth} //"668" //"380"
@@ -108,7 +109,7 @@ export const HeroIntuitive = memo(function HeroIntuitive() {
         className="image cycle keyframe2"
         x={positionScreen.x}
         y={positionScreen.y}
-      />
+      />{" "}
       <image
         href="./img/intuitive-40.png"
         width={screenWidth} //"668" //"380"

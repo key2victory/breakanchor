@@ -47,7 +47,7 @@ body,
   background: hsla(0, 0%, 20%, 100%);
   color: hsla(0, 0%, 100%, 80%);
   margin: 0;
-  padding: 0.25rem 1.5rem 0.25rem 1.5rem;
+  padding: 0rem 0.8rem 0rem 1.5rem;
   z-index: 1;
 }
 

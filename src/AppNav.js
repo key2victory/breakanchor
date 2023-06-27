@@ -13,13 +13,15 @@ export const AppHeader = memo(function AppHeader({onMenuClick}) {
         break anchor <span className="mobile-hide"> design </span>{" "}
       </h3>{" "}
       <span
-        className="pointer"
+        className="nav-link"
         style={{
           fontSize: "1.5rem",
           display: "flex",
           flexFlow: "row nowrap",
           alignItems: "center",
           gap: "1rem",
+          padding: ".2rem .8rem",
+          borderRadius: "1rem",
         }}
         onClick={() => {
           onMenuClick();
@@ -125,16 +127,20 @@ export default function AppNav({showNav, onClickExit}) {
         }}
       >
         <div
+          className="nav-link"
           style={{
-            marginLeft: "auto",
+            //marginLeft: "auto",
             cursor: "pointer",
+            padding: "1rem 1.1rem",
+            margin: "0rem 1rem 0rem auto",
+            borderRadius: "2rem",
           }}
           onClick={() => {
             onClickExit();
           }}
         >
-          <CgClose />
-        </div>{" "}
+          <CgClose size="18" />
+        </div>
         <NavLink item={{path: "", title: "About Me"}} />{" "}
         {pages.map((item, index) => (
           <NavLink
@@ -143,8 +149,8 @@ export default function AppNav({showNav, onClickExit}) {
             style={{borderTop: "2px solid hsla(0,0%,0%,10%)"}}
           />
           /* <Link key={`${item.path}-${index}`} to={item.path} style={linkStyle}>
-                        {item.title}
-                      </Link>*/
+                  {item.title}
+                </Link>*/
         ))}{" "}
         {samplePages.map((item, index) => (
           <NavLink

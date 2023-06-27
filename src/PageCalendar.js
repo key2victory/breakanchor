@@ -62,18 +62,20 @@ export const PageCalendar = memo(function PageCalendar({
         </Group>{" "}
         <Group>
           <img className="" src="" alt="" width="" height="" />
-        </Group>{" "}
+        </Group>
         <div
           className="hero mobile-min-height-300 tablet-min-height-500"
-          style={{
-            width: "100%",
-            height: "100%",
-          }}
+          style={
+            {
+              //width: "100%",
+              //height: "100%"
+            }
+          }
         >
           <div
+            className="hero-margins"
             style={{
               aspectRatio: "369 / 319",
-              margin: "auto",
               maxWidth: "100%",
               maxHeight: "100%",
             }}
