@@ -131,6 +131,7 @@ export const DeviceSizes = memo(function DeviceSizes({
       />{" "}
       {devices.map((item, index) => (
         <span
+          key={index}
           style={{
             ...labelStyle,
             gridColumn: "1 / span 1",
@@ -140,29 +141,29 @@ export const DeviceSizes = memo(function DeviceSizes({
         </span>
       ))}{" "}
       {/* <MdOutlineComputer
-                    style={{
-                      width: "30px",
-                      height: "32px",
-                      gridColumn: "1 / span 1",
-                      gridRow: "1 / span 1"
-                    }}
-                  />
-                  <MdOutlineTablet
-                    style={{
-                      width: "30px",
-                      height: "32px",
-                      gridColumn: "2 / span 1",
-                      gridRow: "1 / span 1"
-                    }}
-                  />
-                  <MdOutlineSmartphone
-                    style={{
-                      width: "28px",
-                      height: "32px",
-                      gridColumn: "3 / span 1",
-                      gridRow: "1 / span 1"
-                    }}
-                  />*/}{" "}
+                                style={{
+                                  width: "30px",
+                                  height: "32px",
+                                  gridColumn: "1 / span 1",
+                                  gridRow: "1 / span 1"
+                                }}
+                              />
+                              <MdOutlineTablet
+                                style={{
+                                  width: "30px",
+                                  height: "32px",
+                                  gridColumn: "2 / span 1",
+                                  gridRow: "1 / span 1"
+                                }}
+                              />
+                              <MdOutlineSmartphone
+                                style={{
+                                  width: "28px",
+                                  height: "32px",
+                                  gridColumn: "3 / span 1",
+                                  gridRow: "1 / span 1"
+                                }}
+                              />*/}{" "}
     </div>
   );
 });
