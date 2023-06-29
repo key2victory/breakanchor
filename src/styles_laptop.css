@@ -17,6 +17,7 @@
     grid-template-rows: [header] 64px [content] 1fr;
   }
   .main-content {
+    position: relative;
     grid-column: content / span 1;
     grid-row: content / span 1;
     grid-template-rows: [content] 1fr;
@@ -29,32 +30,33 @@
   }
   .hero {
     position: absolute;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
     top: 0;
     right: 0;
     width: 40%;
     height: auto;
-    /*min-width: calc(284px * 0.5);
-    min-height: calc(578px * 0.5);
-    min-width: 284px;*/
     padding: 2rem;
   }
-  /*
-  .hero {
-    position: static;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-start;
-    align-items: center;
-    flex-grow: 0;
-    flex-shrink: 0;
-    flex-basis: 0;
-    width: 100%;
-    padding: 0rem 2rem;
-    overflow: hidden;
-    z-index: 1;
-  }*/
+  .hero .audiohand {
+    width: calc(591px * 0.5);
+    height: calc(1243px * 0.5);
+    min-width: calc(591px * 0.2);
+    min-height: calc(1243px * 0.2);
+    max-width: calc(591px * 0.6);
+    max-height: calc(1243px * 0.6);
+  }
+  .hero .intuitive {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+    width: calc(500px * 0.5);
+    height: calc(500px * 0.5);
+    min-width: calc(500px * 0.5);
+    min-height: calc(500px * 0.5);
+    max-width: 100%;
+    max-height: 100%;
+  }
   .hero .loto {
     width: calc(284px * 0.9);
     height: calc(578px * 0.9);

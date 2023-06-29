@@ -12,31 +12,25 @@ export const HeroAudiohand = memo(function HeroAudiohand() {
 
   const Device = () => (
     <svg
+      className="audiohand"
       viewBox="0 0 591 1243" //"0 0 779 1513"
       preserveAspectRatio="xMidYMin meet"
       style={{
         boxSizing: "border-box",
         position: "relative",
-        zIndex: 5,
-
-        width: "auto",
-        height: "auto",
-
-        minWidth: "180px",
-        maxWidth: "100%",
-        minHeight: "100%",
-        maxHeight: "100%",
 
         aspectRatio: "591 / 1243", //"779 / 1513",
         overflow: "hidden",
       }}
+      width="auto"
+      height="auto"
     >
       {/* <rect
-                                width="668"
-                                height="980"
-                                style={{ ...positionScreen }}
-                                fill="#000"
-                             />*/}{" "}
+                                                                                width="668"
+                                                                                height="980"
+                                                                                style={{ ...positionScreen }}
+                                                                                fill="#000"
+                                                                             />*/}{" "}
       <image
         className="device-frame"
         href={iphone} //"./img/frame-iphone.png"
@@ -82,11 +76,13 @@ export const HeroAudiohand = memo(function HeroAudiohand() {
 
   return (
     <div
-      className="hero bottom"
-      style={{
-        paddingLeft: "calc(1vw * 1vw)",
-        paddingBottom: "calc(1vw * 1vw)",
-      }}
+      className="hero"
+      style={
+        {
+          // paddingLeft: "calc(1vw * 1vw)",
+          // paddingBottom: "calc(1vw * 1vw)",
+        }
+      }
     >
       <Device />
     </div>

@@ -13,29 +13,45 @@
     grid-template-rows: [header] 64px [content] 1fr;
   }
   .main-content {
+    position: relative;
     grid-column: content / span 1;
     grid-row: content / span 1;
     grid-template-rows: [content] 1fr;
     grid-template-columns: [content] 1fr [hero] 40%;
   }
-  .hero,
-  .hero-desktop {
+  .hero {
     position: absolute;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
     top: 0;
     right: 0;
     width: 40%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
     height: 100%;
     padding: 3rem;
+  }
+  .hero .audiohand {
+    width: calc(591px * 0.5);
+    height: calc(1243px * 0.5);
+    min-width: calc(591px * 0.2);
+    min-height: calc(1243px * 0.2);
+    max-width: calc(591px * 0.6);
+    max-height: calc(1243px * 0.6);
+  }
+  .hero .intuitive {
+    width: calc(500px * 1);
+    height: calc(500px * 1);
+    min-width: calc(500px * 0.5);
+    min-height: calc(500px * 0.5);
+    max-width: 100%;
+    max-height: 100%;
   }
   .hero .loto {
     width: calc(284px * 1.2);
     height: calc(578px * 1.2);
     min-width: calc(284px * 0.6);
     min-height: calc(578px * 0.6);
-    min-width: 100%;
+    max-width: 100%;
     max-height: 100%;
   }
   /*

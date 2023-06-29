@@ -32,14 +32,12 @@ export const HeroIntuitive = memo(function HeroIntuitive() {
 
   const Device = () => (
     <svg
+      className="intutive"
       viewBox="0 0 500 500"
       preserveAspectRatio="xMidYMin meet"
       style={{
         position: "relative",
-        zIndex: 5,
-
-        width: "auto",
-        height: "auto",
+        //zIndex: 5,
 
         minWidth: "300px",
         minHeight: "300px",
@@ -47,6 +45,8 @@ export const HeroIntuitive = memo(function HeroIntuitive() {
         aspectRatio: "1 / 1",
         overflow: "hidden",
       }}
+      width="auto"
+      height="auto"
     >
       <defs>
         <linearGradient id="Gradient" x1="0" x2="0" y1="0" y2="1">
@@ -141,15 +141,7 @@ export const HeroIntuitive = memo(function HeroIntuitive() {
   );
 
   return (
-    <div
-      className="hero bottom"
-      style={{
-        paddingLeft: "calc(1vw * 1vw)",
-        paddingBottom: "calc(1vw * 1vw)",
-        alignItems: "stretch",
-        justifyContent: "stretch",
-      }}
-    >
+    <div className="hero col" style={{}}>
       <Device />
     </div>
   );
