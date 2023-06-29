@@ -57,6 +57,66 @@ const NavButton = memo(function NavCard({item, style}) {
   );
 });
 
+const NavCardAbout = memo(function NavCardAbout({
+  style,
+  className,
+  size = "large",
+}) {
+  const styleOption = {
+    small: {
+      color: "hsl(0,0%,70%)",
+      textDecoration: "none",
+      fontSize: "1.25rem",
+      gap: "1rem",
+      padding: "1rem",
+    },
+    large: {
+      color: "hsl(0,0%,70%)",
+      textDecoration: "none",
+      fontSize: "1.25rem",
+      gap: "1rem",
+      padding: "1rem 2rem 1rem 1rem",
+    },
+  };
+  return (
+    <Link
+      className={`nav-link page ${
+        size === "small" ? "row left nowrap" : "col center"
+      } mobile-hide`}
+      to="/"
+      style={styleOption[size]}
+    >
+      <img
+        className="mobile-hide"
+        width={size === "small" ? "56" : "120"}
+        src="./img/jmc.png"
+        alt=""
+      />
+      <div
+        className={`col center ${size === "small" ? "left" : ""} mobile-hide`}
+        style={{
+          gap: ".25rem",
+          width: size === "small" ? "auto" : "100%",
+          margin: size === "small" ? "0" : "-1rem 0 0 0",
+        }}
+      >
+        <h3
+          className="center mobile-hide"
+          style={{
+            color: "hsl(0,0%,100%)",
+
+            // transform: "translateY(-1.25rem)",
+            textShadow: "2px 2px 20px hsl(0,0%,0%)",
+          }}
+        >
+          Janna Curtis{" "}
+        </h3>{" "}
+        <span> About Me </span>{" "}
+      </div>{" "}
+    </Link>
+  );
+});
+
 const NavCard = memo(function NavCard({
   item,
   style,
@@ -224,40 +284,7 @@ export function NavPanel({
         >
           <CgClose size="18" />
         </div>{" "}
-        <Link
-          className="nav-link page row left mobile-hide"
-          to="/"
-          style={{
-            color: "hsl(0,0%,70%)",
-            textDecoration: "none",
-            fontSize: "1.25rem",
-            // padding: "0 1.5rem 0 1.5rem",
-            //padding: "1rem 0 0 1rem"
-            gap: "1rem",
-
-            padding: "1rem",
-          }}
-        >
-          <img className="mobile-hide" width="56" src="./img/jmc.png" alt="" />
-          <div
-            className="col left center mobile-hide"
-            style={{
-              gap: ".25rem",
-            }}
-          >
-            <h3
-              className="center mobile-hide"
-              style={{
-                color: "hsl(0,0%,100%)",
-                // transform: "translateY(-1.25rem)",
-                textShadow: "2px 2px 20px hsl(0,0%,0%)",
-              }}
-            >
-              Janna Curtis{" "}
-            </h3>{" "}
-            <span> About Me </span>{" "}
-          </div>{" "}
-        </Link>{" "}
+        <NavCardAbout />
         <NavCard
           className="desktop-hide laptop-hide tablet-hide phablet-hide"
           item={{path: "", title: "About Me"}}
