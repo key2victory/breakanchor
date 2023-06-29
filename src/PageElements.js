@@ -18,10 +18,48 @@ import {
   RiEdit2Line,
 } from "react-icons/ri";
 
+const ChipTag = memo(function ChipTag({
+  textColor = "hsla(0,0%,40%,100%)",
+  borderColor = "hsla(0,0%,40%,30%)",
+  bgColor = "hsla(0,0%,0%,6%)",
+  solid = "false",
+  children,
+}) {
+  const chipStyle = solid
+    ? {
+        border: `2px solid ${borderColor}`,
+        background: "hsla(0,0%,0%,0%)",
+        color: textColor,
+      }
+    : {
+        border: "none",
+        background: bgColor,
+        color: textColor,
+      };
+  return (
+    <div
+      className="row nowrap center left"
+      style={{
+        width: "fit-content",
+        flexGrow: 0,
+        flexShrink: 0,
+        gap: ".25rem", //   gap: ".5rem",
+        borderRadius: "2rem",
+        padding: ".2rem .6rem",
+        fontSize: "1rem",
+        ...chipStyle,
+      }}
+    >
+      {children}{" "}
+    </div>
+  );
+});
+
 export const IconTag = memo(function IconTag({
   icon,
-  textColor = "0,0%,40%",
-  bgColor = "0,0%,0%",
+  textColor = "hsla(0,0%,40%,100%)",
+  borderColor = "hsla(0,0%,40%,30%)",
+  bgColor = "hsla(0,0%,0%,6%)",
   solid = "false",
 }) {
   const IconList = {
@@ -41,60 +79,26 @@ export const IconTag = memo(function IconTag({
   const Icon = IconList[icon] !== undefined ? IconList[icon] : RiDeviceLine;
   const label = labelList[icon] !== undefined ? labelList[icon] : icon;
 
-  const chipStyle = solid
-    ? {
-        border: `2px solid hsla(${textColor},30%)`,
-        background: "hsla(0,0%,0%,0%)",
-        color: `hsla(${textColor},100%)`,
-      }
-    : {
-        border: "none",
-        background: `hsla(${bgColor},6%)`,
-        color: `hsla(${textColor},100%)`,
-      };
   return (
-    <div
-      style={{
-        width: "fit-content",
-        flexGrow: 0,
-        flexShrink: 0,
-        display: "flex",
-        flexFlow: "row nowrap",
-        alignItems: "center",
-        justifyContent: "flex-start",
-        gap: ".5rem",
-        borderRadius: "2rem",
-        padding: ".2rem .6rem",
-        // border: `2px solid hsla(${color},50%)`,
-        // //background: "hsl(0,0%,0%,10%)",
-        // color: `hsla(${color},100%)`,
-        fontSize: "1rem",
-        ...chipStyle,
-      }}
+    <ChipTag
+      textColor={textColor}
+      borderColor={borderColor}
+      bgColor={bgColor}
+      solid={solid}
     >
       <Icon />
       <span> {label} </span>{" "}
-    </div>
+    </ChipTag>
   );
 });
 
 export const DeviceSizes = memo(function DeviceSizes({
   devices,
-  textColor = "0,0%,40%",
-  bgColor = "0,0%,0%",
+  textColor = "hsla(0,0%,40%,100%)",
+  borderColor = "hsla(0,0%,40%,30%)",
+  bgColor = "hsla(0,0%,0%,6%)",
   solid = "false",
 }) {
-  const chipStyle = solid
-    ? {
-        border: `2px solid hsla(${textColor},30%)`,
-        background: "hsla(0,0%,0%,0%)",
-        color: `hsla(${textColor},100%)`,
-      }
-    : {
-        border: "none",
-        background: `hsla(${bgColor},6%)`,
-        color: `hsla(${textColor},100%)`,
-      };
   const labelStyle = {
     width: "100%",
     // height: "100%",
@@ -104,23 +108,12 @@ export const DeviceSizes = memo(function DeviceSizes({
     fontSize: ".8rem",
   };
   return (
-    <div
-      style={{
-        width: "fit-content",
-        //height: "auto",
-        flexGrow: 0,
-        flexShrink: 0,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "flex-start",
-        gap: ".25rem",
-        borderRadius: "2rem",
-        padding: ".2rem .6rem",
-        fontSize: "1rem",
-        ...chipStyle,
-      }}
+    <ChipTag
+      textColor={textColor}
+      borderColor={borderColor}
+      bgColor={bgColor}
+      solid={solid}
     >
-      {" "}
       <RiDeviceLine
         style={{
           // width: "18px",
@@ -140,79 +133,9 @@ export const DeviceSizes = memo(function DeviceSizes({
           {item}{" "}
         </span>
       ))}{" "}
-      {/* <MdOutlineComputer
-                                style={{
-                                  width: "30px",
-                                  height: "32px",
-                                  gridColumn: "1 / span 1",
-                                  gridRow: "1 / span 1"
-                                }}
-                              />
-                              <MdOutlineTablet
-                                style={{
-                                  width: "30px",
-                                  height: "32px",
-                                  gridColumn: "2 / span 1",
-                                  gridRow: "1 / span 1"
-                                }}
-                              />
-                              <MdOutlineSmartphone
-                                style={{
-                                  width: "28px",
-                                  height: "32px",
-                                  gridColumn: "3 / span 1",
-                                  gridRow: "1 / span 1"
-                                }}
-                              />*/}{" "}
-    </div>
+    </ChipTag>
   );
 });
-
-/*
-  return (
-    <div
-      style={{
-        display: "flex",
-        flexFlow: "row nowrap",
-        borderRadius: ".5rem",
-        padding: ".5rem",
-        background: "hsl(0,0%,0%,10%)"
-      }}
-    >
-      {icon === "phone" ? (
-        <MdOutlineSmartphone />
-      ) : icon === "tablet" ? (
-        <MdOutlineTablet />
-      ) : icon === "desktop" ? (
-        <MdOutlineComputer />
-      ) : null}
-      <span>{icon}</span>
-    </div>
-  );
-
-
-const IconTag = ({ icon }) => {
-  const IconList = {
-    phone: MdOutlineSmartphone,
-   tablet: MdOutlineTablet,
-   desktop: MdOutlineComputer,
-  };
-  const Icon = IconList[icon];
-
-  return (
-    <div
-      style={{
-        display: "flex",
-        flexFlow: "row nowrap",
-        borderRadius: "1rem",
-        background: "hsl(0,0%,30%)"
-      }}
-    >
-      <Icon />
-      <span>{icon}</span>
-    </div>
-  );
-};*/
 
 export const Note = memo(function Note({
   title,
@@ -263,8 +186,6 @@ export const Caption = memo(function Caption({
         src={`${src}`}
         width="100%"
         style={{
-          // backgroundImage: `url(${content.src})`,
-          // aspectRatio: content.aspectRatio,
           ...imgStyle,
         }}
         alt={alt}
