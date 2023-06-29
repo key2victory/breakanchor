@@ -1,9 +1,10 @@
 import {memo, useState, useEffect, Fragment} from "react";
 
-import {AppHeader} from "./AppNav";
+import {AppHeader, NavPanel} from "./AppNav";
 import HeroAbout from "./HeroAbout";
 import {Logo} from "./Logo";
 import {Header, ButtonLink, Note, Group} from "./PageElements";
+
 import {
   // MdSchool,
   // MdOutlineSchool,
@@ -45,7 +46,50 @@ export default function PageAbout(props) {
         }}
       />{" "}
       <div className="scroll-zone">
-        <HeroAbout />
+        <div
+          className="card col"
+          style={{
+            background: "hsla(0,0%,30%,85%)",
+            color: "hsla(0,0%,100%,80%)",
+            width: "100%",
+            gap: 0,
+          }}
+        >
+          <h5 style={{marginBottom: ".5rem"}}> I 'm a team player</h5>{" "}
+          <p style={{marginBottom: "1rem"}}>
+            Throughout my career, I 've had the pleasure of working on many
+            highly effective teams.I 'm used to leveraging the strengths of each
+            individual to work more efficiently and aid each other 's personal
+            growth.I understand the power of collaboration and I 'm dedicated to
+            the success of the team as a whole.I’ ve spent a lot of time in both
+            startup and enterprise environments.{" "}
+          </p>{" "}
+          <h5 style={{marginBottom: ".5rem"}}>
+            {" "}
+            My skills are also my hobbies{" "}
+          </h5>{" "}
+          <p style={{marginBottom: "1rem"}}>
+            I 'm well-versed in user experience and visual design principles,
+            but have a personal fascination with psychology and reading material
+            on human behavior, social patterns, and research for fun.I am always
+            curious about new technology and always try to stay up - to - date
+            on UX patterns, trends, UI frameworks, and the latest advancements.I
+            've been a speaker at Codestock and Scenic City Summit developer
+            conferences, and I 'm comfortable presenting my ideas to clients.{" "}
+          </p>{" "}
+          <h5 style={{marginBottom: ".5rem"}}>
+            It 's my personal mission to empower others{" "}
+          </h5>{" "}
+          <p style={{marginBottom: "0rem"}}>
+            My degree program at Watkins College of Art taught me how to
+            evaluate my work against the principles of design to make iterative
+            improvements, and how to assist other designers in reaching the full
+            potential of their work through collaborative feedback.I use these
+            techniques often when mentoring for the Knoxville Entrepreneur
+            Center and new designers in my spare time.I am always looking for
+            ways to improve myself and support the success of others.{" "}
+          </p>{" "}
+        </div>{" "}
         <CardSection title="Education">
           <Group
             className="resume-timeline" //desktop-col tablet-col mobile-col"
