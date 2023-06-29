@@ -1,5 +1,5 @@
-@media screen and (min-width: 984px) and (max-width: 1023px) {
-  .tablet-hide {
+@media screen and (min-width: 700px) and (max-width: 983px) {
+  .phablet-hide {
     display: none;
   }
   :root {
@@ -8,7 +8,7 @@
   }
   .App {
     display: grid;
-    grid-template-columns: [side] 300px [content] 1fr;
+    grid-template-columns: [side] 280px [content] 1fr;
     grid-template-rows: [header] 64px [content] 1fr;
   }
   .main-content {
@@ -20,7 +20,7 @@
   .scroll-zone {
     grid-column: content / span 2;
     grid-row: content / span 1;
-    padding: 2rem 2rem 5rem 2rem;
+    padding: 1.5rem 1.5rem 3rem 1.5rem;
   }
   .hero {
     position: static;
@@ -49,7 +49,7 @@
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: 0;
-  }*/
+  }
   /*
   .hero-margins {
     margin: 0 auto auto auto;
@@ -64,17 +64,26 @@
     height: auto;
     min-height: 500px;
   }*/
-  .tablet-min-height-500 {
+  .phablet-min-height-500 {
     height: 500px;
     min-height: 500px;
   }
-  .tablet-col {
+  .phablet-col {
     display: flex;
     flex-direction: column;
   }
-  .tablet-row {
+  .phablet-row {
     display: flex;
     flex-direction: row;
+  }
+  .desktop-about {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 600px;
+    padding: 0;
   }
   h1 {
     font-size: 3rem;

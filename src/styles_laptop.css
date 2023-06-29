@@ -1,5 +1,5 @@
-@media screen and (min-width: 984px) and (max-width: 1023px) {
-  .tablet-hide {
+@media screen and (min-width: 1024px) and (max-width: 1397px) {
+  .laptop-hide {
     display: none;
   }
   :root {
@@ -15,43 +15,53 @@
     grid-column: content / span 1;
     grid-row: content / span 1;
     grid-template-rows: [header] 64px [content] minmax(0, 1fr);
-    grid-template-columns: [content] minmax(auto, 1fr);
+    grid-template-columns: [content] minmax(auto, 1fr) [hero] 40%;
   }
   .scroll-zone {
     grid-column: content / span 2;
     grid-row: content / span 1;
-    padding: 2rem 2rem 5rem 2rem;
+    padding: 2rem 40% 3rem 2rem;
   }
+  .hero {
+    position: absolute;
+    justify-content: center;
+    align-items: flex-start;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: auto;
+    /*min-width: calc(284px * 0.5);
+    min-height: calc(578px * 0.5);
+    min-width: 284px;*/
+    padding: 2rem;
+  }
+  /*
   .hero {
     position: static;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
     flex-grow: 0;
     flex-shrink: 0;
     flex-basis: 0;
-    width: calc(100vw - 280px - 2rem);
-    min-height: calc(100vmin - 280px - 2rem);
-    max-height: calc(100vh - 100px);
-    /*aspect-ratio: 1 / 1;*/
-    padding: 1rem;
+    width: 100%;
+    padding: 0rem 2rem;
     overflow: hidden;
     z-index: 1;
-  }
-  /*
+  }*/
   .hero .loto {
-    width: calc(284px * 0.6);
-    height: calc(578px * 0.6);
-
-    max-width: calc(100vw - 280px - 4rem);
-    max-height: calc(100vw - 4rem);
+    width: calc(284px * 0.9);
+    height: calc(578px * 0.9);
+    min-width: calc(284px * 0.6);
+    min-height: calc(578px * 0.6);
+    max-width: 100%;
+    max-height: 100%;
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: 0;
-  }*/
-  /*
-  .hero-margins {
+  }
+  /*.hero-margins {
     margin: 0 auto auto auto;
   }
 
@@ -62,17 +72,16 @@
 
   .hero.bottom {
     height: auto;
-    min-height: 500px;
-  }*/
-  .tablet-min-height-500 {
+    /*   min-height: 500px;*/
+  .laptop-min-height-500 {
     height: 500px;
     min-height: 500px;
   }
-  .tablet-col {
+  .laptop-col {
     display: flex;
     flex-direction: column;
   }
-  .tablet-row {
+  .laptop-row {
     display: flex;
     flex-direction: row;
   }

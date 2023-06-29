@@ -1,27 +1,46 @@
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1398px) {
+  .desktop-hide {
+    display: none;
+  }
+  .App {
+    display: grid;
+    grid-template-columns: [side] 320px [content] 1fr;
+    grid-template-rows: [header] 64px [content] 1fr;
+  }
   .main-content {
-    grid-template-columns: [hero] 40% [content] minmax(auto, 1fr);
+    grid-column: content / span 1;
+    grid-row: content / span 1;
+    grid-template-rows: [header] 64px [content] minmax(0, 1fr);
+    grid-template-columns: [content] minmax(auto, 1fr) [hero] 40%;
   }
   .hero,
   .hero-desktop {
     position: absolute;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
     top: 0;
-    left: 0;
-    width: 40vw;
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-end;
-    padding: 2rem 1rem 2rem 2rem;
-    grid-column: hero / span 1;
-    grid-row: content / span 1;
+    right: 0;
+    width: 40%;
+    height: 100%;
+    padding: 3rem;
   }
+  .hero .loto {
+    width: calc(284px * 1.2);
+    height: calc(578px * 1.2);
+    min-width: calc(284px * 0.6);
+    min-height: calc(578px * 0.6);
+    min-width: 100%;
+    max-height: 100%;
+  }
+  /*
   .hero-margins {
     margin: 0 0 auto auto;
-  }
+  }*/
   .scroll-zone {
-    padding: 2rem 10vw 2rem 1rem;
+    grid-column: content / span 2;
+    grid-row: content / span 1;
+    padding: 2rem 40% 5rem 3rem;
   }
   .desktop-col {
     display: flex;

@@ -4,39 +4,74 @@
     /*clamp(16px, 1.5vw, 48px);*/
   }
   .mobile-hide {
-    display: none;
+    visibility: hidden;
+  }
+  .app-nav {
+    transform: translateX(100%);
+    transition-duration: 0.5s;
+  }
+  .app-nav.show {
+    transform: translateX(0);
+  }
+  .App {
+    display: grid;
+    grid-template-columns: [content] 1fr;
+    grid-template-rows: [header] 64px [content] 1fr;
   }
   .hero {
     position: static;
     display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-start;
-    align-items: flex-end;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
     flex-grow: 0;
     flex-shrink: 0;
     flex-basis: 0;
-    align-items: center;
-    width: 100%;
+    width: calc(100vw - 2rem);
+    min-height: calc(100vw - 2rem);
+    max-height: calc(100vh - 100px);
+    /*aspect-ratio: 1 / 1;*/
     padding: 1rem;
     overflow: hidden;
     z-index: 1;
   }
-  .scroll-zone {
-    padding: 2rem 10vw 2rem 1rem;
+  .hero .loto {
+    width: calc(284px * 0.6);
+    height: calc(578px * 0.6);
+    /* min-width: calc(284px * 0.4);
+    min-height: calc(578px * 0.4);*/
+    max-width: calc(100vw - 4rem);
+    max-height: calc(100vw - 4rem);
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
   }
+  /*
+  .hero-margins {
+    margin: 0 auto auto auto;
+  }
+
   .hero.top {
     height: auto;
     min-height: auto;
   }
+
   .hero.bottom {
+    height: 500px;
     min-height: 500px;
-  }
+  }*/
   .mobile-min-height-300 {
     height: 300px;
     min-height: 300px;
   }
   .main-content {
+    grid-template-rows: [header] 64px [content] minmax(0, 1fr);
     grid-template-columns: [content] minmax(auto, 1fr);
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
   }
   .scroll-zone {
     gap: 1rem;
@@ -62,5 +97,35 @@
     grid-template-columns: [date] 82px [details] 1fr;
     row-gap: 0;
     column-gap: 0;
+  }
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 400;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+  }
+  h2 {
+    font-size: 2rem;
+    line-height: 2rem;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+  }
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+  }
+  h4 {
+    font-size: 1.3rem;
+    margin: 0;
+    padding: 0;
+  }
+  h5 {
+    font-size: 1.1rem;
+    margin: 0;
+    padding: 0;
   }
 }
