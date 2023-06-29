@@ -46,6 +46,7 @@ export default function PageAbout(props) {
         }}
       />{" "}
       <div className="scroll-zone">
+        <HeroAbout />
         <div
           className="card col"
           style={{

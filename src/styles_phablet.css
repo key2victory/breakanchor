@@ -1,6 +1,11 @@
 @media screen and (min-width: 700px) and (max-width: 983px) {
   .phablet-hide {
-    display: none;
+    position: absolute;
+    visibility: hidden;
+    height: 0;
+    width: 0;
+    bottom: 0;
+    right: 0;
   }
   :root {
     font-size: 16px;
@@ -14,8 +19,8 @@
   .main-content {
     grid-column: content / span 1;
     grid-row: content / span 1;
-    grid-template-rows: [header] 64px [content] minmax(0, 1fr);
-    grid-template-columns: [content] minmax(auto, 1fr);
+    grid-template-rows: [content] 1fr;
+    grid-template-columns: [content] 1fr;
   }
   .scroll-zone {
     grid-column: content / span 2;

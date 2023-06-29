@@ -4,10 +4,15 @@
     /*clamp(16px, 1.5vw, 48px);*/
   }
   .mobile-hide {
+    position: absolute;
     visibility: hidden;
+    height: 0;
+    width: 0;
+    bottom: 0;
+    right: 0;
   }
   .app-nav {
-    transform: translateX(100%);
+    transform: translateX(-100%);
     transition-duration: 0.5s;
   }
   .app-nav.show {
@@ -65,9 +70,10 @@
     min-height: 300px;
   }
   .main-content {
-    grid-template-rows: [header] 64px [content] minmax(0, 1fr);
-    grid-template-columns: [content] minmax(auto, 1fr);
-    position: absolute;
+    grid-column: content / span 1;
+    grid-row: content / span 1;
+    grid-template-rows: [content] 1fr;
+    grid-template-columns: [content] 1fr;
     top: 0;
     left: 0;
     bottom: 0;
