@@ -45,7 +45,7 @@ export const PageCalendar = memo(function PageCalendar({
             url="https://tczkr5.csb.app/"
           />
         </Header>{" "}
-        <Group className="desktop-row tablet-row mobile-col">
+        <Group className="desktop-row laptop-col tablet-row phablet-col mobile-col">
           <Note
             title="Problem"
             description="When I wake up, I need to be aware of the day's agenda, so I can be in the right place at the right time. I also need to see the hourly weather forecast in relation to my scheduled appointments to determine what to wear, and I want to plan breaks to walk outside with my dog when the weather is nice enough between appointments. I may want to postpone if another day this week is expected to be nicer."

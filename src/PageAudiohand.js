@@ -1,6 +1,17 @@
-import {memo} from "react";
-import {Header, ButtonLink, Note, Group} from "./PageElements";
+import {memo, useState, useEffect, Fragment} from "react";
+import {
+  Header,
+  ButtonLink,
+  Note,
+  Caption,
+  Column,
+  Row,
+  Group,
+} from "./PageElements";
+//import CardCol from "./CardCol";
+//import CardRow from "./CardRow";
 
+import {AppHeader} from "./AppNav";
 import {HeroAudiohand} from "./HeroAudiohand";
 import "./styles.css";
 
@@ -41,7 +52,7 @@ export const PageAudiohand = memo(function Page_Audiohand({
             url="https://apps.apple.com/us/app/audiohand/id973166513?platform=iphone"
           />
         </Header>
-        <Group className="desktop-row tablet-row mobile-col">
+        <Group className="desktop-row laptop-col tablet-row phablet-col mobile-col">
           <Note
             title="Problem"
             description="Musicians and other audio artists don't have a convenient way to record their creative ideas quickly and easily on the spot. Bands wanting to pitch their ideas to record studios have a hard time just getting started since they need a studio to make quality demos."

@@ -11,20 +11,18 @@ export const HeroLockOut = memo(function HeroLockOut() {
 
   const Device = () => (
     <svg
+      className="loto shadow"
       viewBox="0 0 284 578"
       preserveAspectRatio="xMidYMin meet"
       style={{
         boxSizing: "border-box",
         position: "relative",
-        zIndex: 5,
+        zIndex: 1,
 
-        width: "auto",
-        height: "auto",
-
-        minWidth: "180px",
-        maxWidth: "100%",
-        minHeight: "100%",
-        maxHeight: "100%",
+        // minWidth: "284px",
+        // maxWidth: "100%",
+        // minHeight: "100%",
+        // maxHeight: "578px",
         overflow: "hidden",
       }}
     >

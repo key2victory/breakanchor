@@ -1,7 +1,14 @@
 import {memo, useState, useEffect, Fragment} from "react";
-import {Header, ButtonLink, Note, Group} from "./PageElements";
+import {
+  Header,
+  ButtonLink,
+  Note,
+  Caption,
+  Column,
+  Row,
+  Group,
+} from "./PageElements";
 import {HeroLockOut} from "./HeroLockOut";
-import "./styles.css";
 
 export const PageLockOut = memo(function PageLockOut({
   title,
@@ -37,7 +44,7 @@ export const PageLockOut = memo(function PageLockOut({
           subtitle="Electrical safety tracking"
           color="hsl(0,0%,0%)"
         />
-        <Group className="desktop-row tablet-row mobile-col">
+        <Group className="desktop-row laptop-col tablet-row phablet-col mobile-col">
           <Note
             title="Problem"
             description="Performing maintenance and repairs on electrical systems is dangerous work. To ensure safety, an isolation permit must be requested, and an authorized technician must go out on site, manually shut off each system circuit, and place a physical ID tagged lock on each one. After the work has been performed, a de-isolation permit is requested for a technician to unlock the breaker box and turn the circuits back on. Each permit request may contain a dozen or more different equipment, lock, and tag IDs to correctly associate with one another."
@@ -50,19 +57,19 @@ export const PageLockOut = memo(function PageLockOut({
             //color="white"
           />
         </Group>{" "}
-        <Group
-          className="shadow"
+        <div
+          className="box-shadow grid"
           style={{
-            // display: "flex",
-            // flexFlow: "column nowrap",
-            // alignItems: "stretch",
-            // justifyContent: "stretch",
+            width: "100%",
+            minWidth: 0,
+            flexGrow: 1,
+            flexShrink: 1,
+            flexBasis: 0,
             background: "hsla(0,0%,100%,80%)",
-            padding: "1rem",
-            display: "grid",
+            padding: ".8rem .8rem .2rem .8rem",
             gridTemplateColumns: "1fr",
             gridTemplateRows: "1fr auto",
-            gridRowGap: ".5rem",
+            gridRowGap: ".2rem",
           }}
         >
           <img
@@ -78,13 +85,21 @@ export const PageLockOut = memo(function PageLockOut({
               }
             }
           />{" "}
-          <span>
+          <span
+            className="row center right"
+            style={{
+              gap: ".5rem",
+              fontSize: ".9rem",
+              margin: 0,
+              padding: 0,
+            }}
+          >
             p .31,{" "}
             <a href="https://www.bechtel.com/getmedia/0f83daae-baa4-4124-b84b-bdea6c861bfc/2018-bechtel-report-final-ns.pdf">
               Bechtel 2018 Annual Report↗{" "}
             </a>{" "}
           </span>{" "}
-        </Group>{" "}
+        </div>{" "}
         <Group>
           <img className="image shadow" src="./img/loto-01.png" alt="" />
           <img className="image shadow" src="./img/loto-02.png" alt="" />
@@ -147,8 +162,8 @@ export const PageLockOut = memo(function PageLockOut({
         </Group>{" "}
         <Group>
           <img className="image shadow" src="./img/loto-13.png" alt="" />
-        </Group>{" "}
-        <div className="hero bottom">
+        </Group>
+        <div className="hero loto">
           <HeroLockOut />
         </div>{" "}
       </div>{" "}
