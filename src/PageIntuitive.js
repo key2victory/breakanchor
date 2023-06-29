@@ -25,8 +25,8 @@ export const PageIntuitive = memo(function PageIntuitive({
   const cardHeader = {
     // background: "hsl(240, 18%, 58%)",
     // background: "hsl(240, 80%, 95%)",
-    background: "hsla(240, 80%, 90%, 10%)",
-    color: "hsl(240,30%,50%)",
+    background: "hsla(240, 50%, 60%, 100%)",
+    color: "hsl(240,30%,80%)",
     padding: "1rem 1rem",
     borderRadius: ".5rem",
   };
@@ -34,14 +34,16 @@ export const PageIntuitive = memo(function PageIntuitive({
     // borderLeft: "10px solid hsl(240,50%,60%)",
     borderRadius: "1rem",
     padding: "1rem",
-    background: "hsla(240,20%,100%,100%)",
+    background: "hsla(238,40%,40%,100%)",
   };
-  //const color1 = "hsl(0,0%,80%)";
-  //const color2 = "hsl(0,0%,90%)";
+  //const color1 = "hsl(0,0%,100%)";
+  //const color2 = "hsl(0,0%,95%)";
   const color1 = "hsl(245, 60%, 62%)"; //"hsl(240, 80%, 92%)";
-  const color2 = "transparent"; //"hsl(235, 60%, 64%)"; //"hsl(240, 80%, 95%)";
-  const color3 = "hsl(235, 60%, 64%)";
-  const color4 = "hsl(235, 40%, 62%)";
+  const color2 = "hsl(235, 60%, 64%)"; //"hsl(240, 80%, 95%)";
+  // const color3 = "hsl(235, 60%, 64%)";
+  // const color4 = "hsl(235, 40%, 62%)";
+  const color3 = "hsl(235, 0%, 30%)";
+  const color4 = "hsl(235, 0%, 100%)";
 
   return (
     <div className="main-content">
@@ -50,19 +52,7 @@ export const PageIntuitive = memo(function PageIntuitive({
         style={{
           background: `linear-gradient(45deg, ${color1} 25%, ${color2} 0, ${color2} 50%, ${color1} 0, ${color1} 75%, ${color2} 0) center / 30px 30px`,
         }}
-      />{" "}
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          right: 0,
-          bottom: 0,
-          left: 0,
-
-          zIndex: "-11",
-          background: `linear-gradient(${color3} 50%,${color4} 80%)`,
-        }}
-      />{" "}
+      />
       <div className="scroll-zone">
         {" "}
         {/* <div
@@ -146,7 +136,12 @@ export const PageIntuitive = memo(function PageIntuitive({
             <h2> 3. Semiotics </h2>{" "}
           </Group>{" "}
           <Group>
-            <img className="image" src="./img/intuitive-12.png" alt="" />
+            <img
+              className="image"
+              src="./img/intuitive-12.png"
+              style={{mixBlendMode: "overlay"}}
+              alt=""
+            />
           </Group>{" "}
         </Group>{" "}
         <Group className="card col" style={{...cardSection}}>
@@ -159,7 +154,7 @@ export const PageIntuitive = memo(function PageIntuitive({
           </Group>
           <Group
             className="desktop-row tablet-row mobile-col"
-            style={{padding: "0 1rem 1rem 1rem"}}
+            style={{padding: "0 0rem 1rem 0rem"}}
           >
             <span
               style={{
@@ -179,8 +174,8 @@ export const PageIntuitive = memo(function PageIntuitive({
                     flexGrow: 1,
                     flexShrink: 1,
                     flexBasis: 0,
-                    background: "hsl(240, 80%, 92%)",
-                    //  "linear-gradient(90deg, hsl(280,30%,88%),hsl(255,30%,88%),hsl(230,30%,88%))" //"#DBD6E9"
+                    background: "hsla(240, 50%, 70%, 100%)",
+                    color: "hsl(240,30%,0%)",
                   }}
                 >
                   {item}{" "}
@@ -205,8 +200,8 @@ export const PageIntuitive = memo(function PageIntuitive({
                     flexGrow: 1,
                     flexShrink: 1,
                     flexBasis: 0,
-                    background: "hsl(240, 80%, 92%)",
-                    // "linear-gradient(90deg, hsl(280,30%,88%),hsl(255,30%,88%),hsl(230,30%,88%))" //"#DBD6E9"
+                    background: "hsla(240, 50%, 70%, 100%)",
+                    color: "hsl(240,30%,0%)",
                   }}
                 >
                   {item}{" "}
@@ -225,14 +220,91 @@ const comments = [
   "The graphics were really helpful in understanding the concepts and I could tell you put a lot of effort into the flow of the presentation! I second the comment about how interesting it was to link the research with UX design.",
   "I liked the initial questions and detailed explanation of how the process works.",
   "The science was super cool!",
+  //"The charts relating and comparing implicit vs explicit memory and recollection",
   "Really enjoyed the pre survey and the a/b test surprise and results",
   "Great examples and live data",
   "The surveys were a great interest grabber and were still relevant to the actual talk!",
   "Semiotic section. I felt like it was really well explained with practical examples",
+
   "I enjoyed your talk and examples, very interesting as a whole ",
   "You did awesome. It was a very interesting and engaging talk",
   "I really liked the examples of how to apply what you were discussing and wished there were a few more in there especially for the stuff towards the end of the presentation. ",
   "You did an excellent job!",
   "Great presentation! Your nerves disappeared less than 1 minute after mentioning it.",
+  "The presentation was great. I actually came in with a UX issue I wasn’t sure how to solve, and settled on the answer during the presentation, so thanks.",
+];
+
+const memorableComments = [
+  "I liked the initial questions and detailed explanation of how the process works. ",
+  "The functions of the brain",
+  "The charts relating and comparing implicit vs explicit memory and recollection",
+  "interaction - graphs ",
+  "The quiz answer.",
+  "The quiz",
+  "Really enjoyed the pre survey and the a/b test surprise and results",
+  "The A/B survey results",
+  "The quiz and reviewing the answers ",
+  "The surveys",
+  "Great examples and live data",
+  "The surveys were a great interest grabber and were still relevant to the actual talk!",
+  "Interactive quiz and results",
+  "Definitely the interactive portion",
+  "The AB test reveal",
+  "The different examples of priming",
+  "Semiotics",
+  "Discussion of semitotics",
+  "Semiosis",
+  "Semiotic section. I felt like it was really well explained with practical examples",
+  "Interpreting signs",
+  "The example of talking about Sushi",
+  "All of it",
+  "The importance of priming",
+  "I did learn. I liked that the results didn’t match what I had expected so it really got my attention.",
+  "Brain functions play a big role in UX. ",
+  "Everyone interprets everything differently ",
+  "That intuitive UI is difficult. What you commonly associate with an image might be interpreted completely different by someone else. That you husband has a mohawk.",
+  "Difference in context changes interpretation so it's important to consider where a user is coming from when choosing words to use",
+  "Yes, I have a better understanding of mental models, priming, and semiotics",
+  "UX is complicated. ",
+  "The science was super cool!",
+  "Design takes a lot of careful thought and research to Jedi mind trick your users into what you want",
+  "My own intuition doesn’t automatically apply to users. The context comes into play.",
+  "The discussion about context and different users and there’s unique shared understanding",
+  "Intuitive is based on the audience you are trying to reach not just your idea of it.",
+  "Being more mindful of audience in ui",
+  "The recipient matters ",
+  "What is intuitive depends on the person using it",
+  "I have a much better understanding of what semiotics is,  though I don't know if I'm any better at explaining it!",
+  "I enjoyed the demonstration of the importance of context using sushi the cat",
+];
+
+const keyTakeAwayComments = [
+  "The importance of priming",
+  "I did learn. I liked that the results didn’t match what I had expected so it really got my attention.",
+  "Brain functions play a big role in UX. ",
+  "Everyone interprets everything differently ",
+  "That intuitive UI is difficult. What you commonly associate with an image might be interpreted completely different by someone else. That you husband has a mohawk.",
+  "Difference in context changes interpretation so it's important to consider where a user is coming from when choosing words to use",
+  "Yes, I have a better understanding of mental models, priming, and semiotics",
+  "UX is complicated. ",
+  "The science was super cool!",
+  "Design takes a lot of careful thought and research to Jedi mind trick your users into what you want",
+  "My own intuition doesn’t automatically apply to users. The context comes into play.",
+  "The discussion about context and different users and there’s unique shared understanding",
+  "Intuitive is based on the audience you are trying to reach not just your idea of it.",
+  "Being more mindful of audience in ui",
+  "The recipient matters ",
+  "What is intuitive depends on the person using it",
+  "I have a much better understanding of what semiotics is,  though I don't know if I'm any better at explaining it!",
+  "I enjoyed the demonstration of the importance of context using sushi the cat",
+];
+
+const additionalComments = [
+  "I enjoyed your talk and examples, very interesting as a whole ",
+  "You did awesome. It was a very interesting and engaging talk",
+  "Great presentation! The graphics were really helpful in understanding the concepts and I could tell you put a lot of effort into the flow of the presentation! I second the comment about how interesting it was to link the research with UX design.",
+  "I really liked the examples of how to apply what you were discussing and wished there were a few more in there especially for the stuff towards the end of the presentation. ",
+  "You did an excellent job!",
+  "Great presentation! Your nerves disappeared less than 1 minute after mentioning it. ",
   "The presentation was great. I actually came in with a UX issue I wasn’t sure how to solve, and settled on the answer during the presentation, so thanks.",
 ];
