@@ -6,12 +6,6 @@ import {Logo} from "./Logo";
 import {Header, ButtonLink, Note, Group} from "./PageElements";
 
 import {
-  // MdSchool,
-  // MdOutlineSchool,
-  // MdWork,
-  // MdWorkOutline,
-  // MdEmojiEvents,
-  // MdOutlineEmojiEvents,
   MdCircle,
 } from "react-icons/md";
 
@@ -473,6 +467,14 @@ const resume = {
       dates: [2019, present],
       logo: "cadre5",
       details: [
+        {
+          items: [
+            "Drove the research and design strategy for RESolution: Researcher Hub and Datasets module for Sandia National Lab",
+            "Designed and led the development of RESolution: Projects module at Los Alamos National Lab",
+            "Successfully implemented RESolution: Proposals pilot at Oak Ridge National Lab",
+            "Standardized and improved the design system for RESolution legacy modules",
+          ],
+        },
         {
           label: "Projects",
           items: [
