@@ -1,9 +1,9 @@
-import {memo, useState, useEffect, Fragment} from "react";
+import { memo, useState, useEffect, Fragment } from "react";
 
-import {AppHeader, NavPanel} from "./AppNav";
+import { AppHeader, NavPanel } from "./AppNav";
 import HeroAbout from "./HeroAbout";
-import {Logo} from "./Logo";
-import {Header, ButtonLink, Note, Group} from "./PageElements";
+import { Logo } from "./Logo";
+import { Header, ButtonLink, Note, Group } from "./PageElements";
 
 import {
   MdCircle,
@@ -50,38 +50,22 @@ export default function PageAbout(props) {
             gap: 0,
           }}
         >
-          <h5 style={{marginBottom: ".5rem"}}> I 'm a team player</h5>{" "}
-          <p style={{marginBottom: "1rem"}}>
-            Throughout my career, I 've had the pleasure of working on many
-            highly effective teams.I 'm used to leveraging the strengths of each
-            individual to work more efficiently and aid each other 's personal
-            growth.I understand the power of collaboration and I 'm dedicated to
-            the success of the team as a whole.I’ ve spent a lot of time in both
-            startup and enterprise environments.{" "}
-          </p>{" "}
-          <h5 style={{marginBottom: ".5rem"}}>
-            {" "}
-            My skills are also my hobbies{" "}
-          </h5>{" "}
-          <p style={{marginBottom: "1rem"}}>
-            I 'm well-versed in user experience and visual design principles,
-            but have a personal fascination with psychology and reading material
-            on human behavior, social patterns, and research for fun.I am always
-            curious about new technology and always try to stay up - to - date
-            on UX patterns, trends, UI frameworks, and the latest advancements.I
-            've been a speaker at Codestock and Scenic City Summit developer
-            conferences, and I 'm comfortable presenting my ideas to clients.{" "}
-          </p>{" "}
-          <h5 style={{marginBottom: ".5rem"}}>
-            It 's my personal mission to empower others{" "}
-          </h5>{" "}
-          <p style={{marginBottom: "0rem"}}>
-            My degree program at Watkins College of Art taught me how to
-            evaluate my work against the principles of design to make iterative
-            improvements, and how to assist other designers in reaching the full
-            potential of their work through collaborative feedback.I use these
-            techniques often when mentoring for the Knoxville Entrepreneur
-            Center and new designers in my spare time.I am always looking for
+          <h5 style={{ marginBottom: ".5rem" }}> I'm a team player</h5>
+          <p style={{ marginBottom: "1rem" }}>
+            Throughout my career, I've had the pleasure of working on many highly effective teams. I'm used to leveraging the strengths of each individual to work more efficiently and aid each other's personal growth. I understand the power of collaboration and I'm dedicated to the success of the team as a whole. I've spent a lot of time in both startup and enterprise environments.
+          </p>
+          <h5 style={{ marginBottom: ".5rem" }}>
+            My skills are also my hobbies
+          </h5>
+          <p style={{ marginBottom: "1rem" }}>
+            I'm well-versed in user experience and visual design principles, but have a personal fascination with psychology and reading material on human behavior, social patterns, and research for fun. I am always curious about new technology and always try to stay up-to-date on UX patterns, trends, UI frameworks, and the latest advancements. I've been a speaker at Codestock and Scenic City Summit developer conferences, and I'm comfortable presenting my ideas to clients.
+          </p>
+          <h5 style={{ marginBottom: ".5rem" }}>
+            It's my personal mission to empower others
+          </h5>
+          <p style={{ marginBottom: "0rem" }}>
+            My degree program at Watkins College of Art taught me how to evaluate my work against the principles of design to make iterative improvements, and how to assist other designers in reaching the full potential of their work through collaborative feedback.I use these techniques often when mentoring for the Knoxville Entrepreneur
+            Center and new designers in my spare time. I am always looking for
             ways to improve myself and support the success of others.{" "}
           </p>{" "}
         </div>{" "}
@@ -118,7 +102,7 @@ export default function PageAbout(props) {
   );
 }
 
-function CardSection({title, children, style}) {
+function CardSection({ title, children, style }) {
   return (
     <div
       className="card"
@@ -133,12 +117,12 @@ function CardSection({title, children, style}) {
         ...style,
       }}
     >
-      <h3 style={{color: "hsl(0,0%,100%)"}}> {title} </h3> {children}{" "}
+      <h3 style={{ color: "hsl(0,0%,100%)" }}> {title} </h3> {children}{" "}
     </div>
   );
 }
 
-const CardDates = ({content}) => (
+const CardDates = ({ content }) => (
   <div
     style={{
       gridColumn: "1 / span 1",
@@ -195,7 +179,7 @@ const CardDates = ({content}) => (
         </Fragment>
       ) : (
         <span
-          style={{fontSize: "1.3rem", width: "min-content", height: "auto"}}
+          style={{ fontSize: "1.3rem", width: "min-content", height: "auto" }}
         >
           {content.dates.join(", ")}{" "}
         </span>
@@ -216,12 +200,12 @@ const CardDates = ({content}) => (
         // gap: "0"
       }}
     >
-      <MdCircle style={{transform: "translateX(1px)"}} />{" "}
+      <MdCircle style={{ transform: "translateX(1px)" }} />{" "}
     </span>{" "}
   </div>
 );
 
-const CardHeader = ({content}) => (
+const CardHeader = ({ content }) => (
   <span
     style={{
       display: "flex",
@@ -234,7 +218,7 @@ const CardHeader = ({content}) => (
   </span>
 );
 
-const TimelineBubble = ({content, children, style}) => {
+const TimelineBubble = ({ content, children, style }) => {
   const bubbleStyle = [
     {
       background: "hsl(0,0%,100%)",
@@ -348,15 +332,15 @@ const TimelineBubble = ({content, children, style}) => {
   }
 };
 
-const CardSummary = ({content, style}) => (
+const CardSummary = ({ content, style }) => (
   <Fragment>
     <CardDates content={content} />
     <TimelineBubble content={content} />{" "}
   </Fragment>
 );
 
-const CardDetails = ({content}) => {
-  const ProjectDetails = ({content, style}) => (
+const CardDetails = ({ content }) => {
+  const ProjectDetails = ({ content, style }) => (
     <span
       style={{
         ...style,
@@ -412,33 +396,33 @@ const CardDetails = ({content}) => {
         {" "}
         {content.details
           ? content.details.map((v_detail, i_detail) =>
-              v_detail.label && v_detail.label === "Projects" ? (
-                <ProjectDetails
-                  key={`content-detail-${i_detail}`}
-                  content={v_detail}
-                  style={{
-                    fontSize: ".9rem",
-                    display: "flex",
-                    flexFlow: "row wrap",
-                    justifyContent: "flex-start",
-                    alignItems: "stretch",
-                  }}
-                />
-              ) : (
-                <ProjectDetails
-                  key={`content-detail-${i_detail}`}
-                  content={v_detail}
-                  style={{
-                    display: "flex",
-                    flexFlow: "column nowrap",
-                    gap: ".25rem",
-                    padding: 0,
-                    margin: 0,
-                    fontSize: ".9rem",
-                  }}
-                />
-              )
+            v_detail.label && v_detail.label === "Projects" ? (
+              <ProjectDetails
+                key={`content-detail-${i_detail}`}
+                content={v_detail}
+                style={{
+                  fontSize: ".9rem",
+                  display: "flex",
+                  flexFlow: "row wrap",
+                  justifyContent: "flex-start",
+                  alignItems: "stretch",
+                }}
+              />
+            ) : (
+              <ProjectDetails
+                key={`content-detail-${i_detail}`}
+                content={v_detail}
+                style={{
+                  display: "flex",
+                  flexFlow: "column nowrap",
+                  gap: ".25rem",
+                  padding: 0,
+                  margin: 0,
+                  fontSize: ".9rem",
+                }}
+              />
             )
+          )
           : null}{" "}
       </TimelineBubble>{" "}
     </Fragment>
@@ -549,7 +533,7 @@ const resume = {
       dates: [2014, 2016],
       logo: "audiohand",
       details: [
-        {items: ["UX conceptual design", "UI design for mobile software"]},
+        { items: ["UX conceptual design", "UI design for mobile software"] },
       ],
     },
     {
