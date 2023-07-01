@@ -1,24 +1,13 @@
-import { Link } from "react-router-dom";
-import { memo } from "react";
-import { pages } from "./Pages";
-import { samplePages } from "./PageSamples";
-import { CgMenu, CgClose } from "react-icons/cg";
-import { MdFilterList } from "react-icons/md";
-import { IconTag, DeviceSizes } from "./PageElements";
-import {
-  RiDeviceLine,
-  RiSlideshow3Line,
-  RiReactjsFill,
-  RiLayout5Line,
-  RiLayoutTopLine,
-  RiEdit2Line,
-  RiCalendarTodoFill,
-  RiStackFill,
-  RiStackshareLine
-} from "react-icons/ri";
+import {Link} from "react-router-dom";
+import {memo} from "react";
+import {pages} from "./Pages";
+import {samplePages} from "./PageSamples";
+import {CgMenu, CgClose} from "react-icons/cg";
+import {MdFilterList} from "react-icons/md";
+import {IconTag, DeviceSizes} from "./PageElements";
 import "./styles.css";
 
-export const AppHeader = memo(function AppHeader({ onMenuClick }) {
+export const AppHeader = memo(function AppHeader({onMenuClick}) {
   return (
     <div className="header row between">
       <h4
@@ -29,41 +18,41 @@ export const AppHeader = memo(function AppHeader({ onMenuClick }) {
           gap: "1rem",
           padding: ".5rem .5rem",
           marginRight: ".5rem",
-          borderRadius: "5rem"
+          borderRadius: "5rem",
         }}
         onClick={() => {
           onMenuClick();
         }}
       >
         <CgMenu />
-      </h4>
+      </h4>{" "}
       <h3>
-        break anchor
+        break anchor{" "}
         <span
           className="" //"mobile-hide"
         >
           {" "}
-          design
-        </span>
-      </h3>
+          design{" "}
+        </span>{" "}
+      </h3>{" "}
       <span
         style={{
           padding: "1rem",
-          marginRight: ".5rem"
+          marginRight: ".5rem",
         }}
-      ></span>
+      ></span>{" "}
     </div>
   );
 });
 
-const NavButton = memo(function NavCard({ item, style }) {
+const NavButton = memo(function NavCard({item, style}) {
   return (
     <Link
       to={`/${item.path}`}
-      style={{ ...style }}
+      style={{...style}}
       className="button blue row nowrap center box-shadow-shallow"
     >
-      {item.title}
+      {item.title}{" "}
     </Link>
   );
 });
@@ -71,7 +60,7 @@ const NavButton = memo(function NavCard({ item, style }) {
 const NavCardAbout = memo(function NavCardAbout({
   style,
   className,
-  size = "large"
+  size = "large",
 }) {
   const styleOption = {
     small: {
@@ -79,15 +68,15 @@ const NavCardAbout = memo(function NavCardAbout({
       textDecoration: "none",
       fontSize: "1.25rem",
       gap: "1rem",
-      padding: "1rem"
+      padding: "1rem",
     },
     large: {
       color: "hsl(0,0%,70%)",
       textDecoration: "none",
       fontSize: "1.25rem",
       gap: "1rem",
-      padding: "1rem 2rem 1rem 1rem"
-    }
+      padding: "1rem 2rem 1rem 1rem",
+    },
   };
   return (
     <Link
@@ -108,78 +97,92 @@ const NavCardAbout = memo(function NavCardAbout({
         style={{
           gap: ".25rem",
           width: size === "small" ? "auto" : "100%",
-          margin: size === "small" ? "0" : "-1rem 0 0 0"
+          margin: size === "small" ? "0" : "-1rem 0 0 0",
         }}
       >
         <h3
-          className="center"
+          className="center mobile-hide"
           style={{
             color: "hsl(0,0%,100%)",
 
             // transform: "translateY(-1.25rem)",
-            textShadow: "2px 2px 20px hsl(0,0%,0%)"
+            textShadow: "2px 2px 20px hsl(0,0%,0%)",
           }}
         >
-          Janna Curtis
-        </h3>
-        <span>About Me</span>
-      </div>
+          Janna Curtis{" "}
+        </h3>{" "}
+        <span> About Me </span>{" "}
+      </div>{" "}
     </Link>
   );
 });
 
 const NavCard = memo(function NavCard({
-  icon,
-  title,
-  path,
+  item,
   style,
   className,
   color = "hsl(0,0%,90%)",
   borderTop = "",
   borderBottom = "2px dotted hsla(0,0%,0%,10%)",
-  children
 }) {
   const linkStyle = {
     textDecoration: "none",
     //padding: "1rem 0",
     fontSize: "1.25rem",
-    padding: icon !== undefined ? "0 1rem 0 .5rem" : "0 1.5rem 0 1.5rem",
-    ...style
+    padding: "0 1.5rem 0 1.5rem",
+    ...style,
   };
-  const IconRender = icon;
   return (
     <Link
       className={`nav-link page ${className}`}
       // key={`${item.path}-${index}`}
-      to={`/${path}`}
+      to={`/${item.path}`}
       style={linkStyle}
     >
       <div
-        className="row nowrap center left"
+        className="col nowrap"
         style={{
-          gap: "1rem",
+          gap: ".5rem",
           color: color,
-          padding: "1rem .5rem 1rem .5rem",
+          padding: "1rem .5rem 1.5rem .5rem",
           borderTop: borderTop,
-          borderBottom: borderBottom
+          borderBottom: borderBottom,
         }}
       >
-        {icon !== undefined ? <IconRender /> : null}
+        <span> {item.title} </span>{" "}
         <span
-          className="col nowrap"
+          className="row wrap"
           style={{
-            gap: ".5rem"
+            gap: ".5rem",
+            color: color,
           }}
         >
-          <span>{title}</span>
-          {children}
-        </span>
-      </div>
+          {item.tags !== undefined && item.tags.length > 0
+            ? item.tags.map((v_tag, i_tag) => (
+                <IconTag
+                  key={`device-${i_tag}`}
+                  icon={v_tag}
+                  textColor="hsla(0,0%,90%,100%)"
+                  borderColor="hsla(0,0%,80%,30%)"
+                  bgColor="hsla(0,0%,100%,6%)"
+                />
+              ))
+            : null}{" "}
+          {item.devices !== undefined && item.devices.length > 0 ? (
+            <DeviceSizes
+              devices={item.devices}
+              textColor="hsla(0,0%,90%,100%)"
+              borderColor="hsla(0,0%,80%,30%)"
+              bgColor="hsla(0,0%,100%,6%)"
+            />
+          ) : null}{" "}
+        </span>{" "}
+      </div>{" "}
     </Link>
   );
 });
 
-export default function AppNavFlyout({ showNav, onClickExit }) {
+export default function AppNavFlyout({showNav, onClickExit}) {
   return (
     <div
       className={`overlay ${
@@ -193,7 +196,7 @@ export default function AppNavFlyout({ showNav, onClickExit }) {
 
         justifyContent: "stretch",
         alignItems: "stretch",
-        zIndex: 10
+        zIndex: 10,
       }}
     >
       <div
@@ -208,14 +211,14 @@ export default function AppNavFlyout({ showNav, onClickExit }) {
           background: "hsla(0,0%,25%,0%)",
           boxShadow:
             "-2px 2px 6px 4px hsla(0, 0%, 0%, 20%), -2px 2px 50px 4px hsla(0, 0%, 0%, 50%)",
-          zIndex: 10
+          zIndex: 10,
         }}
         onClick={() => {
           onClickExit();
         }}
       >
         <NavPanel className="" />
-      </div>
+      </div>{" "}
       <div
         className="overlay-hotspot"
         style={{
@@ -223,12 +226,12 @@ export default function AppNavFlyout({ showNav, onClickExit }) {
           flexGrow: 1,
           flexShrink: 1,
           flexBasis: 0,
-          zIndex: 10
+          zIndex: 10,
         }}
         onClick={() => {
           onClickExit();
         }}
-      />
+      />{" "}
     </div>
   );
 }
@@ -237,7 +240,7 @@ export function NavPanel({
   className = "mobile-hide nav-panel box-shadow-edged",
   background = "hsl(0,0%,35%)",
   showNav,
-  onClickExit
+  onClickExit,
 }) {
   const borderStyle = "2px solid hsla(0,0%,0%,10%)";
   return (
@@ -256,15 +259,15 @@ export function NavPanel({
         background: background,
         overflow: "hidden",
         /*boxShadow:
-          "2px 0px 2px 0px hsla(0, 0%, 0%, 20%), 2px 2px 2px 0px hsla(0, 0%, 0%, 50%)",*/
-        zIndex: 1
+                  "2px 0px 2px 0px hsla(0, 0%, 0%, 20%), 2px 2px 2px 0px hsla(0, 0%, 0%, 50%)",*/
+        zIndex: 1,
       }}
     >
       <div
         className="col stretch-h"
         style={{
           //gap: "1rem",
-          background: "hsla(0,0%,0%,20%)"
+          background: "hsla(0,0%,0%,20%)",
         }}
       >
         {" "}
@@ -275,41 +278,21 @@ export function NavPanel({
             padding: "1rem 1.1rem",
             margin: ".5rem .8rem .5rem auto",
             borderRadius: "2rem",
-            zIndex: 3
+            zIndex: 3,
           }}
           onClick={onClickExit}
         >
           <CgClose size="18" />
-        </div>
+        </div>{" "}
         <NavCardAbout />
         <NavCard
           className="desktop-hide laptop-hide tablet-hide phablet-hide"
-          path=""
-          title="About Me"
-          color="hsla(0,0%,100%,70%)"
-          borderTop={borderStyle}
-          borderBottom=""
-        />
-        <NavCard
-          icon={RiReactjsFill}
-          title="App Projects"
-          path="projects"
-          color="hsla(0,0%,100%,70%)"
-          borderTop={borderStyle}
-          borderBottom=""
-        />
-        <NavCard
-          icon={RiSlideshow3Line}
-          title="Presentations"
-          path="presentations"
-          color="hsla(0,0%,100%,70%)"
-          borderTop={borderStyle}
-          borderBottom=""
-        />
-        <NavCard
-          icon={RiStackshareLine}
-          title="Learning Connections"
-          path="learning"
+          item={{path: "", title: "About Me"}}
+          style={
+            {
+              // margin: "0 2rem 1rem 2rem",
+            }
+          }
           color="hsla(0,0%,100%,70%)"
           borderTop={borderStyle}
           borderBottom=""
@@ -328,20 +311,20 @@ export function NavPanel({
             // borderTop: "3px solid hsl(0,0%,25%)",
 
             /*boxShadow:
-              "0px 2px 1px 0px hsla(0, 0%, 0%, 50%), 0px 15px 10px 0px hsla(0, 0%, 0%, 10%)",*/
+                  "0px 2px 1px 0px hsla(0, 0%, 0%, 50%), 0px 15px 10px 0px hsla(0, 0%, 0%, 10%)",*/
             //filter: "drop-shadow(6px 6px 1px hsla(0, 0%, 0%, 23%))",
-            zIndex: 1
+            zIndex: 1,
           }}
         >
           <span
             style={{
               width: "100%",
               padding: "1.5rem .5rem .5rem .5rem",
-              borderBottom: "2px solid hsl(0,0%,25%)"
+              borderBottom: "2px solid hsl(0,0%,25%)",
             }}
           >
-            Samples
-          </span>
+            Samples{" "}
+          </span>{" "}
           <div
             className="nav-link center"
             style={{
@@ -353,7 +336,7 @@ export function NavPanel({
               // padding: ".25rem .5rem",
               margin: "0",
               borderRadius: "2rem",
-              aspectRatio: "1 / 1"
+              aspectRatio: "1 / 1",
             }}
             onClick={() => {
               //onClickExit();
@@ -362,55 +345,42 @@ export function NavPanel({
             <MdFilterList
             //size="18"
             />
-          </div>
-        </span>
-      </div>
+          </div>{" "}
+        </span>{" "}
+      </div>{" "}
       <div
         className="col nowrap scroll"
-        style={{ height: "100%", zIndex: 0, padding: "0 0 2rem 0" }}
+        style={{height: "100%", zIndex: 0, padding: "0 0 2rem 0"}}
       >
-        {pages
-          .slice(2)
-          .concat(samplePages)
-          .map((item, index) => (
-            <NavCard
-              key={`${item.path}-${index}`}
-              title={item.title}
-              path={item.path}
-              color="hsla(0,0%,100%,70%)"
-              borderTop={borderStyle}
-              borderBottom=""
-            >
-              <span
-                className="row wrap"
-                style={{
-                  gap: ".5rem",
-                  color: "hsla(0,0%,100%,70%)"
-                }}
-              >
-                {item.tags !== undefined && item.tags.length > 0
-                  ? item.tags.map((v_tag, i_tag) => (
-                      <IconTag
-                        key={`device-${i_tag}`}
-                        icon={v_tag}
-                        textColor="hsla(0,0%,90%,100%)"
-                        borderColor="hsla(0,0%,80%,30%)"
-                        bgColor="hsla(0,0%,100%,6%)"
-                      />
-                    ))
-                  : null}
-                {item.devices !== undefined && item.devices.length > 0 ? (
-                  <DeviceSizes
-                    devices={item.devices}
-                    textColor="hsla(0,0%,90%,100%)"
-                    borderColor="hsla(0,0%,80%,30%)"
-                    bgColor="hsla(0,0%,100%,6%)"
-                  />
-                ) : null}
-              </span>
-            </NavCard>
-          ))}
-      </div>
+        {pages.map((item, index) => (
+          <NavCard
+            key={`${item.path}-${index}`}
+            item={item}
+            style={
+              {
+                // borderTop: "2px solid hsla(0,0%,0%,10%)"
+              }
+            }
+            color="hsla(0,0%,100%,70%)"
+            borderTop={borderStyle}
+            borderBottom=""
+          />
+        ))}{" "}
+        {samplePages.map((item, index) => (
+          <NavCard
+            key={`${item.path}-${index}`}
+            item={item}
+            style={
+              {
+                // borderTop: "2px solid hsla(0,0%,0%,10%)"
+              }
+            }
+            color="hsla(0,0%,100%,70%)"
+            borderTop={borderStyle}
+            borderBottom=""
+          />
+        ))}{" "}
+      </div>{" "}
     </div>
   );
 }
