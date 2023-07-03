@@ -27,6 +27,14 @@
     grid-row: content / span 1;
     padding: 2rem 2rem 5rem 2rem;
   }
+  .listpage-content .scroll-zone {
+    padding: 2rem;
+    }
+
+    .scroll-content {
+      gap: 1rem;
+    }
+
   .hero {
     position: static;
     display: flex;

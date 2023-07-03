@@ -1,109 +1,188 @@
-import { memo, useState, useEffect } from "react";
+import { memo, useState, useEffect, Fragment } from "react";
 import { Link } from "react-router-dom";
-import { Header, ButtonLink, Group } from "./PageElements";
+import { pages } from "./Pages";
+import { samplePages } from "./PageSamples";
+import { Header, ButtonLink, Group, Note, PageContainer, IconTag, DeviceSizes } from "./PageElements";
 import { RiCalendarTodoFill, RiStackFill } from "react-icons/ri";
-import { MdWavingHand } from "react-icons/md";
+import { MdFilterList } from "react-icons/md";
+//import { MdWavingHand } from "react-icons/md";
 
 export function PageProjects(props) {
-    const colorA = "hsl(0,0%,40%)";
-    const colorB = "hsl(0,0%,35%)"; //"hsl(0,0%,95%)";
+    const colorA = "hsl(40,100%,80%)";
+    const colorB = "hsl(30,100%,80%)"; //"hsl(0,0%,95%)";
 
-    const AppCard = ({
+
+
+    const ImageCard = ({
         className,
         path,
-        icon,
-        color1 = "hsl(0,0%,30%)",
-        color2 = "hsl(0,0%,80%)",
-        color3 = "hsl(0,0%,80%)",
+        src,
+        imageBackground = "hsl(0,0%,80%)",
         title,
-        description
+        subtitle,
+        description,
+        order,
+        style,
+        children
     }) => {
-        const IconRender = icon;
+
+        const linkStyle = {
+            position: "relative",
+            //gridTemplateRows: "1fr auto",
+            // gridTemplateColumns: "1fr",
+            background: "hsl(0,0%,100%)",
+            width: "280px",
+            height: "326px",
+            //aspectRatio: "6 / 7",
+            minWidth: "280px",
+            maxWidth: order === 1 ? "600px" : order === 2 ? "400px" : "300px",//`calc(${minImgSize}px + 38rem)`,
+            maxHeight: "326px",
+            overflow: "hidden",
+            gap: "1.5rem",
+            flexGrow: 1,
+            flexShrink: 1,
+            flexBasis: order === 1 ? "500px" : order === 2 ? "400px" : "300px",
+            borderRadius: ".5rem",
+            order: order,
+            // margin: "0 0 1rem 0"
+        }
+
         return (
-            <Link
-                className={`nav-link page card row center left ${className}`}
+            <Link className="nav-link project col box-shadow"
                 to={`/${path}`}
-                style={{
-                    textDecoration: "none",
-                    fontSize: "1.25rem",
-                    padding: "1.25rem 1rem",
-                    width: "100%",
-                    maxWidth: "400px",
-                    minHeight: "max-content",
-                    gap: "1rem",
-                    color: "hsl(0,0%,30%)",
-                    background: color3
-                }}
+                style={linkStyle}
             >
-                <div
-                    className="row center"
+                <div className="col center"
                     style={{
-                        width: "64px",
-                        height: "64px",
-                        // minHeight: "max-content",
-                        padding: "0.6rem",
-                        margin: 0,
-                        gap: "1rem",
-                        borderRadius: ".5rem",
-                        color: color1,
-                        background: color2
+                        flexBasis: 0,
+                        width: "100%",
+                        height: "100%",
+                        overflow: "hidden",
+                        background: `url(${src}) ${imageBackground}`,
+                        flexGrow: 1,
+                        flexShrink: 3,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        backgroundRepeat: "no-repeat",
+                        ...style,
+                        //margin: "1rem"
+                        // boxShadow: "2px 2px 2px 4px hsla(0, 0%, 0%, 20%)"
+                    }}>
+                    {/* <img src={src} alt="" width="100%" height="auto" />*/}
+                </div >
+
+                <div className="label col top" style={{
+                    position: "absolute",
+                    bottom: 0,
+                    width: "100%",
+                    height: "auto",
+                    // minWidth: "60%",
+                    // maxWidth: "100%",
+                    minHeight: "auto",
+                    maxHeight: "auto",
+                    gap: ".5rem",
+                    flexGrow: 3,
+                    flexShrink: 0,
+                    flexBasis: "300px",
+
+                    padding: "1rem"
+                }}>
+                    <h2>{title}</h2>
+                    <h3>{subtitle}</h3>
+                    {/* <span style={{ margin: ".5rem 0" }}>
+                        {description}
+                    </span>*/}
+                    {children}
+                </div>
+            </Link>
+
+        )
+    };
+
+    return (
+        <PageContainer maxWidth="1200px">
+            {/* <div className="grid" style={{
+                gridTemplateColumns: "1fr [content] auto 1fr",
+                gridTemplateRows: "[title] auto [content] auto", width: "100%"
+            }}>*/}
+            <Group className="col left" style={{ margin: "0 auto 0 auto" }}>
+                <Header
+                    title="Projects"
+                    subtitle=""
+                    color="hsla(0,0%,0%,50%)"
+                    style={{
+                        gridColumn: "content / span 1",
+                        gridRowStart: "title",
+                        padding: "0 0 1rem 0"
+                    }}
+                >      <div
+                    className="nav-link center"
+                    style={{
+                        display: "none",
+                        width: "48px",
+                        height: "48px",
+                        fontSize: "2rem",
+                        cursor: "pointer",
+                        // padding: ".25rem .5rem",
+                        margin: "0",
+                        borderRadius: "2rem",
+                        aspectRatio: "1 / 1"
+                    }}
+                    onClick={() => {
+                        //onClickExit();
                     }}
                 >
-                    <IconRender size={48} />
-                </div>
-                <h3>{title}</h3>
-            </Link>
-        );
-    };
-    return (
-        <div
-            className="sample-content"
-            style={{ background: colorA, padding: "2rem" }}
-        >
-            <Header
-                title="Projects"
-                subtitle=""
-                color="hsl(0,0%,70%)"
-                style={{
+                        <MdFilterList
+                        //size="18"
+                        />
+                    </div></Header>
+                <Group className="row wrap top" style={{
                     gridColumn: "content / span 1",
-                    gridRowStart: "title",
-                    padding: "0 0 1rem 0"
-                }}
-            ></Header>
-            <div
-                className="page-bg"
-                style={{
-                    background: `linear-gradient(31deg, ${colorA} 25%, ${colorB} 0, ${colorB} 50%, ${colorA} 0, ${colorA} 75%, ${colorB} 0) center / 50px 30px`
-                }}
-            />
-            <Group
-                className="col top"
-                style={{
-                    gridRow: "content / span 1",
-                    width: "100%",
-                    height: "100%"
-                }}
-            >
-                <AppCard
-                    path="calendar"
-                    icon={RiCalendarTodoFill}
-                    color1="hsl(240,30%,50%)"
-                    color2="hsl(250,50%,82%)"
-                    color3="hsl(250,50%,90%)"
-                    title="Priority Calendar"
-                    description=""
-                />
+                    gridRowStart: "content",
+                    padding: "0 0 2rem 0",
+                    width: "fit-content"
+                }}>
+                    <div
+                        className="page-bg"
+                        style={{
+                            background: `linear-gradient(90deg, ${colorA} 0%, ${colorB} 100%,)`
+                        }}
+                    />
 
-                <AppCard
-                    path="flashcards"
-                    icon={MdWavingHand}
-                    color1="hsl(20,70%,50%)"
-                    color2="hsl(40,100%,80%)"
-                    color3="hsl(40,100%,90%)"
-                    title="ASL Flashcards"
-                    description=""
-                />
+                    {pages.map((item, index) => (
+
+                        <ImageCard
+                            key={`${item.path}-${index}`}
+                            path={item.path}
+                            src={item.image}
+                            order={item.level}
+                            color1="hsl(240,30%,50%)"
+                            color2="hsl(250,50%,82%)"
+                            color3="hsl(250,50%,90%)"
+                            title={item.title}
+                            subtitle={item.subtitle}
+                            description={item.description}
+                        >
+
+                            <span className="row wrap shadow" style={{ gap: ".5rem" }}>
+                                {item.tags !== undefined && item.tags.length > 0
+                                    ? item.tags.map((v_tag, i_tag) => (
+                                        <IconTag
+                                            key={`device-${i_tag}`}
+                                            icon={v_tag}
+                                            textColor="hsla(0,0%,30%,100%)"
+                                            borderColor="hsla(0,0%,80%,30%)"
+                                            bgColor="hsla(0,0%,80%,100%)"
+                                        />
+                                    ))
+                                    : null}
+
+                            </span>
+                        </ImageCard>))}
+                </Group>
             </Group>
-        </div>
+        </PageContainer>
     );
 }
+
+

@@ -101,7 +101,7 @@ export const resume = {
           subtitle: "Lead UX Designer",
           dates: [2014, 2016],
           details: [
-            {items: ["UX conceptual design", "UI design for mobile software"]},
+            { items: ["UX conceptual design", "UI design for mobile software"] },
           ],
         },
         {
@@ -178,338 +178,83 @@ export const resume = {
 export const pages = [
   {
     title: "Priority Calendar",
-    path: "calendar",
     subtitle: "Weather and events in perspective",
+    description: "A calendar app I designed and built using react-js",
+    path: "calendar",
+    url: "",
+    image: "./img/calendar-room.png",
     devices: ["S", "M", "L"],
-    tags: ["reactjs"],
-    background: "linear-gradient(90deg, #9971B7 0%, #9971B7 100%)",
-    background1: "#9971B7",
-    background2: "#9971B7",
-    content: [
-      [
-        {
-          type: "note",
-          title: "Problem",
-          description:
-            "When I wake up, I need to be aware of the day's agenda, so I can be in the right place at the right time. I also need to see the hourly weather forecast in relation to my scheduled appointments to determine what to wear, and I want to plan breaks to walk outside with my dog when the weather is nice enough between appointments. I may want to postpone if another day this week is expected to be nicer.",
-        },
-
-        {
-          type: "note",
-          title: "Solution",
-          description:
-            "I designed and built a React web app that pulls weather and calendar information into a single prioritized view. To make sure my calendar app would be visible to me when the information was most relevant, I used a single board tiny computer to automate turning on the bedroom TV to display my app each morning. The style is dark to counter the brightness of the TV screen.",
-        },
-      ],
-      [
-        {
-          type: "image",
-          src: "",
-          aspectRatio: "",
-          caption: "",
-        },
-        {
-          type: "image",
-          src: "",
-          aspectRatio: "",
-          caption: "",
-        },
-      ],
-    ],
+    tags: ["reactjs", "responsive"],
+    level: 1
   },
   {
-    title: "What Makes UI Intuitive?",
-    path: "intuitive",
-    subtitle: "Speaker Session",
-    tags: ["presentation"],
-    /* hero: "iframe",
-        background:
-          "linear-gradient(90deg, hsl(256, 30%, 60%) 0%, hsl(228, 40%, 70%) 40%)",
-        background1: "hsl(228, 40%, 70%)", //"hsl(258, 34%, 87%)", //"hsl(256, 60%, 29%)",
-        background2: "hsl(218,77%,88%)", //"hsl(228,55%,32%)",
-        content: [
-          [
-            {
-              type: "note",
-              title: "Problem",
-              description:
-                "When I wake up, I need to be aware of the day's agenda, so I can be in the right place at the right time. I also need to see the hourly weather forecast in relation to my scheduled appointments to determine what to wear, and I want to plan breaks to walk outside with my dog when the weather is nice enough between appointments. I may want to postpone if another day this week is expected to be nicer."
-            },
-
-            {
-              type: "note",
-              title: "Solution",
-              description:
-                "I designed and built a React web app that pulls weather and calendar information into a single prioritized view. To make sure my calendar app would be visible to me when the information was most relevant, I used a single board tiny computer to automate turning on the bedroom TV to display my app each morning. The style is dark to counter the brightness of the TV screen."
-            }
-          ],
-          [
-            {
-              type: "image",
-              src: "",
-              aspectRatio: "",
-              caption: ""
-            },
-            {
-              type: "image",
-              src: "",
-              aspectRatio: "",
-              caption: ""
-            }
-          ]
-        ]*/
-  },
-  {
-    title: "Audiohand",
-    subtitle: "Mobile music studio",
-    path: "audiohand",
-    devices: ["S"],
-    tags: ["showcase"],
-    /*  hero: "ApplePhone",
-        background:
-          "linear-gradient(90deg, hsla(337,86%,51%,100%) 0%, hsla(338,100%,61%,100%) 100%)",
-        background1: "hsla(337,86%,51%,100%)",
-        background2: "hsla(338,100%,61%,100%)",
-        content: [
-          [
-            {
-              type: "note",
-              title: "Problem",
-              description:
-                "Musicians and other audio artists don't have a convenient way to record their creative ideas quickly and easily on the spot. Bands wanting to pitch their ideas to record studios have a hard time just getting started since they need a studio to make quality demos."
-            },
-            {
-              type: "note",
-              title: "Solution",
-              description:
-                "Audiohand allows people to produce near studio quality recordings from the convenience of their own smart phone. With 2 or more mobile devices, they can record simultaneously, and the software can blend them together, filtering out impurities to produce even better results."
-            }
-          ],
-          [
-            {
-              type: "image",
-              src: "./img/audiohand-01.png",
-              aspectRatio: "377 / 648",
-              caption: ""
-            },
-            {
-              type: "image",
-              src: "./img/audiohand-02.png",
-              aspectRatio: "378 / 647",
-              caption: ""
-            },
-            {
-              type: "image",
-              src: "./img/audiohand-03.png",
-              aspectRatio: "377 / 648",
-              caption: ""
-            },
-            {
-              type: "image",
-              src: "./img/audiohand-04.png",
-              aspectRatio: "377 / 648",
-              caption: ""
-            }
-          ],
-          [
-            {
-              type: "image",
-              src: "./img/audiohand-05.png",
-              aspectRatio: "378 / 675",
-              caption: ""
-            },
-            {
-              type: "image",
-              src: "./img/audiohand-06.png",
-              aspectRatio: "378 / 675",
-              caption: ""
-            },
-            {
-              type: "image",
-              src: "./img/audiohand-07.png",
-              aspectRatio: "378 / 675",
-              caption: ""
-            }
-          ],
-          [
-            {
-              type: "image",
-              src: "./img/audiohand-08.png",
-              aspectRatio: "378 / 675",
-              caption: ""
-            },
-            {
-              type: "image",
-              src: "./img/audiohand-09.png",
-              aspectRatio: "378 / 675",
-              caption: ""
-            },
-            {
-              type: "image",
-              src: "./img/audiohand-10.png",
-              aspectRatio: "378 / 675",
-              caption: ""
-            }
-          ],
-          [
-            {
-              type: "image",
-              src: "./img/audiohand-11.png",
-              aspectRatio: "189 / 325",
-              caption: ""
-            },
-            {
-              type: "column",
-              width: "58%",
-              content: [
-                {
-                  type: "image",
-                  src: "./img/audiohand-12.png",
-                  aspectRatio: "135 / 76",
-                  caption: ""
-                },
-                {
-                  type: "image",
-                  src: "./img/audiohand-13.png",
-                  aspectRatio: "135 / 76",
-                  caption: ""
-                }
-              ]
-            }
-          ]
-        ]*/
+    title: "ASL Flashcards",
+    subtitle: "",
+    description: "A flashcard app I designed and built using react-js",
+    path: "calendar",
+    url: "",
+    image: "./img/asl.png",
+    devices: ["S", "M", "L"],
+    tags: ["reactjs", "responsive"],
+    level: 1
   },
   {
     title: "Lock Out, Tag Out",
     subtitle: "Electrical safety tracking",
     path: "loto",
+    src: "./img/loto-01.png",
     devices: ["S"],
-    tags: ["showcase"],
-    /* hero: "Sonim",
-        background: "linear-gradient(90deg, #f9b446 0%, #FEC107 100%)",
-        background1: "#f9b446",
-        background2: "#FEC107",
-        content: [
-          [
-            {
-              type: "note",
-              title: "Problem",
-              description:
-                "To ensure safety during electrical system maintenance and repairs, a permit must be requested, and an authorized technician must go out on site, manually shut off each system circuit, and place a physical ID tagged lock on each one. Each permit request may contain a dozen or more different equipment, lock, and tag IDs to correctly associate with one another."
-            },
-            {
-              type: "note",
-              title: "Solution",
-              description:
-                "Mobile app allows them to scan tag ID bar codes without connectivity so they can capture each completed tag as they go. Bar code scanning would allow technicians a convenient checklist, improving efficiency and reducing risk of error associated with hand-written or manual entry record-keeping. Printed bar codes sometimes get damaged and may fail to scan, so I included design flows for manually selecting (rather than manual entering) tag numbers so workers could toggle tag states with a confirmation button, to avoid the hassle and errors with recording long strings of numbers from a smart phone touch screen."
-            }
-          ],
-          [
-            {
-              type: "image",
-              src: "./img/loto-00.png",
-              aspectRatio: "1895 / 612",
-              caption: [
-                "p.31,",
-                "Bechtel 2018 Annual Report ↗",
-                "https://www.bechtel.com/getmedia/0f83daae-baa4-4124-b84b-bdea6c861bfc/2018-bechtel-report-final-ns.pdf"
-              ]
-            }
-          ],
-          [
-            {
-              type: "image",
-              src: "./img/loto-01.png",
-              aspectRatio: "377 / 648",
-              caption: ""
-            },
-            {
-              type: "image",
-              src: "./img/loto-02.png",
-              aspectRatio: "377 / 648",
-              caption: ""
-            },
-            {
-              type: "image",
-              src: "./img/loto-03.png",
-              aspectRatio: "378 / 647",
-              caption: ""
-            }
-          ],
-          [
-            {
-              type: "image",
-              src: "./img/loto-04.png",
-              aspectRatio: "377 / 648",
-              caption: ""
-            },
-            {
-              type: "column",
-              width: "58%",
-              content: [
-                {
-                  type: "image",
-                  src: "./img/loto-05.png",
-                  aspectRatio: "159/136",
-                  caption: ""
-                },
-                {
-                  type: "image",
-                  src: "./img/loto-06.png",
-                  aspectRatio: "159/136",
-                  caption: ""
-                }
-              ]
-            }
-          ],
-          [
-            {
-              type: "image",
-              src: "./img/loto-07.png",
-              aspectRatio: "377 / 648",
-              caption: ""
-            },
-            {
-              type: "image",
-              src: "./img/loto-08.png",
-              aspectRatio: "377 / 648",
-              caption: ""
-            },
-            {
-              type: "image",
-              src: "./img/loto-09.png",
-              aspectRatio: "378 / 647",
-              caption: ""
-            }
-          ],
-          [
-            {
-              type: "image",
-              src: "./img/loto-10.png",
-              aspectRatio: "377 / 648",
-              caption: ""
-            },
-            {
-              type: "image",
-              src: "./img/loto-11.png",
-              aspectRatio: "377 / 648",
-              caption: ""
-            },
-            {
-              type: "image",
-              src: "./img/loto-12.png",
-              aspectRatio: "378 / 647",
-              caption: ""
-            }
-          ],
-          [
-            {
-              type: "image",
-              src: "./img/loto-13.png",
-              aspectRatio: "3634 / 1155",
-              caption: ""
-            }
-          ]
-        ]*/
+    tags: ["mobile"],
+    level: 2
+  },
+  {
+    title: "Conference Manager",
+    path: "conference-manager",
+    src: "./samples/ConferenceManagerUnframed/index.html",
+    image: "./img/[].png",
+    aspectRatio: "1680 / 1105",
+    devices: ["L"],
+    tags: ["desktop"],
+    level: 3
+  },
+  {
+    title: "Compliance Works",
+    path: "compliance",
+    src: "./samples/ComplianceUnframed/index.html",
+    image: "./img/[].png",
+    aspectRatio: "1640 / 1024",
+    devices: ["L"],
+    tags: ["desktop"],
+    level: 3
+  },
+
+  {
+    title: "Clearance Tracker",
+    path: "clearance-tracker",
+    src: "./samples/ClearanceTrackerUnframed/index.html",
+    image: "./img/[].png",
+    aspectRatio: "1678 / 1153",
+    devices: ["L"],
+    tags: ["desktop"],
+    level: 3
+  },
+  {
+    title: "Audiohand",
+    subtitle: "Mobile music studio",
+    path: "audiohand",
+    image: "./img/audiohand-bg.png",
+    devices: ["S"],
+    tags: ["mobile"],
+    level: 2
+  },
+  {
+    title: "Interview Kiosk",
+    path: "interview-kiosk",
+    src: "./samples/InterviewKioskUnframed/index.html",
+    image: "./img/[].png",
+    aspectRatio: "3 / 2", //"2048 / 1536",
+    devices: ["M"],
+    tags: ["tablet"],
+    level: 3
   },
 ];

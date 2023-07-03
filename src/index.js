@@ -13,6 +13,9 @@ import { PageAudiohand } from "./PageAudiohand";
 import { PageCalendar } from "./PageCalendar";
 import { PageIntuitive } from "./PageIntuitive";
 import { PageLockOut } from "./PageLockOut";
+import { PageProjects } from "./PageProjects";
+import { PagePresentations } from "./PagePresentations";
+import { PageFlashcards } from "./PageFlashcards";
 import {
   samplePaths,
   PageSample0,
@@ -31,7 +34,10 @@ const router = createHashRouter([
         index: true,
         Component: PageAbout,
       },
-      { path: "calendar", Component: PageCalendar },
+      { path: "projects", Component: PageProjects },
+      { path: "projects/calendar", Component: PageCalendar },
+      { path: "projects/flashcards", Component: PageFlashcards },
+      { path: "presentations", Component: PagePresentations },
       { path: "audiohand", Component: PageAudiohand },
       { path: "intuitive", Component: PageIntuitive },
       { path: "loto", Component: PageLockOut },

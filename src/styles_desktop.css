@@ -7,6 +7,7 @@
     bottom: 0;
     right: 0;
   }
+
   .App {
     display: grid;
     grid-template-columns: [side] 320px [content] 1fr;
@@ -63,6 +64,15 @@
     grid-row: content / span 1;
     padding: 2rem 40% 5rem 3rem;
   }
+
+  .listpage-content .scroll-zone {
+  padding: 2rem;
+  }
+
+  .scroll-content {
+    gap: 1rem;
+  }
+  
   .desktop-col {
     display: flex;
     flex-direction: column;

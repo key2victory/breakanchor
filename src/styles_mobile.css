@@ -83,6 +83,12 @@
     gap: 1rem;
     padding: 1rem;
   }
+  .listpage-content .scroll-zone {
+    padding: 1rem;
+  }
+  .scroll-content {
+    gap: .5rem;
+    }
   .mobile-col {
     display: flex;
     flex-direction: column;
