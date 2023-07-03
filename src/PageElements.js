@@ -1,4 +1,4 @@
-import {memo, useState, useEffect, Fragment} from "react";
+import { memo, useState, useEffect, Fragment } from "react";
 
 import {
   MdOutlineSmartphone,
@@ -27,15 +27,14 @@ const ChipTag = memo(function ChipTag({
 }) {
   const chipStyle = solid
     ? {
-        border: `2px solid ${borderColor}`,
-        background: "hsla(0,0%,0%,0%)",
-        color: textColor,
-      }
-    : {
-        border: "none",
-        background: bgColor,
-        color: textColor,
-      };
+      border: "none",
+      background: bgColor,
+      color: textColor,
+    } : {
+      border: `2px solid ${borderColor}`,
+      background: "hsla(0,0%,0%,0%)",
+      color: textColor,
+    };
   return (
     <div
       className="row nowrap center left"
@@ -60,9 +59,14 @@ export const IconTag = memo(function IconTag({
   textColor = "hsla(0,0%,40%,100%)",
   borderColor = "hsla(0,0%,40%,30%)",
   bgColor = "hsla(0,0%,0%,6%)",
-  solid = "false",
+  solid = true,
 }) {
   const IconList = {
+    mobile: MdOutlineSmartphone,
+    tablet: MdOutlineTablet,
+    desktop: MdOutlineLaptop,
+    // L: MdOutlineComputer,
+    responsive: MdDevices,
     presentation: RiLayoutTopLine, // RiSlideshow3Line,
     reactjs: RiReactjsFill,
     showcase: RiLayout5Line,
@@ -71,10 +75,14 @@ export const IconTag = memo(function IconTag({
     low: RiEdit2Line, //RiLayout5Line
   };
   const labelList = {
+    reactjs: "react app",
     presentation: "speaker presentation",
     high: "hi-fi mock",
     med: "med-fi mock",
     low: "lo-fi mock",
+    sm: "mobile",
+    md: "tablet",
+    lg: "desktop"
   };
   const Icon = IconList[icon] !== undefined ? IconList[icon] : RiDeviceLine;
   const label = labelList[icon] !== undefined ? labelList[icon] : icon;
@@ -87,7 +95,7 @@ export const IconTag = memo(function IconTag({
       solid={solid}
     >
       <Icon />
-      <span> {label} </span>{" "}
+      <span> {label} </span>
     </ChipTag>
   );
 });
@@ -107,6 +115,23 @@ export const DeviceSizes = memo(function DeviceSizes({
     justifyContent: "center",
     fontSize: ".8rem",
   };
+
+  const IconList = {
+    presentation: RiLayoutTopLine, // RiSlideshow3Line,
+    reactjs: RiReactjsFill,
+    showcase: RiLayout5Line,
+    high: RiEdit2Line, //RiLayout5Line,
+    med: RiEdit2Line, //RiLayout5Line,
+    low: RiEdit2Line, //RiLayout5Line
+  };
+
+  const Icon = (icon) => IconList[icon] !== undefined ? IconList[icon] : RiDeviceLine;
+  const labelList = {
+    S: "mobile",
+    M: "tablet",
+    L: "desktop",
+  };
+  const getLabel = (icon) => labelList[icon] !== undefined ? labelList[icon] : icon;
   return (
     <ChipTag
       textColor={textColor}
@@ -121,7 +146,7 @@ export const DeviceSizes = memo(function DeviceSizes({
           flexGrow: 0,
           flexShrink: 0,
         }}
-      />{" "}
+      />
       {devices.map((item, index) => (
         <span
           key={index}
@@ -130,9 +155,9 @@ export const DeviceSizes = memo(function DeviceSizes({
             gridColumn: "1 / span 1",
           }}
         >
-          {item}{" "}
+          {getLabel(item)}
         </span>
-      ))}{" "}
+      ))}
     </ChipTag>
   );
 });
@@ -149,15 +174,15 @@ export const Note = memo(function Note({
   return (
     <div
       className={`note ${!collapse ? "open" : open ? "open" : ""}`}
-      style={{background: background, color: color, ...style}}
+      style={{ background: background, color: color, ...style }}
       onClick={() => {
         if (collapse) {
           setOpen(!open);
         }
       }}
     >
-      <h4> {title} </h4>{" "}
-      <span style={{position: "relative", overflow: "hidden"}}>
+      <h4> {title} </h4>
+      <span style={{ position: "relative", overflow: "hidden" }}>
         <span
           style={{
             position: "absolute",
@@ -167,9 +192,9 @@ export const Note = memo(function Note({
             right: 0,
             background: `linear-gradient(0deg, ${background} 0%, transparent 100%)`,
           }}
-        />{" "}
-        {description}{" "}
-      </span>{" "}
+        />
+        {description}
+      </span>
     </div>
   );
 });
@@ -181,7 +206,7 @@ export const Caption = memo(function Caption({
   containerStyle,
 }) {
   return (
-    <div className="image" style={{...containerStyle}}>
+    <div className="image" style={{ ...containerStyle }}>
       <img
         src={`${src}`}
         width="100%"
@@ -195,7 +220,7 @@ export const Caption = memo(function Caption({
   );
 });
 
-export const Column = memo(function Column({children, style}) {
+export const Column = memo(function Column({ children, style }) {
   return (
     <div
       style={{
@@ -230,12 +255,95 @@ export const Row = memo(function Row({
         ...style,
       }}
     >
-      {children}{" "}
+      {children}
     </div>
   );
 });
 
-export const Group = memo(function Group({children, className, style}) {
+export const ImageCard = memo(function ImageCard({
+  imgSrc,
+  children,
+  imageBackground = "hsl(0,0%,80%)"
+}) {
+
+  return (
+    <div className="card row wrap" style={{
+      background: "hsl(0,0%,100%)",
+      width: "100%",
+      height: "auto",
+      maxWidth: "900px",
+      minHeight: "auto",
+      overflow: "hidden",
+      gap: "1rem",
+      flexShrink: 0
+    }}>
+
+      <div className="col center" style={{
+        flexBasis: 0,
+        width: "200px",
+        height: "200px",
+        minWidth: "200px",
+        maxWidth: "100%",
+        minHeight: "200px",
+        //  maxHeight: "100px",
+        overflow: "hidden",
+        background: imageBackground,
+        // backgroundSize: "cover",
+        flexGrow: 1,
+        flexShrink: 3,
+      }}>
+        <img className="image" src={imgSrc} alt="" width="auto" height="auto" />
+      </div>
+
+      <div className="col top" style={{
+        width: "100%",
+        height: "max-content",
+        minWidth: "60%",
+        maxWidth: "100%",
+
+        minHeight: "max-content",
+
+        // padding: "1rem",
+        gap: ".5rem",
+        flexGrow: 3,
+        flexShrink: 0,
+        flexBasis: "300px"
+      }}>
+        {children}
+
+
+      </div>
+    </div >
+
+  )
+});
+
+export const PageContainer = memo(function PageContainer({ maxWidth = "800px", background = "beige", className = "col nowrap top stretch", children }) {
+  const swatches = {
+    beige: "linear-gradient(45deg, hsl(39, 14%, 80%) 0%, hsl(40, 7%, 60%) 100%)",
+    mocha: "linear-gradient(45deg, hsl(39, 14%, 72%) 0%, hsl(40, 7%, 39%) 100%)"
+  }
+  return (
+    <div
+      className="listpage-content"
+      style={{ background: swatches[background] !== undefined ? swatches[background] : background }}
+    >
+      <div className="scroll-zone">
+        <div className={`scroll-content ${className}`} style={{
+          width: "100%",
+          minWidth: 0,
+          maxWidth: maxWidth,
+          margin: "0 auto 0 auto",
+          // gap: "inherit"
+        }}>
+          {children}
+        </div>
+      </div>
+    </div>)
+
+});
+
+export const Group = memo(function Group({ children, className, style }) {
   return (
     <div
       className={`group ${className}`}
@@ -243,7 +351,7 @@ export const Group = memo(function Group({children, className, style}) {
         ...style,
       }}
     >
-      {children}{" "}
+      {children}
     </div>
   );
 });
@@ -269,41 +377,40 @@ export const Header = memo(function Header({
         ...style,
       }}
     >
-      <span style={{display: "flex", flexFlow: "column nowrap"}}>
-        <h1 style={{color: color}}>
-          {" "}
+      <span style={{ display: "flex", flexFlow: "column nowrap" }}>
+        <h1 style={{ color: color }}>
           {title2 ? (
             <Fragment>
-              <span style={{display: "flex", flexFlow: "row wrap"}}>
+              <span style={{ display: "flex", flexFlow: "row wrap" }}>
                 <span
                   style={{
                     marginRight: ".6rem",
                     color: color,
                   }}
                 >
-                  {title1}{" "}
-                </span>{" "}
+                  {title1}
+                </span>
                 <span
                   style={{
                     color: color,
                   }}
                 >
-                  {title2}{" "}
-                </span>{" "}
-              </span>{" "}
+                  {title2}
+                </span>
+              </span>
             </Fragment>
           ) : (
             title
-          )}{" "}
-        </h1>{" "}
-        <h3 style={{color: color}}> {subtitle} </h3>{" "}
-      </span>{" "}
-      {children}{" "}
+          )}
+        </h1>
+        <h3 style={{ color: color }}> {subtitle} </h3>
+      </span>
+      {children}
     </div>
   );
 });
 
-export const ButtonLink = memo(function ButtonLink({line1, line2, url, color}) {
+export const ButtonLink = memo(function ButtonLink({ line1, line2, url, color }) {
   const text = {
     x: 0,
     y: 1,
@@ -333,36 +440,37 @@ export const ButtonLink = memo(function ButtonLink({line1, line2, url, color}) {
     >
       <span
         style={{
-          color: {color},
+          color: color,
           fontFamily: text.fontFamily,
           fontSize: `${text.size1}px`,
           width: "auto",
         }}
       >
-        {line1}{" "}
-      </span>{" "}
+        {line1}
+      </span>
       <span
         style={{
-          color: {color},
+          color: color,
           fontFamily: text.fontFamily,
           fontSize: `${text.size2}px`,
           width: "auto",
           marginLeft: ".1rem",
         }}
       >
-        {line2}{" "}
+        {line2}
         <span
           style={{
             width: "min-content",
-            color: {color},
+            color: color,
             fontFamily: text.fontFamily,
             fontSize: `${text.size1}px`,
             margin: "0 0.1rem 0 .2rem",
           }}
         >
           ↗
-        </span>{" "}
-      </span>{" "}
+        </span>
+      </span>
     </a>
   );
 });
+

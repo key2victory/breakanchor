@@ -3,7 +3,6 @@ import { memo } from "react";
 import { pages } from "./Pages";
 import { samplePages } from "./PageSamples";
 import { CgMenu, CgClose } from "react-icons/cg";
-import { MdFilterList } from "react-icons/md";
 import { IconTag, DeviceSizes } from "./PageElements";
 import {
   RiDeviceLine,
@@ -14,7 +13,11 @@ import {
   RiEdit2Line,
   RiCalendarTodoFill,
   RiStackFill,
-  RiStackshareLine
+  RiStackshareLine,
+  RiMapPinUserFill,
+  RiMapPinUserLine,
+  RiBox2Fill,
+  RiBox2Line
 } from "react-icons/ri";
 import "./styles.css";
 
@@ -91,9 +94,8 @@ const NavCardAbout = memo(function NavCardAbout({
   };
   return (
     <Link
-      className={`nav-link page ${
-        size === "small" ? "row left nowrap" : "col center"
-      } mobile-hide`}
+      className={`${size === "small" ? "row left nowrap" : "col center"
+        } mobile-hide`}
       to="/"
       style={styleOption[size]}
     >
@@ -122,13 +124,13 @@ const NavCardAbout = memo(function NavCardAbout({
         >
           Janna Curtis
         </h3>
-        <span>About Me</span>
+
       </div>
     </Link>
   );
 });
 
-const NavCard = memo(function NavCard({
+export const NavCard = memo(function NavCard({
   icon,
   title,
   path,
@@ -182,9 +184,8 @@ const NavCard = memo(function NavCard({
 export default function AppNavFlyout({ showNav, onClickExit }) {
   return (
     <div
-      className={`overlay ${
-        showNav === true ? "show" : "hide"
-      } desktop-hide laptop-hide tablet-hide phablet-hide row nowrap`}
+      className={`overlay ${showNav === true ? "show" : "hide"
+        } desktop-hide laptop-hide tablet-hide phablet-hide row nowrap`}
       style={{
         position: "absolute",
         top: 0,
@@ -267,7 +268,6 @@ export function NavPanel({
           background: "hsla(0,0%,0%,20%)"
         }}
       >
-        {" "}
         <div
           className="nav-link desktop-hide laptop-hide tablet-hide phablet-hide"
           style={{
@@ -282,8 +282,12 @@ export function NavPanel({
           <CgClose size="18" />
         </div>
         <NavCardAbout />
+
+      </div>
+      <div className="col top">
         <NavCard
-          className="desktop-hide laptop-hide tablet-hide phablet-hide"
+          //  className="desktop-hide laptop-hide tablet-hide phablet-hide"
+          icon={RiMapPinUserFill}
           path=""
           title="About Me"
           color="hsla(0,0%,100%,70%)"
@@ -291,8 +295,8 @@ export function NavPanel({
           borderBottom=""
         />
         <NavCard
-          icon={RiReactjsFill}
-          title="App Projects"
+          icon={RiBox2Line}
+          title="Projects"
           path="projects"
           color="hsla(0,0%,100%,70%)"
           borderTop={borderStyle}
@@ -314,102 +318,6 @@ export function NavPanel({
           borderTop={borderStyle}
           borderBottom=""
         />
-        <span
-          className="row between center"
-          style={{
-            fontSize: "1.1rem",
-            //  background: "hsl(0,0%,35%,100%)",
-            //borderRadius: ".25rem",
-            background: background,
-            height: "auto",
-            color: "hsl(0,0%,65%)",
-            // fontWeight: 200,
-            padding: "0 1.5rem 0 1.5rem",
-            // borderTop: "3px solid hsl(0,0%,25%)",
-
-            /*boxShadow:
-              "0px 2px 1px 0px hsla(0, 0%, 0%, 50%), 0px 15px 10px 0px hsla(0, 0%, 0%, 10%)",*/
-            //filter: "drop-shadow(6px 6px 1px hsla(0, 0%, 0%, 23%))",
-            zIndex: 1
-          }}
-        >
-          <span
-            style={{
-              width: "100%",
-              padding: "1.5rem .5rem .5rem .5rem",
-              borderBottom: "2px solid hsl(0,0%,25%)"
-            }}
-          >
-            Samples
-          </span>
-          <div
-            className="nav-link center"
-            style={{
-              display: "none",
-              width: "48px",
-              height: "48px",
-              fontSize: "2rem",
-              cursor: "pointer",
-              // padding: ".25rem .5rem",
-              margin: "0",
-              borderRadius: "2rem",
-              aspectRatio: "1 / 1"
-            }}
-            onClick={() => {
-              //onClickExit();
-            }}
-          >
-            <MdFilterList
-            //size="18"
-            />
-          </div>
-        </span>
-      </div>
-      <div
-        className="col nowrap scroll"
-        style={{ height: "100%", zIndex: 0, padding: "0 0 2rem 0" }}
-      >
-        {pages
-          .slice(2)
-          .concat(samplePages)
-          .map((item, index) => (
-            <NavCard
-              key={`${item.path}-${index}`}
-              title={item.title}
-              path={item.path}
-              color="hsla(0,0%,100%,70%)"
-              borderTop={borderStyle}
-              borderBottom=""
-            >
-              <span
-                className="row wrap"
-                style={{
-                  gap: ".5rem",
-                  color: "hsla(0,0%,100%,70%)"
-                }}
-              >
-                {item.tags !== undefined && item.tags.length > 0
-                  ? item.tags.map((v_tag, i_tag) => (
-                      <IconTag
-                        key={`device-${i_tag}`}
-                        icon={v_tag}
-                        textColor="hsla(0,0%,90%,100%)"
-                        borderColor="hsla(0,0%,80%,30%)"
-                        bgColor="hsla(0,0%,100%,6%)"
-                      />
-                    ))
-                  : null}
-                {item.devices !== undefined && item.devices.length > 0 ? (
-                  <DeviceSizes
-                    devices={item.devices}
-                    textColor="hsla(0,0%,90%,100%)"
-                    borderColor="hsla(0,0%,80%,30%)"
-                    bgColor="hsla(0,0%,100%,6%)"
-                  />
-                ) : null}
-              </span>
-            </NavCard>
-          ))}
       </div>
     </div>
   );
