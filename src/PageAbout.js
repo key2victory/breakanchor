@@ -64,11 +64,9 @@ export default function PageAbout(props) {
             It's my personal mission to empower others
           </h5>
           <p style={{ marginBottom: "0rem" }}>
-            My degree program at Watkins College of Art taught me how to evaluate my work against the principles of design to make iterative improvements, and how to assist other designers in reaching the full potential of their work through collaborative feedback.I use these techniques often when mentoring for the Knoxville Entrepreneur
-            Center and new designers in my spare time. I am always looking for
-            ways to improve myself and support the success of others.{" "}
-          </p>{" "}
-        </div>{" "}
+            My degree program at Watkins College of Art taught me how to evaluate my work against the principles of design to make iterative improvements, and how to assist other designers in reaching the full potential of their work through collaborative feedback.I use these techniques often when mentoring for the Knoxville Entrepreneur Center and new designers in my spare time. I am always looking for ways to improve myself and support the success of others.
+          </p>
+        </div>
         <CardSection title="Education">
           <Group
             className="resume-timeline" //desktop-col tablet-col mobile-col"
