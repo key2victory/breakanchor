@@ -46,15 +46,18 @@ export function PagePresentations(props) {
                     minHeight: `${minImgSize}px`,
                     //  maxHeight: "100px",
                     overflow: "hidden",
-                    background: imageBackground,
-                    // backgroundSize: "cover",
+                    borderRadius: ".5rem",
+                    background: `url(${src}), ${imageBackground}`,
+                    backgroundSize: "auto 100%, 100% 100%",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "top right",
                     flexGrow: 1,
                     flexShrink: 3,
                     ...style
                     //margin: "1rem"
                     // boxShadow: "2px 2px 2px 4px hsla(0, 0%, 0%, 20%)"
                 }}>
-                <img className="image" src={src} alt="" width="auto" height="auto" />
+                {/* <img className="image" src={src} alt="" width="auto" height="auto" />*/}
             </div>)
     };
 
@@ -72,9 +75,9 @@ export function PagePresentations(props) {
         const EmbeddedItem = embedType;
 
         return (
-            <div className="row top wrap box-shadow"
+            <div className="card row top wrap box-shadow"
                 style={{
-                    background: "hsl(0,0%,100%)",
+                    background: "hsla(0,0%,100%,50%)",
                     width: "100%",
                     height: "auto",
                     maxWidth: "800px",//`calc(${minImgSize}px + 38rem)`,
@@ -136,8 +139,7 @@ export function PagePresentations(props) {
             <ImageCard
                 // src="https://docs.google.com/presentation/d/e/2PACX-1vRJZQGOASDM7XWmFRaq4Oc_qd6sVKGX6NThZ4oV7XouyA0tL0C1Cjndh4RUMkgXmUDybimNRvd1kJVc/embed?slide=6"
                 src="./img/prime-example.png"
-                imageBackground={`    linear-gradient(to top, transparent 46.5%,  hsla(0,0%,100%,30%) 46.5%),
-                    linear-gradient(to right, hsl(266,28%,80%) 50%, hsl(25,100%,78%) 50%)
+                imageBackground={`linear-gradient(to bottom, hsl(269,54%,92%) 53.75%, hsl(266,28%,75%) 53.75%)
                     `}
             >
 
@@ -155,7 +157,7 @@ export function PagePresentations(props) {
 
             <ImageCard
                 src="./img/toolbox.png"
-                imageBackground="linear-gradient(to bottom right, hsl(40,100%,75%), hsl(20,100%,75%))"
+                imageBackground="linear-gradient(to bottom right, hsl(0,100%,75%), hsl(30,100%,75%))"
             >
                 <h2>The UX Stack</h2>
                 <h3>Scenic City Summit 2019</h3>

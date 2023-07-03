@@ -7,6 +7,7 @@ import {
   createHashRouter,
   createBrowserRouter,
   RouterProvider,
+  Link
 } from "react-router-dom";
 import PageAbout from "./PageAbout";
 import { PageAudiohand } from "./PageAudiohand";
@@ -34,8 +35,8 @@ const router = createHashRouter([
         index: true,
         Component: PageAbout,
       },
-      { path: "projects", Component: PageProjects },
-      { path: "projects/calendar", Component: PageCalendar },
+      { path: "projects", Component: PageProjects, },
+      { path: "projects/calendar", Component: PageCalendar, handle: { crumb: () => <Link to="/projects">Projects</Link>, current: "Calendar" } },
       { path: "projects/flashcards", Component: PageFlashcards },
       { path: "presentations", Component: PagePresentations },
       { path: "audiohand", Component: PageAudiohand },

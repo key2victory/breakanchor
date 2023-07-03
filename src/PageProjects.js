@@ -17,7 +17,10 @@ export function PageProjects(props) {
         className,
         path,
         src,
-        imageBackground = "hsl(0,0%,80%)",
+        imageBackground = "hsla(0,0%,100%,0%)",
+        backgroundSize = "cover",
+        backgroundPosition = "center",
+        filter = "grayscale(100%) contrast(80%)",
         title,
         subtitle,
         description,
@@ -26,9 +29,38 @@ export function PageProjects(props) {
         children
     }) => {
 
+        const Label = (props) => (<div className={`${props.className}  col`}
+            style={{
+                background: props.background,
+                color: "hsl(0,0%,100%)",
+                position: "absolute",
+                bottom: 0,
+                width: "100%",
+                height: "auto",
+                minHeight: "auto",
+                maxHeight: "auto",
+                gap: ".5rem",
+                flexGrow: 3,
+                flexShrink: 0,
+                flexBasis: "300px",
+                padding: "1rem",
+                // mixBlendMode: "darken",
+                zIndex: props.zIndex
+            }}>
+            <h2>{title}</h2>
+            <h3>{subtitle}</h3>
+            <span className="row wrap shadow" style={{
+                gap: ".5rem",
+                width: "100%",
+                height: "auto",
+
+            }}>
+                {children}</span>
+        </div>);
+
         const linkStyle = {
             position: "relative",
-            //gridTemplateRows: "1fr auto",
+            // gridTemplateRows: "1fr auto",
             // gridTemplateColumns: "1fr",
             background: "hsl(0,0%,100%)",
             width: "280px",
@@ -48,52 +80,57 @@ export function PageProjects(props) {
         }
 
         return (
-            <Link className="nav-link project col box-shadow"
+            <Link className="nav-link project grid box-shadow"
                 to={`/${path}`}
                 style={linkStyle}
             >
+
+                <Label className="label" zIndex={4} />
+                <div className="overlay" style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+
+                    zIndex: 3,
+                }} />
+
                 <div className="col center"
                     style={{
+                        position: "relative",
+                        // gridRow: "1 / -1",
                         flexBasis: 0,
                         width: "100%",
                         height: "100%",
                         overflow: "hidden",
-                        background: `url(${src}) ${imageBackground}`,
-                        flexGrow: 1,
-                        flexShrink: 3,
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                        backgroundRepeat: "no-repeat",
+                        background: `${imageBackground}`,
+
                         ...style,
+
+                        zIndex: 2,
                         //margin: "1rem"
                         // boxShadow: "2px 2px 2px 4px hsla(0, 0%, 0%, 20%)"
-                    }}>
-                    {/* <img src={src} alt="" width="100%" height="auto" />*/}
-                </div >
-
-                <div className="label col top" style={{
-                    position: "absolute",
-                    bottom: 0,
-                    width: "100%",
-                    height: "auto",
-                    // minWidth: "60%",
-                    // maxWidth: "100%",
-                    minHeight: "auto",
-                    maxHeight: "auto",
-                    gap: ".5rem",
-                    flexGrow: 3,
-                    flexShrink: 0,
-                    flexBasis: "300px",
-
-                    padding: "1rem"
-                }}>
-                    <h2>{title}</h2>
-                    <h3>{subtitle}</h3>
-                    {/* <span style={{ margin: ".5rem 0" }}>
-                        {description}
-                    </span>*/}
-                    {children}
+                    }} >
+                    <div
+                        // className="col"
+                        style={{
+                            width: "100%",
+                            height: "100%",
+                            background: `url(${src})`,//  ${imageBackground}`,
+                            backgroundSize: backgroundSize,
+                            backgroundPosition: backgroundPosition,
+                            backgroundRepeat: "no-repeat",
+                            mixBlendMode: "overlay",
+                            filter: filter,
+                            zIndex: 1,
+                        }} >
+                        <Label background="linear-gradient(to bottom, hsla(0,0%,30%,80%) 50%, hsla(0,0%,30%,0%)" zIndex={1} />
+                    </div>
                 </div>
+
+
+
             </Link>
 
         )
@@ -155,6 +192,10 @@ export function PageProjects(props) {
                             key={`${item.path}-${index}`}
                             path={item.path}
                             src={item.image}
+                            backgroundSize={item.backgroundSize}
+                            backgroundPosition={item.backgroundPosition}
+                            imageBackground={item.color}
+                            filter={item.filter}
                             order={item.level}
                             color1="hsl(240,30%,50%)"
                             color2="hsl(250,50%,82%)"
@@ -164,20 +205,20 @@ export function PageProjects(props) {
                             description={item.description}
                         >
 
-                            <span className="row wrap shadow" style={{ gap: ".5rem" }}>
-                                {item.tags !== undefined && item.tags.length > 0
-                                    ? item.tags.map((v_tag, i_tag) => (
-                                        <IconTag
-                                            key={`device-${i_tag}`}
-                                            icon={v_tag}
-                                            textColor="hsla(0,0%,30%,100%)"
-                                            borderColor="hsla(0,0%,80%,30%)"
-                                            bgColor="hsla(0,0%,80%,100%)"
-                                        />
-                                    ))
-                                    : null}
 
-                            </span>
+                            {item.tags !== undefined && item.tags.length > 0
+                                ? item.tags.map((v_tag, i_tag) => (
+                                    <IconTag
+                                        key={`device-${i_tag}`}
+                                        icon={v_tag}
+                                        textColor="hsla(0,0%,0%,100%)"
+                                        borderColor="hsla(0,0%,80%,30%)"
+                                        bgColor="hsla(0,0%,100%,100%)"//"hsla(0,0%,80%,100%)"
+                                    />
+                                ))
+                                : null}
+
+
                         </ImageCard>))}
                 </Group>
             </Group>

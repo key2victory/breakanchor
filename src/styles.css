@@ -39,7 +39,7 @@ body,
   top: 0;
   left: 0;
   right: 0;*/
-  grid-column: 2 / -1;
+  grid-column: 1 / -1;
   grid-row: 1 / span 1;
   display: flex;
   flex-flow: row nowrap;
@@ -104,16 +104,29 @@ body,
 }
 
 .nav-link.project .label {
-background-color: hsla(0,0%,0%,0%);
+background-color: hsla(0,0%,40%,0%);
 color: hsla(0,0%,100%,0%);
-transition: 1s 0s ease-in;
+transition: .5s 0s ease-in;
 }
 
 .nav-link.project:hover .label {
-  background-color: hsla(0,0%,0%,80%);
+  background-color: hsla(0,0%,40%,100%);
 color: hsla(0,0%,100%,100%);
   opacity: 1;
 }
+/*
+.nav-link.project .overlay {
+    background: linear-gradient(to bottom, hsla(0,0%,0%,100%) 50%, hsla(0,0%,0%,0%) 50%,);
+  transition: .5s .1s ease-in;
+  }
+
+  .nav-link.project:hover .overlay {
+    background: linear-gradient(to bottom, hsla(0,0%,0%,100%) 50%, hsla(0,0%,0%,0%) 50%,);
+    }*/
+
+    .nav-link.project:hover{
+      outline:3px solid hsla(0,0%,40%,100%);
+    }
 
 .nav-panel {
   position: absolute;

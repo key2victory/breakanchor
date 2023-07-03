@@ -1,5 +1,5 @@
 import { memo, useEffect, useRef, forwardRef } from "react";
-import { Header, ButtonLink, Note, Group, ChipTag } from "./PageElements";
+import { Header, ButtonLink, Note, Group, ChipTag, PageContainer } from "./PageElements";
 import { MdOutlineHeight } from "react-icons/md";
 
 export const PageFlashcards = memo(function PageFlashcards({
@@ -23,13 +23,7 @@ export const PageFlashcards = memo(function PageFlashcards({
     const color2 = "hsl(40,80%,80%)";
 
     return (
-        <div className="sample-content">
-            <div
-                className="page-bg"
-                style={{
-                    background: `linear-gradient(90deg, ${color1} 0%, ${color2} 100%)` //center / 52px 39px`
-                }}
-            />
+        <PageContainer>
 
             <Header
                 title="ASL Flash Cards"
@@ -58,6 +52,9 @@ export const PageFlashcards = memo(function PageFlashcards({
                     background="hsl(42,100%,70%)"
                 />
             </Group>
-        </div>
+            <Group>
+                <iframe src="https://key2victory.github.io/csb-s6t7to/" style={{ width: "auto", height: "500px", aspectRatio: "3 / 5" }} />
+            </Group>
+        </PageContainer>
     );
 });

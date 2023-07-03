@@ -11,7 +11,7 @@
   .App {
     display: grid;
     grid-template-columns: [side] 320px [content] 1fr;
-    grid-template-rows: [header] 64px [content] 1fr;
+    grid-template-rows: [content] 1fr;
   }
   .main-content {
     position: relative;

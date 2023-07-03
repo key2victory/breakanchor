@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { memo } from "react";
+import { Link, useMatches } from "react-router-dom";
+import { Fragment, memo } from "react";
 import { pages } from "./Pages";
 import { samplePages } from "./PageSamples";
 import { CgMenu, CgClose } from "react-icons/cg";
@@ -22,8 +22,24 @@ import {
 import "./styles.css";
 
 export const AppHeader = memo(function AppHeader({ onMenuClick }) {
+  function Breadcrumbs() {
+    let matches = useMatches();
+    let crumbs = matches.filter((match) => Boolean(match.handle?.crumb)).map((match) => match.handle.crumb(match.data));
+    // first get rid of any matches that don't have handle and crumb
+    // now map them into an array of elements, passing the loader
+    // data to each one
+
+    console.log(matches, crumbs);
+    return (
+      <Fragment>
+        {crumbs.map((crumb, index) => (
+          <span key={index}>{crumb}</span>
+        ))}
+      </Fragment>
+    );
+  }
   return (
-    <div className="header row between">
+    <div className="header row between desktop-hide laptop-hide tablet-hide phablet-hide">
       <h4
         className="nav-link row nowrap desktop-hide laptop-hide tablet-hide phablet-hide"
         style={{
@@ -40,15 +56,15 @@ export const AppHeader = memo(function AppHeader({ onMenuClick }) {
       >
         <CgMenu />
       </h4>
-      <h3>
+      <Breadcrumbs />
+      {/* <h3>
         break anchor
         <span
           className="" //"mobile-hide"
         >
-          {" "}
           design
         </span>
-      </h3>
+      </h3>*/}
       <span
         style={{
           padding: "1rem",
@@ -93,10 +109,10 @@ const NavCardAbout = memo(function NavCardAbout({
     }
   };
   return (
-    <Link
+    <div
       className={`${size === "small" ? "row left nowrap" : "col center"
         } mobile-hide`}
-      to="/"
+      // to="/"
       style={styleOption[size]}
     >
       <img
@@ -116,17 +132,17 @@ const NavCardAbout = memo(function NavCardAbout({
         <h3
           className="center"
           style={{
-            color: "hsl(0,0%,100%)",
+            color: "hsl(0,0%,90%)",
 
             // transform: "translateY(-1.25rem)",
-            textShadow: "2px 2px 20px hsl(0,0%,0%)"
+            //  textShadow: "2px 2px 20px hsl(0,0%,0%)"
           }}
         >
           Janna Curtis
         </h3>
-
+        <h5>break anchor design</h5>
       </div>
-    </Link>
+    </div>
   );
 });
 
