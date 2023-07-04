@@ -59,19 +59,19 @@ function PageSample(props) {
       <Header
         title={samplePages[props.index].title}
         subtitle=""
-        color="hsl(0,0%,70%)"
+        color="hsla(0,0%,0%,40%)"
         style={{
           gridColumn: "content / span 1",
           gridRowStart: "title",
           padding: "0 0 1rem 0",
         }}
       ></Header>
-      <div
+      {/* <div
         className="page-bg"
         style={{
           background: `linear-gradient(31deg, ${color1} 25%, ${color2} 0, ${color2} 50%, ${color1} 0, ${color1} 75%, ${color2} 0) center / 50px 30px`,
         }}
-      />
+      />*/}
       <div
         style={{
           gridRow: "content / span 1",

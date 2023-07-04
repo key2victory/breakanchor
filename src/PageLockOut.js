@@ -1,4 +1,4 @@
-import {memo, useState, useEffect, Fragment} from "react";
+import { memo, useState, useEffect, Fragment } from "react";
 import {
   Header,
   ButtonLink,
@@ -8,7 +8,7 @@ import {
   Row,
   Group,
 } from "./PageElements";
-import {HeroLockOut} from "./HeroLockOut";
+import { HeroLockOut } from "./HeroLockOut";
 
 export const PageLockOut = memo(function PageLockOut({
   title,
@@ -30,12 +30,12 @@ export const PageLockOut = memo(function PageLockOut({
   ];
   return (
     <div className="main-content">
-      <div
+      {/*  <div
         className="page-bg"
         style={{
           background: "linear-gradient(90deg, #f9b446 0%, #FEC107 100%)",
         }}
-      />{" "}
+      />*/}
       <div className="scroll-zone">
         <Header
           title={title}
@@ -48,15 +48,15 @@ export const PageLockOut = memo(function PageLockOut({
           <Note
             title="Problem"
             description="Performing maintenance and repairs on electrical systems is dangerous work. To ensure safety, an isolation permit must be requested, and an authorized technician must go out on site, manually shut off each system circuit, and place a physical ID tagged lock on each one. After the work has been performed, a de-isolation permit is requested for a technician to unlock the breaker box and turn the circuits back on. Each permit request may contain a dozen or more different equipment, lock, and tag IDs to correctly associate with one another."
-            background="hsl(42,100%,70%)"
+            background="hsla(0,0%,100%,80%)"
           />
           <Note
             title="Solution"
             description="A mobile app that allows technicians to view each open permit as a digital checklist (without connectivity) and lets them record each completed tag ID as they go. Barcode scanning offers a convenient capture method, improving efficiency and reducing risk of error associated with hand-written or manual entry record-keeping. Printed bar codes can sometimes get damaged and fail to scan. I included use case flows for selecting tag numbers from a list, so workers could toggle tag states with a confirmation button and avoid the hassle and entry errors associated with typing long barcode numbers on a touch screen."
-            background="hsl(42,100%,70%)"
-            //color="white"
+            background="hsla(0,0%,100%,80%)"
+          //color="white"
           />
-        </Group>{" "}
+        </Group>
         <div
           className="box-shadow grid"
           style={{
@@ -84,7 +84,7 @@ export const PageLockOut = memo(function PageLockOut({
                 //  gridColumn: "1 / span 1"
               }
             }
-          />{" "}
+          />
           <span
             className="row center right"
             style={{
@@ -94,17 +94,17 @@ export const PageLockOut = memo(function PageLockOut({
               padding: 0,
             }}
           >
-            p .31,{" "}
+            p .31,
             <a href="https://www.bechtel.com/getmedia/0f83daae-baa4-4124-b84b-bdea6c861bfc/2018-bechtel-report-final-ns.pdf">
-              Bechtel 2018 Annual Report↗{" "}
-            </a>{" "}
-          </span>{" "}
-        </div>{" "}
+              Bechtel 2018 Annual Report↗
+            </a>
+          </span>
+        </div>
         <Group>
           <img className="image shadow" src="./img/loto-01.png" alt="" />
           <img className="image shadow" src="./img/loto-02.png" alt="" />
           <img className="image shadow" src="./img/loto-03.png" alt="" />
-        </Group>{" "}
+        </Group>
         <Group>
           <div
             style={{
@@ -148,25 +148,25 @@ export const PageLockOut = memo(function PageLockOut({
               }}
               width="100%"
             />
-          </div>{" "}
-        </Group>{" "}
+          </div>
+        </Group>
         <Group>
           <img className="image shadow" src="./img/loto-07.png" alt="" />
           <img className="image shadow" src="./img/loto-08.png" alt="" />
           <img className="image shadow" src="./img/loto-09.png" alt="" />
-        </Group>{" "}
+        </Group>
         <Group>
           <img className="image shadow" src="./img/loto-10.png" alt="" />
           <img className="image shadow" src="./img/loto-11.png" alt="" />
           <img className="image shadow" src="./img/loto-12.png" alt="" />
-        </Group>{" "}
+        </Group>
         <Group>
-          <img className="image shadow" src="./img/loto-13.png" alt="" />
+          <div role="img" className="image shadow" style={{ background: "url(./img/loto-13.png)", backgroundSize: "180%", width: "100%", height: "200px", margin: "2rem 0 0 0" }} ariaLabel="" />
         </Group>
         <div className="hero loto">
           <HeroLockOut />
-        </div>{" "}
-      </div>{" "}
+        </div>
+      </div>
     </div>
   );
 });
