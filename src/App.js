@@ -13,7 +13,9 @@ export default function App(props) {
   const [showNav, setShowNav] = useState(false);
 
   return (
-    <div className="App">
+    <div className="App" style={{
+      background: `linear-gradient(90deg, hsla(39, 0%, 100%, 0%) 0%, hsla(40, 0%, 100%, 100%) 100%), linear-gradient(45deg, hsl(39, 14%, 80%) 0%, hsl(40, 7%, 60%) 100%)`,
+    }}>
       <AppHeader
         onMenuClick={() => {
           setShowNav(true);
