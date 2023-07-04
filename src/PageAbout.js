@@ -3,7 +3,7 @@ import { memo, useState, useEffect, Fragment } from "react";
 import { AppHeader, NavPanel } from "./AppNav";
 import HeroAbout from "./HeroAbout";
 import { Logo } from "./Logo";
-import { Header, ButtonLink, Note, Group } from "./PageElements";
+import { Header, ButtonLink, Note, Group, PageContainer } from "./PageElements";
 
 import {
   MdCircle,
@@ -20,83 +20,99 @@ const present = new Date().getFullYear();
 }) {*/
 export default function PageAbout(props) {
   const borderRadius = ".5rem";
-  const color1 = "hsl(0,0%,80%)";
-  const color2 = "hsl(0,0%,90%)";
+  // const color1 = "hsl(0,0%,80%)";
+  // const color2 = "hsl(0,0%,90%)";
+  const color1 = "hsla(0,0%,0%,0%)";
+  const color2 = "hsla(0,0%,0%,10%)";
   return (
-    <div className="main-content">
-      <div
+    <PageContainer layout="left" maxWidth="600px">
+      {/* <div className="main-content">
+     <div
         className="page-bg"
         style={{
-          // background: "linear-gradient(90deg, #f9b446 0%, #FEC107 100%)"
-          background: `linear-gradient(45deg, ${color1} 25%, ${color2} 0, ${color2} 50%, ${color1} 0, ${color1} 75%, ${color2} 0)`,
-          backgroundSize: "30px 30px",
-          //   "repeating-linear-gradient(30deg, hsla(0,0%,100%,.1), hsla(0,0%,100%,.1) 15px, transparent 0, transparent 30px)"
+          background: `linear-gradient(31deg, ${color1} 25%, ${color2} 0, ${color2} 50%, ${color1} 0, ${color1} 75%, ${color2} 0) center / 50px 30px`,
         }}
-      />{" "}
+      />
+ 
+      <div className="scroll-zone">*/}
+
       <div
         className="page-bg"
         style={{
           background: `linear-gradient(31deg, ${color1} 25%, ${color2} 0, ${color2} 50%, ${color1} 0, ${color1} 75%, ${color2} 0) center / 50px 30px`,
         }}
-      />{" "}
-      <div className="scroll-zone">
-        <HeroAbout />
-        <div
-          className="card col"
-          style={{
-            background: "hsla(0,0%,30%,85%)",
-            color: "hsla(0,0%,100%,80%)",
-            width: "100%",
-            gap: 0,
-          }}
-        >
-          <h5 style={{ marginBottom: ".5rem" }}> I'm a team player</h5>
-          <p style={{ marginBottom: "1rem" }}>
-            Throughout my career, I've had the pleasure of working on many highly effective teams. I'm used to leveraging the strengths of each individual to work more efficiently and aid each other's personal growth. I understand the power of collaboration and I'm dedicated to the success of the team as a whole. I've spent a lot of time in both startup and enterprise environments.
-          </p>
-          <h5 style={{ marginBottom: ".5rem" }}>
-            My skills are also my hobbies
-          </h5>
-          <p style={{ marginBottom: "1rem" }}>
-            I'm well-versed in user experience and visual design principles, but have a personal fascination with psychology and reading material on human behavior, social patterns, and research for fun. I am always curious about new technology and always try to stay up-to-date on UX patterns, trends, UI frameworks, and the latest advancements. I've been a speaker at Codestock and Scenic City Summit developer conferences, and I'm comfortable presenting my ideas to clients.
-          </p>
-          <h5 style={{ marginBottom: ".5rem" }}>
-            It's my personal mission to empower others
-          </h5>
-          <p style={{ marginBottom: "0rem" }}>
-            My degree program at Watkins College of Art taught me how to evaluate my work against the principles of design to make iterative improvements, and how to assist other designers in reaching the full potential of their work through collaborative feedback.I use these techniques often when mentoring for the Knoxville Entrepreneur Center and new designers in my spare time. I am always looking for ways to improve myself and support the success of others.
-          </p>
-        </div>
-        <CardSection title="Education">
+      />
+      <HeroAbout />
+      <Group
+        className="card col"
+        style={{
+          background: "hsla(0,0%,30%,85%)",
+          color: "hsla(0,0%,100%,80%)",
+          width: "100%",
+          gap: 0,
+        }}
+      >
+        <h5 style={{ marginBottom: ".5rem" }}> I'm a team player</h5>
+        <p style={{ marginBottom: "1rem" }}>
+          Throughout my career, I've had the pleasure of working on many highly effective teams. I'm used to leveraging the strengths of each individual to work more efficiently and aid each other's personal growth. I understand the power of collaboration and I'm dedicated to the success of the team as a whole. I've spent a lot of time in both startup and enterprise environments.
+        </p>
+      </Group>
+      <Group
+        className="card col"
+        style={{
+          background: "hsla(0,0%,30%,85%)",
+          color: "hsla(0,0%,100%,80%)",
+          width: "100%",
+          gap: 0,
+        }}
+      >
+        <h5 style={{ marginBottom: ".5rem" }}>
+          My skills are also my hobbies
+        </h5>
+        <p style={{ marginBottom: "1rem" }}>
+          I'm well-versed in user experience and visual design principles, but have a personal fascination with psychology and reading material on human behavior, social patterns, and research for fun. I am always curious about new technology and always try to stay up-to-date on UX patterns, trends, UI frameworks, and the latest advancements. I've been a speaker at Codestock and Scenic City Summit developer conferences, and I'm comfortable presenting my ideas to clients.
+        </p>
+      </Group>
+      <Group
+        className="card col"
+        style={{
+          background: "hsla(0,0%,30%,85%)",
+          color: "hsla(0,0%,100%,80%)",
+          width: "100%",
+          gap: 0,
+        }}
+      >
+        <h5 style={{ marginBottom: ".5rem" }}>
+          It's my personal mission to empower others
+        </h5>
+        <p style={{ marginBottom: "0rem" }}>
+          My degree program at Watkins College of Art taught me how to evaluate my work against the principles of design to make iterative improvements, and how to assist other designers in reaching the full potential of their work through collaborative feedback.I use these techniques often when mentoring for the Knoxville Entrepreneur Center and new designers in my spare time. I am always looking for ways to improve myself and support the success of others.
+        </p>
+      </Group>
+      <CardSection title="Education">
+
+        {resume.education.map((item, index) => (
           <Group
-            className="resume-timeline" //desktop-col tablet-col mobile-col"
-            style={
-              {
-                // background: "hsl(0,0%,100%)"
-              }
-            }
+            className="resume-timeline responsive"
+            key={`resume-edu-${index}`}
           >
-            {resume.education.map((item, index) => (
-              <CardDetails key={`resume-edu-${index}`} content={item} />
-            ))}{" "}
-          </Group>{" "}
-        </CardSection>
-        <CardSection title="Experience">
+            <CardDetails content={item} />
+          </Group>
+        ))}
+
+      </CardSection>
+      <CardSection title="Experience">
+
+        {resume.experience.map((item, index) => (
           <Group
-            className="resume-timeline desktop-resume tablet-resume mobile-resume"
-            style={
-              {
-                //  background: "hsl(0,0%,100%)"
-              }
-            }
+            className="resume-timeline responsive"
           >
-            {resume.experience.map((item, index) => (
-              <CardDetails key={`resume-xp-${index}`} content={item} />
-            ))}{" "}
-          </Group>{" "}
-        </CardSection>{" "}
-      </div>{" "}
-    </div>
+            <CardDetails key={`resume-xp-${index}`} content={item} />
+          </Group>
+        ))}
+      </CardSection>
+
+    </PageContainer >
   );
 }
 
@@ -107,40 +123,41 @@ function CardSection({ title, children, style }) {
       style={{
         display: "flex",
         flexFlow: "column nowrap",
-        gap: "1rem",
+        gap: 0,
         background: "hsl(0,0%,40%)",
         padding: "1rem",
-        minWidth: "300px",
-        maxWidth: "600px",
+        width: "100%",
+        // minWidth: "300px",
+        // maxWidth: "600px",
         ...style,
       }}
     >
-      <h3 style={{ color: "hsl(0,0%,100%)" }}> {title} </h3> {children}{" "}
+      <h3 style={{ color: "hsl(0,0%,100%)" }}> {title} </h3> {children}
     </div>
   );
 }
 
 const CardDates = ({ content }) => (
-  <div
-    style={{
-      gridColumn: "1 / span 1",
-      display: "flex",
-      flexFlow: "row nowrap",
-      width: "100%",
-      height: "100%",
-    }}
-  >
+  // gridColumn: "1 / span 1",
+  // display: "flex",
+  // width: "100%",
+  // height: "100%",
+
+  <Fragment>
     <span
+      className="resume-dates responsive"
       style={{
         width: "100%",
-        display: "flex",
-        flexFlow: "column nowrap",
-        alignItems: "flex-end",
+        // display: "flex",
+        // flexFlow: "row wrap",
+        alignItems: "flex-start",
         justifyContent: "flex-start",
         color: "hsl(0,0%,100%)",
         //gap: ".25rem",
         padding: ".5rem 0 0 0",
-
+        // flexGrow: 1,
+        // flexShrink: 1,
+        // flexBasis: 0,
         // textAlign: "right"
       }}
     >
@@ -149,8 +166,11 @@ const CardDates = ({ content }) => (
           <span
             style={{
               fontSize: "1rem",
-              width: "min-content",
-              height: "min-content",
+              width: "auto",
+              height: "auto",
+              // flexGrow: 0,
+              // flexShrink: 0,
+
             }}
           >
             {content.dates[0]}
@@ -158,32 +178,35 @@ const CardDates = ({ content }) => (
               style={{
                 fontSize: "1rem",
                 width: "auto",
-                height: "min-content",
+                height: "auto",
                 margin: "0 .2rem",
               }}
             >
               -
-            </span>{" "}
-          </span>{" "}
+            </span>
+          </span>
           <span
             style={{
               fontSize: "1.3rem",
-              width: "min-content",
-              height: "min-content",
+              // width: "min-content",
+              // height: "min-content",
+              width: "auto",
+              height: "auto",
             }}
           >
-            {content.dates[1]}{" "}
-          </span>{" "}
+            {content.dates[1]}
+          </span>
         </Fragment>
       ) : (
         <span
           style={{ fontSize: "1.3rem", width: "min-content", height: "auto" }}
         >
-          {content.dates.join(", ")}{" "}
+          {content.dates.join(", ")}
         </span>
-      )}{" "}
-    </span>{" "}
+      )}
+    </span>
     <span
+      className="resume-marker responsive"
       style={{
         width: "2px",
         display: "flex",
@@ -193,14 +216,14 @@ const CardDates = ({ content }) => (
         height: "100%",
         borderRight: "2px solid hsl(0,0%,80%)",
         padding: ".7rem 0 0 0",
-        margin: "0 1rem 0 1rem",
+        margin: "0 1rem 0 auto",
         color: "hsl(0,0%,100%)",
         // gap: "0"
       }}
     >
-      <MdCircle style={{ transform: "translateX(1px)" }} />{" "}
-    </span>{" "}
-  </div>
+      <MdCircle style={{ transform: "translateX(1px)" }} />
+    </span>
+  </Fragment>
 );
 
 const CardHeader = ({ content }) => (
@@ -210,9 +233,14 @@ const CardHeader = ({ content }) => (
       flexFlow: "column nowrap",
       gap: ".25rem",
       padding: "0",
+      width: "100%",
+      minWidth: "100px",
+      flexGrow: 1,
+      flexShrink: 1,
+      flexBasis: "100px"
     }}
   >
-    <h4> {content.title} </h4> <h5> {content.subtitle} </h5>{" "}
+    <h4> {content.title} </h4> <h5> {content.subtitle} </h5>
   </span>
 );
 
@@ -231,109 +259,70 @@ const TimelineBubble = ({ content, children, style }) => {
       zIndex: 0,
     },
   ];
-  if (children) {
-    return (
+  return (
+    <div
+      className="col nowrap box-shadow"
+      style={{
+        ...style,
+        width: "100%",
+        maxWidth: "400px",
+        flexGrow: 1,
+        flexShrink: 1,
+        flexBasis: 0,
+        margin: "0.5rem 0 1rem 0",
+        borderRadius: "0rem 1rem 1rem 1rem",
+        overflow: "hidden",
+        //  ...bubbleStyle
+      }}
+    >
       <div
-        className="box-shadow"
+        className="row wrap"
         style={{
-          ...style,
-          width: "100%",
-          maxWidth: "400px",
-          display: "flex",
-          flexFlow: "column nowrap",
-          // columnGap: ".5rem",
-          // rowGap: ".75rem",
-          margin: "1rem 0",
-          borderRadius: "0rem 1rem 1rem 1rem",
-          overflow: "hidden",
-          //  ...bubbleStyle
-        }}
-      >
-        <div
-          style={{
-            //...style,
-            display: "grid",
-            gridTemplateColumns: "auto 1fr",
-            columnGap: ".8rem",
-            rowGap: ".75rem",
-            borderRadius: "0rem 1rem 0rem 0rem",
-            ...bubbleStyle[0],
-          }}
-        >
-          <span
-            style={{
-              display: "flex",
-              alignItems: "stretch",
-              justifyContent: "stretch",
-              width: "48px",
-              height: "48px",
-              background: "hsl(0,0%,90%)",
-              borderRadius: ".5rem",
-              // padding: ".1rem",
-              aspectRatio: "1/1",
-            }}
-          >
-            <Logo name={content.logo} />{" "}
-          </span>{" "}
-          <CardHeader content={content} />{" "}
-        </div>{" "}
-        <div
-          className="box-shadow"
-          style={{
-            display: "flex",
-            flexFlow: "column nowrap",
-            gap: ".75rem",
-            ...bubbleStyle[1],
-          }}
-        >
-          {children}{" "}
-        </div>{" "}
-      </div>
-    );
-  } else {
-    return (
-      <div
-        className="box-shadow"
-        style={{
-          width: "100%",
-
-          maxWidth: "400px",
-          margin: "1rem 0",
-          borderRadius: "0rem 1rem 1rem 1rem",
-          overflow: "hidden",
-          display: "grid",
-          gridTemplateColumns: "auto 1fr",
+          //...style,
+          // display: "grid",
+          // gridTemplateColumns: "auto 1fr",
           columnGap: ".8rem",
           rowGap: ".75rem",
-          //  margin: ".5rem 0",
+          borderRadius: "0rem 1rem 0rem 0rem",
           ...bubbleStyle[0],
         }}
       >
         <span
+          className="logo"
           style={{
             display: "flex",
             alignItems: "stretch",
             justifyContent: "stretch",
-            width: "48px",
-            height: "48px",
             background: "hsl(0,0%,90%)",
             borderRadius: ".5rem",
             // padding: ".1rem",
             aspectRatio: "1/1",
           }}
         >
-          <Logo name={content.logo} />{" "}
-        </span>{" "}
-        <CardHeader content={content} />{" "}
+          <Logo name={content.logo} />
+        </span>
+        <CardHeader content={content} />
       </div>
-    );
-  }
+      <div
+        className="box-shadow"
+        style={{
+          display: "flex",
+          flexFlow: "column nowrap",
+          gap: ".75rem",
+          ...bubbleStyle[1],
+        }}
+      >
+        {children}
+      </div>
+    </div>
+  );
+
 };
 
 const CardSummary = ({ content, style }) => (
   <Fragment>
     <CardDates content={content} />
-    <TimelineBubble content={content} />{" "}
+    <TimelineBubble content={content} />
   </Fragment>
 );
 
@@ -353,9 +342,9 @@ const CardDetails = ({ content }) => {
             // fontSize: ".9rem"
           }}
         >
-          {content.label}{" "}
+          {content.label}
         </span>
-      ) : null}{" "}
+      ) : null}
       {content.items.map((item, index) => (
         <span
           key={`content-item-${index}`}
@@ -380,10 +369,10 @@ const CardDetails = ({ content }) => {
               margin: "0 .5rem 0 .5rem",
             }}
           >
-            {item}{" "}
-          </span>{" "}
+            {item}
+          </span>
         </span>
-      ))}{" "}
+      ))}
     </span>
   );
 
@@ -391,7 +380,7 @@ const CardDetails = ({ content }) => {
     <Fragment>
       <CardDates content={content} />
       <TimelineBubble content={content}>
-        {" "}
+
         {content.details
           ? content.details.map((v_detail, i_detail) =>
             v_detail.label && v_detail.label === "Projects" ? (
@@ -421,8 +410,8 @@ const CardDetails = ({ content }) => {
               />
             )
           )
-          : null}{" "}
-      </TimelineBubble>{" "}
+          : null}
+      </TimelineBubble>
     </Fragment>
   );
 };

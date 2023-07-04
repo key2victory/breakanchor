@@ -238,9 +238,22 @@ color: hsla(0,0%,100%,0%);
 
 .resume-timeline {
   display: grid;
-  grid-template-columns: [date] 100px [details] 1fr;
+  grid-template-columns: [date] 60px [marker] 32px [details] 1fr;
   row-gap: 0;
   column-gap: 0;
+}
+
+.resume-dates {
+  /* display: flex;
+  flex-flow: row nowrap; */
+  grid-column: date / span 1;
+  grid-row: 1 / span 1;
+  text-align: right;
+}
+
+.resume-marker {
+  grid-column: marker span 1;
+  grid-row: 1 / span 1;
 }
 
 .column {
@@ -566,6 +579,6 @@ h5 {
 
 p,
 .p {
-  max-width: 36rem;
+  max-width: 36em;
   margin: 0;
 }

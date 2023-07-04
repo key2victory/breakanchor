@@ -1,4 +1,4 @@
-import {memo, useState, useEffect, Fragment} from "react";
+import { memo, useState, useEffect, Fragment } from "react";
 import NavPanel from "./AppNav";
 import "./styles.css";
 
@@ -13,7 +13,7 @@ export default function HeroAbout() {
 
   return (
     <div
-      className="desktop-hide laptop-hide tablet-hide phablet-hide card row wrap center" //desktop-about tablet-about mobile-about"
+      className="desktop-hide laptop-hide tablet-hide card row wrap center" //desktop-about tablet-about mobile-about"
       style={{
         display: "flex",
         padding: "1rem 1.5rem",
@@ -24,7 +24,7 @@ export default function HeroAbout() {
         width="150"
         src="./img/jmc.png"
         alt=""
-        style={{margin: "0 1.5rem 0 0"}}
+        style={{ margin: "0 1.5rem 0 0" }}
       />{" "}
       <h1
         //className="card"

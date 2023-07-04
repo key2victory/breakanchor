@@ -39,9 +39,9 @@ export const AppHeader = memo(function AppHeader({ onMenuClick }) {
     );
   }
   return (
-    <div className="header row between desktop-hide laptop-hide tablet-hide phablet-hide">
+    <div className="header row between desktop-hide laptop-hide tablet-hide">
       <h4
-        className="nav-link row nowrap desktop-hide laptop-hide tablet-hide phablet-hide"
+        className="nav-link row nowrap desktop-hide laptop-hide tablet-hide"
         style={{
           fontSize: "1.5rem",
           alignItems: "center",
@@ -60,7 +60,7 @@ export const AppHeader = memo(function AppHeader({ onMenuClick }) {
       {/* <h3>
         break anchor
         <span
-          className="" //"mobile-hide"
+          className="" //"mobile-hide phablet-hide"
         >
           design
         </span>
@@ -111,18 +111,18 @@ const NavCardAbout = memo(function NavCardAbout({
   return (
     <div
       className={`${size === "small" ? "row left nowrap" : "col center"
-        } mobile-hide`}
+        } mobile-hide phablet-hide`}
       // to="/"
       style={styleOption[size]}
     >
       <img
-        className="mobile-hide"
+        className="mobile-hide phablet-hide"
         width={size === "small" ? "56" : "120"}
         src="./img/jmc.png"
         alt=""
       />
       <div
-        className={`col center ${size === "small" ? "left" : ""} mobile-hide`}
+        className={`col center ${size === "small" ? "left" : ""} mobile-hide phablet-hide`}
         style={{
           gap: ".25rem",
           width: size === "small" ? "auto" : "100%",
@@ -201,7 +201,7 @@ export default function AppNavFlyout({ showNav, onClickExit }) {
   return (
     <div
       className={`overlay ${showNav === true ? "show" : "hide"
-        } desktop-hide laptop-hide tablet-hide phablet-hide row nowrap`}
+        } desktop-hide laptop-hide tablet-hide row nowrap`}
       style={{
         position: "absolute",
         top: 0,
@@ -251,7 +251,7 @@ export default function AppNavFlyout({ showNav, onClickExit }) {
 }
 
 export function NavPanel({
-  className = "mobile-hide nav-panel box-shadow-edged",
+  className = "mobile-hide phablet-hide nav-panel box-shadow-edged",
   background = "hsl(0,0%,35%)",
   showNav,
   onClickExit
@@ -285,7 +285,7 @@ export function NavPanel({
         }}
       >
         <div
-          className="nav-link desktop-hide laptop-hide tablet-hide phablet-hide"
+          className="nav-link desktop-hide laptop-hide tablet-hide"
           style={{
             cursor: "pointer",
             padding: "1rem 1.1rem",
@@ -302,7 +302,7 @@ export function NavPanel({
       </div>
       <div className="col top">
         <NavCard
-          //  className="desktop-hide laptop-hide tablet-hide phablet-hide"
+          //  className="desktop-hide laptop-hide tablet-hide"
           icon={RiMapPinUserFill}
           path=""
           title="About Me"

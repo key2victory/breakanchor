@@ -1,4 +1,4 @@
-@media screen and (min-width: 700px) and (max-width: 983px) {
+@media screen and (min-width: 400px) and (max-width: 699px) {
   .phablet-hide {
     position: absolute;
     visibility: hidden;
@@ -11,11 +11,24 @@
     font-size: 16px;
     /*clamp(16px, 1.5vw, 48px);*/
   }
+
+  .app-nav {
+    transition-duration: 0.5s;
+  }
+  
+  .app-nav.hide {
+    transform: translateX(-100%);
+  }
+
+  .app-nav.show {
+    transform: translateX(0);
+  }
   .App {
     display: grid;
-    grid-template-columns: [side] 280px [content] 1fr;
-    grid-template-rows: [content] 1fr;
+    grid-template-columns: [content] 1fr;
+    grid-template-rows: [header] 64px [content] 1fr;
   }
+
   .main-content {
     grid-column: content / span 1;
     grid-row: content / span 1;
@@ -30,9 +43,16 @@
   .listpage-content .scroll-zone {
     padding: 1rem;
   }
-    .scroll-content {
-      gap: .5rem;
-      }
+  .scroll-content {
+    margin: 0 auto 0 auto;
+    gap: 1rem;
+  }
+
+
+  .logo {
+    width: 32px;
+    height:32px
+  }
 
   .hero {
     position: static;

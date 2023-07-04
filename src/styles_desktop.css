@@ -20,6 +20,11 @@
     grid-template-rows: [content] 1fr;
     grid-template-columns: [content] 1fr [hero] 40%;
   }
+  .logo {
+    width: 48px;
+    height: 48px;
+  }
+
   .hero {
     position: absolute;
     top: 0;
@@ -70,6 +75,12 @@
   }
 
   .scroll-content {
+    margin: 0 auto 0 auto;
+    gap: 1rem;
+  }
+
+  .scroll-content.left {
+    margin: 0 auto 0 0;
     gap: 1rem;
   }
   

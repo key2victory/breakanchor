@@ -307,6 +307,12 @@ export const PageContainer = memo(function PageContainer({ layout = "hero", maxW
   const pageLayout = {
     hero: "main-content",
     center: "listpage-content",
+    left: "listpage-content"
+  }
+  const scrollContent = {
+    hero: "scroll-content",
+    center: "scroll-content",
+    left: "scroll-content left",
   }
   return (
     <div
@@ -314,12 +320,11 @@ export const PageContainer = memo(function PageContainer({ layout = "hero", maxW
       style={{ background: swatches[background] !== undefined ? swatches[background] : background }}
     >
       <div className="scroll-zone">
-        <div className={`scroll-content ${className}`} style={{
+        <div className={`${scrollContent[layout]} ${className}`} style={{
           width: "100%",
           minWidth: 0,
           maxWidth: maxWidth,
-          margin: "0 auto 0 auto",
-          // gap: "inherit"
+          // margin: "0 auto 0 auto",
         }}>
           {children}
         </div>
