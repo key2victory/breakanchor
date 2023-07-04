@@ -65,7 +65,7 @@ function PageSample(props) {
           gridRowStart: "title",
           padding: "0 0 1rem 0",
         }}
-      ></Header>{" "}
+      ></Header>
       <div
         className="page-bg"
         style={{

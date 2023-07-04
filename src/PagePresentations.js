@@ -117,7 +117,7 @@ export function PagePresentations(props) {
     });
 
     return (
-        <PageContainer
+        <PageContainer layout="center"
         >
             <Header
                 title="Presentations"

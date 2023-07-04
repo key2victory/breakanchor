@@ -326,14 +326,14 @@ export function NavPanel({
           borderTop={borderStyle}
           borderBottom=""
         />
-        <NavCard
+        {/* <NavCard
           icon={RiStackshareLine}
           title="Learning Connections"
           path="learning"
           color="hsla(0,0%,100%,70%)"
           borderTop={borderStyle}
           borderBottom=""
-        />
+        />*/}
       </div>
     </div>
   );

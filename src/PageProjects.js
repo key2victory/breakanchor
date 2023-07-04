@@ -39,7 +39,7 @@ export function PageProjects(props) {
                 height: "auto",
                 minHeight: "auto",
                 maxHeight: "auto",
-                gap: ".5rem",
+                gap: ".25rem",
                 flexGrow: 3,
                 flexShrink: 0,
                 flexBasis: "300px",
@@ -53,7 +53,7 @@ export function PageProjects(props) {
                 gap: ".5rem",
                 width: "100%",
                 height: "auto",
-
+                padding: ".5rem 0 0 0"
             }}>
                 {children}</span>
         </div>);
@@ -67,13 +67,13 @@ export function PageProjects(props) {
             height: "326px",
             //aspectRatio: "6 / 7",
             minWidth: "280px",
-            maxWidth: order === 1 ? "600px" : order === 2 ? "400px" : "300px",//`calc(${minImgSize}px + 38rem)`,
+            maxWidth: "600px",//`calc(${minImgSize}px + 38rem)`,
             maxHeight: "326px",
             overflow: "hidden",
-            gap: "1.5rem",
-            flexGrow: 1,
-            flexShrink: 1,
-            flexBasis: order === 1 ? "500px" : order === 2 ? "400px" : "300px",
+            // gap: "1rem",
+            flexGrow: order === 1 ? 3 : order === 2 ? 2 : 1,
+            flexShrink: order,
+            flexBasis: order === 1 ? "40%" : order === 2 ? "35%" : "20",
             borderRadius: ".5rem",
             order: order,
             // margin: "0 0 1rem 0"
@@ -137,7 +137,7 @@ export function PageProjects(props) {
     };
 
     return (
-        <PageContainer maxWidth="1200px">
+        <PageContainer layout="center" maxWidth="1200px">
             {/* <div className="grid" style={{
                 gridTemplateColumns: "1fr [content] auto 1fr",
                 gridTemplateRows: "[title] auto [content] auto", width: "100%"
@@ -173,19 +173,20 @@ export function PageProjects(props) {
                         //size="18"
                         />
                     </div></Header>
+
+                <div
+                    className="page-bg"
+                    style={{
+                        background: `linear-gradient(90deg, ${colorA} 0%, ${colorB} 100%,)`
+                    }}
+                />
                 <Group className="row wrap top" style={{
                     gridColumn: "content / span 1",
                     gridRowStart: "content",
                     padding: "0 0 2rem 0",
-                    width: "fit-content"
+                    width: "fit-content",
+                    gap: "1.5rem"
                 }}>
-                    <div
-                        className="page-bg"
-                        style={{
-                            background: `linear-gradient(90deg, ${colorA} 0%, ${colorB} 100%,)`
-                        }}
-                    />
-
                     {pages.map((item, index) => (
 
                         <ImageCard

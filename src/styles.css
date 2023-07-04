@@ -99,19 +99,20 @@ body,
 }
 
 .nav-link.project {
+  outline:3px solid hsla(0,0%,40%,0%);
   cursor: pointer;
   transition: 0.5s 0s linear;
 }
 
 .nav-link.project .label {
-background-color: hsla(0,0%,40%,0%);
-color: hsla(0,0%,100%,0%);
+  background-color: hsla(0,0%,40%,100%);
+color: hsla(0,0%,100%,100%);
 transition: .5s 0s ease-in;
 }
 
 .nav-link.project:hover .label {
-  background-color: hsla(0,0%,40%,100%);
-color: hsla(0,0%,100%,100%);
+  background-color: hsla(0,0%,40%,30%);
+color: hsla(0,0%,100%,0%);
   opacity: 1;
 }
 /*

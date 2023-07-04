@@ -16,6 +16,7 @@ import { PageIntuitive } from "./PageIntuitive";
 import { PageLockOut } from "./PageLockOut";
 import { PageProjects } from "./PageProjects";
 import { PagePresentations } from "./PagePresentations";
+import { PageLearning } from "./PageLearning";
 import { PageFlashcards } from "./PageFlashcards";
 import {
   samplePaths,
@@ -39,6 +40,7 @@ const router = createHashRouter([
       { path: "projects/calendar", Component: PageCalendar, handle: { crumb: () => <Link to="/projects">Projects</Link>, current: "Calendar" } },
       { path: "projects/flashcards", Component: PageFlashcards },
       { path: "presentations", Component: PagePresentations },
+      { path: "learning", Component: PageLearning },
       { path: "audiohand", Component: PageAudiohand },
       { path: "intuitive", Component: PageIntuitive },
       { path: "loto", Component: PageLockOut },

@@ -165,6 +165,7 @@ export const DeviceSizes = memo(function DeviceSizes({
 export const Note = memo(function Note({
   title,
   description,
+  children,
   background,
   color = "black",
   collapse = false,
@@ -199,6 +200,25 @@ export const Note = memo(function Note({
   );
 });
 
+export const NoteCard = memo(function NoteCard({
+  title,
+  children,
+  background,
+  color = "black",
+  className,
+  style,
+}) {
+  return (
+    <div
+      className={`card ${className}`}
+      style={{ background: background, color: color, ...style }}
+    >
+      <h4> {title} </h4>
+      {children}
+    </div>
+  );
+});
+
 export const Caption = memo(function Caption({
   src,
   imgStyle,
@@ -216,46 +236,6 @@ export const Caption = memo(function Caption({
         alt={alt}
       />{" "}
       {alt}{" "}
-    </div>
-  );
-});
-
-export const Column = memo(function Column({ children, style }) {
-  return (
-    <div
-      style={{
-        display: "flex",
-        flexFlow: "column nowrap",
-        gap: "1rem",
-        minWidth: 0,
-        minHeight: 0,
-        height: "100%",
-        ...style,
-      }}
-    >
-      {children}{" "}
-    </div>
-  );
-});
-
-export const Row = memo(function Row({
-  children,
-  style = {
-    display: "flex",
-    flexFlow: "row nowrap",
-    gap: "1rem",
-    minWidth: 0,
-    justifyContent: "stretch",
-    alignItems: "flex-start",
-  },
-}) {
-  return (
-    <div
-      style={{
-        ...style,
-      }}
-    >
-      {children}
     </div>
   );
 });
@@ -318,10 +298,15 @@ export const ImageCard = memo(function ImageCard({
   )
 });
 
-export const PageContainer = memo(function PageContainer({ maxWidth = "800px", background = "beige", className = "col nowrap top stretch", children }) {
+export const PageContainer = memo(function PageContainer({ layout = "hero", maxWidth = "800px", background = "cream", className = "col nowrap top stretch", children }) {
   const swatches = {
+    cream: `linear-gradient(90deg, hsla(39, 0%, 100%, 0%) 0%, hsla(40, 0%, 100%, 100%) 100%), linear-gradient(45deg, hsl(39, 14%, 80%) 0%, hsl(40, 7%, 60%) 100%)`,
     beige: "linear-gradient(45deg, hsl(39, 14%, 80%) 0%, hsl(40, 7%, 60%) 100%)",
     mocha: "linear-gradient(45deg, hsl(39, 14%, 72%) 0%, hsl(40, 7%, 39%) 100%)"
+  }
+  const pageLayout = {
+    hero: "main-content",
+    center: "listpage-content",
   }
   return (
     <div
