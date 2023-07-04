@@ -17,6 +17,7 @@ body,
   text-align: left;
 }
 
+
 .App {
   display: grid;
   position: relative;
@@ -24,6 +25,7 @@ body,
 }
 
 .page-bg {
+  pointer-events: none;
   position: absolute;
   top: 0;
   right: 0;
@@ -96,10 +98,41 @@ body,
   /*color: hsl(240, 0%, 30%);*/
 }
 
+.nav-link.project {
+  outline:3px solid hsla(0,0%,40%,0%);
+  cursor: pointer;
+  transition: 0.5s 0s linear;
+}
+
+.nav-link.project .label {
+  background-color: hsla(0,0%,40%,100%);
+color: hsla(0,0%,100%,100%);
+transition: .5s 0s ease-in;
+}
+
+.nav-link.project:hover .label {
+  background-color: hsla(0,0%,40%,30%);
+color: hsla(0,0%,100%,0%);
+  opacity: 1;
+}
+/*
+.nav-link.project .overlay {
+    background: linear-gradient(to bottom, hsla(0,0%,0%,100%) 50%, hsla(0,0%,0%,0%) 50%,);
+  transition: .5s .1s ease-in;
+  }
+
+  .nav-link.project:hover .overlay {
+    background: linear-gradient(to bottom, hsla(0,0%,0%,100%) 50%, hsla(0,0%,0%,0%) 50%,);
+    }*/
+
+    .nav-link.project:hover{
+      outline:3px solid hsla(0,0%,40%,100%);
+    }
+
 .nav-panel {
   position: absolute;
   grid-column: side / span 1;
-  grid-row: content / span 1;
+  grid-row: 1 / span 2;
 }
 
 .pointer {
@@ -133,6 +166,21 @@ body,
   overflow: hidden;
   text-align: left;
   padding: 1rem;
+  z-index: 0;
+}
+
+.listpage-content {
+  position: absolute;
+  grid-column: content / span 1;
+  grid-row: content / span 1;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: [title] auto [content] minmax(0, 1fr);
+  grid-template-columns: [content] minmax(auto, 1fr);
+  overflow: hidden;
+  text-align: left;
+  padding: 0rem;
   z-index: 0;
 }
 
@@ -190,9 +238,22 @@ body,
 
 .resume-timeline {
   display: grid;
-  grid-template-columns: [date] 100px [details] 1fr;
+  grid-template-columns: [date] 60px [marker] 32px [details] 1fr;
   row-gap: 0;
   column-gap: 0;
+}
+
+.resume-dates {
+  /* display: flex;
+  flex-flow: row nowrap; */
+  grid-column: date / span 1;
+  grid-row: 1 / span 1;
+  text-align: right;
+}
+
+.resume-marker {
+  grid-column: marker span 1;
+  grid-row: 1 / span 1;
 }
 
 .column {
@@ -211,6 +272,16 @@ body,
   border-radius: 0.5rem;
   box-shadow: 2px 2px 2px 4px hsla(0, 0%, 0%, 20%);
 }
+
+a.card.hover {
+ background:  hsl(0,0%,100%);
+transition: .5s 0s linear;
+}
+
+a.card.hover:hover {
+ filter: opacity(80%);
+ background: hsl(0,0%,90%);
+  }
 
 .text-bubble {
   width: auto;
@@ -299,10 +370,38 @@ body,
 }
 
 .button.blue:hover {
-  background: hsl(200, 60%, 45%);
+  background: hsl(200, 60%, 40%);
 }
 
 .button.blue:active {
+  transform: scale(0.9);
+}
+
+.button.orange {
+  color: hsl(0, 0%, 0%);
+  background:hsl(40, 100%, 70%); 
+
+}
+
+.button.orange:hover {
+  background: hsl(30, 90%, 60%);
+}
+
+.button.orange:active {
+  transform: scale(0.9);
+}
+
+.button.lightgray {
+  color: hsl(0, 0%, 0%);
+  background: hsl(0, 0%, 95%);
+}
+
+
+.button.lightgray:hover {
+  background: hsl(0, 0%, 70%);
+}
+
+.button.lightgray:active {
   transform: scale(0.9);
 }
 
@@ -329,12 +428,12 @@ body,
 }
 
 .button-link.black {
-  color: hsla(0, 0%, 100%, 100%);
+  color: hsla(0, 0%, 0%, 100%);
   background: hsla(0, 0%, 100%, 0%);
 }
 
 .button-link.black:hover {
-  background: hsla(0, 0%, 100%, 20%);
+  background: hsla(0, 0%, 0%, 20%);
 }
 
 .svg-text {
@@ -480,6 +579,6 @@ h5 {
 
 p,
 .p {
-  max-width: 36rem;
+  max-width: 36em;
   margin: 0;
 }

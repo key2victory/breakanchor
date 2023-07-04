@@ -1,11 +1,12 @@
-import {memo, useState, useEffect} from "react";
-import {Header, ButtonLink} from "./PageElements";
+import { memo, useState, useEffect } from "react";
+import { Header, ButtonLink } from "./PageElements";
 
 export const samplePages = [
   {
     title: "Clearance Tracker",
     path: "clearance-tracker",
     src: "./samples/ClearanceTrackerUnframed/index.html",
+    image: "./img/[].png",
     aspectRatio: "1678 / 1153",
     devices: ["L"],
     tags: ["med"],
@@ -14,6 +15,7 @@ export const samplePages = [
     title: "Compliance Works",
     path: "compliance",
     src: "./samples/ComplianceUnframed/index.html",
+    image: "./img/[].png",
     aspectRatio: "1640 / 1024",
     devices: ["L"],
     tags: ["med"],
@@ -22,6 +24,7 @@ export const samplePages = [
     title: "Conference Manager",
     path: "conference-manager",
     src: "./samples/ConferenceManagerUnframed/index.html",
+    image: "./img/[].png",
     aspectRatio: "1680 / 1105",
     devices: ["L"],
     tags: ["high"],
@@ -30,6 +33,7 @@ export const samplePages = [
     title: "Interview Kiosk",
     path: "interview-kiosk",
     src: "./samples/InterviewKioskUnframed/index.html",
+    image: "./img/[].png",
     aspectRatio: "3 / 2", //"2048 / 1536",
     devices: ["M"],
     tags: ["high"],
@@ -38,6 +42,7 @@ export const samplePages = [
     title: "Lead Time Manager",
     path: "lead-time-manager",
     src: "./samples/LTMUnframed/index.html",
+    image: "./img/[].png",
     aspectRatio: "1280 / 800", //357/224 //100% /62.5%
     devices: ["L"],
     tags: ["low"],
@@ -54,19 +59,19 @@ function PageSample(props) {
       <Header
         title={samplePages[props.index].title}
         subtitle=""
-        color="hsl(0,0%,70%)"
+        color="hsla(0,0%,0%,40%)"
         style={{
           gridColumn: "content / span 1",
           gridRowStart: "title",
           padding: "0 0 1rem 0",
         }}
-      ></Header>{" "}
-      <div
+      ></Header>
+      {/* <div
         className="page-bg"
         style={{
           background: `linear-gradient(31deg, ${color1} 25%, ${color2} 0, ${color2} 50%, ${color1} 0, ${color1} 75%, ${color2} 0) center / 50px 30px`,
         }}
-      />{" "}
+      />*/}
       <div
         style={{
           gridRow: "content / span 1",

@@ -7,10 +7,11 @@
     bottom: 0;
     right: 0;
   }
+
   .App {
     display: grid;
     grid-template-columns: [side] 320px [content] 1fr;
-    grid-template-rows: [header] 64px [content] 1fr;
+    grid-template-rows: [content] 1fr;
   }
   .main-content {
     position: relative;
@@ -19,6 +20,11 @@
     grid-template-rows: [content] 1fr;
     grid-template-columns: [content] 1fr [hero] 40%;
   }
+  .logo {
+    width: 48px;
+    height: 48px;
+  }
+
   .hero {
     position: absolute;
     top: 0;
@@ -63,6 +69,21 @@
     grid-row: content / span 1;
     padding: 2rem 40% 5rem 3rem;
   }
+
+  .listpage-content .scroll-zone {
+  padding: 2rem;
+  }
+
+  .scroll-content {
+    margin: 0 auto 0 auto;
+    gap: 1rem;
+  }
+
+  .scroll-content.left {
+    margin: 0 auto 0 0;
+    gap: 1rem;
+  }
+  
   .desktop-col {
     display: flex;
     flex-direction: column;

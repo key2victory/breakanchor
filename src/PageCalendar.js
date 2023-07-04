@@ -1,8 +1,8 @@
-import {memo} from "react";
-import {Header, ButtonLink, Note, Group} from "./PageElements";
+import { memo } from "react";
+import { Header, ButtonLink, Note, Group } from "./PageElements";
 
-import {HeroCalendar} from "./HeroCalendar";
-import {MdOutlineHeight} from "react-icons/md";
+import { HeroCalendar } from "./HeroCalendar";
+import { MdOutlineHeight } from "react-icons/md";
 
 export const PageCalendar = memo(function PageCalendar({
   title,
@@ -29,7 +29,7 @@ export const PageCalendar = memo(function PageCalendar({
       <div
         className="page-bg"
         style={{
-          background: `linear-gradient(37deg, ${color1} 25%, ${color2} 0, ${color2} 50%, ${color1} 0, ${color1} 75%, ${color2} 0) center / 52px 39px`,
+          background: `linear-gradient(to right, ${color1}, ${color2})`//(37deg, ${color1} 25%, ${color2} 0, ${color2} 50%, ${color1} 0, ${color1} 75%, ${color2} 0) center / 52px 39px`,
         }}
       />{" "}
       <div className="scroll-zone">

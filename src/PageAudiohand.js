@@ -1,4 +1,4 @@
-import {memo, useState, useEffect, Fragment} from "react";
+import { memo, useState, useEffect, Fragment } from "react";
 import {
   Header,
   ButtonLink,
@@ -7,12 +7,13 @@ import {
   Column,
   Row,
   Group,
+  PageContainer,
 } from "./PageElements";
 //import CardCol from "./CardCol";
 //import CardRow from "./CardRow";
 
-import {AppHeader} from "./AppNav";
-import {HeroAudiohand} from "./HeroAudiohand";
+import { AppHeader } from "./AppNav";
+import { HeroAudiohand } from "./HeroAudiohand";
 import "./styles.css";
 
 export const PageAudiohand = memo(function Page_Audiohand({
@@ -23,27 +24,27 @@ export const PageAudiohand = memo(function Page_Audiohand({
   column,
 }) {
   const bg = {
-    background:
-      "linear-gradient(90deg, hsla(337,86%,51%,100%) 0%, hsla(338,100%,61%,100%) 100%)",
+    cream: `linear-gradient(90deg, hsla(39, 0%, 100%, 0%) 0%, hsla(40, 0%, 100%, 100%) 100%), linear-gradient(45deg, hsl(39, 14%, 80%) 0%, hsl(40, 7%, 60%) 100%)`,
+    gradient: "linear-gradient(90deg, hsla(337,86%,51%,100%) 0%, hsla(338,100%,61%,100%) 100%)",
     background1: "hsla(337,86%,51%,100%)",
     background2: "hsla(338,100%,61%,100%)",
   };
 
   return (
     <div className="main-content">
-      <div
+      {/* <div
         className="page-bg"
         style={{
-          background:
-            "linear-gradient(90deg, hsla(337,86%,51%,100%) 0%, hsla(338,100%,61%,100%) 100%)",
+          background: bg.cream,
         }}
-      />{" "}
+      />*/}
       <div className="scroll-zone">
+
         <Header
           title="Audiohand"
           subtitle="Mobile music studio"
-          color="hsl(0,0%,100%)"
-          //background={background}
+          color="hsl(0,0%,0%)"
+        //background={background}
         >
           <ButtonLink
             color="white"
@@ -56,15 +57,15 @@ export const PageAudiohand = memo(function Page_Audiohand({
           <Note
             title="Problem"
             description="Musicians and other audio artists don't have a convenient way to record their creative ideas quickly and easily on the spot. Bands wanting to pitch their ideas to record studios have a hard time just getting started since they need a studio to make quality demos."
-            background="hsl(338,100%,80%)"
-            // color="black"
+            background="hsl(338,0%,90%)"
+          // color="black"
           />
           <Note
             title="Solution"
             description="Audiohand allows people to produce near studio quality recordings from the convenience of their own smart phone. With 2 or more mobile devices, they can record simultaneously, and the software can blend them together, filtering out impurities to produce even better results."
-            background="hsl(338,100%,80%)"
-            //background="hsl(338,100%,90%)"
-            //background="hsl(338,80%,86%)"
+            background="hsl(338,0%,90%)"
+          //background="hsl(338,100%,90%)"
+          //background="hsl(338,80%,86%)"
           />
         </Group>{" "}
         <Group className="desktop-row tablet-row mobile-col">
@@ -121,10 +122,10 @@ export const PageAudiohand = memo(function Page_Audiohand({
                 gridRow: "1 / span 1",
               }}
               width="100%"
-              // width="135"
-              //height="76"
-              // width="675"
-              // height="389"
+            // width="135"
+            //height="76"
+            // width="675"
+            // height="389"
             />
             <img
               src="./img/audiohand-13.png"
@@ -136,13 +137,13 @@ export const PageAudiohand = memo(function Page_Audiohand({
                 gridRow: "2 / span 1",
               }}
               width="100%"
-              //width="675"
-              //height="389"
+            //width="675"
+            //height="389"
             />
-          </div>{" "}
-        </Group>{" "}
+          </div>
+        </Group>
         <HeroAudiohand />
-      </div>{" "}
+      </div>
     </div>
   );
 });

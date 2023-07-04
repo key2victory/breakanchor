@@ -1,10 +1,10 @@
-import {memo} from "react";
-import {MdOutlineSchool, MdWorkOutline} from "react-icons/md";
+import { memo } from "react";
+import { MdOutlineSchool, MdWorkOutline } from "react-icons/md";
 import "./styles.css";
 
 export const Logo = memo(function Logo({
   name,
-  size = "48px",
+  size = "100%",
   style = {
     filter: " grayscale(1) brightness(.9) contrast(2)",
     mixBlendMode: "multiply",
@@ -27,13 +27,16 @@ export const Logo = memo(function Logo({
     LogoList[name] !== undefined ? LogoList[name] : MdWorkOutline;
 
   return (
-    <div style={{width: size, height: size, ...style}}>
+    <div
+      style={{// width: size, height: size,
+        ...style
+      }}>
       <Component size="100%" />
     </div>
   );
 });
 
-const LogoWatkins = memo(function LogoWatkins({size = "100%"}) {
+const LogoWatkins = memo(function LogoWatkins({ size = "100%" }) {
   return (
     <div
       style={{
@@ -52,7 +55,7 @@ const LogoWatkins = memo(function LogoWatkins({size = "100%"}) {
         alt=""
         width="auto"
         height="auto"
-        style={{flexGrow: 1, flexShrink: 1}}
+        style={{ flexGrow: 1, flexShrink: 1 }}
       />{" "}
     </div>
   );

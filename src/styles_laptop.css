@@ -14,7 +14,7 @@
   .App {
     display: grid;
     grid-template-columns: [side] 300px [content] 1fr;
-    grid-template-rows: [header] 64px [content] 1fr;
+    grid-template-rows: [content] 1fr;
   }
   .main-content {
     position: relative;
@@ -28,6 +28,24 @@
     grid-row: content / span 1;
     padding: 2rem 40% 3rem 2rem;
   }
+  .listpage-content .scroll-zone {
+    padding: 2rem;
+    }
+
+    .scroll-content {
+      margin: 0 auto 0 auto;
+      gap: 1rem;
+    }
+    .scroll-content.left {
+      margin: 0 auto 0 0;
+      gap: 1rem;
+    }
+
+    .logo {
+      width: 48px;
+      height: 48px;
+    }
+
   .hero {
     position: absolute;
     justify-content: flex-start;
