@@ -18,23 +18,28 @@ export default function HeroAbout() {
         display: "flex",
         padding: "1rem 1.5rem",
         background: "hsla(0,0%,20%,80%)",
+        width: "100%",
+        gap: ".5rem"
       }}
     >
       <img
         width="150"
         src="./img/jmc.png"
         alt=""
-        style={{ margin: "0 1.5rem 0 0" }}
-      />{" "}
+        style={{ margin: "0 .3rem", }}
+      />
       <h1
         //className="card"
         style={{
-          color: "hsl(0,0%,100%)", //textAlign: "center"
-          width: "max-content",
+          color: "hsl(0,0%,100%)", //
+          width: "auto",
+          margin: "0 .3rem",
+          textAlign: "center"
         }}
       >
-        Janna Curtis{" "}
-      </h1>{" "}
+        Janna Curtis
+      </h1>
+
     </div>
   );
 }

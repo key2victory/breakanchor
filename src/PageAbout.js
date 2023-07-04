@@ -3,8 +3,6 @@ import { memo, useState, useEffect, Fragment } from "react";
 import { AppHeader, NavPanel } from "./AppNav";
 import HeroAbout from "./HeroAbout";
 import { Logo } from "./Logo";
-import { Header, ButtonLink, Note, Group } from "./PageElements";
-import { Logo } from "./Logo";
 import { Header, ButtonLink, Note, Group, PageContainer } from "./PageElements";
 
 import {
@@ -134,145 +132,135 @@ function CardSection({ title, children, style }) {
         ...style,
       }}
     >
-      <h3 style={{ color: "hsl(0,0%,100%)" }}> {title} </h3> {children}{" "}
-      <h3 style={{ color: "hsl(0,0%,100%)" }}> {title} </h3> {children}
+      <h3 style={{ color: "hsl(0,0%,100%)", margin: "0 0 1rem 0" }}> {title} </h3>
+      {children}
     </div>
   );
 }
 
 const CardDates = ({ content }) => (
-  <div
-    style={{
-      gridColumn: "1 / span 1",
-      display: "flex",
-      flexFlow: "row nowrap",
-      width: "100%",
-      height: "100%",
-    }}
-  >
-    const CardDates = ({content}) => (
-    // gridColumn: "1 / span 1",
-    // display: "flex",
-    // width: "100%",
-    // height: "100%",
+  // gridColumn: "1 / span 1",
+  // display: "flex",
+  // width: "100%",
+  // height: "100%",
 
-    <Fragment>
-      <span
-        className="resume-dates responsive"
-        style={{
-          width: "100%",
-          // display: "flex",
-          // flexFlow: "row wrap",
-          alignItems: "flex-start",
-          justifyContent: "flex-start",
-          color: "hsl(0,0%,100%)",
-          //gap: ".25rem",
-          padding: ".5rem 0 0 0",
-          // flexGrow: 1,
-          // flexShrink: 1,
-          // flexBasis: 0,
-          // textAlign: "right"
-        }}
-      >
-        {content.dates.length === 2 ? (
-          <Fragment>
+  <Fragment>
+    <span
+      className="resume-dates responsive"
+      style={{
+        width: "100%",
+        // display: "flex",
+        // flexFlow: "row wrap",
+        alignItems: "flex-start",
+        justifyContent: "flex-start",
+        color: "hsl(0,0%,100%)",
+        //gap: ".25rem",
+        padding: ".5rem 0 0 0",
+        // flexGrow: 1,
+        // flexShrink: 1,
+        // flexBasis: 0,
+        // textAlign: "right"
+      }}
+    >
+      {content.dates.length === 2 ? (
+        <Fragment>
+          <span
+            style={{
+              fontSize: "1rem",
+              width: "auto",
+              height: "auto",
+              // flexGrow: 0,
+              // flexShrink: 0,
+
+            }}
+          >
+            {content.dates[0]}
             <span
               style={{
                 fontSize: "1rem",
                 width: "auto",
                 height: "auto",
-                // flexGrow: 0,
-                // flexShrink: 0,
-
+                margin: "0 .2rem",
               }}
             >
-              {content.dates[0]}
-              <span
-                style={{
-                  fontSize: "1rem",
-                  width: "auto",
-                  height: "auto",
-                  margin: "0 .2rem",
-                }}
-              >
-                -
-              </span>
+              -
             </span>
-            <span
-              style={{
-                fontSize: "1.3rem",
-                // width: "min-content",
-                // height: "min-content",
-                width: "auto",
-                height: "auto",
-              }}
-            >
-              {content.dates[1]}
-            </span>
-          </Fragment>
-        ) : (
-          <span
-            style={{ fontSize: "1.3rem", width: "min-content", height: "auto" }}
-          >
-            {content.dates.join(", ")}
           </span>
-        )}
-      </span>
-      <span
-        className="resume-marker responsive"
-        style={{
-          width: "2px",
-          display: "flex",
-          flexFlow: "column nowrap",
-          alignItems: "center",
-          justifyContent: "flex-start",
-          height: "100%",
-          borderRight: "2px solid hsl(0,0%,80%)",
-          padding: ".7rem 0 0 0",
-          margin: "0 1rem 0 auto",
-          color: "hsl(0,0%,100%)",
-          // gap: "0"
-        }}
-      >
-        <MdCircle style={{ transform: "translateX(1px)" }} />
-      </span>
-    </Fragment>
-    );
-
-    const CardHeader = ({content}) => (
+          <span
+            style={{
+              fontSize: "1.3rem",
+              // width: "min-content",
+              // height: "min-content",
+              width: "auto",
+              height: "auto",
+            }}
+          >
+            {content.dates[1]}
+          </span>
+        </Fragment>
+      ) : (
+        <span
+          style={{ fontSize: "1.3rem", width: "min-content", height: "auto" }}
+        >
+          {content.dates.join(", ")}
+        </span>
+      )}
+    </span>
     <span
+      className="resume-marker responsive"
       style={{
+        width: "2px",
         display: "flex",
         flexFlow: "column nowrap",
-        gap: ".25rem",
-        padding: "0",
-        width: "100%",
-        minWidth: "100px",
-        flexGrow: 1,
-        flexShrink: 1,
-        flexBasis: "100px"
+        alignItems: "center",
+        justifyContent: "flex-start",
+        height: "100%",
+        borderRight: "2px solid hsl(0,0%,80%)",
+        padding: ".7rem 0 0 0",
+        margin: "0 1rem 0 auto",
+        color: "hsl(0,0%,100%)",
+        // gap: "0"
       }}
     >
-      <h4> {content.title} </h4> <h5> {content.subtitle} </h5>
+      <MdCircle style={{ transform: "translateX(1px)" }} />
     </span>
-    );
+  </Fragment>
+);
 
-    const TimelineBubble = ({content, children, style}) => {
+const CardHeader = ({ content }) => (
+  <span
+    style={{
+      display: "flex",
+      flexFlow: "column nowrap",
+      gap: ".25rem",
+      padding: "0",
+      width: "100%",
+      minWidth: "100px",
+      flexGrow: 1,
+      flexShrink: 1,
+      flexBasis: "100px"
+    }}
+  >
+    <h4> {content.title} </h4> <h5> {content.subtitle} </h5>
+  </span>
+);
+
+const TimelineBubble = ({ content, children, style }) => {
   const bubbleStyle = [
     {
       background: "hsl(0,0%,100%)",
-    padding: "1rem",
-    zIndex: 1,
+      padding: "1rem",
+      zIndex: 1,
     },
     {
       borderRadius: "0", // 0 1rem 1rem",
-    background: "hsl(0,0%,90%)",
-    padding: "2rem 2rem 2rem 2rem",
-    margin: "-1rem 0 0 0",
-    zIndex: 0,
+      background: "hsl(0,0%,90%)",
+      padding: "2rem 2rem 2rem 2rem",
+      margin: "-1rem 0 0 0",
+      zIndex: 0,
     },
-    ];
-    return (
+  ];
+  return (
     <div
       className="col nowrap box-shadow"
       style={{
@@ -328,19 +316,19 @@ const CardDates = ({ content }) => (
         {children}
       </div>
     </div>
-    );
+  );
 
 };
 
-    const CardSummary = ({content, style}) => (
-    <Fragment>
-      <CardDates content={content} />
-      <TimelineBubble content={content} />
-    </Fragment>
-    );
+const CardSummary = ({ content, style }) => (
+  <Fragment>
+    <CardDates content={content} />
+    <TimelineBubble content={content} />
+  </Fragment>
+);
 
-    const CardDetails = ({content}) => {
-  const ProjectDetails = ({content, style}) => (
+const CardDetails = ({ content }) => {
+  const ProjectDetails = ({ content, style }) => (
     <span
       style={{
         ...style,
@@ -387,9 +375,9 @@ const CardDates = ({ content }) => (
         </span>
       ))}
     </span>
-    );
+  );
 
-    return (
+  return (
     <Fragment>
       <CardDates content={content} />
       <TimelineBubble content={content}>
@@ -426,179 +414,179 @@ const CardDates = ({ content }) => (
           : null}
       </TimelineBubble>
     </Fragment>
-    );
+  );
 };
 
-    const resume = {
-      education: [
+const resume = {
+  education: [
     {
       title: "Watkins College of Art, Design, & Film",
-    subtitle: "Bachelor of Fine Arts, Graphic Design",
-    dates: [2006, 2010],
-    logo: "watkins",
+      subtitle: "Bachelor of Fine Arts, Graphic Design",
+      dates: [2006, 2010],
+      logo: "watkins",
     },
     {
       title: "Governor’s School for the Arts",
-    subtitle: "Middle Tennessee State University",
-    dates: [2005],
-    logo: "gsfta",
+      subtitle: "Middle Tennessee State University",
+      dates: [2005],
+      logo: "gsfta",
     },
-    ],
-    experience: [
+  ],
+  experience: [
     {
       title: "Cadre5",
-    subtitle: "Sr. Product Designer",
-    dates: [2019, present],
-    logo: "cadre5",
-    details: [
-    {
-      items: [
-    "Drove the research and design strategy for RESolution: Researcher Hub and Datasets module for Sandia National Lab",
-    "Designed and led the development of RESolution: Projects module at Los Alamos National Lab",
-    "Successfully implemented RESolution: Proposals pilot at Oak Ridge National Lab",
-    "Standardized and improved the design system for RESolution legacy modules",
-    ],
+      subtitle: "Sr. Product Designer",
+      dates: [2019, present],
+      logo: "cadre5",
+      details: [
+        {
+          items: [
+            "Drove the research and design strategy for RESolution: Researcher Hub and Datasets module for Sandia National Lab",
+            "Designed and led the development of RESolution: Projects module at Los Alamos National Lab",
+            "Successfully implemented RESolution: Proposals pilot at Oak Ridge National Lab",
+            "Standardized and improved the design system for RESolution legacy modules",
+          ],
         },
-    {
-      label: "Projects",
-    items: [
-    "ITLP",
-    "Los Alamos National Lab",
-    "Landscan",
-    "Oak Ridge National Lab",
-    "RESolution",
-    "Sandia National Lab",
-    ],
+        {
+          label: "Projects",
+          items: [
+            "ITLP",
+            "Los Alamos National Lab",
+            "Landscan",
+            "Oak Ridge National Lab",
+            "RESolution",
+            "Sandia National Lab",
+          ],
         },
-    ],
+      ],
     },
     {
       title: "Bechtel National",
-    subtitle: "UX/UI Information Systems Senior",
-    dates: [2016, 2019],
-    logo: "bechtel",
-    details: [
-    {
-      items: [
-    "Collaborated with developers and business analysts to produce user-centric software solutions for web, iOS,  Android, and Windows",
-    ],
+      subtitle: "UX/UI Information Systems Senior",
+      dates: [2016, 2019],
+      logo: "bechtel",
+      details: [
+        {
+          items: [
+            "Collaborated with developers and business analysts to produce user-centric software solutions for web, iOS,  Android, and Windows",
+          ],
         },
-    {
-      label: "Projects",
-    items: [
-    "Arnold",
-    "BoltBot",
-    "Digital Supply Chain",
-    "ES&H",
-    "iHUB",
-    "LOTO Safety Tracker",
-    "MMI",
-    "PD@Bechtel",
-    "Security Clearance Tracker",
-    "SPECS",
-    "UPF",
-    ],
+        {
+          label: "Projects",
+          items: [
+            "Arnold",
+            "BoltBot",
+            "Digital Supply Chain",
+            "ES&H",
+            "iHUB",
+            "LOTO Safety Tracker",
+            "MMI",
+            "PD@Bechtel",
+            "Security Clearance Tracker",
+            "SPECS",
+            "UPF",
+          ],
         },
-    {
-      label: "Awards",
-    items: [
-    "LeadR+ award for “Best Pitch Delivery” for IS&T Hackathon presentation",
-    "LeadR+2 award for ES&H interactive reporting materials",
-    "LeadeR+4 award for PD@Bechtel designs and contributions",
-    "LeadeR+2 award for delivering UI design in record time for iHUB project",
-    ],
+        {
+          label: "Awards",
+          items: [
+            "LeadR+ award for “Best Pitch Delivery” for IS&T Hackathon presentation",
+            "LeadR+2 award for ES&H interactive reporting materials",
+            "LeadeR+4 award for PD@Bechtel designs and contributions",
+            "LeadeR+2 award for delivering UI design in record time for iHUB project",
+          ],
         },
-    ],
+      ],
     },
     {
       title: "Break Anchor",
-    subtitle: "Owner, Lead Designer, Mentor",
-    dates: [2009, 2017],
-    logo: "breakanchor",
-    details: [
-    {
-      items: [
-    "Conceptual design, graphics, and presentations",
-    "UI design for mobile and web-based software",
-    "Logo, branding, advertising, and sales materials",
-    "Vectorizations and screen print formatting",
-    "Illustration designs and apparel",
-    ],
+      subtitle: "Owner, Lead Designer, Mentor",
+      dates: [2009, 2017],
+      logo: "breakanchor",
+      details: [
+        {
+          items: [
+            "Conceptual design, graphics, and presentations",
+            "UI design for mobile and web-based software",
+            "Logo, branding, advertising, and sales materials",
+            "Vectorizations and screen print formatting",
+            "Illustration designs and apparel",
+          ],
         },
-    ],
+      ],
     },
     {
       title: "Audiohand",
-    subtitle: "Lead UX Designer",
-    dates: [2014, 2016],
-    logo: "audiohand",
-    details: [
-    {items: ["UX conceptual design", "UI design for mobile software"] },
-    ],
+      subtitle: "Lead UX Designer",
+      dates: [2014, 2016],
+      logo: "audiohand",
+      details: [
+        { items: ["UX conceptual design", "UI design for mobile software"] },
+      ],
     },
     {
       title: "Connection Point",
-    subtitle: "Creative Director, UX Design",
-    dates: [2014],
-    logo: "connectionpoint",
-    details: [
-    {
-      items: [
-    "UX conceptual design",
-    "UI design for web-based software",
-    "Branding, advertising, and sales materials",
-    ],
+      subtitle: "Creative Director, UX Design",
+      dates: [2014],
+      logo: "connectionpoint",
+      details: [
+        {
+          items: [
+            "UX conceptual design",
+            "UI design for web-based software",
+            "Branding, advertising, and sales materials",
+          ],
         },
-    ],
+      ],
     },
     {
       title: "K-Town Apartments, LLC",
-    subtitle: "Chief Creative Officer, UX Design",
-    dates: [2012, 2014],
-    logo: "ktown",
-    details: [
-    {
-      items: [
-    "UX conceptual design",
-    "UI design for mobile and web-based software",
-    "Branding, advertising, and sales materials",
-    "Represented company for presentations and events",
-    "Met with clients for sales and support",
-    ],
+      subtitle: "Chief Creative Officer, UX Design",
+      dates: [2012, 2014],
+      logo: "ktown",
+      details: [
+        {
+          items: [
+            "UX conceptual design",
+            "UI design for mobile and web-based software",
+            "Branding, advertising, and sales materials",
+            "Represented company for presentations and events",
+            "Met with clients for sales and support",
+          ],
         },
-    ],
+      ],
     },
-    ],
-    community: [
+  ],
+  community: [
     {
       title: "What Makes UI Intuitive?",
-    subtitle: "Event Speaker for CodeStock",
-    dates: [2022],
+      subtitle: "Event Speaker for CodeStock",
+      dates: [2022],
     },
     {
       title: "The UX Stack",
-    subtitle: "Event Speaker for Scenic City Summit",
-    dates: [2019],
+      subtitle: "Event Speaker for Scenic City Summit",
+      dates: [2019],
     },
     {
       title: "Design Mentor for What’s the Big Idea",
-    subtitle: "Knoxville Entrepreneur Center",
-    dates: [2015, 2016, 2017, 2019],
+      subtitle: "Knoxville Entrepreneur Center",
+      dates: [2015, 2016, 2017, 2019],
     },
     {
       title: "UX Design: Bridging the Gap Between Expectations and Development",
-    subtitle: "Event Speaker for CodeStock",
-    dates: [2016],
+      subtitle: "Event Speaker for CodeStock",
+      dates: [2016],
     },
     {
       title: "Design Mentor for CodeWorks",
-    subtitle: "Knoxville Entrepreneur Center",
-    dates: [2015],
+      subtitle: "Knoxville Entrepreneur Center",
+      dates: [2015],
     },
     {
       title: "Design Mentor for MediaWorks",
-    subtitle: "Knoxville Entrepreneur Center",
-    dates: [2015],
+      subtitle: "Knoxville Entrepreneur Center",
+      dates: [2015],
     },
-    ],
+  ],
 };

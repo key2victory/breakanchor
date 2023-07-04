@@ -48,7 +48,7 @@ export const AppHeader = memo(function AppHeader({ onMenuClick }) {
           gap: "1rem",
           padding: ".5rem .5rem",
           marginRight: ".5rem",
-          borderRadius: "5rem",
+          borderRadius: "5rem"
         }}
         onClick={() => {
           onMenuClick();
@@ -68,9 +68,9 @@ export const AppHeader = memo(function AppHeader({ onMenuClick }) {
       <span
         style={{
           padding: "1rem",
-          marginRight: ".5rem",
+          marginRight: ".5rem"
         }}
-      ></span>{" "}
+      ></span>
     </div>
   );
 });
@@ -82,7 +82,7 @@ const NavButton = memo(function NavCard({ item, style }) {
       style={{ ...style }}
       className="button blue row nowrap center box-shadow-shallow"
     >
-      {item.title}{" "}
+      {item.title}
     </Link>
   );
 });
@@ -90,7 +90,7 @@ const NavButton = memo(function NavCard({ item, style }) {
 const NavCardAbout = memo(function NavCardAbout({
   style,
   className,
-  size = "large",
+  size = "large"
 }) {
   const styleOption = {
     small: {
@@ -98,15 +98,15 @@ const NavCardAbout = memo(function NavCardAbout({
       textDecoration: "none",
       fontSize: "1.25rem",
       gap: "1rem",
-      padding: "1rem",
+      padding: "1rem"
     },
     large: {
       color: "hsl(0,0%,70%)",
       textDecoration: "none",
       fontSize: "1.25rem",
       gap: "1rem",
-      padding: "1rem 2rem 1rem 1rem",
-    },
+      padding: "1rem 2rem 1rem 1rem"
+    }
   };
   return (
     <div
@@ -126,11 +126,11 @@ const NavCardAbout = memo(function NavCardAbout({
         style={{
           gap: ".25rem",
           width: size === "small" ? "auto" : "100%",
-          margin: size === "small" ? "0" : "-1rem 0 0 0",
+          margin: size === "small" ? "0" : "-1rem 0 0 0"
         }}
       >
         <h3
-          className="center mobile-hide"
+          className="center"
           style={{
             color: "hsl(0,0%,90%)",
 
@@ -155,37 +155,38 @@ export const NavCard = memo(function NavCard({
   color = "hsl(0,0%,90%)",
   borderTop = "",
   borderBottom = "2px dotted hsla(0,0%,0%,10%)",
+  children
 }) {
   const linkStyle = {
     textDecoration: "none",
     //padding: "1rem 0",
     fontSize: "1.25rem",
-    padding: "0 1.5rem 0 1.5rem",
-    ...style,
+    padding: icon !== undefined ? "0 1rem 0 .5rem" : "0 1.5rem 0 1.5rem",
+    ...style
   };
+  const IconRender = icon;
   return (
     <Link
       className={`nav-link page ${className}`}
       // key={`${item.path}-${index}`}
-      to={`/${item.path}`}
+      to={`/${path}`}
       style={linkStyle}
     >
       <div
-        className="col nowrap"
+        className="row nowrap center left"
         style={{
-          gap: ".5rem",
+          gap: "1rem",
           color: color,
-          padding: "1rem .5rem 1.5rem .5rem",
+          padding: "1rem .5rem 1rem .5rem",
           borderTop: borderTop,
-          borderBottom: borderBottom,
+          borderBottom: borderBottom
         }}
       >
-        <span> {item.title} </span>{" "}
+        {icon !== undefined ? <IconRender /> : null}
         <span
-          className="row wrap"
+          className="col nowrap"
           style={{
-            gap: ".5rem",
-            color: color,
+            gap: ".5rem"
           }}
         >
           <span>{title}</span>
@@ -209,7 +210,7 @@ export default function AppNavFlyout({ showNav, onClickExit }) {
 
         justifyContent: "stretch",
         alignItems: "stretch",
-        zIndex: 10,
+        zIndex: 10
       }}
     >
       <div
@@ -224,14 +225,14 @@ export default function AppNavFlyout({ showNav, onClickExit }) {
           background: "hsla(0,0%,25%,0%)",
           boxShadow:
             "-2px 2px 6px 4px hsla(0, 0%, 0%, 20%), -2px 2px 50px 4px hsla(0, 0%, 0%, 50%)",
-          zIndex: 10,
+          zIndex: 10
         }}
         onClick={() => {
           onClickExit();
         }}
       >
         <NavPanel className="" />
-      </div>{" "}
+      </div>
       <div
         className="overlay-hotspot"
         style={{
@@ -239,12 +240,12 @@ export default function AppNavFlyout({ showNav, onClickExit }) {
           flexGrow: 1,
           flexShrink: 1,
           flexBasis: 0,
-          zIndex: 10,
+          zIndex: 10
         }}
         onClick={() => {
           onClickExit();
         }}
-      />{" "}
+      />
     </div>
   );
 }
@@ -253,7 +254,7 @@ export function NavPanel({
   className = "mobile-hide phablet-hide nav-panel box-shadow-edged",
   background = "hsl(0,0%,35%)",
   showNav,
-  onClickExit,
+  onClickExit
 }) {
   const borderStyle = "2px solid hsla(0,0%,0%,10%)";
   return (
@@ -272,15 +273,15 @@ export function NavPanel({
         background: background,
         overflow: "hidden",
         /*boxShadow:
-                  "2px 0px 2px 0px hsla(0, 0%, 0%, 20%), 2px 2px 2px 0px hsla(0, 0%, 0%, 50%)",*/
-        zIndex: 1,
+          "2px 0px 2px 0px hsla(0, 0%, 0%, 20%), 2px 2px 2px 0px hsla(0, 0%, 0%, 50%)",*/
+        zIndex: 1
       }}
     >
       <div
         className="col stretch-h"
         style={{
           //gap: "1rem",
-          background: "hsla(0,0%,0%,20%)",
+          background: "hsla(0,0%,0%,20%)"
         }}
       >
         <div
@@ -290,12 +291,12 @@ export function NavPanel({
             padding: "1rem 1.1rem",
             margin: ".5rem .8rem .5rem auto",
             borderRadius: "2rem",
-            zIndex: 3,
+            zIndex: 3
           }}
           onClick={onClickExit}
         >
           <CgClose size="18" />
-        </div>{" "}
+        </div>
         <NavCardAbout />
 
       </div>
