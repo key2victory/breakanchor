@@ -1,4 +1,4 @@
-import {memo} from "react";
+import { memo } from "react";
 import "./styles-keyframes.css";
 
 export const HeroAudiohand = memo(function HeroAudiohand() {
@@ -76,7 +76,7 @@ export const HeroAudiohand = memo(function HeroAudiohand() {
 
   return (
     <div
-      className="hero"
+      className="hero shadow"
       style={
         {
           // paddingLeft: "calc(1vw * 1vw)",
