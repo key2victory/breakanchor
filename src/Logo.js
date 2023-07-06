@@ -55,8 +55,10 @@ const LogoWatkins = memo(function LogoWatkins({ size = "100%" }) {
         alt=""
         width="auto"
         height="auto"
-        style={{ flexGrow: 1, flexShrink: 1 }}
-      />{" "}
+        style={{ //flexGrow: 1, 
+          flexShrink: 1
+        }}
+      />
     </div>
   );
 });
@@ -83,7 +85,7 @@ const LogoCadre5 = memo(function LogoCadre5(size = "100%") {
           d="M165.25 116.64a7.77 7.77 0 0 1-7.88-7.89 8 8 0 1 1 7.88 7.89zM165.25 84.54a7.76 7.76 0 0 1-7.88-7.88 8 8 0 1 1 7.88 7.88zM165.25 53.38a7.77 7.77 0 0 1-7.88-7.89 8 8 0 1 1 7.88 7.89z"
           fill="#929497"
         />
-      </g>{" "}
+      </g>
     </svg>
   );
 });

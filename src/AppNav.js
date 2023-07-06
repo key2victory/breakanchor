@@ -2,6 +2,7 @@ import { Link, useMatches } from "react-router-dom";
 import { Fragment, memo } from "react";
 import { pages } from "./Pages";
 import { samplePages } from "./PageSamples";
+import { HeroAbout } from "./HeroAbout";
 import { CgMenu, CgClose } from "react-icons/cg";
 import { IconTag, DeviceSizes } from "./PageElements";
 import {
@@ -56,8 +57,8 @@ export const AppHeader = memo(function AppHeader({ onMenuClick }) {
       >
         <CgMenu />
       </h4>
-      <Breadcrumbs />
-      {/* <h3>
+      {/* <Breadcrumbs />
+       <h3>
         break anchor
         <span
           className="" //"mobile-hide phablet-hide"
@@ -280,8 +281,7 @@ export function NavPanel({
       <div
         className="col stretch-h"
         style={{
-          //gap: "1rem",
-          background: "hsla(0,0%,0%,20%)"
+          //  background: "hsla(0,0%,0%,20%)"
         }}
       >
         <div
@@ -297,7 +297,7 @@ export function NavPanel({
         >
           <CgClose size="18" />
         </div>
-        <NavCardAbout />
+        <HeroAbout device="large" style={{ background: "hsla(0,0%,0%,20%)" }} />
 
       </div>
       <div className="col top">

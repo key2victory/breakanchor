@@ -1,7 +1,7 @@
 import { memo, useState, useEffect, Fragment } from "react";
 
 import { AppHeader, NavPanel } from "./AppNav";
-import HeroAbout from "./HeroAbout";
+import { HeroAbout } from "./HeroAbout";
 import { Logo } from "./Logo";
 import { Header, ButtonLink, Note, Group, PageContainer } from "./PageElements";
 
@@ -25,17 +25,7 @@ export default function PageAbout(props) {
   const color1 = "hsla(0,0%,0%,0%)";
   const color2 = "hsla(0,0%,0%,10%)";
   return (
-    <PageContainer layout="left" maxWidth="600px">
-      {/* <div className="main-content">
-     <div
-        className="page-bg"
-        style={{
-          background: `linear-gradient(31deg, ${color1} 25%, ${color2} 0, ${color2} 50%, ${color1} 0, ${color1} 75%, ${color2} 0) center / 50px 30px`,
-        }}
-      />
- 
-      <div className="scroll-zone">*/}
-
+    <PageContainer layout="center" maxWidth="600px">
       <div
         className="page-bg"
         style={{
@@ -43,6 +33,8 @@ export default function PageAbout(props) {
         }}
       />
       <HeroAbout />
+      <Header title="About Me"
+        color="hsla(0,0%,0%,50%)" />
       <Group
         className="card col"
         style={{

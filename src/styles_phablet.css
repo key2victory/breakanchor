@@ -71,6 +71,22 @@
     overflow: hidden;
     z-index: 1;
   }
+
+  .resume-timeline.responsive {
+    display: grid;
+    grid-template-columns: [marker] 28px [details] 1fr;
+    row-gap: 0;
+    column-gap: 0;
+  }
+
+.resume-dates.responsive {
+  grid-column: details / span 1;
+  text-align: left;
+}
+
+.resume-marker.responsive {
+  grid-row: 1 / span 2;
+}
   /*
   .hero .loto {
     width: calc(284px * 0.6);
