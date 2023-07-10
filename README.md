@@ -1,2 +1,2 @@
 # breakanchor
-Created with CodeSandbox
+All rights reserved.

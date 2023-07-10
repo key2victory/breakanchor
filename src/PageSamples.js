@@ -17,8 +17,6 @@ export const samplePages = [
     src: "./samples/ComplianceUnframed/index.html",
     image: "./img/[].png",
     aspectRatio: "1640 / 1024",
-    devices: ["L"],
-    tags: ["med"],
   },
   {
     title: "Conference Manager",
@@ -34,7 +32,8 @@ export const samplePages = [
     path: "interview-kiosk",
     src: "./samples/InterviewKioskUnframed/index.html",
     image: "./img/[].png",
-    aspectRatio: "3 / 2", //"2048 / 1536",
+    aspectRatio: "929 / 656", //"2048 / 1536",
+    maxWidth: "1200px",
     devices: ["M"],
     tags: ["high"],
   },
@@ -66,12 +65,7 @@ function PageSample(props) {
           padding: "0 0 1rem 0",
         }}
       ></Header>
-      {/* <div
-        className="page-bg"
-        style={{
-          background: `linear-gradient(31deg, ${color1} 25%, ${color2} 0, ${color2} 50%, ${color1} 0, ${color1} 75%, ${color2} 0) center / 50px 30px`,
-        }}
-      />*/}
+
       <div
         style={{
           gridRow: "content / span 1",
@@ -95,9 +89,11 @@ function PageSample(props) {
             width="100%"
             height="100%"
             src={samplePages[props.index].src}
-          />{" "}
-        </div>{" "}
-      </div>{" "}
+            allowtransparency="true"
+            background="none"
+          />
+        </div>
+      </div>
     </div>
   );
 }

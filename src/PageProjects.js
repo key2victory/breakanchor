@@ -2,7 +2,7 @@ import { memo, useState, useEffect, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { pages } from "./Pages";
 import { samplePages } from "./PageSamples";
-import { Header, ButtonLink, Group, Note, PageContainer, IconTag, DeviceSizes } from "./PageElements";
+import { Header, ButtonLink, Group, Note, PageContainer, IconTag } from "./PageElements";
 import { RiCalendarTodoFill, RiStackFill } from "react-icons/ri";
 import { MdFilterList } from "react-icons/md";
 //import { MdWavingHand } from "react-icons/md";
@@ -138,10 +138,7 @@ export function PageProjects(props) {
 
     return (
         <PageContainer layout="center" maxWidth="1200px">
-            {/* <div className="grid" style={{
-                gridTemplateColumns: "1fr [content] auto 1fr",
-                gridTemplateRows: "[title] auto [content] auto", width: "100%"
-            }}>*/}
+
             <Group className="col left" style={{ margin: "0 auto 0 auto" }}>
                 <Header
                     title="Projects"

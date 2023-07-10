@@ -1,4 +1,5 @@
 import { memo, useState, useEffect, Fragment } from "react";
+import { useMediaQuery } from "@uidotdev/usehooks";
 
 import {
   MdOutlineSmartphone,
@@ -100,90 +101,41 @@ export const IconTag = memo(function IconTag({
   );
 });
 
-export const DeviceSizes = memo(function DeviceSizes({
-  devices,
-  textColor = "hsla(0,0%,40%,100%)",
-  borderColor = "hsla(0,0%,40%,30%)",
-  bgColor = "hsla(0,0%,0%,6%)",
-  solid = "false",
-}) {
-  const labelStyle = {
-    width: "100%",
-    // height: "100%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    fontSize: ".8rem",
-  };
 
-  const IconList = {
-    presentation: RiLayoutTopLine, // RiSlideshow3Line,
-    reactjs: RiReactjsFill,
-    showcase: RiLayout5Line,
-    high: RiEdit2Line, //RiLayout5Line,
-    med: RiEdit2Line, //RiLayout5Line,
-    low: RiEdit2Line, //RiLayout5Line
-  };
 
-  const Icon = (icon) => IconList[icon] !== undefined ? IconList[icon] : RiDeviceLine;
-  const labelList = {
-    S: "mobile",
-    M: "tablet",
-    L: "desktop",
-  };
-  const getLabel = (icon) => labelList[icon] !== undefined ? labelList[icon] : icon;
-  return (
-    <ChipTag
-      textColor={textColor}
-      borderColor={borderColor}
-      bgColor={bgColor}
-      solid={solid}
-    >
-      <RiDeviceLine
-        style={{
-          // width: "18px",
-          //height: "24px",
-          flexGrow: 0,
-          flexShrink: 0,
-        }}
-      />
-      {devices.map((item, index) => (
-        <span
-          key={index}
-          style={{
-            ...labelStyle,
-            gridColumn: "1 / span 1",
-          }}
-        >
-          {getLabel(item)}
-        </span>
-      ))}
-    </ChipTag>
-  );
-});
 
 export const Note = memo(function Note({
   title,
   description,
+  hsize = 4,
   children,
-  background,
+  background = "hsl(40,10%,90%)",//hsl(39, 14%, 80%) 0%, hsl(40, 7%, 60%) 100%)
   color = "black",
   collapse = false,
-  style,
+  container = true,
+  style = { gap: ".5rem" },
 }) {
   const [open, setOpen] = useState(false);
+  const notecardStyle = {
+    container: { background: background, color: color, padding: "1rem 1.5rem" },
+    unbound: { background: "hsl(0,0%,0%,0%)", color: color, padding: "0rem" },
+  };
+  const H = `h${hsize}`;
   return (
-    <div
-      className={`note ${!collapse ? "open" : open ? "open" : ""}`}
-      style={{ background: background, color: color, ...style }}
+    <section
+      className={`p col ${container === true ? "shadow" : ""} ${!collapse ? "open" : open ? "open" : ""}`}
+      style={{
+        ...notecardStyle[`${container === true ? "container" : "unbound"}`], //background: background, color: color, 
+        ...style
+      }}
       onClick={() => {
         if (collapse) {
           setOpen(!open);
         }
       }}
     >
-      <h4> {title} </h4>
-      <span style={{ position: "relative", overflow: "hidden" }}>
+      {title !== "" && title !== undefined ? (<H>{title}</H>) : null}
+      {collapse === true ? (<span style={{ position: "relative", overflow: "hidden" }}>
         <span
           style={{
             position: "absolute",
@@ -194,13 +146,13 @@ export const Note = memo(function Note({
             background: `linear-gradient(0deg, ${background} 0%, transparent 100%)`,
           }}
         />
-        {description}
-      </span>
-    </div>
+        {children !== "undefined" ? children : description}
+      </span>) : children !== "undefined" ? children : description}
+    </section>
   );
 });
 
-export const NoteCard = memo(function NoteCard({
+/*export const NoteCard = memo(function NoteCard({
   title,
   children,
   background,
@@ -217,7 +169,7 @@ export const NoteCard = memo(function NoteCard({
       {children}
     </div>
   );
-});
+});*/
 
 export const Caption = memo(function Caption({
   src,
@@ -310,14 +262,14 @@ export const PageContainer = memo(function PageContainer({ layout = "hero", maxW
     left: "listpage-content"
   }
   const scrollContent = {
-    hero: "scroll-content",
+    hero: "scroll-content left",
     center: "scroll-content",
     left: "scroll-content left",
   }
   return (
     <div
-      className="listpage-content"
-      style={{ background: swatches[background] !== undefined ? swatches[background] : background }}
+      className={pageLayout[layout]}
+    //  style={{ background: swatches[background] !== undefined ? swatches[background] : background }}
     >
       <div className="scroll-zone">
         <div className={`${scrollContent[layout]} ${className}`} style={{
@@ -464,3 +416,18 @@ export const ButtonLink = memo(function ButtonLink({ line1, line2, url, color })
   );
 });
 
+export const BulletList = memo(function BulletList({ title, hsize = 4, items, children }) {
+  const H = `h${hsize}`;
+  return (
+    <section className="p col" style={{
+      gap: ".75rem", margin: 0, padding: 0
+    }}>
+      {title !== "" && title !== undefined ? (<H>{title}</H>) : null}
+      <ul className="col" style={{
+        gap: ".5rem", margin: 0, padding: "0 0 0 1.5rem"
+      }}>
+        {items !== undefined ? items.map((v, k) => (<li index={k}>{v}</li>)) : children}
+      </ul>
+    </section >
+  )
+})

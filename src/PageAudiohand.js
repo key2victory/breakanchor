@@ -8,6 +8,7 @@ import {
   Row,
   Group,
   PageContainer,
+  BulletList,
 } from "./PageElements";
 //import CardCol from "./CardCol";
 //import CardRow from "./CardRow";
@@ -54,40 +55,51 @@ export const PageAudiohand = memo(function Page_Audiohand({
           />
         </Header>
         <Group className="desktop-row laptop-col tablet-row phablet-col mobile-col">
+          <Note title="Problem"
+          >
+            Musicians and other audio artists don't have a convenient way to record their creative ideas quickly and easily on the spot. Bands wanting to pitch their ideas to record studios have a hard time just getting started since they need a studio to make quality demos.
+          </Note>
           <Note
-            title="Problem"
-            description="Musicians and other audio artists don't have a convenient way to record their creative ideas quickly and easily on the spot. Bands wanting to pitch their ideas to record studios have a hard time just getting started since they need a studio to make quality demos."
-            background="hsl(338,0%,90%)"
-          // color="black"
-          />
-          <Note
-            title="Solution"
-            description="Audiohand allows people to produce near studio quality recordings from the convenience of their own smart phone. With 2 or more mobile devices, they can record simultaneously, and the software can blend them together, filtering out impurities to produce even better results."
-            background="hsl(338,0%,90%)"
-          //background="hsl(338,100%,90%)"
-          //background="hsl(338,80%,86%)"
-          />
-        </Group>{" "}
+            title="Solution">
+            Audiohand allows people to produce near studio quality recordings from the convenience of their own smart phone. With 2 or more mobile devices, they can record simultaneously, and the software can blend them together, filtering out impurities to produce even better results.
+
+          </Note>
+        </Group>
         <Group className="desktop-row tablet-row mobile-col">
           <Group className="row">
+
             <img className="image shadow" src="./img/audiohand-01.png" alt="" />
+
+
+
             <img className="image shadow" src="./img/audiohand-02.png" alt="" />
-          </Group>{" "}
+
+
+          </Group>
           <Group className="row">
             <img className="image shadow" src="./img/audiohand-03.png" alt="" />
             <img className="image shadow" src="./img/audiohand-04.png" alt="" />
-          </Group>{" "}
-        </Group>{" "}
+          </Group>
+
+        </Group>
+        <Group className="col">
+          <img className="image shadow" src="./img/audiohand-01.png" alt="" />
+          <Note><BulletList items={[
+            "Upon tapping 'Record' button, button changes to black and the button label changes to 'Stop'",
+            "The background of the recording screen changes colors in response to the devicee's microphone audio detection",
+            "The screen turns green when reception is good, and turns red/hot-pink when it detects too much interference",
+            "After tapping 'Stop' button, a black modal overlay displays confirmation of successful recording capture"]} /></Note>
+        </Group>
         <Group>
           <img className="image shadow" src="./img/audiohand-05.png" alt="" />
           <img className="image shadow" src="./img/audiohand-06.png" alt="" />
           <img className="image shadow" src="./img/audiohand-07.png" alt="" />
-        </Group>{" "}
+        </Group>
         <Group>
           <img className="image shadow" src="./img/audiohand-08.png" alt="" />
           <img className="image shadow" src="./img/audiohand-09.png" alt="" />
           <img className="image shadow" src="./img/audiohand-10.png" alt="" />
-        </Group>{" "}
+        </Group>
         <Group>
           <div
             style={{
@@ -140,6 +152,33 @@ export const PageAudiohand = memo(function Page_Audiohand({
             //width="675"
             //height="389"
             />
+          </div>
+
+        </Group>
+        <Group>
+          <div
+            //className="box-shadow"// grid"
+            style={{
+              width: "100%",
+              minWidth: 0,
+              flexGrow: 1,
+              flexShrink: 1,
+              flexBasis: 0,
+              //  background: "hsla(0,0%,100%,80%)",
+              padding: ".8rem",
+              margin: "2rem 0 0 0",
+              gridTemplateColumns: "1fr",
+              gridTemplateRows: "auto",
+              // overflow: "hidden"
+
+            }}
+          >
+            <div role="img" className="image shadow animate-flow audiohand" style={{
+              backgroundImage: "url(./img/audiohand-14.png)",
+              backgroundColor: "hsl(0,0%,80%)",
+              backgroundRepeat: "no-repeat",
+              width: "100%", height: "200px"
+            }} ariaLabel="" />
           </div>
         </Group>
         <HeroAudiohand />

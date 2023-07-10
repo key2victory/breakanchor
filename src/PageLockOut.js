@@ -44,18 +44,12 @@ export const PageLockOut = memo(function PageLockOut({
           subtitle="Electrical safety tracking"
           color="hsl(0,0%,0%)"
         />
-        <Group className="desktop-row laptop-col tablet-row phablet-col mobile-col">
-          <Note
-            title="Problem"
-            description="Performing maintenance and repairs on electrical systems is dangerous work. To ensure safety, an isolation permit must be requested, and an authorized technician must go out on site, manually shut off each system circuit, and place a physical ID tagged lock on each one. After the work has been performed, a de-isolation permit is requested for a technician to unlock the breaker box and turn the circuits back on. Each permit request may contain a dozen or more different equipment, lock, and tag IDs to correctly associate with one another."
-            background="hsla(0,0%,100%,80%)"
-          />
-          <Note
-            title="Solution"
-            description="A mobile app that allows technicians to view each open permit as a digital checklist (without connectivity) and lets them record each completed tag ID as they go. Barcode scanning offers a convenient capture method, improving efficiency and reducing risk of error associated with hand-written or manual entry record-keeping. Printed bar codes can sometimes get damaged and fail to scan. I included use case flows for selecting tag numbers from a list, so workers could toggle tag states with a confirmation button and avoid the hassle and entry errors associated with typing long barcode numbers on a touch screen."
-            background="hsla(0,0%,100%,80%)"
-          //color="white"
-          />
+        <Group className="desktop-col laptop-col tablet-row phablet-col mobile-col">
+          <Note container={true}>
+            Bechtel is a construction, engineering, and project management company known for prioritizing workplace safety. During my time there, I thoroughly enjoyed the work I was involved in, which often revolved around making the jobs of others easier and safer so they could return home to their families. One prominent example of this commitment to safety is the Lockout-Tagout (LOTO) system. LOTO is essential for performing maintenance and repairs on electrical systems, as it ensures the necessary safety protocols are followed.
+          </Note>
+
+
         </Group>
         <div
           className="box-shadow grid"
@@ -100,11 +94,18 @@ export const PageLockOut = memo(function PageLockOut({
             </a>
           </span>
         </div>
+        <Note title="Problem">
+          To guarantee the safety of electrical systems, an isolation permit must be obtained. An authorized technician is then dispatched to the site, where they manually shut off each system circuit and secure them with ID-tagged locks. This meticulous process requires associating multiple equipment, lock, and tag IDs correctly within each permit request. These measures are crucial as they ensure that the power to the circuit breaker box is unequivocally turned off, preventing any potential hazards.
+        </Note>
         <Group>
           <img className="image shadow" src="./img/loto-01.png" alt="" />
           <img className="image shadow" src="./img/loto-02.png" alt="" />
           <img className="image shadow" src="./img/loto-03.png" alt="" />
         </Group>
+        <Note title="Process">
+          Previously, this process relied on manual or paper-based systems. However, Bechtel has now transitioned to a digital system for increased efficiency. Technicians log the permit details into the digital records, and a trained technician retrieves the permit, identifying the various circuit breaker boxes to be turned off. They employ locks and tags, effectively securing the breaker box to prevent unauthorized access. Once the isolation permit is complete, it is marked as such in the system, granting maintenance and repair personnel access to the systems, knowing they are safe.
+        </Note>
+
         <Group>
           <div
             style={{
@@ -150,6 +151,9 @@ export const PageLockOut = memo(function PageLockOut({
             />
           </div>
         </Group>
+        <Note title="Solution">
+          I designed an app to enhance convenience for the technicians responsible for the locking and tagging procedures. The app allows them to mark each step as complete in the digital record as they progress, eliminating the need for manual tracking or later office log-ins. Since cell phone service may be unreliable on job sites, the app was optimized to fit the small screen size of the ruggedized Sonim phones used by Bechtel. It incorporates features such as barcode scanning, which improves efficiency and minimizes errors associated with manual record-keeping. The inclusion of use case flows and tag number selection from a list simplifies the process, reducing entry errors and the need for typing long barcode numbers on a touch screen.
+        </Note>
         <Group>
           <img className="image shadow" src="./img/loto-07.png" alt="" />
           <img className="image shadow" src="./img/loto-08.png" alt="" />
@@ -161,12 +165,34 @@ export const PageLockOut = memo(function PageLockOut({
           <img className="image shadow" src="./img/loto-12.png" alt="" />
         </Group>
         <Group>
-          <div role="img" className="image shadow" style={{ background: "url(./img/loto-13.png)", backgroundSize: "180%", width: "100%", height: "200px", margin: "2rem 0 0 0" }} ariaLabel="" />
-        </Group>
+          <div
+            //className="box-shadow"// grid"
+            style={{
+              width: "100%",
+              minWidth: 0,
+              flexGrow: 1,
+              flexShrink: 1,
+              flexBasis: 0,
+              //  background: "hsla(0,0%,100%,80%)",
+              padding: ".8rem",
+              margin: "2rem 0 0 0",
+              gridTemplateColumns: "1fr",
+              gridTemplateRows: "auto",
+              // overflow: "hidden"
+
+            }}
+          >
+            <div role="img" className="image shadow animate-flow loto" style={{
+              backgroundImage: "url(./img/loto-13.png)",
+              backgroundColor: "hsl(0,0%,80%)",
+              backgroundRepeat: "no-repeat",
+              width: "100%", height: "200px"
+            }} ariaLabel="" />
+          </div> </Group>
         <div className="hero loto">
           <HeroLockOut />
         </div>
       </div>
-    </div>
+    </div >
   );
 });

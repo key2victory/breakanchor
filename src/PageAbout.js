@@ -4,10 +4,12 @@ import { AppHeader, NavPanel } from "./AppNav";
 import { HeroAbout } from "./HeroAbout";
 import { Logo } from "./Logo";
 import { Header, ButtonLink, Note, Group, PageContainer } from "./PageElements";
-
+import { FaFigma } from "react-icons/fa";
+import { RxFramerLogo } from "react-icons/rx";
 import {
   MdCircle,
 } from "react-icons/md";
+import { RiReactjsFill } from "react-icons/ri";
 
 const present = new Date().getFullYear();
 
@@ -18,14 +20,42 @@ const present = new Date().getFullYear();
   row,
   column
 }) {*/
+
+const maxCardWidth = "590px";
+
+const iconDefs = {
+  Figma: FaFigma,
+  Framer: RxFramerLogo,
+  React: RiReactjsFill,
+}
+//   Sketch:,
+//   Marvel:,
+//   InVision:,
+//   XD:,
+//   "Photoshop",
+//   "Illustrator",
+//   "HTML",
+//   "CSS",
+//   "JavaScript",
+//   "Bootsrap",
+//   "VisualStudio""
+
+// }
+
+const Skill = (label) => {
+  const Icon = iconDefs[label];
+  return (<span><Icon />{label}</span>)
+}
+
 export default function PageAbout(props) {
   const borderRadius = ".5rem";
   // const color1 = "hsl(0,0%,80%)";
   // const color2 = "hsl(0,0%,90%)";
   const color1 = "hsla(0,0%,0%,0%)";
   const color2 = "hsla(0,0%,0%,10%)";
+
   return (
-    <PageContainer layout="center" maxWidth="600px">
+    <PageContainer layout="center" maxWidth="1200px">
       <div
         className="page-bg"
         style={{
@@ -35,75 +65,83 @@ export default function PageAbout(props) {
       <HeroAbout />
       <Header title="About Me"
         color="hsla(0,0%,0%,50%)" />
-      <Group
-        className="card col"
-        style={{
-          background: "hsla(0,0%,30%,85%)",
-          color: "hsla(0,0%,100%,80%)",
-          width: "100%",
-          gap: 0,
-        }}
-      >
-        <h5 style={{ marginBottom: ".5rem" }}> I'm a team player</h5>
-        <p style={{ marginBottom: "1rem" }}>
-          Throughout my career, I've had the pleasure of working on many highly effective teams. I'm used to leveraging the strengths of each individual to work more efficiently and aid each other's personal growth. I understand the power of collaboration and I'm dedicated to the success of the team as a whole. I've spent a lot of time in both startup and enterprise environments.
-        </p>
-      </Group>
-      <Group
-        className="card col"
-        style={{
-          background: "hsla(0,0%,30%,85%)",
-          color: "hsla(0,0%,100%,80%)",
-          width: "100%",
-          gap: 0,
-        }}
-      >
-        <h5 style={{ marginBottom: ".5rem" }}>
-          My skills are also my hobbies
-        </h5>
-        <p style={{ marginBottom: "1rem" }}>
-          I'm well-versed in user experience and visual design principles, but have a personal fascination with psychology and reading material on human behavior, social patterns, and research for fun. I am always curious about new technology and always try to stay up-to-date on UX patterns, trends, UI frameworks, and the latest advancements. I've been a speaker at Codestock and Scenic City Summit developer conferences, and I'm comfortable presenting my ideas to clients.
-        </p>
-      </Group>
-      <Group
-        className="card col"
-        style={{
-          background: "hsla(0,0%,30%,85%)",
-          color: "hsla(0,0%,100%,80%)",
-          width: "100%",
-          gap: 0,
-        }}
-      >
-        <h5 style={{ marginBottom: ".5rem" }}>
-          It's my personal mission to empower others
-        </h5>
-        <p style={{ marginBottom: "0rem" }}>
-          My degree program at Watkins College of Art taught me how to evaluate my work against the principles of design to make iterative improvements, and how to assist other designers in reaching the full potential of their work through collaborative feedback.I use these techniques often when mentoring for the Knoxville Entrepreneur Center and new designers in my spare time. I am always looking for ways to improve myself and support the success of others.
-        </p>
-      </Group>
-      <CardSection title="Education">
-
-        {resume.education.map((item, index) => (
+      <Group className="row wrap top center" style={{ width: "100%" }}>
+        <Group className="col nowrap" style={{ maxWidth: maxCardWidth }}>
           <Group
-            className="resume-timeline responsive"
-            key={`resume-edu-${index}`}
+            className="card col"
+            style={{
+              background: "hsla(0,0%,30%,85%)",
+              color: "hsla(0,0%,100%,80%)",
+              width: "100%",
+              maxWidth: maxCardWidth,
+              gap: 0,
+            }}
           >
-            <CardDetails content={item} />
+            <h5 style={{ marginBottom: ".5rem" }}> I'm a team player</h5>
+            <p style={{ marginBottom: "1rem" }}>
+              Throughout my career, I've had the pleasure of working on many highly effective teams. I'm used to leveraging the strengths of each individual to work more efficiently and aid each other's personal growth. I understand the power of collaboration and I'm dedicated to the success of the team as a whole. I've spent a lot of time in both startup and enterprise environments.
+            </p>
           </Group>
-        ))}
-
-      </CardSection>
-      <CardSection title="Experience">
-
-        {resume.experience.map((item, index) => (
           <Group
-            className="resume-timeline responsive"
+            className="card col"
+            style={{
+              background: "hsla(0,0%,30%,85%)",
+              color: "hsla(0,0%,100%,80%)",
+              width: "100%",
+              maxWidth: maxCardWidth,
+              gap: 0,
+            }}
           >
-            <CardDetails key={`resume-xp-${index}`} content={item} />
+            <h5 style={{ marginBottom: ".5rem" }}>
+              My skills are also my hobbies
+            </h5>
+            <p style={{ marginBottom: "1rem" }}>
+              I'm well-versed in user experience and visual design principles, but have a personal fascination with psychology and reading material on human behavior, social patterns, and research for fun. I am always curious about new technology and always try to stay up-to-date on UX patterns, trends, UI frameworks, and the latest advancements. I've been a speaker at Codestock and Scenic City Summit developer conferences, and I'm comfortable presenting my ideas to clients.
+            </p>
           </Group>
-        ))}
-      </CardSection>
+          <Group
+            className="card col"
+            style={{
+              background: "hsla(0,0%,30%,85%)",
+              color: "hsla(0,0%,100%,80%)",
+              width: "100%",
+              maxWidth: maxCardWidth,
+              gap: 0,
+            }}
+          >
+            <h5 style={{ marginBottom: ".5rem" }}>
+              It's my personal mission to empower others
+            </h5>
+            <p style={{ marginBottom: "0rem" }}>
+              My degree program at Watkins College of Art taught me how to evaluate my work against the principles of design to make iterative improvements, and how to assist other designers in reaching the full potential of their work through collaborative feedback.I use these techniques often when mentoring for the Knoxville Entrepreneur Center and new designers in my spare time. I am always looking for ways to improve myself and support the success of others.
+            </p>
+          </Group>
+          <CardSection title="Education">
 
+            {resume.education.map((item, index) => (
+              <Group
+                className="resume-timeline responsive"
+                key={`resume-edu-${index}`}
+              >
+                <CardDetails content={item} />
+              </Group>
+            ))}
+
+          </CardSection>
+        </Group>
+        <Group className="col nowrap" style={{ maxWidth: maxCardWidth }}>
+          <CardSection title="Experience">
+
+            {resume.experience.map((item, index) => (
+              <Group
+                className="resume-timeline responsive"
+              >
+                <CardDetails key={`resume-xp-${index}`} content={item} />
+              </Group>
+            ))}
+          </CardSection>
+        </Group>
+      </Group>
     </PageContainer >
   );
 }
@@ -119,6 +157,7 @@ function CardSection({ title, children, style }) {
         background: "hsl(0,0%,40%)",
         padding: "1rem",
         width: "100%",
+        maxWidth: maxCardWidth,
         // minWidth: "300px",
         // maxWidth: "600px",
         ...style,
@@ -581,4 +620,19 @@ const resume = {
       dates: [2015],
     },
   ],
+  skills: ["Figma",
+    "Framer",
+    "React",
+    "Sketch",
+    "Marvel",
+    "InVision",
+    "XD",
+    "Photoshop",
+    "Illustrator",
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Bootsrap",
+    "VisualStudio"
+  ]
 };
