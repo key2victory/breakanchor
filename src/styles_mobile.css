@@ -132,6 +132,10 @@
   grid-row: 1 / span 2;
 }
 
+.responsive-padding {
+  padding: 1rem 1.5rem;
+}
+
   h1 {
     font-size: 2.5rem;
     font-weight: 400;

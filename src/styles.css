@@ -608,6 +608,7 @@ h5 {
 
 p,
 .p {
+  box-sizing: content-box;
   max-width: 36em;
   margin: 0;
 }

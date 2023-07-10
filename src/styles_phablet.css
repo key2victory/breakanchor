@@ -133,6 +133,11 @@
     max-width: 600px;
     padding: 0;
   }
+
+  .responsive-padding {
+    padding: 1rem 1.5rem;
+  }
+
   h1 {
     font-size: 3rem;
     font-weight: 400;

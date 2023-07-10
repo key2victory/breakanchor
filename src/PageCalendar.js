@@ -41,27 +41,28 @@ export const PageCalendar = memo(function PageCalendar({
         />
       </Header>
       <Group className="desktop-row laptop-col tablet-row phablet-col mobile-col">
-        <section className="p col" style={notecardStyle}>
+        <Note>
           <h3>Problem</h3>
           When I wake up, I need to be aware of the day's agenda, so I can be in the right place at the right time. I also need to see the hourly weather forecast in relation to my scheduled appointments to determine what to wear, and I want to plan breaks to walk outside with my dog when the weather is nice enough between appointments. I may want to postpone if another day this week is expected to be nicer.
-
-        </section>
-
-
+        </Note>
+        <Note>
+          <h3>Solution</h3>
+          I designed and built a React web app that pulls weather and calendar information into a single prioritized view. To make sure my calendar app would be visible to me when the information was most relevant, I used a single board tiny computer to automate turning on the bedroom TV to display my app each morning. The style is dark to counter the brightness of the TV screen.
+        </Note>
       </Group>
-      <section className="p col" style={notecardStyle}>
-        <h3>Solution</h3>
-        I designed and built a React web app that pulls weather and calendar information into a single prioritized view. To make sure my calendar app would be visible to me when the information was most relevant, I used a single board tiny computer to automate turning on the bedroom TV to display my app each morning. The style is dark to counter the brightness of the TV screen.
-      </section>
-      <BulletList title="Features" items={[
-        "Daily agenda in relation to hourly weather",
-        "6-day forecast in relation to this week's events",
-        "6-month rolling view of upcoming significant events",
-        "Dark theme to counter the brightness of TV LEDs"
-      ]} />
-      <Group>
+
+      <Group className="col">
         <HeroCalendar />
+        <Note>
+          <BulletList title="Features" items={[
+            "Daily agenda in relation to hourly weather",
+            "6-day forecast in relation to this week's events",
+            "6-month rolling view of upcoming significant events",
+            "Dark theme to counter the brightness of TV LEDs"
+          ]} />
+        </Note>
       </Group>
+
 
       <Group className="col" style={{
         /* gridTemplateColumns: "3fr 2fr",*/

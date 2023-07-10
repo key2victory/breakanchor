@@ -117,13 +117,15 @@ export const Note = memo(function Note({
 }) {
   const [open, setOpen] = useState(false);
   const notecardStyle = {
-    container: { background: background, color: color, padding: "1rem 1.5rem" },
+    container: {
+      background: background, color: color, //padding: "1rem 1.5rem" 
+    },
     unbound: { background: "hsl(0,0%,0%,0%)", color: color, padding: "0rem" },
   };
   const H = `h${hsize}`;
   return (
     <section
-      className={`p col ${container === true ? "shadow" : ""} ${!collapse ? "open" : open ? "open" : ""}`}
+      className={`p col responsive-padding ${container === true ? "shadow" : ""} ${!collapse ? "open" : open ? "open" : ""}`}
       style={{
         ...notecardStyle[`${container === true ? "container" : "unbound"}`], //background: background, color: color, 
         ...style

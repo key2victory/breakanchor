@@ -101,6 +101,11 @@
     flex-grow: 0;
     flex-shrink: 0;
   }
+
+  .responsive-padding {
+    padding: 2rem 3vw;
+  }
+
   h1 {
     font-size: 3rem;
     font-weight: 400;

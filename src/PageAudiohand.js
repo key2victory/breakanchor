@@ -48,7 +48,7 @@ export const PageAudiohand = memo(function Page_Audiohand({
         //background={background}
         >
           <ButtonLink
-            color="white"
+            color="black"
             line1="see it on the"
             line2="App Store"
             url="https://apps.apple.com/us/app/audiohand/id973166513?platform=iphone"
@@ -155,31 +155,27 @@ export const PageAudiohand = memo(function Page_Audiohand({
           </div>
 
         </Group>
-        <Group>
-          <div
-            //className="box-shadow"// grid"
-            style={{
-              width: "100%",
-              minWidth: 0,
-              flexGrow: 1,
-              flexShrink: 1,
-              flexBasis: 0,
-              //  background: "hsla(0,0%,100%,80%)",
-              padding: ".8rem",
-              margin: "2rem 0 0 0",
-              gridTemplateColumns: "1fr",
-              gridTemplateRows: "auto",
-              // overflow: "hidden"
+        <Group
+          style={{
+            width: "100%",
+            minWidth: 0,
+            flexGrow: 1,
+            flexShrink: 1,
+            flexBasis: 0,
+            backgroundColor: "hsl(0,0%,70%)",
+            padding: "1rem",
+            margin: "1rem 0 0 0",
+            gridTemplateColumns: "1fr",
+            gridTemplateRows: "auto",
+          }}
+        >
+          <div role="img" className="image shadow animate-flow audiohand" style={{
+            backgroundImage: "url(./img/audiohand-14.png)",
+            backgroundColor: "hsl(0,0%,90%)",
+            backgroundRepeat: "no-repeat",
+            width: "100%", height: "200px"
+          }} ariaLabel="" />
 
-            }}
-          >
-            <div role="img" className="image shadow animate-flow audiohand" style={{
-              backgroundImage: "url(./img/audiohand-14.png)",
-              backgroundColor: "hsl(0,0%,80%)",
-              backgroundRepeat: "no-repeat",
-              width: "100%", height: "200px"
-            }} ariaLabel="" />
-          </div>
         </Group>
         <HeroAudiohand />
       </div>

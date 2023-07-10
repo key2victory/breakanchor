@@ -78,6 +78,10 @@
   justify-content: center;
 }
 
+.margin-center {
+  margin: 0 auto 0 auto;
+}
+
 h1.center,
 h2.center,
 h3.center,
