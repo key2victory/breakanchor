@@ -11,17 +11,8 @@
     bottom: 0;
     right: 0;
   }
-  .app-nav {
-    transition-duration: 0.5s;
-  }
   
-  .app-nav.hide {
-    transform: translateX(-100%);
-  }
 
-  .app-nav.show {
-    transform: translateX(0);
-  }
   .App {
     display: grid;
     grid-template-columns: [content] 1fr;
@@ -133,19 +124,19 @@
 }
 
 .responsive-padding {
-  padding: 1rem 1.5rem;
+  padding: 1rem;
 }
 
   h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 400;
     line-height: 1;
     margin: 0;
     padding: 0;
   }
   h2 {
-    font-size: 2rem;
-    line-height: 2rem;
+    font-size: 1.8rem;
+    line-height: 1;
     font-weight: 400;
     margin: 0;
     padding: 0;

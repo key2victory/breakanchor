@@ -1,4 +1,4 @@
-@media screen and (min-width: 700px) and (max-width: 1023px) {
+@media screen and (min-width: 800px) and (max-width: 1099px) {
   .tablet-hide {
     position: absolute;
     visibility: hidden;
@@ -101,7 +101,7 @@
   }
 
   .responsive-padding {
-    padding: 1rem 1.5rem;
+    padding: 1.5rem;
   }
 
   h1 {

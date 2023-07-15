@@ -1,8 +1,8 @@
 import { memo } from "react";
-import { Header, ButtonLink, Note, Group, PageContainer, BulletList } from "./PageElements";
-
-import { HeroCalendar } from "./HeroCalendar";
-import { MdOutlineHeight } from "react-icons/md";
+import { Header, ButtonLink, Note, Group, BulletList } from "./PageElements";
+import { PageContainer } from "./PageContainer";
+// import { HeroCalendar } from "./HeroCalendar";
+import { Hero } from "./Hero";
 
 export const PageCalendar = memo(function PageCalendar({
   title,
@@ -21,12 +21,11 @@ export const PageCalendar = memo(function PageCalendar({
     },
   ];
 
-  const color1 = "hsl(274,33%,55%)"; //"#9971B7",
-  const color2 = "hsl(274,33%,52%)";
-  const notecardStyle = { background: "hsl(274,0%,70%)", padding: "1rem 1.5rem" };
+
 
   return (
-    <PageContainer layout="hero" maxWidth={`${800}px`}>
+    <PageContainer layout="hero" heroComponent="room" //maxWidth={`${800}px`}
+    >
       <Header
         title="Priority Calendar"
         subtitle="Weather and events in perspective"
@@ -52,7 +51,7 @@ export const PageCalendar = memo(function PageCalendar({
       </Group>
 
       <Group className="col">
-        <HeroCalendar />
+        <Hero component="calendar" />
         <Note>
           <BulletList title="Features" items={[
             "Daily agenda in relation to hourly weather",
@@ -91,32 +90,6 @@ export const PageCalendar = memo(function PageCalendar({
       </Group>
 
 
-      <div
-        className="hero mobile-min-height-300 tablet-min-height-500"
-        style={
-          {
-            //width: "100%",
-            //height: "100%"
-          }
-        }
-      >
-        <div
-          className="hero-margins"
-          style={{
-            aspectRatio: "369 / 319",
-            maxWidth: "100%",
-            maxHeight: "100%",
-          }}
-        >
-          <img
-            width="100%"
-            src="./img/calendar-room.png"
-            // style={{ margin: "0 2rem" }}
-            alt=""
-          />
-
-        </div>
-      </div>
     </PageContainer >
   );
 });

@@ -3,13 +3,16 @@ import { memo, useState, useEffect, Fragment } from "react";
 import { AppHeader, NavPanel } from "./AppNav";
 import { HeroAbout } from "./HeroAbout";
 import { Logo } from "./Logo";
-import { Header, ButtonLink, Note, Group, PageContainer } from "./PageElements";
+import { Header, ButtonLink, Note, Group } from "./PageElements";
+import { PageContainer } from "./PageContainer";
 import { FaFigma } from "react-icons/fa";
 import { RxFramerLogo } from "react-icons/rx";
 import {
   MdCircle,
 } from "react-icons/md";
 import { RiReactjsFill } from "react-icons/ri";
+import { useOutletContext } from "react-router-dom";
+
 
 const present = new Date().getFullYear();
 
@@ -48,6 +51,9 @@ const Skill = (label) => {
 }
 
 export default function PageAbout(props) {
+  const [media, setMedia] = useOutletContext();
+  const mediaSize = ["xs", "md"].includes(media) ? "small" : "large";
+
   const borderRadius = ".5rem";
   // const color1 = "hsl(0,0%,80%)";
   // const color2 = "hsl(0,0%,90%)";
@@ -55,25 +61,35 @@ export default function PageAbout(props) {
   const color2 = "hsla(0,0%,0%,10%)";
 
   return (
-    <PageContainer layout="center" maxWidth="1200px">
-      <div
+    <PageContainer layout="center" //maxWidth="1200px"
+    >
+      {/*      <div
         className="page-bg"
         style={{
+          // position: "absolute",
+          // top: 0,
+          // left: 0,
+          // right: 0,
           background: `linear-gradient(31deg, ${color1} 25%, ${color2} 0, ${color2} 50%, ${color1} 0, ${color1} 75%, ${color2} 0) center / 50px 30px`,
+          zIndex: 0
         }}
-      />
-      <HeroAbout />
+      />*/}
+      <HeroAbout hide={["xl", "lg", "md"].includes(media)} deviceSize="small" />
       <Header title="About Me"
-        color="hsla(0,0%,0%,50%)" />
-      <Group className="row wrap top center" style={{ width: "100%" }}>
-        <Group className="col nowrap" style={{ maxWidth: maxCardWidth }}>
+        color="hsla(0,0%,0%,50%)" style={{ margin: "0 0 0 0", width: "100%", maxWidth: maxCardWidth }} />
+      <Group className="grid"//"col nowrap" 
+        style={{
+          gridTemplateColumns: ["xs", "sm"].includes(media) ? "100%" : "1fr 1fr", //maxWidth: maxCardWidth 
+        }}>
+        <Group className={`row wrap top ${["lg", "md"].includes(media) ? "left" : "center"}`} style={{ width: "100%" }}>
           <Group
-            className="card col"
+            className="col shadow"
             style={{
+              padding: "1.5rem 2rem",
               background: "hsla(0,0%,30%,85%)",
               color: "hsla(0,0%,100%,80%)",
               width: "100%",
-              maxWidth: maxCardWidth,
+              // maxWidth: maxCardWidth,
               gap: 0,
             }}
           >
@@ -83,12 +99,13 @@ export default function PageAbout(props) {
             </p>
           </Group>
           <Group
-            className="card col"
+            className="col shadow"
             style={{
+              padding: "1.5rem 2rem",
               background: "hsla(0,0%,30%,85%)",
               color: "hsla(0,0%,100%,80%)",
               width: "100%",
-              maxWidth: maxCardWidth,
+              //  maxWidth: maxCardWidth,
               gap: 0,
             }}
           >
@@ -100,12 +117,13 @@ export default function PageAbout(props) {
             </p>
           </Group>
           <Group
-            className="card col"
+            className="col shadow"
             style={{
+              padding: "1.5rem 2rem",
               background: "hsla(0,0%,30%,85%)",
               color: "hsla(0,0%,100%,80%)",
               width: "100%",
-              maxWidth: maxCardWidth,
+              //  maxWidth: maxCardWidth,
               gap: 0,
             }}
           >
@@ -119,29 +137,25 @@ export default function PageAbout(props) {
           <CardSection title="Education">
 
             {resume.education.map((item, index) => (
-              <Group
-                className="resume-timeline responsive"
-                key={`resume-edu-${index}`}
-              >
-                <CardDetails content={item} />
-              </Group>
+
+              <CardDetails key={`resume-edu-${index}`} content={item} media={mediaSize} />
+
             ))}
 
           </CardSection>
         </Group>
-        <Group className="col nowrap" style={{ maxWidth: maxCardWidth }}>
+        <Group className="col nowrap" >
           <CardSection title="Experience">
 
             {resume.experience.map((item, index) => (
-              <Group
-                className="resume-timeline responsive"
-              >
-                <CardDetails key={`resume-xp-${index}`} content={item} />
-              </Group>
+
+              <CardDetails key={`resume-exp-${index}`} content={item} media={mediaSize} />
+
             ))}
           </CardSection>
         </Group>
       </Group>
+
     </PageContainer >
   );
 }
@@ -149,15 +163,16 @@ export default function PageAbout(props) {
 function CardSection({ title, children, style }) {
   return (
     <div
-      className="card"
+      className="col nowrap shadow"
       style={{
-        display: "flex",
-        flexFlow: "column nowrap",
+        // display: "flex",
+        // flexFlow: "column nowrap",
         gap: 0,
-        background: "hsl(0,0%,40%)",
-        padding: "1rem",
+        // background: "hsl(0,0%,40%)",
+        background: "hsla(0,0%,30%,85%)",
+        padding: "1rem 2rem 1rem 1rem",
         width: "100%",
-        maxWidth: maxCardWidth,
+        // maxWidth: maxCardWidth,
         // minWidth: "300px",
         // maxWidth: "600px",
         ...style,
@@ -169,94 +184,136 @@ function CardSection({ title, children, style }) {
   );
 }
 
-const CardDates = ({ content }) => (
+
+
+
+
+
+
+
+
+
+const CardDates = ({ content, media }) => {
   // gridColumn: "1 / span 1",
   // display: "flex",
   // width: "100%",
   // height: "100%",
+  const responsiveDates = {
+    small: {
+      gridColumn: "details / span 1",
+      gridRow: "1 / span 1",
+      textAlign: "left",
+      display: "flex",
+      flexFlow: "row wrap",
 
-  <Fragment>
-    <span
-      className="resume-dates responsive"
-      style={{
-        width: "100%",
-        // display: "flex",
-        // flexFlow: "row wrap",
-        alignItems: "flex-start",
-        justifyContent: "flex-start",
-        color: "hsl(0,0%,100%)",
-        //gap: ".25rem",
-        padding: ".5rem 0 0 0",
-        // flexGrow: 1,
-        // flexShrink: 1,
-        // flexBasis: 0,
-        // textAlign: "right"
-      }}
-    >
-      {content.dates.length === 2 ? (
-        <Fragment>
-          <span
-            style={{
-              fontSize: "1rem",
-              width: "auto",
-              height: "auto",
-              // flexGrow: 0,
-              // flexShrink: 0,
+      justifyContent: "flex-start",
+      alignContent: "flex-start",
+      alignItems: "center",
+    },
+    large: {
+      gridColumn: "date / span 1",
+      gridRow: "1 / span 1",
+      textAlign: "right",
 
-            }}
-          >
-            {content.dates[0]}
+      display: "flex",
+      flexFlow: "row wrap",
+
+      justifyContent: "flex-end",
+      alignContent: "flex-start"
+
+    }
+  }
+
+
+  const responsiveMarker = {
+    small: {
+      gridColumn: "marker span 1",
+      gridRow: "1 / span 2"
+    },
+    large: {
+      gridColumn: "marker span 1",
+      gridRow: "1 / span 1"
+    }
+  }
+  return (
+    <Fragment>
+      <span
+        // className="resume-dates responsive"
+        style={{
+          width: "100%",
+          alignItems: "flex-start",
+          justifyContent: "flex-start",
+          color: "hsl(0,0%,100%)",
+          padding: ".5rem 0 0 0",
+          ...responsiveDates[media]
+        }}
+      >
+        {content.dates.length === 2 ? (
+          <Fragment>
             <span
               style={{
                 fontSize: "1rem",
                 width: "auto",
                 height: "auto",
-                margin: "0 .2rem",
+                // flexGrow: 0,
+                // flexShrink: 0,
+
               }}
             >
-              -
+              {content.dates[0]}
+              <span
+                style={{
+                  fontSize: "1rem",
+                  width: "auto",
+                  height: "auto",
+                  margin: "0 .2rem",
+                }}
+              >
+                -
+              </span>
             </span>
-          </span>
+            <span
+              style={{
+                fontSize: "1.3rem",
+                // width: "min-content",
+                // height: "min-content",
+                width: "auto",
+                height: "auto",
+              }}
+            >
+              {content.dates[1]}
+            </span>
+          </Fragment>
+        ) : (
           <span
-            style={{
-              fontSize: "1.3rem",
-              // width: "min-content",
-              // height: "min-content",
-              width: "auto",
-              height: "auto",
-            }}
+            style={{ fontSize: "1.3rem", width: "min-content", height: "auto" }}
           >
-            {content.dates[1]}
+            {content.dates.join(", ")}
           </span>
-        </Fragment>
-      ) : (
-        <span
-          style={{ fontSize: "1.3rem", width: "min-content", height: "auto" }}
-        >
-          {content.dates.join(", ")}
-        </span>
-      )}
-    </span>
-    <span
-      className="resume-marker responsive"
-      style={{
-        width: "2px",
-        display: "flex",
-        flexFlow: "column nowrap",
-        alignItems: "center",
-        justifyContent: "flex-start",
-        height: "100%",
-        borderRight: "2px solid hsl(0,0%,80%)",
-        padding: ".7rem 0 0 0",
-        margin: "0 1rem 0 auto",
-        color: "hsl(0,0%,100%)",
-        // gap: "0"
-      }}
-    >
-      <MdCircle style={{ transform: "translateX(1px)" }} />
-    </span>
-  </Fragment>
-);
+        )}
+      </span>
+      <span
+        //className="resume-marker responsive"
+        style={{
+          width: "2px",
+          display: "flex",
+          flexFlow: "column nowrap",
+          alignItems: "center",
+          justifyContent: "flex-start",
+          height: "100%",
+          borderRight: "2px solid hsl(0,0%,80%)",
+          padding: ".7rem 0 0 0",
+          margin: "0 1rem 0 auto",
+          color: "hsl(0,0%,100%)",
+          ...responsiveMarker[media]
+          // gap: "0"
+        }}
+      >
+        <MdCircle style={{ transform: "translateX(1px)" }} />
+      </span>
+    </Fragment>
+  )
+};
 
 const CardHeader = ({ content }) => (
   <span
@@ -279,12 +336,13 @@ const CardHeader = ({ content }) => (
 const TimelineBubble = ({ content, children, style }) => {
   const bubbleStyle = [
     {
+      borderRadius: "0rem 1rem 1rem 1rem",
       background: "hsl(0,0%,100%)",
       padding: "1rem",
       zIndex: 1,
     },
     {
-      borderRadius: "0", // 0 1rem 1rem",
+
       background: "hsl(0,0%,90%)",
       padding: "2rem 2rem 2rem 2rem",
       margin: "-1rem 0 0 0",
@@ -297,25 +355,21 @@ const TimelineBubble = ({ content, children, style }) => {
       style={{
         ...style,
         width: "100%",
-        maxWidth: "400px",
+        maxWidth: "100%",
         flexGrow: 1,
         flexShrink: 1,
         flexBasis: 0,
         margin: "0.5rem 0 1rem 0",
         borderRadius: "0rem 1rem 1rem 1rem",
         overflow: "hidden",
-        //  ...bubbleStyle
       }}
     >
       <div
         className="row wrap"
         style={{
-          //...style,
-          // display: "grid",
-          // gridTemplateColumns: "auto 1fr",
           columnGap: ".8rem",
           rowGap: ".75rem",
-          borderRadius: "0rem 1rem 0rem 0rem",
+
           ...bubbleStyle[0],
         }}
       >
@@ -327,7 +381,6 @@ const TimelineBubble = ({ content, children, style }) => {
             justifyContent: "stretch",
             background: "hsl(0,0%,90%)",
             borderRadius: ".5rem",
-            // padding: ".1rem",
             aspectRatio: "1/1",
           }}
         >
@@ -350,15 +403,16 @@ const TimelineBubble = ({ content, children, style }) => {
   );
 
 };
-
+/*
 const CardSummary = ({ content, style }) => (
   <Fragment>
     <CardDates content={content} />
     <TimelineBubble content={content} />
   </Fragment>
-);
+);*/
 
-const CardDetails = ({ content }) => {
+const CardDetails = ({ content, media }) => {
+
   const ProjectDetails = ({ content, style }) => (
     <span
       style={{
@@ -407,10 +461,26 @@ const CardDetails = ({ content }) => {
       ))}
     </span>
   );
+  const responsiveTimeline = {
+    small: {
+      display: "grid",
+      gridTemplateColumns: "[marker] 28px [details] 1fr",
+      gridAutoRows: "minmax(0,fit-content)",
+      rowGap: 0,
+      columnGap: 0,
+    },
+    large: {
+      display: "grid",
+      gridTemplateColumns: "[date] 60px [marker] 32px [details] 1fr",
+      gridAutoRows: "min-content",
+      rowGap: 0,
+      columnGap: 0,
+    }
 
+  }
   return (
-    <Fragment>
-      <CardDates content={content} />
+    <div style={responsiveTimeline[media]}>
+      <CardDates content={content} media={media} />
       <TimelineBubble content={content}>
 
         {content.details
@@ -444,7 +514,7 @@ const CardDetails = ({ content }) => {
           )
           : null}
       </TimelineBubble>
-    </Fragment>
+    </div>
   );
 };
 

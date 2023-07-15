@@ -1,5 +1,5 @@
 import { memo, useState, useEffect, Fragment } from "react";
-import { useMediaQuery } from "@uidotdev/usehooks";
+import { useHover } from "@uidotdev/usehooks";
 
 import {
   MdOutlineSmartphone,
@@ -7,7 +7,7 @@ import {
   MdOutlineLaptop,
   MdOutlineComputer,
   MdDevices,
-  MdOutlineDesignServices,
+  // MdOutlineDesignServices,
 } from "react-icons/md";
 
 import {
@@ -23,21 +23,26 @@ const ChipTag = memo(function ChipTag({
   textColor = "hsla(0,0%,40%,100%)",
   borderColor = "hsla(0,0%,40%,30%)",
   bgColor = "hsla(0,0%,0%,6%)",
+  hoverColor = "hsla(0,0%,0%,10%)",
   solid = "false",
+  style,
   children,
+  onClick
 }) {
+  const [ref, hover] = useHover();
   const chipStyle = solid
     ? {
       border: "none",
-      background: bgColor,
+      background: hover ? hoverColor : bgColor,
       color: textColor,
     } : {
       border: `2px solid ${borderColor}`,
-      background: "hsla(0,0%,0%,0%)",
+      background: hover ? hoverColor : "hsla(0,0%,0%,0%)",
       color: textColor,
     };
   return (
     <div
+      ref={ref}
       className="row nowrap center left"
       style={{
         width: "fit-content",
@@ -47,26 +52,33 @@ const ChipTag = memo(function ChipTag({
         borderRadius: "2rem",
         padding: ".2rem .6rem",
         fontSize: "1rem",
+        cursor: onClick !== undefined ? "pointer" : "auto",
         ...chipStyle,
+        ...style
       }}
+      onClick={onClick}
     >
-      {children}{" "}
+      {children}
     </div>
   );
 });
 
 export const IconTag = memo(function IconTag({
   icon,
+  label,
   textColor = "hsla(0,0%,40%,100%)",
   borderColor = "hsla(0,0%,40%,30%)",
   bgColor = "hsla(0,0%,0%,6%)",
+  hoverColor = "hsla(0,0%,0%,10%)",
   solid = true,
+  style,
+  onClick,
 }) {
   const IconList = {
     mobile: MdOutlineSmartphone,
     tablet: MdOutlineTablet,
-    desktop: MdOutlineLaptop,
-    // L: MdOutlineComputer,
+    laptop: MdOutlineLaptop,
+    desktop: MdOutlineComputer,
     responsive: MdDevices,
     presentation: RiLayoutTopLine, // RiSlideshow3Line,
     reactjs: RiReactjsFill,
@@ -86,17 +98,20 @@ export const IconTag = memo(function IconTag({
     lg: "desktop"
   };
   const Icon = IconList[icon] !== undefined ? IconList[icon] : RiDeviceLine;
-  const label = labelList[icon] !== undefined ? labelList[icon] : icon;
+  const iconLabel = labelList[icon] !== undefined ? labelList[icon] : icon;
 
   return (
     <ChipTag
       textColor={textColor}
       borderColor={borderColor}
       bgColor={bgColor}
+      hoverColor={hoverColor}
       solid={solid}
+      onClick={onClick}
+      style={style}
     >
       <Icon />
-      <span> {label} </span>
+      <span> {label !== undefined ? label : iconLabel} </span>
     </ChipTag>
   );
 });
@@ -118,6 +133,11 @@ export const Note = memo(function Note({
   const [open, setOpen] = useState(false);
   const notecardStyle = {
     container: {
+      minWidth: "260px",
+      flexGrow: 1,
+      flexShrink: 1,
+      //  flexBasis: "auto",
+      flexBasis: "30%",
       background: background, color: color, //padding: "1rem 1.5rem" 
     },
     unbound: { background: "hsl(0,0%,0%,0%)", color: color, padding: "0rem" },
@@ -125,7 +145,7 @@ export const Note = memo(function Note({
   const H = `h${hsize}`;
   return (
     <section
-      className={`p col responsive-padding ${container === true ? "shadow" : ""} ${!collapse ? "open" : open ? "open" : ""}`}
+      className={`col responsive-padding ${container === true ? "shadow" : ""} ${!collapse ? "open" : open ? "open" : ""}`}
       style={{
         ...notecardStyle[`${container === true ? "container" : "unbound"}`], //background: background, color: color, 
         ...style
@@ -188,8 +208,8 @@ export const Caption = memo(function Caption({
           ...imgStyle,
         }}
         alt={alt}
-      />{" "}
-      {alt}{" "}
+      />
+      {alt}
     </div>
   );
 });
@@ -283,6 +303,9 @@ export const PageContainer = memo(function PageContainer({ layout = "hero", maxW
           {children}
         </div>
       </div>
+      {layout === "hero" ? <div className="grid-hero">
+
+      </div> : null}
     </div>)
 
 });
@@ -316,7 +339,7 @@ export const Header = memo(function Header({
         gridTemplateColumns: "1fr auto",
         height: "auto",
         color: color,
-        zIndex: 10,
+        // zIndex: 10,
         overflow: "visible",
         ...style,
       }}
@@ -428,7 +451,7 @@ export const BulletList = memo(function BulletList({ title, hsize = 4, items, ch
       <ul className="col" style={{
         gap: ".5rem", margin: 0, padding: "0 0 0 1.5rem"
       }}>
-        {items !== undefined ? items.map((v, k) => (<li index={k}>{v}</li>)) : children}
+        {items !== undefined ? items.map((v, k) => (<li key={k}>{v}</li>)) : children}
       </ul>
     </section >
   )

@@ -1,6 +1,9 @@
 import { memo, useEffect, useRef, forwardRef } from "react";
-import { Header, ButtonLink, Note, Group, ChipTag, PageContainer } from "./PageElements";
+import { Header, ButtonLink, Note, Group, ChipTag } from "./PageElements";
 import { FaRegSmileWink } from "react-icons/fa";
+import { Hero } from "./Hero";
+import { PageContainer } from "./PageContainer";
+import { useOutletContext } from "react-router-dom";
 
 export const PageFlashcards = memo(function PageFlashcards({
     title,
@@ -9,6 +12,7 @@ export const PageFlashcards = memo(function PageFlashcards({
     row,
     column
 }) {
+    const [media, setMedia] = useOutletContext();
     const pages = [
         {
             title: "ASL Flashcards",
@@ -22,44 +26,50 @@ export const PageFlashcards = memo(function PageFlashcards({
     const color1 = "hsl(40,80%,70%)"; //"#9971B7",
     const color2 = "hsl(40,80%,80%)";
     const noteStyle = {
-        minWidth: "48%",
-        width: "100%",
-        display: "flex",
-        flexFlow: "column nowrap",
-        flexGrow: 1,
-        flexShrink: 1,
-        flexBasis: 0,
-        gap: ".75rem"
+        //  minWidth: "30%",
+        //width: "100%",
+        maxWidth: "100%",
+        // gridColumnEnd: "span 1",
+        boxSizing: "border-box"
+        // maxWidth: "30%",
+        // display: "flex",
+        // flexFlow: "column nowrap",
+        // flexGrow: 1,
+        // flexShrink: 1,
+        // flexBasis: "20%",
+        // gap: ".75rem"
     };
 
     return (
-        <PageContainer layout="center" maxWidth={`${800}px`}>
-
-            <Header
-                title="ASL Flash Cards"
-                subtitle="Animated sign language card deck"
-                color="hsl(0,0%,0%)"
-            >
-            </Header>
-
+        <PageContainer layout="hero" heroComponent="asl" heroInteraction={true}
+        >
 
             <Group className="p col" style={{
-                gap: "2rem", margin: 0, padding: "0 0 2rem 0"
+                gap: "1rem", margin: "0 auto 0 auto", padding: "0 0 2rem 0",
+                // gridTemplateColumns: "1fr 1fr 1fr",
+                // gridAutoFlow: "row",
+                // gridTemplateRows: "1fr 1fr 1fr 1fr 1fr",
+                // gridAutoFlow: "column"
+                // justifyContent: "stretch",
+                // alignItems: "stretch"
             }}>
-                <Note>
+                <Header
+                    title="ASL Flash Cards"
+                    subtitle="Animated sign language card deck"
+                    color="hsl(0,0%,0%)"
+                >
+                </Header>
 
+
+                <Note>
                     <span>My husband and I wanted to try learning a second language together. We chose American Sign Language because we thought it would be handy <FaRegSmileWink size=".9rem" style={{ transform: "translateY(.1rem)", opacity: ".5" }} /> to be able to communicate visually as an alternative to speaking.</span>
                 </Note>
-                <iframe src="https://codesandbox.io/embed/asl-flashcards-s6t7to?fontsize=14&hidenavigation=1&theme=dark" //https://key2victory.github.io/asl-flashcards/"
+
+                <Hero component="asl" //className="desktop-hide laptop-hide" 
                     style={{
-                        border: "none",
-                        borderRadius: "1rem",
-                        outline: "none",
-                        width: "100%", height: "500px", maxWidth: "100%", maxHeight: "500px", aspectRatio: "3 / 4"
+                        width: "100%",
+                        display: ["xl", "lg"].includes(media) ? "none" : "block"
                     }}
-                    title="ASL Flashcards"
-                    sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-                    frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true"
                 />
 
                 {/* <Group
@@ -102,9 +112,7 @@ export const PageFlashcards = memo(function PageFlashcards({
                         <li> I found one tool that featured spreadsheet integration for bulk entry, but it was very expensive. </li>
                     </ul>
                 </Note>
-
                 <Note>
-
                     <span> I looked for tools to help us learn and practice, wasn't able to find any that met our needs. It occurred to me that I could probably write an easier app myself for quicker and cheaper than I could buy one.</span>
                 </Note>
 

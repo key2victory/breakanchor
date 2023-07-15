@@ -1,4 +1,4 @@
-@media screen and (min-width: 400px) and (max-width: 699px) {
+@media screen and (min-width: 400px) and (max-width: 799px) {
   .phablet-hide {
     position: absolute;
     visibility: hidden;
@@ -135,7 +135,7 @@
   }
 
   .responsive-padding {
-    padding: 1rem 1.5rem;
+    padding: 1rem;
   }
 
   h1 {

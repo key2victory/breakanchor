@@ -1,10 +1,14 @@
 import { memo, useState, useEffect, Fragment } from "react";
 import { Link } from "react-router-dom";
-import { Header, ButtonLink, PageContainer, Group, Note } from "./PageElements";
+import { Header, ButtonLink, Group, Note } from "./PageElements";
+import { PageContainer } from "./PageContainer";
 import { RiCalendarTodoFill, RiStackFill } from "react-icons/ri";
 import { MdWavingHand } from "react-icons/md";
+import { useOutletContext } from "react-router-dom";
 
 export function PagePresentations(props) {
+    const [media, setMedia] = useOutletContext();
+
     const colorA = "hsl(40,100%,80%)";
     const colorB = "hsl(30,100%,80%)"; //"hsl(0,0%,95%)";
 
@@ -38,19 +42,20 @@ export function PagePresentations(props) {
         return (
             <div className="col center"
                 style={{
-                    flexBasis: 0,
-                    width: `${minImgSize}px`,
-                    height: `${minImgSize}px`,
+                    // flexBasis: 0,
+                    width: media === "xs" ? "100%" : `${minImgSize}px`,
+                    height: media !== "xs" ? "100%" : `${minImgSize}px`,
                     minWidth: `${minImgSize}px`,
                     maxWidth: "100%",
                     minHeight: `${minImgSize}px`,
                     //  maxHeight: "100px",
                     overflow: "hidden",
-                    borderRadius: ".5rem",
+                    // borderRadius: ".5rem",
                     background: `url(${src}), ${imageBackground}`,
-                    backgroundSize: "auto 100%, 100% 100%",
+                    backgroundSize: media === "xs" ? "auto 100%" : "100% auto",// 100% 100%",
+
                     backgroundRepeat: "no-repeat",
-                    backgroundPosition: "top right",
+                    backgroundPosition: media === "xs" ? "top right" : "center",
                     flexGrow: 1,
                     flexShrink: 3,
                     ...style
@@ -64,7 +69,7 @@ export function PagePresentations(props) {
     const ImageCard = memo(function ImageCard({
         embedType = EmbedImage,
         src,
-        minImgSize = 200,
+        minImgSize = 248,
         children,
         imageBackground = "hsl(0,0%,80%)",
         imageStyle
@@ -75,19 +80,20 @@ export function PagePresentations(props) {
         const EmbeddedItem = embedType;
 
         return (
-            <div className="card row top wrap box-shadow"
+            <div className="grid box-shadow"//row top wrap
                 style={{
-                    background: "hsla(0,0%,100%,50%)",
+                    background: "hsla(40,5%,90%,100%)",
                     width: "100%",
                     height: "auto",
                     maxWidth: "800px",//`calc(${minImgSize}px + 38rem)`,
                     minHeight: "auto",
+                    gridTemplateColumns: media === "xs" ? "100%" : "auto 1fr",
                     // overflow: "hidden",
-                    gap: "1.5rem",
+                    // gap: "1.5rem",
                     flexShrink: 0,
                     borderTop: "1px solid hsla(0,0%,0%,20%)",
-                    padding: "1.5rem",//"1.5rem 0 0 0",
-                    margin: "0 0 1rem 0"
+                    padding: 0,//"1.5rem",//"1.5rem 0 0 0",
+                    margin: "0 0 .5rem 0"
                 }}>
 
                 <EmbedImage src={src} imageBackground={imageBackground} minImgSize={minImgSize} style={imageStyle} />
@@ -98,7 +104,7 @@ export function PagePresentations(props) {
                     height: "max-content",
                     minWidth: "60%",
                     maxWidth: "100%",
-
+                    padding: "1.2rem 1.5rem",
                     minHeight: "max-content",
 
                     // padding: "1rem",
@@ -129,12 +135,12 @@ export function PagePresentations(props) {
                     padding: "0 0 1rem 0"
                 }}
             ></Header>
-            <div
+            {/*  <div
                 className="page-bg"
                 style={{
                     background: `linear-gradient(90deg, ${colorA} 0%, ${colorB} 100%,)`
                 }}
-            />
+            />*/}
 
             <ImageCard
                 // src="https://docs.google.com/presentation/d/e/2PACX-1vRJZQGOASDM7XWmFRaq4Oc_qd6sVKGX6NThZ4oV7XouyA0tL0C1Cjndh4RUMkgXmUDybimNRvd1kJVc/embed?slide=6"
