@@ -36,8 +36,8 @@ export const PageResearcherTools = memo(function PageResearcherTools({
         <PageContainer layout="center">
 
             <Header
-                title="ASL Flash Cards"
-                subtitle="Animated sign language card deck"
+                title="Researcher Hub"
+                subtitle=""
                 color="hsl(0,0%,0%)"
             >
             </Header>
