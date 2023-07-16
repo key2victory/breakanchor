@@ -58,10 +58,10 @@ export function PageConference(props) {
                 style={autoStyleGrid[mediaSize]}
             >
 
-                <Note title="Note">
+                {/*  <Note title="Note">
                     <h5>July 15, 2023</h5>
                     Sanitized details to be added soon.
-                </Note>
+                </Note>*/}
 
 
 

@@ -4,8 +4,7 @@ import { PageContainer } from "./PageContainer";
 import { useOutletContext } from "react-router-dom";
 
 
-const [media, setMedia] = useOutletContext();
-const mediaSize = ["xs", "sm"].includes(media) ? "small" : ["md"].includes(media) ? "medium" : "large";
+
 
 export const samplePages = [
   {
@@ -34,6 +33,8 @@ export const samplePages = [
 //export const samplePaths = samplePages.map((item, index) => item.path);
 
 export function PageClearanceTracker(props) {
+  const [media, setMedia] = useOutletContext();
+  const mediaSize = ["xs", "sm"].includes(media) ? "small" : ["md"].includes(media) ? "medium" : "large";
 
   return (
     <PageContainer layout="center"
@@ -58,20 +59,20 @@ export function PageClearanceTracker(props) {
       >
         <div
           style={{
-            //  aspectRatio: samplePages[props.index].aspectRatio,
+            aspectRatio: "1678 / 1153",
             margin: "0 auto auto 0",
             maxWidth: "100%",
             maxHeight: "100%",
           }}
         >
           <iframe
-            title="Sample"
+            title="Clearance Tracker"
             name="mockframe"
             className="sample"
             style={{}}
             width="100%"
             height="100%"
-            //  src={samplePages[props.index].src}
+            src="./samples/ClearanceTrackerUnframed/index.html"
             allowtransparency="true"
             background="none"
           />

@@ -12,22 +12,31 @@ import {
 import PageAbout from "./PageAbout";
 import { PageAudiohand } from "./PageAudiohand";
 import { PageCalendar } from "./PageCalendar";
-import { PageIntuitive } from "./PageIntuitive";
 import { PageLockOut } from "./PageLockOut";
 import { PageProjects } from "./PageProjects";
 import { PagePresentations } from "./PagePresentations";
 import { PageLearning } from "./PageLearning";
 import { PageFlashcards } from "./PageFlashcards";
 import { PageFinance } from "./PageFinance";
-import {
-  samplePaths,
-  PageSample0,
-  PageSample1,
-  PageSample2,
-  PageSample3,
-  PageSample4,
-} from "./PageSamples";
+import { PageConference } from "./PageConference";
+//import { PageContainer } from "./PageContainer";
+import { PageClearanceTracker } from "./PageClearanceTracker";
+/*
+import { pages } from "./Pages";
 
+const Page = (index) => (pages[index].component);
+const router = createHashRouter(
+  createRoutesFromElements(
+
+    <Route path="*" element={<App />}>
+      <Route path="/" element={<App />}>
+        {pages.slice(0, 2).map((item, index) => {
+          <Route key={`route-${index}`} path={item.path} element={<PageContainer><Page index={index} /></PageContainer>} />
+        })}
+      </Route>
+    </Route>
+  )
+);*/
 const router = createHashRouter([
   {
     path: "*",
@@ -38,19 +47,14 @@ const router = createHashRouter([
         Component: PageAbout,
       },
       { path: "projects", Component: PageProjects, },
-      { path: "projects/calendar", Component: PageCalendar, handle: { crumb: () => <Link to="/projects">Projects</Link>, current: "Calendar" } },
+      { path: "projects/calendar", Component: PageCalendar },// handle: { crumb: () => <Link to="/projects">Projects</Link>, current: "Calendar" } },
       { path: "projects/flashcards", Component: PageFlashcards },
       { path: "presentations", Component: PagePresentations },
       { path: "learning", Component: PageLearning },
-      { path: "audiohand", Component: PageAudiohand },
-      { path: "intuitive", Component: PageIntuitive },
-      { path: "loto", Component: PageLockOut },
-      { path: "finance", Component: PageFinance },
-      { path: samplePaths[0], Component: PageSample0 },
-      { path: samplePaths[1], Component: PageSample1 },
-      { path: samplePaths[2], Component: PageSample2 },
-      { path: samplePaths[3], Component: PageSample3 },
-      { path: samplePaths[4], Component: PageSample4 },
+      { path: "projects/audiohand", Component: PageAudiohand },
+      { path: "projects/loto", Component: PageLockOut },
+      { path: "projects/finance", Component: PageFinance },
+      { path: "projects/clearance-tracker", Component: PageClearanceTracker },
     ],
   },
   {
@@ -61,15 +65,16 @@ const router = createHashRouter([
         index: true,
         Component: PageAbout,
       },
-      { path: "calendar", Component: PageCalendar },
-      { path: "audiohand", Component: PageAudiohand },
-      { path: "intuitive", Component: PageIntuitive },
-      { path: "loto", Component: PageLockOut },
-      { path: samplePaths[0], Component: PageSample0 },
-      { path: samplePaths[1], Component: PageSample1 },
-      { path: samplePaths[2], Component: PageSample2 },
-      { path: samplePaths[3], Component: PageSample3 },
-      { path: samplePaths[4], Component: PageSample4 },
+      { path: "projects", Component: PageProjects, },
+      { path: "projects/calendar", Component: PageCalendar },// handle: { crumb: () => <Link to="/projects">Projects</Link>, current: "Calendar" } },
+      { path: "projects/flashcards", Component: PageFlashcards },
+      { path: "presentations", Component: PagePresentations },
+      { path: "learning", Component: PageLearning },
+      { path: "projects/audiohand", Component: PageAudiohand },
+      { path: "projects/loto", Component: PageLockOut },
+      { path: "projects/finance", Component: PageFinance },
+      { path: "projects/gbc", Component: PageConference },
+      { path: "projects/clearance-tracker", Component: PageClearanceTracker },
     ],
   },
 ]);

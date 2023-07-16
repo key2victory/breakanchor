@@ -181,34 +181,22 @@ export const pages = [
     subtitle: "Weather and events in perspective",
     description: "A calendar app I designed and built using react-js",
     path: "projects/calendar",
+    component: "PageCalendar",
     url: "",
     image: "./img/calendar-room.png",
     backgroundSize: "130%",
     backgroundPosition: "90% 100%",
     color: "hsl(274,33%,55%)",
     devices: ["S", "M", "L"],
-    tags: ["reactjs", "responsive"],
+    tags: ["responsive"],
     level: 1
   },
-  {
-    title: "ASL Flashcards",
-    subtitle: "",
-    description: "A flashcard app I designed and built using react-js",
-    path: "projects/flashcards",
-    url: "",
-    image: "./img/asl.png",
-    backgroundSize: "100%",
-    backgroundPosition: "50% 60%",
-    filter: "grayscale(100%) contrast(80%) brightness(70%)",
-    color: "hsl(187,57%,66%)",//"hsl(200,95%,63%)",
-    devices: ["S", "M", "L"],
-    tags: ["reactjs", "responsive"],
-    level: 1
-  },
+
   {
     title: "Lock Out, Tag Out",
     subtitle: "Electrical safety tracking",
-    path: "loto",
+    path: "projects/loto",
+    component: "PageCalendar",
     image: "./img/loto-02.png",
     backgroundSize: "cover",
     backgroundPosition: "50% 55%",
@@ -216,11 +204,27 @@ export const pages = [
     color: "hsl(37,95%,63%)",//"linear-gradient(to bottom right, hsl(37,95%,63%), hsl(33,100%,48%))",
     devices: ["S"],
     tags: ["mobile"],
+    level: 1
+  },
+  {
+    title: "ASL Flashcards",
+    subtitle: "",
+    description: "A flashcard app I designed and built using react-js",
+    path: "projects/flashcards",
+    component: "PageCalendar",
+    url: "",
+    image: "./img/asl.png",
+    backgroundSize: "100%",
+    backgroundPosition: "50% 60%",
+    filter: "grayscale(100%) contrast(80%) brightness(70%)",
+    color: "hsl(187,57%,66%)",//"hsl(200,95%,63%)",
+    devices: ["S", "M", "L"],
+    tags: ["responsive"],
     level: 2
   },
   {
     title: "Conference Manager",
-    path: "conference-manager",
+    path: "projects/gbc",
     src: "./samples/ConferenceManagerUnframed/index.html",
     image: "./samples/ConferenceManagerUnframed/images/fcebc055e0b4dac937421e1a6bb3fe6.png",
     backgroundSize: "400%",
@@ -230,26 +234,11 @@ export const pages = [
     aspectRatio: "1680 / 1105",
     devices: ["L"],
     tags: ["desktop"],
-    level: 3
+    level: 2
   },
-  {
-    title: "Compliance Works",
-    path: "compliance",
-    src: "./samples/ComplianceUnframed/index.html",
-    image: "./samples/ComplianceUnframed/images/b4a0990bea3646afb51ee68483b3e8b7.png",
-    backgroundSize: "500%",
-    backgroundPosition: "68% 30%",
-    color: "hsl(187,57%,66%)",
-    filter: "grayscale(100%) contrast(110%) brightness(70%)",
-    aspectRatio: "1640 / 1024",
-    devices: ["L"],
-    tags: ["desktop"],
-    level: 3
-  },
-
   {
     title: "Clearance Tracker",
-    path: "clearance-tracker",
+    path: "projects/clearance-tracker",
     src: "./samples/ClearanceTrackerUnframed/index.html",
     image: "./samples/ClearanceTrackerUnframed/images/5d6591a4b284913a47913e632eb1d52.png",
     backgroundSize: "300%",
@@ -258,7 +247,7 @@ export const pages = [
     aspectRatio: "1678 / 1153",
     devices: ["L"],
     tags: ["desktop"],
-    level: 3
+    level: 2
   },
   {
     title: "Audiohand",
@@ -272,19 +261,5 @@ export const pages = [
     devices: ["S"],
     tags: ["mobile"],
     level: 2
-  },
-  {
-    title: "Interview Kiosk",
-    path: "interview-kiosk",
-    src: "./samples/InterviewKioskUnframed/index.html",
-    image: "./samples/InterviewKioskUnframed/images/13b18aa13a454a13b9d42b41db13295f.png",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    color: "hsl(37,95%,63%)",
-    filter: "grayscale(100%) contrast(110%) brightness(70%)",
-    aspectRatio: "3 / 2", //"2048 / 1536",
-    devices: ["M"],
-    tags: ["tablet"],
-    level: 3
   },
 ];

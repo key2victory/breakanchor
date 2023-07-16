@@ -43,6 +43,7 @@ export default function App(props) {
   const sizeOptions = Object.keys(size).slice(0, Object.keys(size).indexOf(currentSize))
   console.log(currentSize);
   const browserMeasure = useWindowSize();
+
   useEffect(() => {
     if (media === undefined) {
       setMedia(currentSize)
@@ -50,7 +51,7 @@ export default function App(props) {
       setBrowserSize(browserMeasure);
       setMedia(currentSize)
     }
-  }, [browserMeasure])
+  }, [])
 
   const pageLayout = {
     xl: { gridTemplateColumns: "[side] 300px [content] minmax(0,1fr)", gridTemplateRows: "[content] 100%", maxWidth: "100%", margin: "0 auto 0 auto" },

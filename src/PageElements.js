@@ -272,43 +272,7 @@ export const ImageCard = memo(function ImageCard({
   )
 });
 
-export const PageContainer = memo(function PageContainer({ layout = "hero", maxWidth = "800px", background = "cream", className = "col nowrap top stretch", children }) {
-  const swatches = {
-    cream: `linear-gradient(90deg, hsla(39, 0%, 100%, 0%) 0%, hsla(40, 0%, 100%, 100%) 100%), linear-gradient(45deg, hsl(39, 14%, 80%) 0%, hsl(40, 7%, 60%) 100%)`,
-    beige: "linear-gradient(45deg, hsl(39, 14%, 80%) 0%, hsl(40, 7%, 60%) 100%)",
-    mocha: "linear-gradient(45deg, hsl(39, 14%, 72%) 0%, hsl(40, 7%, 39%) 100%)"
-  }
-  const pageLayout = {
-    hero: "main-content",
-    center: "listpage-content",
-    left: "listpage-content"
-  }
-  const scrollContent = {
-    hero: "scroll-content left",
-    center: "scroll-content",
-    left: "scroll-content left",
-  }
-  return (
-    <div
-      className={pageLayout[layout]}
-    //  style={{ background: swatches[background] !== undefined ? swatches[background] : background }}
-    >
-      <div className="scroll-zone">
-        <div className={`${scrollContent[layout]} ${className}`} style={{
-          width: "100%",
-          minWidth: 0,
-          maxWidth: maxWidth,
-          // margin: "0 auto 0 auto",
-        }}>
-          {children}
-        </div>
-      </div>
-      {layout === "hero" ? <div className="grid-hero">
 
-      </div> : null}
-    </div>)
-
-});
 
 export const Group = memo(function Group({ children, className, style }) {
   return (

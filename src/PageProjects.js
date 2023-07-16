@@ -1,15 +1,14 @@
 import { memo, useState, useEffect, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { pages } from "./Pages";
-import { samplePages } from "./PageSamples";
-import { Header, ButtonLink, Group, Note, PageContainer, IconTag } from "./PageElements";
+import { Header, ButtonLink, Group, Note, IconTag } from "./PageElements";
+import { PageContainer } from "./PageContainer";
 import { RiCalendarTodoFill, RiStackFill } from "react-icons/ri";
 import { MdFilterList } from "react-icons/md";
 //import { MdWavingHand } from "react-icons/md";
 
 export function PageProjects(props) {
-    const colorA = "hsl(40,100%,80%)";
-    const colorB = "hsl(30,100%,80%)"; //"hsl(0,0%,95%)";
+
 
 
 
@@ -73,14 +72,15 @@ export function PageProjects(props) {
             // gap: "1rem",
             flexGrow: order === 1 ? 3 : order === 2 ? 2 : 1,
             flexShrink: order,
-            flexBasis: order === 1 ? "40%" : order === 2 ? "35%" : "25%",
-            borderRadius: ".5rem",
+            flexBasis: order === 1 ? "40%" : "25%",
+            // borderRadius: ".5rem",
             order: order,
             // margin: "0 0 1rem 0"
+            boxShadow: "0px 0px 10px 2px hsla(0, 0%, 0%, 20%)"
         }
 
         return (
-            <Link className="nav-link project grid box-shadow"
+            <Link className="nav-link project grid"// box-shadow"
                 to={`/${path}`}
                 style={linkStyle}
             >
@@ -171,18 +171,13 @@ export function PageProjects(props) {
                         />
                     </div></Header>
 
-                <div
-                    className="page-bg"
-                    style={{
-                        background: `linear-gradient(90deg, ${colorA} 0%, ${colorB} 100%,)`
-                    }}
-                />
+
                 <Group className="row wrap top" style={{
                     gridColumn: "content / span 1",
                     gridRowStart: "content",
                     padding: "0 0 2rem 0",
                     width: "fit-content",
-                    gap: "1.5rem"
+                    gap: "1rem"
                 }}>
                     {pages.map((item, index) => (
 

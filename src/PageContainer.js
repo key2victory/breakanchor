@@ -28,7 +28,7 @@ const PageContent = ({ title }) => {
     return (<Content />)
 }
 
-export const PageContainer = memo(function PageContainer({ layout = "hero", background = "cream", className = "col nowrap top stretch", component = "", heroInteraction = false, children }) {
+export const PageContainer = memo(function PageContainer({ layout = "hero", background = "cream", className = "col nowrap top stretch", heroComponent = "", heroInteraction = false, children }) {
     const [media, setMedia] = useOutletContext();
     useEffect(() => {
         console.log("detected media change in PageContainer")
@@ -50,8 +50,8 @@ export const PageContainer = memo(function PageContainer({ layout = "hero", back
         center: {
             xl: { gridTemplateColumns: "[content] 100%", gridTemplateRows: "100%", padding: "0 2rem", columnGap: "2rem" },
             lg: { gridTemplateColumns: "[content] 100%", gridTemplateRows: "100%", maxWidth: "100%", padding: "0 2rem 0rem 2rem", columnGap: "2rem" },
-            md: { gridTemplateColumns: "[content] 100%", gridTemplateRows: "100%", maxWidth: "100%", padding: "0 4vw", columnGap: "0" },
-            sm: { gridTemplateColumns: "[content] 100%", gridTemplateRows: "100%", maxWidth: "100%", padding: "0 4vw 0 4vw", columnGap: "0" },
+            md: { gridTemplateColumns: "[content] 100%", gridTemplateRows: "100%", maxWidth: "100%", padding: "0 1.5rem",/*"0 4vw",*/ columnGap: "0" },
+            sm: { gridTemplateColumns: "[content] 100%", gridTemplateRows: "100%", maxWidth: "100%", padding: "0 1.5rem",/*"0 4vw 0 4vw",*/ columnGap: "0" },
             xs: { gridTemplateColumns: "[content] 100%", gridTemplateRows: "100%", maxWidth: "100%", padding: "0 1rem 0 1rem", columnGap: "0rem" },
         },
         //center: "listpage-content",
@@ -134,7 +134,7 @@ export const PageContainer = memo(function PageContainer({ layout = "hero", back
                         pointerEvents: heroInteraction === false ? "none" : "auto",
                         //background: "linear-gradient(90deg,transparent 20%, hsl(0,0%,80%) 20%,transparent)" 
                     }}>
-                        <Hero component={component} className="" />
+                        <Hero component={heroComponent} className="" />
                     </div>
                 </div>) : null}
         </div >
