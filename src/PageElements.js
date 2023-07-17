@@ -1,7 +1,7 @@
 import { memo, useState, useEffect, Fragment } from "react";
 import { useHover } from "@uidotdev/usehooks";
 import { useLocation } from "react-router-dom";
-
+import ReactGA from "react-ga4";
 //styling
 //import './Count.css';
 
