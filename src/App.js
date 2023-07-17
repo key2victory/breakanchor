@@ -27,23 +27,23 @@ export default function App(props) {
     // Google Analytics
 
     const titleDef = {
-      "about": "BreakAnchor - About",
-      "projects": "BreakAnchor - Projects",
-      "presentations": "BreakAnchor - Presentations",
-      "learning": "BreakAnchor - Learning",
-      "projects/audiohand": "BreakAnchor - Projects / Audiohand",
-      "projects/calendar": "BreakAnchor - Projects / Calendar",
-      "projects/clearance-tracker": "BreakAnchor - Projects / Clearance Tracker",
-      "projects/finance": "BreakAnchor - Projects / Finance Monitor",
-      "projects/flashcards": "BreakAnchor - Projects / ASL Flashcards",
-      "projects/gbc": "BreakAnchor - Projects / Conference Manager",
-      "projects/loto": "BreakAnchor - Projects / Lock Out Tag Out",
-      "projects/researcher-tools": "BreakAnchor - Projects / Researcher Tools"
+      "/about": "BreakAnchor - About",
+      "/projects": "BreakAnchor - Projects",
+      "/presentations": "BreakAnchor - Presentations",
+      "/learning": "BreakAnchor - Learning",
+      "/projects/audiohand": "BreakAnchor - Projects / Audiohand",
+      "/projects/calendar": "BreakAnchor - Projects / Calendar",
+      "/projects/clearance-tracker": "BreakAnchor - Projects / Clearance Tracker",
+      "/projects/finance": "BreakAnchor - Projects / Finance Monitor",
+      "/projects/flashcards": "BreakAnchor - Projects / ASL Flashcards",
+      "/projects/gbc": "BreakAnchor - Projects / Conference Manager",
+      "/projects/loto": "BreakAnchor - Projects / Lock Out Tag Out",
+      "/projects/researcher-tools": "BreakAnchor - Projects / Researcher Tools"
     }
     let title = titleDef[location.pathname]
     document.title = title;
 
-
+    //console.log(location, titleDef[location])
 
     ReactGA.send({ hitType: "pageview", page: location.pathname, title: `${titleDef[location.pathname]}` });
   }, [location]);
