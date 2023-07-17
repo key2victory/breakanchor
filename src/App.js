@@ -12,6 +12,7 @@ import "./styles_laptop.css";
 import "./styles_desktop.css";
 import ReactGA from "react-ga4";
 import { TRACKING_ID } from "./AnalyticsTracker";
+//import umami from "https://analytics.umami.is/script.js";
 
 
 export default function App(props) {
@@ -22,31 +23,41 @@ export default function App(props) {
   ReactGA.initialize([{ trackingId: TRACKING_ID }])
 
   let location = useLocation();
+  const titleDef = {
+    "/": "BreakAnchor",
+    "/about": "BreakAnchor - About",
+    "/projects": "BreakAnchor - Projects",
+    "/presentations": "BreakAnchor - Presentations",
+    "/learning": "BreakAnchor - Learning",
+    "/projects/audiohand": "BreakAnchor - Projects / Audiohand",
+    "/projects/calendar": "BreakAnchor - Projects / Calendar",
+    "/projects/clearance-tracker": "BreakAnchor - Projects / Clearance Tracker",
+    "/projects/finance": "BreakAnchor - Projects / Finance Monitor",
+    "/projects/flashcards": "BreakAnchor - Projects / ASL Flashcards",
+    "/projects/gbc": "BreakAnchor - Projects / Conference Manager",
+    "/projects/loto": "BreakAnchor - Projects / Lock Out Tag Out",
+    "/projects/researcher-tools": "BreakAnchor - Projects / Researcher Tools"
+  }
+  let pageLocation = titleDef[location.pathname] !== undefined ? titleDef[location.pathname] : "BreakAnchor";
 
   useEffect(() => {
     // Google Analytics
 
-    const titleDef = {
-      "/": "BreakAnchor",
-      "/about": "BreakAnchor - About",
-      "/projects": "BreakAnchor - Projects",
-      "/presentations": "BreakAnchor - Presentations",
-      "/learning": "BreakAnchor - Learning",
-      "/projects/audiohand": "BreakAnchor - Projects / Audiohand",
-      "/projects/calendar": "BreakAnchor - Projects / Calendar",
-      "/projects/clearance-tracker": "BreakAnchor - Projects / Clearance Tracker",
-      "/projects/finance": "BreakAnchor - Projects / Finance Monitor",
-      "/projects/flashcards": "BreakAnchor - Projects / ASL Flashcards",
-      "/projects/gbc": "BreakAnchor - Projects / Conference Manager",
-      "/projects/loto": "BreakAnchor - Projects / Lock Out Tag Out",
-      "/projects/researcher-tools": "BreakAnchor - Projects / Researcher Tools"
-    }
-    let title = titleDef[location.pathname] !== undefined ? titleDef[location.pathname] : "BreakAnchor";
-    document.title = title;
+
+    document.title = pageLocation;
 
     //console.log(location, titleDef[location])
 
-    ReactGA.send({ hitType: "pageview", page: location.pathname, title: `${titleDef[location.pathname]}` });
+    ReactGA.send({ hitType: "pageview", page: pageLocation, title: `${pageLocation}` });
+    const events = document.querySelectorAll("[class*=umami--click]")
+
+    events.forEach((e) => {
+      const classes = e.className.split("--")
+      const value = classes[classes.indexOf("click") + 1]
+      e.setAttribute("data-umami-event", value)
+      e.classList.remove(`umami--click--${value}`);
+    })
+
   }, [location]);
 
 
@@ -142,10 +153,26 @@ export default function App(props) {
                     //  nonInteraction: true, // optional, true/false
                     // transport: "xhr", // optional, beacon/xhr/image
                   });
-                  setMedia(item)
-                }} />
+                  // umami.track(`${item} sizer button on ${pageLocation}`);
+                  setMedia(item);
+                }}
+                  className={`umami--click--size-${item}`}
+                // dataUmamiEvent={`${item} sizer button on ${pageLocation}`} 
+                />
               ))}
-              <IconTag icon={deviceChips[currentSize].icon} label={deviceChips[currentSize].label} bgColor={media === currentSize ? "hsl(39, 14%, 90%)" : "hsl(39, 14%, 80%)"} hoverColor={media === currentSize ? "hsl(39, 14%, 90%)" : "hsl(39, 14%, 85%)"} onClick={() => { setMedia(currentSize) }} />
+              <IconTag icon={deviceChips[currentSize].icon} label={deviceChips[currentSize].label} bgColor={media === currentSize ? "hsl(39, 14%, 90%)" : "hsl(39, 14%, 80%)"} hoverColor={media === currentSize ? "hsl(39, 14%, 90%)" : "hsl(39, 14%, 85%)"} onClick={() => {
+                ReactGA.event({
+                  category: "jmc_button",
+                  action: "jmc_button_click",
+                  label: `clicked ${currentSize} from App responsive page sizer`, // optional
+                  //value: 99, // optional, must be a number
+                  //  nonInteraction: true, // optional, true/false
+                  // transport: "xhr", // optional, beacon/xhr/image
+                });
+                // umami.track(`${item} sizer button on ${pageLocation}`);
+                setMedia(currentSize);
+              }}// dataUmamiEvent={`${item} sizer button on ${pageLocation}`} 
+              />
             </Fragment> : null}
         </AppSizer>
 

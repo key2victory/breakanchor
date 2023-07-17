@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 //styling
 //import './Count.css';
 
+
 export const Counter = ({ label, number, duration }) => {
   // label of counter
   // number to increment to
@@ -73,7 +74,8 @@ const ChipTag = memo(function ChipTag({
   solid = "false",
   style,
   children,
-  onClick
+  onClick,
+
 }) {
   const [ref, hover] = useHover();
   const chipStyle = solid
@@ -119,6 +121,7 @@ export const IconTag = memo(function IconTag({
   solid = true,
   style,
   onClick,
+  'data-umami-event': dataUmamiEvent,
 }) {
   const IconList = {
     mobile: MdOutlineSmartphone,
@@ -392,7 +395,9 @@ export const Header = memo(function Header({
 });
 
 
-export const ButtonAction = memo(function ButtonAction({ label, color, backgroundColor, hoverColor, actionDescription = "[do something]", children, onClick = () => { }, url }) {
+export const ButtonAction = memo(function ButtonAction({ label, color, backgroundColor, hoverColor, actionDescription = "[do something]", children, onClick = () => { }, url,
+  //'data-umami-event': dataUmamiEvent,
+}) {
   const [ref, hover] = useHover();
   let location = useLocation();
 
@@ -408,6 +413,7 @@ export const ButtonAction = memo(function ButtonAction({ label, color, backgroun
 
   if (url !== undefined) {
     return (<a
+      className={`umami--click--${location.pathname}`}
       style={{
         outline: "none",
         textDecoration: "none",
@@ -454,41 +460,43 @@ export const ButtonAction = memo(function ButtonAction({ label, color, backgroun
   }
   else {
     return (
-      <button
-        ref={ref}
-        className="button box-shadow-shallow"
-        style={{
-          display: "flex",
-          flexFlow: "column nowrap",
-          alignItems: "center",
-          flexGrow: 0,
-          flexShrink: 0,
-          flexBasis: "auto",
-          width: "max-content",
-          height: "min-content",
-          outline: "none",
-          border: "none",
-          color: color,
-          backgroundColor: hover ? hoverColor : backgroundColor,
-          cursor: "pointer"
-        }}
-        onClick={() => {
-          ReactGA.event({
-            category: "jmc_button",
-            action: "jmc_click_button",
-            label: `clicked ${label} to ${actionDescription}, at ${location.pathname}`, // optional
+      <span className={`umami--click--ActionButton${location.pathname}`}>
+        <button
+          ref={ref}
+          className="button box-shadow-shallow"
+          style={{
+            display: "flex",
+            flexFlow: "column nowrap",
+            alignItems: "center",
+            flexGrow: 0,
+            flexShrink: 0,
+            flexBasis: "auto",
+            width: "max-content",
+            height: "min-content",
+            outline: "none",
+            border: "none",
+            color: color,
+            backgroundColor: hover ? hoverColor : backgroundColor,
+            cursor: "pointer"
+          }}
+          onClick={() => {
+            ReactGA.event({
+              category: "jmc_button",
+              action: "jmc_click_button",
+              label: `clicked ${label} to ${actionDescription}, at ${location.pathname}`, // optional
 
-            //value: 99, // optional, must be a number
-            //  nonInteraction: true, // optional, true/false
-            // transport: "xhr", // optional, beacon/xhr/image
-          });
-          onClick();
-        }}
-      >
-        {label}
-        {children}
+              //value: 99, // optional, must be a number
+              //  nonInteraction: true, // optional, true/false
+              // transport: "xhr", // optional, beacon/xhr/image
+            });
+            onClick();
+          }}
+        >
+          {label}
+          {children}
 
-      </button>
+        </button>
+      </span>
     );
   }
 });

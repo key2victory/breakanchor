@@ -240,7 +240,7 @@ export const NavCard = memo(function NavCard({
   const IconRender = icon;
   return (
     <Link
-      className={`nav-link page ${className}`}
+      className={`nav-link page ${className} umami--click--AppNav${path}`}
       // key={`${item.path}-${index}`}
       to={`/${path}`}
       style={linkStyle}

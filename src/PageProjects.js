@@ -30,7 +30,7 @@ export function PageProjects(props) {
         children
     }) => {
 
-        const Label = (props) => (<div className={`${props.className}  col`}
+        const Label = (props) => (<div className={`${props.className}  col umami--click--ProjectsTile${path}`}
             style={{
                 background: props.background,
                 color: "hsl(0,0%,100%)",
@@ -108,8 +108,8 @@ export function PageProjects(props) {
 
                     zIndex: 3,
                 }}
-                    onClick={() => { gaEventTracker(path); }
-                    } />
+                //    onClick={() => { gaEventTracker(path); }}
+                />
 
                 <div className="col center"
                     style={{
