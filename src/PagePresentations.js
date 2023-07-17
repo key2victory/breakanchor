@@ -1,9 +1,7 @@
 import { memo, useState, useEffect, Fragment } from "react";
-import { Link } from "react-router-dom";
-import { Header, ButtonLink, Group, Note } from "./PageElements";
+import { Header, ButtonAction, Group, Note } from "./PageElements";
 import { PageContainer } from "./PageContainer";
-import { RiCalendarTodoFill, RiStackFill } from "react-icons/ri";
-import { MdWavingHand } from "react-icons/md";
+import { useHover } from "@uidotdev/usehooks";
 import { useOutletContext } from "react-router-dom";
 
 export function PagePresentations(props) {
@@ -12,31 +10,6 @@ export function PagePresentations(props) {
     const colorA = "hsl(40,100%,80%)";
     const colorB = "hsl(30,100%,80%)"; //"hsl(0,0%,95%)";
 
-
-    const EmbedFrame = () => {
-        const iframeSize = {
-            width: "100%",
-            height: "auto",
-            minWidth: "280px",
-            maxWidth: "400px",
-            maxHeight: "262px",
-            aspectRatio: "400 / 262"
-        }
-        return (
-            <iframe className="card" style={{
-                background: "#fff",
-                minWidth: iframeSize.minWidth,
-                maxWidth: iframeSize.maxWidth,
-                minHeight: iframeSize.minHeight,
-                maxHeight: iframeSize.maxHeight,
-                aspectRatio: iframeSize.aspectRatio,
-                flexGrow: 1,
-                flexShrink: 3,
-                //flexBasis: 0,
-                padding: 0
-            }} src="https://docs.google.com/presentation/d/e/2PACX-1vRJZQGOASDM7XWmFRaq4Oc_qd6sVKGX6NThZ4oV7XouyA0tL0C1Cjndh4RUMkgXmUDybimNRvd1kJVc/embed?slide=6" frameborder="0" width={iframeSize.width} height={iframeSize.height} allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-        );
-    }
 
     const EmbedImage = ({ src, minImgSize = 200, imageBackground = "hsl(0,0%,80%)", style }) => {
         return (
@@ -135,12 +108,6 @@ export function PagePresentations(props) {
                     padding: "0 0 1rem 0"
                 }}
             ></Header>
-            {/*  <div
-                className="page-bg"
-                style={{
-                    background: `linear-gradient(90deg, ${colorA} 0%, ${colorB} 100%,)`
-                }}
-            />*/}
 
             <ImageCard
                 // src="https://docs.google.com/presentation/d/e/2PACX-1vRJZQGOASDM7XWmFRaq4Oc_qd6sVKGX6NThZ4oV7XouyA0tL0C1Cjndh4RUMkgXmUDybimNRvd1kJVc/embed?slide=6"
@@ -154,9 +121,17 @@ export function PagePresentations(props) {
 
                 <span style={{ margin: ".5rem 0" }}>Computers aren’t natural, yet people use the word “intuitive” to describe great software – It’s not a mistake. In this session, we'll examine how design interfaces with the human brain.
                 </span>
-                <span className="row right">
-                    <a className="button lightgray box-shadow-shallow" href="https://docs.google.com/presentation/d/1sX_i-tTYVkihPYqb25-01_tm7hDQsf-zdyhIPcvHed8/edit?usp=sharing" target="_blank"
-                        rel="noreferrer">slide deck ↗</a>
+                <span className="row wrap right center" style={{ gap: "1rem" }}>
+
+                    <h5 style={{ width: "fit-content" }}>See the full </h5>
+                    <ButtonAction
+                        url="https://docs.google.com/presentation/d/1sX_i-tTYVkihPYqb25-01_tm7hDQsf-zdyhIPcvHed8/edit?usp=sharing"
+                        color="hsla(0,0%,100%,100%)"
+                        backgroundColor="hsla(40,10%,45%,100%)"
+                        hoverColor="hsla(25,90%,60%,100%)"
+                    >Slide Deck ↗
+                    </ButtonAction>
+
                 </span>
             </ImageCard>
 
@@ -170,8 +145,18 @@ export function PagePresentations(props) {
                 <span style={{ margin: ".5rem 0" }}>
                     User experience is the bread and butter of successful technology, but what are the ingredients? For developers, designers, or project managers who are curious about the different layers of the UX stack. This presentation covers various tools and methodologies from the designer’s toolbox. Includes research, heuristics, principles of design, wireframing and prototyping tools (Sketch, Adobe XD, Figma, Framer, etc.), patterns, and frameworks.
                 </span>
-                <span className="row right">  <a className="button lightgray box-shadow-shallow" href="https://docs.google.com/presentation/d/1PE_Fx5LP3cq0JnYROtTiWgLajQSqTIo9zpyP5ySruco/edit?usp=sharing" target="_blank"
-                    rel="noreferrer">slide deck ↗</a>       </span>
+                <span className="row wrap right center" style={{ gap: "1rem" }}>
+
+                    <h5 style={{ width: "fit-content" }}>See the full </h5>
+                    <ButtonAction
+                        url="https://docs.google.com/presentation/d/1PE_Fx5LP3cq0JnYROtTiWgLajQSqTIo9zpyP5ySruco/edit?usp=sharing"
+                        color="hsla(0,0%,100%,100%)"
+                        backgroundColor="hsla(40,10%,45%,100%)"
+                        hoverColor="hsla(350,90%,60%,100%)"
+                    >Slide Deck ↗
+                    </ButtonAction>
+
+                </span>
             </ImageCard>
 
             <ImageCard

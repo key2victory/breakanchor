@@ -1,11 +1,7 @@
 import { Link, useMatches } from "react-router-dom";
 import { Fragment, memo } from "react";
-import { pages } from "./Pages";
-import { samplePages } from "./PageClearanceTracker";
 import { HeroAbout } from "./HeroAbout";
 import { CgMenu, CgClose } from "react-icons/cg";
-
-
 import {
   RiDeviceLine,
   RiSlideshow3Line,
@@ -398,7 +394,7 @@ export function NavPanel({
         <NavCard
           //  className="desktop-hide laptop-hide tablet-hide"
           icon={RiMapPinUserFill}
-          path=""
+          path="about"
           title="About Me"
           color="hsla(0,0%,100%,70%)"
           borderTop={borderStyle}

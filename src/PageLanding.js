@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import { pages } from "./Pages";
 import { Header, ButtonLink, Group, Note, IconTag } from "./PageElements";
 import { PageContainer } from "./PageContainer";
-import {
-    RiCalendarTodoFill, RiStackFill,
-    RiBox2Line
-} from "react-icons/ri";
+import { RiCalendarTodoFill, RiStackFill } from "react-icons/ri";
 import { MdFilterList } from "react-icons/md";
 //import { MdWavingHand } from "react-icons/md";
 
-export function PageProjects(props) {
+export function PageLanding(props) {
+
+
+
 
     const ImageCard = ({
         className,
@@ -218,5 +218,3 @@ export function PageProjects(props) {
         </PageContainer>
     );
 }
-
-

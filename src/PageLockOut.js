@@ -50,7 +50,7 @@ export const PageLockOut = memo(function PageLockOut({
 
       </Group>
       <div
-        className="box-shadow grid"
+        className="shadow grid"
         style={{
           width: "100%",
           minWidth: 0,
@@ -162,32 +162,31 @@ export const PageLockOut = memo(function PageLockOut({
         <img className="image shadow" src="./img/loto-11.png" alt="" />
         <img className="image shadow" src="./img/loto-12.png" alt="" />
       </Group>
-      <Group>
-        <div
-          //className="box-shadow"// grid"
-          style={{
-            width: "100%",
-            minWidth: 0,
-            flexGrow: 1,
-            flexShrink: 1,
-            flexBasis: 0,
-            //  background: "hsla(0,0%,100%,80%)",
-            padding: ".8rem",
-            margin: "2rem 0 0 0",
-            gridTemplateColumns: "1fr",
-            gridTemplateRows: "auto",
-            // overflow: "hidden"
+      <Group
+        style={{
+          width: "100%",
+          minWidth: 0,
+          flexGrow: 1,
+          flexShrink: 1,
+          flexBasis: 0,
+          backgroundColor: "hsl(0,0%,70%)",
+          padding: "1rem",
+          margin: "1rem 0 0 0",
+          gridTemplateColumns: "1fr",
+          gridTemplateRows: "auto",
 
-          }}
-        >
-          <div role="img" className="image shadow animate-flow loto" style={{
-            backgroundImage: "url(./img/loto-13.png)",
-            backgroundColor: "hsl(0,0%,80%)",
-            backgroundRepeat: "no-repeat",
-            width: "100%", height: "200px"
-          }} //ariaLabel="" 
-          />
-        </div> </Group>
+        }}
+      >
+
+
+        <div role="img" className="image shadow animate-flow loto" style={{
+          backgroundImage: "url(./img/loto-13.png)",
+          backgroundColor: "hsl(0,0%,80%)",
+          backgroundRepeat: "no-repeat",
+          width: "100%", height: "200px"
+        }} //ariaLabel="" 
+        />
+      </Group>
       <Hero component="loto"
         style={{
           width: "100%",

@@ -130,6 +130,7 @@ const HeroFlashcards = memo(function HeroFlashcards({ className, style = { width
                 maxHeight: "500px",
                 aspectRatio: "1/1",//"3 / 4",
                 overflow: "hidden",
+                background: "hsl(0,0%,0%)",
                 ...style
             }}
             title="ASL Flashcards"

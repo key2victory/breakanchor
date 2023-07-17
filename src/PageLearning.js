@@ -1,8 +1,6 @@
 import { memo, useState, useEffect, Fragment } from "react";
-import { Link } from "react-router-dom";
-import { Header, ButtonLink, PageContainer, Group, Note } from "./PageElements";
-import { RiCalendarTodoFill, RiStackFill } from "react-icons/ri";
-import { MdWavingHand } from "react-icons/md";
+import { Header, ButtonLink, Group, Note } from "./PageElements";
+import { PageContainer } from "./PageContainer";
 
 export function PageLearning(props) {
     const colorA = "hsl(40,100%,80%)";

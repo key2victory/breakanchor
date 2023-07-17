@@ -60,16 +60,16 @@ export const PageContainer = memo(function PageContainer({ layout = "hero", back
 
     const scrollContent = {
         hero: {
-            xl: { padding: "2rem 0 4rem 0", gap: "1rem" },
-            lg: { padding: "2rem 0 4rem 0", gap: "1rem" },
-            md: { padding: "2rem 0 4rem 0", gap: "1rem" },
+            xl: { padding: "64px 0 4rem 0", gap: "1rem" },
+            lg: { padding: "64px 0 4rem 0", gap: "1rem" },
+            md: { padding: "64px 0 4rem 0", gap: "1rem" },
             sm: { padding: "1rem 0 4rem 0", gap: "1rem" },
             xs: { padding: "1rem 0 4rem 0", gap: "1rem" },
         },
         center: {
-            xl: { padding: "2rem 0 4rem 0", gap: "1rem", margin: "0 auto 0 auto", maxWidth: "1200px" },
-            lg: { padding: "2rem 0 4rem 0", gap: "1rem", margin: "0 auto 0 auto", maxWidth: "1200px" },
-            md: { padding: "2rem 0 4rem 0", gap: "1rem", margin: "0 auto 0 auto" },
+            xl: { padding: "64px 0 4rem 0", gap: "1rem", margin: "0 auto 0 auto", maxWidth: "1200px" },
+            lg: { padding: "64px 0 4rem 0", gap: "1rem", margin: "0 auto 0 auto", maxWidth: "1200px" },
+            md: { padding: "64px 0 4rem 0", gap: "1rem", margin: "0 auto 0 auto" },
             sm: { padding: "1rem 0 4rem 0", gap: "1rem", margin: "0 auto 0 auto" },
             xs: { padding: "1rem 0 4rem 0", gap: "1rem", margin: "0 auto 0 auto" },
         }

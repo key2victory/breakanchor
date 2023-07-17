@@ -21,6 +21,7 @@ import { PageFinance } from "./PageFinance";
 import { PageConference } from "./PageConference";
 //import { PageContainer } from "./PageContainer";
 import { PageClearanceTracker } from "./PageClearanceTracker";
+import { PageResearcherTools } from "./PageResearcherTools";
 /*
 import { pages } from "./Pages";
 
@@ -44,17 +45,20 @@ const router = createHashRouter([
     children: [
       {
         index: true,
-        Component: PageAbout,
+        Component: PageProjects,
       },
+      { path: "about", Component: PageAbout, },
       { path: "projects", Component: PageProjects, },
-      { path: "projects/calendar", Component: PageCalendar },// handle: { crumb: () => <Link to="/projects">Projects</Link>, current: "Calendar" } },
-      { path: "projects/flashcards", Component: PageFlashcards },
       { path: "presentations", Component: PagePresentations },
       { path: "learning", Component: PageLearning },
       { path: "projects/audiohand", Component: PageAudiohand },
-      { path: "projects/loto", Component: PageLockOut },
-      { path: "projects/finance", Component: PageFinance },
+      { path: "projects/calendar", Component: PageCalendar },// handle: { crumb: () => <Link to="/projects">Projects</Link>, current: "Calendar" } },
       { path: "projects/clearance-tracker", Component: PageClearanceTracker },
+      { path: "projects/finance", Component: PageFinance },
+      { path: "projects/flashcards", Component: PageFlashcards },
+      { path: "projects/gbc", Component: PageConference },
+      { path: "projects/loto", Component: PageLockOut },
+      { path: "projects/researcher-tools", Component: PageResearcherTools },
     ],
   },
   {
@@ -63,18 +67,23 @@ const router = createHashRouter([
     children: [
       {
         index: true,
-        Component: PageAbout,
+        Component: PageProjects,
       },
+      { path: "about", Component: PageAbout, },
       { path: "projects", Component: PageProjects, },
-      { path: "projects/calendar", Component: PageCalendar },// handle: { crumb: () => <Link to="/projects">Projects</Link>, current: "Calendar" } },
-      { path: "projects/flashcards", Component: PageFlashcards },
       { path: "presentations", Component: PagePresentations },
       { path: "learning", Component: PageLearning },
       { path: "projects/audiohand", Component: PageAudiohand },
-      { path: "projects/loto", Component: PageLockOut },
-      { path: "projects/finance", Component: PageFinance },
-      { path: "projects/gbc", Component: PageConference },
+      { path: "projects/calendar", Component: PageCalendar },// handle: { crumb: () => <Link to="/projects">Projects</Link>, current: "Calendar" } },
       { path: "projects/clearance-tracker", Component: PageClearanceTracker },
+      { path: "projects/finance", Component: PageFinance },
+      { path: "projects/flashcards", Component: PageFlashcards },
+      { path: "projects/gbc", Component: PageConference },
+      { path: "projects/loto", Component: PageLockOut },
+      { path: "projects/researcher-tools", Component: PageResearcherTools },
+
+
+
     ],
   },
 ]);

@@ -17,6 +17,7 @@ import {
   RiLayout5Line,
   RiLayoutTopLine,
   RiEdit2Line,
+  RiBox2Line
 } from "react-icons/ri";
 
 const ChipTag = memo(function ChipTag({
@@ -76,6 +77,7 @@ export const IconTag = memo(function IconTag({
 }) {
   const IconList = {
     mobile: MdOutlineSmartphone,
+    phablet: MdOutlineSmartphone,
     tablet: MdOutlineTablet,
     laptop: MdOutlineLaptop,
     desktop: MdOutlineComputer,
@@ -86,6 +88,7 @@ export const IconTag = memo(function IconTag({
     high: RiEdit2Line, //RiLayout5Line,
     med: RiEdit2Line, //RiLayout5Line,
     low: RiEdit2Line, //RiLayout5Line
+    cube: RiBox2Line,
   };
   const labelList = {
     reactjs: "react app",
@@ -97,7 +100,7 @@ export const IconTag = memo(function IconTag({
     md: "tablet",
     lg: "desktop"
   };
-  const Icon = IconList[icon] !== undefined ? IconList[icon] : RiDeviceLine;
+  const Icon = IconList[icon] !== undefined ? IconList[icon] : RiBox2Line;//RiDeviceLine;
   const iconLabel = labelList[icon] !== undefined ? labelList[icon] : icon;
 
   return (
@@ -214,7 +217,7 @@ export const Caption = memo(function Caption({
   );
 });
 
-export const ImageCard = memo(function ImageCard({
+export const ImageCard1 = memo(function ImageCard1({
   imgSrc,
   children,
   imageBackground = "hsl(0,0%,80%)"
@@ -298,17 +301,19 @@ export const Header = memo(function Header({
 }) {
   return (
     <div
+      className="row wrap center between"
       style={{
-        display: "grid",
-        gridTemplateColumns: "1fr auto",
+        //display:
+        //gridTemplateColumns: "1fr auto",
         height: "auto",
         color: color,
         // zIndex: 10,
         overflow: "visible",
+        gap: "1rem",
         ...style,
       }}
     >
-      <span style={{ display: "flex", flexFlow: "column nowrap" }}>
+      <span style={{ display: "flex", flexFlow: "column nowrap", flexShrink: 1, width: "fit-content" }}>
         <h1 style={{ color: color }}>
           {title2 ? (
             <Fragment>
@@ -341,8 +346,99 @@ export const Header = memo(function Header({
   );
 });
 
-export const ButtonLink = memo(function ButtonLink({ line1, line2, url, color }) {
+
+export const ButtonAction = memo(function ButtonAction({ label, color, backgroundColor, hoverColor, children, onClick, url }) {
+  const [ref, hover] = useHover();
   const text = {
+    x: 0,
+    y: 1,
+    textLength: 80,
+    fontFamily: "sans-serif",
+    size1: 16,
+    size2: 18,
+    size3: 16,
+  };
+
+  if (url !== undefined) {
+    return (<a
+      style={{
+        outline: "none",
+        textDecoration: "none",
+        cursor: "pointer"
+      }}
+      href={url}
+      target="_blank"
+      rel="noreferrer"
+    >
+      <button
+        ref={ref}
+        className="button box-shadow-shallow"
+        style={{
+          display: "flex",
+          flexFlow: "column nowrap",
+          alignItems: "center",
+          flexGrow: 0,
+          flexShrink: 0,
+          flexBasis: "auto",
+          width: "max-content",
+          height: "min-content",
+          outlinColor: "hsla(0,0%,0%,10%)",
+          border: "none",
+          color: color,
+          backgroundColor: hover ? hoverColor : backgroundColor,
+          cursor: "pointer"
+        }}
+        onClick={onClick}
+      >
+        {label}
+        {children}
+      </button>
+    </a>)
+  }
+  else {
+    return (
+      <button
+        ref={ref}
+        className="button box-shadow-shallow"
+        style={{
+          display: "flex",
+          flexFlow: "column nowrap",
+          alignItems: "center",
+          flexGrow: 0,
+          flexShrink: 0,
+          flexBasis: "auto",
+          width: "max-content",
+          height: "min-content",
+          outline: "none",
+          border: "none",
+          color: color,
+          backgroundColor: hover ? hoverColor : backgroundColor,
+          cursor: "pointer"
+        }}
+        onClick={onClick}
+      >
+        {label}
+        {children}
+
+      </button>
+    );
+  }
+});
+
+
+
+export const ButtonLink = memo(function ButtonLink({ line1, line2, url, color }) {
+  const [ref, hover] = useHover();
+  const text = {
+    x: 0,
+    y: 1,
+    textLength: 80,
+    fontFamily: "sans-serif",
+    size1: 14,
+    size2: 16,
+    size3: 14,
+  };
+  const large = {
     x: 0,
     y: 1,
     textLength: 80,
@@ -354,6 +450,7 @@ export const ButtonLink = memo(function ButtonLink({ line1, line2, url, color })
 
   return (
     <a
+      ref={ref}
       className={`button-link ${color}`}
       style={{
         display: "flex",
@@ -364,6 +461,17 @@ export const ButtonLink = memo(function ButtonLink({ line1, line2, url, color })
         flexBasis: "auto",
         width: "max-content",
         height: "min-content",
+        transitionDuration: ".2s",
+        outline: "none",
+        border: "0.1rem solid",
+        borderRadius: "0.5rem",
+        margin: "0.5rem 0",
+        padding: "0.25rem 0.5rem",
+        textDecoration: "none",
+        /* width: auto;
+        height: min-content;
+        flex: 0,*/
+        cursor: "pointer"
       }}
       href={url}
       target="_blank"
@@ -405,18 +513,125 @@ export const ButtonLink = memo(function ButtonLink({ line1, line2, url, color })
   );
 });
 
-export const BulletList = memo(function BulletList({ title, hsize = 4, items, children }) {
+export const BulletList = memo(function BulletList({ title, hsize = 4, items, ordered = false, children }) {
   const H = `h${hsize}`;
+  const List = `${ordered ? "o" : "u"}l`;
   return (
     <section className="p col" style={{
       gap: ".75rem", margin: 0, padding: 0
     }}>
       {title !== "" && title !== undefined ? (<H>{title}</H>) : null}
-      <ul className="col" style={{
+      <List className="col" style={{
         gap: ".5rem", margin: 0, padding: "0 0 0 1.5rem"
       }}>
         {items !== undefined ? items.map((v, k) => (<li key={k}>{v}</li>)) : children}
-      </ul>
+      </List>
     </section >
   )
 })
+
+
+
+export const ImageCard = memo(function ImageCard({
+  mediaSize,
+  src,
+  minImgSize = 248,
+  children,
+  imageBackground = "hsl(0,0%,80%)",
+  imageStyle,
+  style
+}) {
+
+  const EmbedImage = ({ src, minImgSize = 200, imageBackground = "hsl(0,0%,80%)", style }) => {
+    return (
+      <div className="col center"
+        style={{
+
+          width: mediaSize === "small" ? "100%" : `${minImgSize}px`,
+          height: mediaSize !== "small" ? "100%" : `${minImgSize}px`,
+          minWidth: `${minImgSize}px`,
+          maxWidth: "100%",
+          minHeight: `${minImgSize}px`,
+
+          overflow: "hidden",
+
+          background: `url(${src}), ${imageBackground}`,
+          backgroundSize: mediaSize === "small" ? "auto 100%" : "100% auto",// 100% 100%",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: mediaSize === "small" ? "top right" : "center",
+          flexGrow: 1,
+          flexShrink: 3,
+          ...style
+
+        }}>
+        {/* <img className="image" src={src} alt="" width="auto" height="auto" />*/}
+      </div>)
+  };
+
+  return (
+    <div className="grid box-shadow"//row top wrap
+      style={{
+        background: "hsla(40,5%,90%,100%)",
+        width: "100%",
+        height: "auto",
+        maxWidth: "800px",//`calc(${minImgSize}px + 38rem)`,
+        minHeight: "auto",
+        gridTemplateColumns: mediaSize === "small" ? "100%" : "auto 1fr",
+        // overflow: "hidden",
+        // gap: "1.5rem",
+        flexShrink: 0,
+        borderTop: "1px solid hsla(0,0%,0%,20%)",
+        padding: 0,//"1.5rem",//"1.5rem 0 0 0",
+        margin: "0 0 .5rem 0",
+        ...style
+      }}>
+
+      <EmbedImage src={src} imageBackground={imageBackground} minImgSize={minImgSize} style={imageStyle} />
+
+      <div className="col top" style={{
+
+        width: "100%",
+        height: "max-content",
+        minWidth: "60%",
+        maxWidth: "100%",
+        padding: "1.2rem 1.5rem",
+        minHeight: "max-content",
+
+        gap: ".5rem",
+        flexGrow: 3,
+        flexShrink: 0,
+        flexBasis: "300px"
+      }}>
+        {children}
+
+
+      </div>
+    </div >
+
+  )
+});
+
+export const ImageCell = ({ src, background = "hsl(0,0%,100%)", className, style, imgStyle }) => {
+  return (
+    <div
+      className={className}
+      style={{
+        backgroundColor: background,
+        // maxHeight: "50vh",
+        // width: "100%",
+        // height: "100%",
+        // minWidth: "280px",
+        // justifyContent: "stretch",
+        // alignItems: "stretch",
+        // minHeight: 0,
+        // minWidth: 0,
+        //  maxWidth: "100%", //maxHeight: "100%",
+        ...style
+      }}>
+      <img src={src} style={{
+        width: "100%", height: "100%", objectFit: "contain", objectPosition: "center",
+        ...imgStyle
+        //  maxWidth: "100%", maxHeight: "100%", flexGrow: 1, flexShrink: 1, flexBasis: "auto", 
+      }} />
+    </div>)
+}

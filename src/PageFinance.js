@@ -1,6 +1,7 @@
 import { memo, useEffect, useRef, forwardRef } from "react";
-import { Header, ButtonLink, NoteCard, Group, ChipTag, PageContainer } from "./PageElements";
-import { FaRegSmileWink } from "react-icons/fa";
+import { Header, ButtonLink, NoteCard, Group, ChipTag, } from "./PageElements";
+import { PageContainer } from "./PageContainer";
+
 
 
 export const PageFinance = memo(function PageFinance({
@@ -10,16 +11,30 @@ export const PageFinance = memo(function PageFinance({
     row,
     column
 }) {
-    const pages = [
-        {
-            title: "ASL Flashcards",
-            path: "flascard",
-            src: "https://s6t7to.csb.app/",
-
-            background: "linear-gradient(90deg, #9971B7 40%, #9971B7 100%)"
+    const EmbedFrame = () => {
+        const iframeSize = {
+            width: "100%",
+            height: "auto",
+            minWidth: "280px",
+            maxWidth: "400px",
+            maxHeight: "262px",
+            aspectRatio: "400 / 262"
         }
-    ];
-
+        return (
+            <iframe className="card" style={{
+                background: "#fff",
+                minWidth: iframeSize.minWidth,
+                maxWidth: iframeSize.maxWidth,
+                minHeight: iframeSize.minHeight,
+                maxHeight: iframeSize.maxHeight,
+                aspectRatio: iframeSize.aspectRatio,
+                flexGrow: 1,
+                flexShrink: 3,
+                //flexBasis: 0,
+                padding: 0
+            }} src="https://docs.google.com/presentation/d/e/2PACX-1vRJZQGOASDM7XWmFRaq4Oc_qd6sVKGX6NThZ4oV7XouyA0tL0C1Cjndh4RUMkgXmUDybimNRvd1kJVc/embed?slide=6" frameborder="0" width={iframeSize.width} height={iframeSize.height} allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+        );
+    }
     const color1 = "hsl(40,80%,70%)"; //"#9971B7",
     const color2 = "hsl(40,80%,80%)";
     const noteStyle = {

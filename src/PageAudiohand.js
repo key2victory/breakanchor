@@ -5,6 +5,7 @@ import {
   Note,
   Group,
   BulletList,
+  ButtonAction
 } from "./PageElements";
 import { Hero } from "./Hero";
 import { PageContainer } from "./PageContainer";
@@ -57,12 +58,15 @@ export const PageAudiohand = memo(function Page_Audiohand({
         color="hsl(0,0%,0%)"
       //background={background}
       >
-        <ButtonLink
-          color="black"
-          line1="see it on the"
-          line2="App Store"
+        <ButtonAction
+
           url="https://apps.apple.com/us/app/audiohand/id973166513?platform=iphone"
-        />
+          color="hsla(0,0%,100%,100%)"
+          backgroundColor="hsla(265,0%,20%,100%)"
+          hoverColor="hsla(337,83%,50%,100%)"
+        >App Store ↗
+        </ButtonAction>
+
       </Header>
       <Group className="grid"/*"desktop-row laptop-col tablet-row phablet-col mobile-col"*/
         style={autoStyleGrid[mediaSize]}
@@ -187,6 +191,28 @@ export const PageAudiohand = memo(function Page_Audiohand({
           display: ["xl", "lg"].includes(media) ? "none" : "flex"
         }}
       />
+      <Group className="row wrap center" style={{
+        /* gridTemplateColumns: "3fr 2fr",*/
+        width: "100%",
+        padding: "2rem 0 2rem 0"
+      }}>
+
+
+        <h5 style={{ width: "fit-content" }}>See it in the </h5>
+        <ButtonAction
+
+          url="https://apps.apple.com/us/app/audiohand/id973166513?platform=iphone"
+          color="hsla(0,0%,100%,100%)"
+          backgroundColor="hsla(265,0%,20%,100%)"
+          hoverColor="hsla(337,83%,50%,100%)"
+        >App Store ↗
+        </ButtonAction>
+
+
+
+
+
+      </Group>
     </PageContainer >
   );
 });

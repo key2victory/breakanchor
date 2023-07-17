@@ -207,6 +207,22 @@ export const pages = [
     level: 1
   },
   {
+    title: "Researcher Tools",
+    subtitle: "",
+    description: "",
+    path: "projects/researcher-tools",
+    component: "PageResearcherTools",
+    url: "",
+    image: "./hub/hub-06.png",
+    backgroundSize: "200%",
+    backgroundPosition: "50% 15%",
+    filter: "grayscale(100%) brightness(50%) contrast(120%)", // ",
+    color: "hsl(187,57%,66%)",//"hsl(200,95%,63%)",
+    devices: ["S", "M", "L"],
+    tags: ["components", "research"],
+    level: 2
+  },
+  {
     title: "ASL Flashcards",
     subtitle: "",
     description: "A flashcard app I designed and built using react-js",
@@ -216,8 +232,8 @@ export const pages = [
     image: "./img/asl.png",
     backgroundSize: "100%",
     backgroundPosition: "50% 60%",
-    filter: "grayscale(100%) contrast(80%) brightness(70%)",
-    color: "hsl(187,57%,66%)",//"hsl(200,95%,63%)",
+    filter: "grayscale(100%) contrast(50%) brightness(100%)", //"grayscale(100%) contrast(80%) brightness(70%)",
+    color: "hsl(274,33%,55%)",//"hsl(187,57%,66%)",//"hsl(200,95%,63%)",
     devices: ["S", "M", "L"],
     tags: ["responsive"],
     level: 2
@@ -243,7 +259,7 @@ export const pages = [
     image: "./samples/ClearanceTrackerUnframed/images/5d6591a4b284913a47913e632eb1d52.png",
     backgroundSize: "300%",
     backgroundPosition: "22% 20%",
-    color: "hsl(274,33%,55%)",
+    color: "hsl(37,95%,63%)",//"hsl(274,33%,55%)",
     aspectRatio: "1678 / 1153",
     devices: ["L"],
     tags: ["desktop"],
@@ -252,7 +268,7 @@ export const pages = [
   {
     title: "Audiohand",
     subtitle: "Mobile music studio",
-    path: "audiohand",
+    path: "projects/audiohand",
     image: "./img/audiohand-14.png",
     backgroundSize: "cover",
     backgroundPosition: "0% 32%",
