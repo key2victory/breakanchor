@@ -9,8 +9,10 @@ import {
 } from "react-icons/ri";
 import { MdFilterList } from "react-icons/md";
 //import { MdWavingHand } from "react-icons/md";
+import useAnalyticsEventTracker from './AnalyticsTracker';
 
 export function PageProjects(props) {
+    const gaEventTracker = useAnalyticsEventTracker('Projects Page');
 
     const ImageCard = ({
         className,
@@ -45,7 +47,9 @@ export function PageProjects(props) {
                 padding: "1rem",
                 // mixBlendMode: "darken",
                 zIndex: props.zIndex
-            }}>
+            }}
+
+        >
             <h2>{title}</h2>
             <h3>{subtitle}</h3>
             <span className="row wrap shadow" style={{
@@ -94,7 +98,9 @@ export function PageProjects(props) {
                     height: "100%",
 
                     zIndex: 3,
-                }} />
+                }}
+                    onClick={() => { gaEventTracker(path); }
+                    } />
 
                 <div className="col center"
                     style={{
@@ -169,7 +175,7 @@ export function PageProjects(props) {
                         <MdFilterList
                         //size="18"
                         />
-                    </div></Header>
+                    </div> </Header>
 
 
                 <Group className="row wrap top" style={{

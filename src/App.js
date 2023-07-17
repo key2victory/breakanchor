@@ -3,6 +3,9 @@ import AppNav, { AppHeader, AppSizer, NavPanel } from "./AppNav";
 import { Outlet } from "react-router-dom";
 import { useMediaQuery, useWindowSize } from "@uidotdev/usehooks";
 import { IconTag } from "./PageElements";
+import ReactGA from 'react-ga';
+const TRACKING_ID = "G-NP5NG2BWZT"; // OUR_TRACKING_ID
+ReactGA.initialize(TRACKING_ID);
 
 import "./styles.css";
 import "./styles_utility.css";
