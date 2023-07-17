@@ -19,12 +19,18 @@ export default function App(props) {
   const [showNav, setShowNav] = useState(false);
   const [media, setMedia] = useState(currentSize);
   const [browserSize, setBrowserSize] = useState();
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
+
   const deviceMin = {
     sm: 400,
     md: 800,//768,
     lg: 1100,//992,
     xl: 1400//1200,
   }
+
 
   const size = {
     xs: useMediaQuery(`only screen and (max-width : ${deviceMin.sm - 1}px)`),
