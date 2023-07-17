@@ -25,7 +25,7 @@ export default function App(props) {
 
   useEffect(() => {
     // Google Analytics
-    ReactGA.send({ hitType: "pageview", page: location, title: `${location} page view` });
+    ReactGA.send({ hitType: "pageview", page: location.pathname, title: `${location.pathname} page view` });
   }, [location]);
 
 
