@@ -413,7 +413,7 @@ export const ButtonAction = memo(function ButtonAction({ label, color, backgroun
 
   if (url !== undefined) {
     return (<a
-      className={`umami--click--${location.pathname}`}
+      className={`umami--click--${location.pathname}/ButtonAction`}
       style={{
         outline: "none",
         textDecoration: "none",
