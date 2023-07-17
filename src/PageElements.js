@@ -474,9 +474,10 @@ export const ButtonAction = memo(function ButtonAction({ label, color, backgroun
         }}
         onClick={() => {
           ReactGA.event({
-            category: "button",
-            action: "click",
+            category: "jmc_button",
+            action: "jmc_click_button",
             label: `clicked ${label} to ${actionDescription}, at ${location.pathname}`, // optional
+
             //value: 99, // optional, must be a number
             //  nonInteraction: true, // optional, true/false
             // transport: "xhr", // optional, beacon/xhr/image

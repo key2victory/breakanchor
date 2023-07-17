@@ -256,9 +256,10 @@ export const NavCard = memo(function NavCard({
         }}
         onClick={() => {
           ReactGA.event({
-            category: "nav",
-            action: "click",
-            label: `clicked ${title} from App navigation`, // optional
+            category: "jmc_nav",
+            action: "jmc_click_nav",
+            label: `clicked ${title} from App navigation`,
+
             //value: 99, // optional, must be a number
             //  nonInteraction: true, // optional, true/false
             // transport: "xhr", // optional, beacon/xhr/image

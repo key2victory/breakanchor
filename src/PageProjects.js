@@ -50,8 +50,8 @@ export function PageProjects(props) {
             }}
             onClick={() => {
                 ReactGA.event({
-                    category: "nav",
-                    action: "click",
+                    category: "jmc_project",
+                    action: `jmc_click_project`,
                     label: `clicked ${title} from Projects page`, // optional
                     //value: 99, // optional, must be a number
                     //  nonInteraction: true, // optional, true/false
