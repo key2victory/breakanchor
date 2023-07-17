@@ -3,7 +3,7 @@ import { memo, useState, useEffect, Fragment } from "react";
 import { AppHeader, NavPanel } from "./AppNav";
 import { HeroAbout } from "./HeroAbout";
 import { Logo } from "./Logo";
-import { Header, ButtonLink, Note, Group } from "./PageElements";
+import { Header, ButtonLink, Note, Group, Counter } from "./PageElements";
 import { PageContainer } from "./PageContainer";
 import { FaFigma } from "react-icons/fa";
 import { RxFramerLogo } from "react-icons/rx";
@@ -75,6 +75,12 @@ export default function PageAbout(props) {
         }}
       />*/}
       <HeroAbout hide={["xl", "lg", "md"].includes(media)} deviceSize="small" />
+      {/*   <Counter number="14" label="year professional designer" duration="2" />
+      <Counter number="11" label="year UX and product design" duration="2" />
+      <Counter number="6" label="time design mentor for KEC" duration="2" />
+      <Counter number="4" label="time event speaker" duration="2" />
+   
+      */}
       <Header title="About Me"
         color="hsla(0,0%,0%,50%)" style={{ margin: "0 0 0 0", width: "100%", maxWidth: maxCardWidth }} />
       <Group className="grid"//"col nowrap" 
@@ -300,7 +306,7 @@ const CardDates = ({ content, media }) => {
           flexFlow: "column nowrap",
           alignItems: "center",
           justifyContent: "flex-start",
-          height: "100%",
+          //height: "100%",
           borderRight: "2px solid hsl(0,0%,80%)",
           padding: ".7rem 0 0 0",
           margin: "0 1rem 0 auto",
