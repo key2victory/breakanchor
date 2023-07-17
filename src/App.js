@@ -27,6 +27,7 @@ export default function App(props) {
     // Google Analytics
 
     const titleDef = {
+      "/": "BreakAnchor",
       "/about": "BreakAnchor - About",
       "/projects": "BreakAnchor - Projects",
       "/presentations": "BreakAnchor - Presentations",
@@ -40,7 +41,7 @@ export default function App(props) {
       "/projects/loto": "BreakAnchor - Projects / Lock Out Tag Out",
       "/projects/researcher-tools": "BreakAnchor - Projects / Researcher Tools"
     }
-    let title = titleDef[location.pathname]
+    let title = titleDef[location.pathname] !== undefined ? titleDef[location.pathname] : "BreakAnchor";
     document.title = title;
 
     //console.log(location, titleDef[location])
@@ -134,8 +135,8 @@ export default function App(props) {
               {sizeOptions.map((item, index) => (
                 < IconTag key={`device-tag-${index}`} icon={deviceChips[item].icon} label={deviceChips[item].label} bgColor={media === sizeOptions[index] ? "hsl(39, 14%, 90%)" : "hsl(39, 14%, 80%)"} hoverColor={media === sizeOptions[index] ? "hsl(39, 14%, 90%)" : "hsl(39, 14%, 85%)"} style={{ display: deviceChips[item].hide.includes(currentSize) ? "none" : "flex" }} onClick={() => {
                   ReactGA.event({
-                    category: "button",
-                    action: "click",
+                    category: "jmc_button",
+                    action: "jmc_button_click",
                     label: `clicked ${item} from App responsive page sizer`, // optional
                     //value: 99, // optional, must be a number
                     //  nonInteraction: true, // optional, true/false
