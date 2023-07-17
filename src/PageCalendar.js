@@ -3,6 +3,8 @@ import { Header, ButtonLink, Note, Group, BulletList, ImageCard, ImageCard2, But
 import { PageContainer } from "./PageContainer";
 import { Hero } from "./Hero";
 import { useOutletContext } from "react-router-dom";
+import ReactGA from "react-ga4";
+import { TRACKING_ID } from "./AnalyticsTracker";
 
 export const PageCalendar = memo(function PageCalendar({
   title,
@@ -80,7 +82,7 @@ export const PageCalendar = memo(function PageCalendar({
         style={{ width: "100%" }}
       >
         <ButtonAction
-
+          actionDescription="go to Priority Calendar app from Calendar Page header button"
           url="https://tczkr5.csb.app/"
           color="hsla(0,0%,100%,100%)"
           backgroundColor="hsla(265,0%,20%,100%)"
@@ -219,7 +221,7 @@ export const PageCalendar = memo(function PageCalendar({
 
         <h5 style={{ width: "fit-content" }}>See the live app on</h5>
         <ButtonAction
-
+          actionDescription="go to Priority Calendar app from Calendar Page footer button"
           url="https://tczkr5.csb.app/"
           color="hsla(0,0%,100%,100%)"
           backgroundColor="hsla(265,0%,20%,100%)"

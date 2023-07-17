@@ -59,7 +59,7 @@ export const PageAudiohand = memo(function Page_Audiohand({
       //background={background}
       >
         <ButtonAction
-
+          actionDescription="go to App Store from Audiohand Page header button"
           url="https://apps.apple.com/us/app/audiohand/id973166513?platform=iphone"
           color="hsla(0,0%,100%,100%)"
           backgroundColor="hsla(265,0%,20%,100%)"
@@ -200,7 +200,7 @@ export const PageAudiohand = memo(function Page_Audiohand({
 
         <h5 style={{ width: "fit-content" }}>See it in the </h5>
         <ButtonAction
-
+          actionDescription="go to App Store from Audiohand Page footer button"
           url="https://apps.apple.com/us/app/audiohand/id973166513?platform=iphone"
           color="hsla(0,0%,100%,100%)"
           backgroundColor="hsla(265,0%,20%,100%)"

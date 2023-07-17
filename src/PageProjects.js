@@ -3,16 +3,16 @@ import { Link } from "react-router-dom";
 import { pages } from "./Pages";
 import { Header, ButtonLink, Group, Note, IconTag } from "./PageElements";
 import { PageContainer } from "./PageContainer";
-import {
+/*import {
     RiCalendarTodoFill, RiStackFill,
     RiBox2Line
-} from "react-icons/ri";
+} from "react-icons/ri";*/
 import { MdFilterList } from "react-icons/md";
-//import { MdWavingHand } from "react-icons/md";
-import useAnalyticsEventTracker from './AnalyticsTracker';
+import ReactGA from "react-ga4";
+//import { TRACKING_ID } from "./AnalyticsTracker";
+//ReactGA.initialize([{ trackingId: TRACKING_ID }])
 
 export function PageProjects(props) {
-    const gaEventTracker = useAnalyticsEventTracker('Projects Page');
 
     const ImageCard = ({
         className,
@@ -48,7 +48,16 @@ export function PageProjects(props) {
                 // mixBlendMode: "darken",
                 zIndex: props.zIndex
             }}
-
+            onClick={() => {
+                ReactGA.event({
+                    category: "nav",
+                    action: "click",
+                    label: `clicked ${title} from Projects page`, // optional
+                    //value: 99, // optional, must be a number
+                    //  nonInteraction: true, // optional, true/false
+                    // transport: "xhr", // optional, beacon/xhr/image
+                });
+            }}
         >
             <h2>{title}</h2>
             <h3>{subtitle}</h3>

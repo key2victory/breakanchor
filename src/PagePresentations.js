@@ -125,6 +125,7 @@ export function PagePresentations(props) {
 
                     <h5 style={{ width: "fit-content" }}>See the full </h5>
                     <ButtonAction
+                        actionDescription="see 'What Makes UI Intuitive' slide deck from Presentations Page"
                         url="https://docs.google.com/presentation/d/1sX_i-tTYVkihPYqb25-01_tm7hDQsf-zdyhIPcvHed8/edit?usp=sharing"
                         color="hsla(0,0%,100%,100%)"
                         backgroundColor="hsla(40,10%,45%,100%)"
@@ -149,6 +150,7 @@ export function PagePresentations(props) {
 
                     <h5 style={{ width: "fit-content" }}>See the full </h5>
                     <ButtonAction
+                        actionDescription="see 'The UX Stack' slide deck from Presentations Page"
                         url="https://docs.google.com/presentation/d/1PE_Fx5LP3cq0JnYROtTiWgLajQSqTIo9zpyP5ySruco/edit?usp=sharing"
                         color="hsla(0,0%,100%,100%)"
                         backgroundColor="hsla(40,10%,45%,100%)"

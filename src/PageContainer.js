@@ -12,6 +12,8 @@ import { PageLearning } from "./PageLearning";
 import { PageFlashcards } from "./PageFlashcards";
 import { PageFinance } from "./PageFinance";
 import { PageConference } from "./PageConference";
+import ReactGA from "react-ga4";
+
 
 const PageContent = ({ title }) => {
     const pageList = {
@@ -33,6 +35,12 @@ export const PageContainer = memo(function PageContainer({ layout = "hero", back
     useEffect(() => {
         console.log("detected media change in PageContainer")
     }, [media])
+
+    useEffect(() => {
+        // Send pageview with a custom path
+        ReactGA.send({ hitType: "pageview", page: "/projects", title: "Projects Page view" });
+
+    }, []);
 
     const swatches = {
         cream: `linear-gradient(90deg, hsla(39, 0%, 100%, 0%) 0%, hsla(40, 0%, 100%, 100%) 100%), linear-gradient(45deg, hsl(39, 14%, 80%) 0%, hsl(40, 7%, 60%) 100%)`,

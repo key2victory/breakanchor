@@ -1,12 +1,8 @@
 import { Fragment, useEffect, useState } from "react";
 import AppNav, { AppHeader, AppSizer, NavPanel } from "./AppNav";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { useMediaQuery, useWindowSize } from "@uidotdev/usehooks";
 import { IconTag } from "./PageElements";
-import ReactGA from "react-ga4";
-import { TRACKING_ID } from "./AnalyticsTracker";
-
-
 import "./styles.css";
 import "./styles_utility.css";
 import "./styles_mobile.css";
@@ -14,27 +10,24 @@ import "./styles_phablet.css";
 import "./styles_tablet.css";
 import "./styles_laptop.css";
 import "./styles_desktop.css";
+import ReactGA from "react-ga4";
+import { TRACKING_ID } from "./AnalyticsTracker";
+
 
 export default function App(props) {
   const [showNav, setShowNav] = useState(false);
   const [media, setMedia] = useState(currentSize);
   const [browserSize, setBrowserSize] = useState();
 
+  ReactGA.initialize([{ trackingId: TRACKING_ID }])
+
+  let location = useLocation();
+
   useEffect(() => {
-    // Send pageview with a custom path
-    ReactGA.send({ hitType: "pageview", page: "/projects or /", title: "Projects Page view" });
+    // Google Analytics
+    ReactGA.send({ hitType: "pageview", page: location, title: `${location} page view` });
+  }, [location]);
 
-    // Send a custom event
-    ReactGA.event({
-      category: "nav",
-      action: "click",
-      // label: "your label", // optional
-      //value: 99, // optional, must be a number
-      //  nonInteraction: true, // optional, true/false
-      // transport: "xhr", // optional, beacon/xhr/image
-    });
-
-  }, []);
 
   const deviceMin = {
     sm: 400,
@@ -120,6 +113,14 @@ export default function App(props) {
             <Fragment>
               {sizeOptions.map((item, index) => (
                 < IconTag key={`device-tag-${index}`} icon={deviceChips[item].icon} label={deviceChips[item].label} bgColor={media === sizeOptions[index] ? "hsl(39, 14%, 90%)" : "hsl(39, 14%, 80%)"} hoverColor={media === sizeOptions[index] ? "hsl(39, 14%, 90%)" : "hsl(39, 14%, 85%)"} style={{ display: deviceChips[item].hide.includes(currentSize) ? "none" : "flex" }} onClick={() => {
+                  ReactGA.event({
+                    category: "button",
+                    action: "click",
+                    label: `clicked ${item} from App responsive page sizer`, // optional
+                    //value: 99, // optional, must be a number
+                    //  nonInteraction: true, // optional, true/false
+                    // transport: "xhr", // optional, beacon/xhr/image
+                  });
                   setMedia(item)
                 }} />
               ))}

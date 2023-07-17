@@ -1,5 +1,6 @@
 import { memo, useState, useEffect, Fragment } from "react";
 import { useHover } from "@uidotdev/usehooks";
+import { useLocation } from "react-router-dom";
 
 //styling
 //import './Count.css';
@@ -391,8 +392,10 @@ export const Header = memo(function Header({
 });
 
 
-export const ButtonAction = memo(function ButtonAction({ label, color, backgroundColor, hoverColor, children, onClick, url }) {
+export const ButtonAction = memo(function ButtonAction({ label, color, backgroundColor, hoverColor, actionDescription = "[do something]", children, onClick = () => { }, url }) {
   const [ref, hover] = useHover();
+  let location = useLocation();
+
   const text = {
     x: 0,
     y: 1,
@@ -432,7 +435,17 @@ export const ButtonAction = memo(function ButtonAction({ label, color, backgroun
           backgroundColor: hover ? hoverColor : backgroundColor,
           cursor: "pointer"
         }}
-        onClick={onClick}
+        onClick={() => {
+          ReactGA.event({
+            category: "button",
+            action: "click",
+            label: `clicked ${label} to ${actionDescription}, at ${location}`, // optional
+            //value: 99, // optional, must be a number
+            //  nonInteraction: true, // optional, true/false
+            // transport: "xhr", // optional, beacon/xhr/image
+          });
+          onClick();
+        }}
       >
         {label}
         {children}
@@ -459,7 +472,17 @@ export const ButtonAction = memo(function ButtonAction({ label, color, backgroun
           backgroundColor: hover ? hoverColor : backgroundColor,
           cursor: "pointer"
         }}
-        onClick={onClick}
+        onClick={() => {
+          ReactGA.event({
+            category: "button",
+            action: "click",
+            label: `clicked ${label} to ${actionDescription}, at ${location}`, // optional
+            //value: 99, // optional, must be a number
+            //  nonInteraction: true, // optional, true/false
+            // transport: "xhr", // optional, beacon/xhr/image
+          });
+          onClick();
+        }}
       >
         {label}
         {children}

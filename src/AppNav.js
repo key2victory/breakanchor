@@ -18,6 +18,7 @@ import {
   RiBox2Line
 } from "react-icons/ri";
 import "./styles.css";
+import ReactGA from "react-ga4";
 
 const hiddenStyle = {
   position: "absolute",
@@ -252,6 +253,16 @@ export const NavCard = memo(function NavCard({
           padding: "1rem .5rem 1rem .5rem",
           borderTop: borderTop,
           borderBottom: borderBottom
+        }}
+        onClick={() => {
+          ReactGA.event({
+            category: "nav",
+            action: "click",
+            label: `clicked ${title} from App navigation`, // optional
+            //value: 99, // optional, must be a number
+            //  nonInteraction: true, // optional, true/false
+            // transport: "xhr", // optional, beacon/xhr/image
+          });
         }}
       >
         {icon !== undefined ? <IconRender /> : null}
