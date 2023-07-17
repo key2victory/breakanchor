@@ -3,9 +3,9 @@ import AppNav, { AppHeader, AppSizer, NavPanel } from "./AppNav";
 import { Outlet } from "react-router-dom";
 import { useMediaQuery, useWindowSize } from "@uidotdev/usehooks";
 import { IconTag } from "./PageElements";
-import ReactGA from 'react-ga';
-const TRACKING_ID = "G-NP5NG2BWZT"; // OUR_TRACKING_ID
-ReactGA.initialize(TRACKING_ID);
+import ReactGA from "react-ga4";
+import { TRACKING_ID } from "./AnalyticsTracker";
+
 
 import "./styles.css";
 import "./styles_utility.css";
@@ -21,7 +21,19 @@ export default function App(props) {
   const [browserSize, setBrowserSize] = useState();
 
   useEffect(() => {
-    ReactGA.pageview(window.location.pathname + window.location.search);
+    // Send pageview with a custom path
+    ReactGA.send({ hitType: "pageview", page: "/projects or /", title: "Projects Page view" });
+
+    // Send a custom event
+    ReactGA.event({
+      category: "nav",
+      action: "click",
+      // label: "your label", // optional
+      //value: 99, // optional, must be a number
+      //  nonInteraction: true, // optional, true/false
+      // transport: "xhr", // optional, beacon/xhr/image
+    });
+
   }, []);
 
   const deviceMin = {
