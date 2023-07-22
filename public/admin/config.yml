@@ -1,5 +1,6 @@
 backend:
-  name: git-gateway
+  #name: git-gateway
+  name: github
   repo: key2victory/breakanchor
   branch: master # Branch to update (optional; defaults to master)
 
