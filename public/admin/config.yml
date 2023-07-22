@@ -38,5 +38,4 @@ collections:
       - {label: "End", name: "date", widget: "datetime"}
       - {label: "Featured Image", name: "thumbnail", widget: "image"}
       - {label: "Tags", name: "tags", widget: "select", multiple: true, options: ["case study", "presentation", "research", "design", "responsive"], default: ["case study"]}
-      - {label: "Tags", name: "tags", widget: "list", default: ["case study"]}
       - {label: "Body", name: "body", widget: "markdown"}
