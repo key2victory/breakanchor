@@ -1,5 +1,6 @@
 backend:
   name: git-gateway
+  repo: key2victory/breakanchor
   branch: master # Branch to update (optional; defaults to master)
 
 # This line should *not* be indented
