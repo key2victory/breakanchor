@@ -27,7 +27,7 @@ public_folder: "/img/uploads" # The src attribute for uploaded media will begin 
 collections:
   - name: "case-studies" # Used in routes, e.g., /admin/collections/blog
     label: "Case Studies" # Used in the UI
-    folder: "/case-studies/" # The path to the folder where the documents are stored
+    folder: "/collections/case-studies/" # The path to the folder where the documents are stored
     extension: "json" #
     create: true # Allow users to create new documents in this collection
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
@@ -42,7 +42,7 @@ collections:
       - {label: "Body", name: "body", widget: "markdown"}
   - name: "presentations" # Used in routes, e.g., /admin/collections/blog
     label: "Presentations" # Used in the UI
-    folder: "/presentations/" # The path to the folder where the documents are stored
+    folder: "/collections/presentations/" # The path to the folder where the documents are stored
     extension: "json" #
     create: true # Allow users to create new documents in this collection
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
@@ -58,14 +58,13 @@ collections:
       - {label: "Body", name: "body", widget: "markdown"}
   - name: "conferences" # Used in routes, e.g., /admin/collections/blog
     label: "Conferences" # Used in the UI
-    folder: "/conferences/" # The path to the folder where the documents are stored
+    folder: "/collections/conferences/" # The path to the folder where the documents are stored
     extension: "json" #
     create: true # Allow users to create new documents in this collection
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
-   - label: "Card", name: "card", widget: "object", summary: '{{fields.name}}: {{fields.title}}', 
-      fields:   
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: 'Date', name: 'date', widget: 'date', default: '', format: 'MMM Do YY'}
-      - {label: "Featured Image", name: "thumbnail", widget: "image"}
-      - {label: "Description", name: "description", widget: "text"}
+    #- label: "Card", name: "card", widget: "object", summary: '{{fields.name}}: {{fields.title}}', 
+    - {label: "Title", name: "title", widget: "string"}
+    - {label: 'Date', name: 'date', widget: 'date', default: '', format: 'MMM Do YY'}
+    - {label: "Featured Image", name: "thumbnail", widget: "image"}
+    - {label: "Description", name: "description", widget: "text"}
