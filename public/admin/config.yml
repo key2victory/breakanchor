@@ -3,29 +3,69 @@ backend:
   #name: github
   repo: key2victory/breakanchor
   branch: main # master # Branch to update (optional; defaults to master)
-
+  backend: local_backend
 # This line should *not* be indented
 #publish_mode: editorial_workflow
 
 site_url: https://breakanchor.com/
 
 # This line should *not* be indented
-media_folder: "img/uploads" # Media files will be stored in the repo under images/uploads
+media_folder: "img/" # Media files will be stored in the repo under images/uploads
 
 # These lines should *not* be indented
 #media_folder: "static/img/uploads" # Media files will be stored in the repo under static/images/uploads
 public_folder: "/img/uploads" # The src attribute for uploaded media will begin with /images/uploads
 
+# {{slug}}: a url-safe version of the title field (or identifier field) for the file
+# {{year}}: 4-digit year of the file creation date
+# {{month}}: 2-digit month of the file creation date
+# {{day}}: 2-digit day of the month of the file creation date
+# {{hour}}: 2-digit hour of the file creation date
+# {{minute}}: 2-digit minute of the file creation date
+# {{second}}: 2-digit second of the file creation date
+
 collections:
-  - name: "blog" # Used in routes, e.g., /admin/collections/blog
-    label: "Blog" # Used in the UI
-    folder: "/posts/" # The path to the folder where the documents are stored
+  - name: "case-studies" # Used in routes, e.g., /admin/collections/blog
+    label: "Case Studies" # Used in the UI
+    folder: "/case-studies/" # The path to the folder where the documents are stored
+    extension: "json" #
     create: true # Allow users to create new documents in this collection
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
       - {label: "Layout", name: "layout", widget: "hidden", default: "blog"}
       - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Start", name: "date", widget: "datetime"}
+      - {label: "End", name: "date", widget: "datetime"}
       - {label: "Featured Image", name: "thumbnail", widget: "image"}
-      - {label: "Rating (scale of 1-5)", name: "rating", widget: "number"}
+      - {label: "Tags", name: "tags", widget: "select", multiple: true, options: ["case study", "presentation", "research", "design", "responsive"], default: ["case study"]}
+      - {label: "Tags", name: "tags", widget: "list", default: ["case study"]}
       - {label: "Body", name: "body", widget: "markdown"}
+  - name: "presentations" # Used in routes, e.g., /admin/collections/blog
+    label: "Presentations" # Used in the UI
+    folder: "/presentations/" # The path to the folder where the documents are stored
+    extension: "json" #
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+    - label: "Layout", name: "layout", widget: "hidden", default: "blog"
+    - label: "Title", name: "title", widget: "string"
+    - label: "Card", name: "card", widget: "object", summary: '{{fields.name}}: {{fields.title}}', 
+      fields:   
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Conference", name: "conference", widget: "relation", collection: "conferences", search_fields: ["title"], value_field: "title", display_fields: ["title"]}
+      - {label: "Featured Image", name: "thumbnail", widget: "image"}
+      - {label: "Tags", name: "tags", widget: "select", multiple: true, options: ["case study", "presentation", "research", "design", "responsive"], default: ["case study"]}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "conferences" # Used in routes, e.g., /admin/collections/blog
+    label: "Conferences" # Used in the UI
+    folder: "/conferences/" # The path to the folder where the documents are stored
+    extension: "json" #
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+   - label: "Card", name: "card", widget: "object", summary: '{{fields.name}}: {{fields.title}}', 
+      fields:   
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: 'Date', name: 'date', widget: 'date', default: '', format: 'MMM Do YY'}
+      - {label: "Featured Image", name: "thumbnail", widget: "image"}
+      - {label: "Description", name: "description", widget: "text"}
