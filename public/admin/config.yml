@@ -25,115 +25,101 @@ public_folder: "/img/" # The src attribute for uploaded media will begin with /i
 # {{second}}: 2-digit second of the file creation date
 
 collections:
+collections:
   - name: "case-study" # Used in routes, e.g., /admin/collections/blog
     label: "Case Study" # Used in the UI
     folder: "./src/collections/" # The path to the folder where the documents are stored
     extension: "json" #
     create: true # Allow users to create new documents in this collection
+    slug: "case/{{path}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields:
+    - {label: "Page Layout", name: "layout", widget: "select", options: ["left", "center", "hero"]}
+    - {label: "Title", name: "title", widget: "string"}
+    - {label: "Subtitle", name: "subtitle", widget: "string"}
+    - {label: "Path", name: "path", widget: "string", ""}
+    - {label: "Dates", name: "date", widget: "number", default: 2000, value_type: "int", min: 2000, max: 2100, step: 1}
+    - {label: 'Color', name: 'color', widget: 'color', enableAlpha: true, allowInput: true }
+    - {label: "Tags", name: "tags", widget: "select", multiple: true, options: ["case study", "presentation", "research", "design", "responsive", "desktop", "mobile"], default: ["case study"]}
+    - {label: "Featured Image", name: "thumbnail", widget: "image"}
+    - {label: "Hero Image", name: "hero", widget: "image"}
+    - {label: "Grid Row", name: "gridContainer", widget: "markdown"}
+
+collections:
+  - name: "case" # Used in routes, e.g., /admin/collections/blog
+    label: "Case Study" # Used in the UI
+    folder: "./src/collections/" # The path to the folder where the documents are stored
+    extension: "json" #
+    create: true # Allow users to create new documents in this collection
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
-    fields: # The fields for each document, usually in front matter
-      - {label: "Layout", name: "layout", widget: "hidden", default: "blog"}
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Date", name: "date", widget: "datetime"}
-      - {label: "Featured Image", name: "thumbnail", widget: "image"}
-      - {label: "Tags", name: "tags", widget: "select", multiple: true, options: ["case study", "presentation", "research", "design", "responsive"], default: ["case study"]}
-      - {label: "Body", name: "body", widget: "markdown"}
-
-  - name: 'posts' # Used in routes, ie.: /admin/collections/:slug/edit
-    label: 'Posts' # Used in the UI
-    label_singular: 'Post' # Used in the UI, ie: "New Post"
-    folder: "./src/collections/"
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
-    summary: '{{title}} -- {{year}}/{{month}}/{{day}}'
-    create: true # Allow users to create new documents in this collection
-    view_filters:
-      - label: Posts With Index
-        field: title
-        pattern: 'This is post #'
-      - label: Posts Without Index
-        field: title
-        pattern: front matter post
-      - label: Drafts
-        field: draft
-        pattern: true
-    view_groups:
-      - label: Year
-        field: date
-        pattern: \d{4}
-      - label: Drafts
-        field: draft
-    fields: # The fields each document in this collection have
-      - { label: 'Title', name: 'title', widget: 'string', tagname: 'h1' }
-      - { label: 'Draft', name: 'draft', widget: 'boolean', default: false }
-      - {
-          label: 'Publish Date',
-          name: 'date',
-          widget: 'datetime',
-          date_format: 'YYYY-MM-DD',
-          time_format: 'HH:mm',
-          format: 'YYYY-MM-DD HH:mm',
-        }
-      - label: 'Cover Image'
+    fields:
+    - {label: "Page Layout", name: "layout", widget: "select", options: ["left", "center", "hero"]}
+    - {label: "Title", name: "title", widget: "string", tagname: 'h1'}
+    - {label: "Subtitle", name: "subtitle", widget: "string", tagname: 'h2' required: false}
+    - {label: "Dates", name: "date", widget: "number", default: 2000, value_type: "int", min: 2000, max: 2100, step: 1, required: false}
+    - {label: 'Color', name: 'color', widget: 'color', enableAlpha: true, allowInput: true, required: false}
+    - {label: "Tags", name: "tags", widget: "select", multiple: true, options: ["case study", "presentation", "research", "design", "responsive", "desktop", "mobile"], default: ["case study"]}
+    - {label: "Featured Image", name: "thumbnail", widget: "image"}
+    - {label: "Hero Image", name: "hero", widget: "image", required: false}
+    - label: "Grid Row"
+      name: "gridContainer"
+      widget: 'list'
+      types:
+      - label: 'Text Cell'
+        name: 'text'
+        widget: 'object'
+        fields:
+        - label: "Cell Size"
+          name: "size"
+          widget: "select"
+          required: false,
+          hint: 'Specify how many Geist grid columns cell should span for different device sizes'
+          options:
+          - { label: "xs", name: "xs", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
+          - { label: "sm", name: "sm", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
+          - { label: "md", name: "md", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
+          - { label: "lg", name: "md", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
+          - { label: "xl", name: "md", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
+        - { label: 'text', name: 'markdown', widget: 'markdown' }
+      - label: 'Image Cell'
         name: 'image'
-        widget: 'image'
-        required: false
-        tagname: ''
-
-      - { label: 'Body', name: 'body', widget: 'markdown', hint: 'Main content goes here.' }
-
-  - name: 'faq' # Used in routes, ie.: /admin/collections/:slug/edit
-    label: 'FAQ' # Used in the UI
-    folder: "./src/collections/"
-    create: true # Allow users to create new documents in this collection
-    fields: # The fields each document in this collection have
-      - { label: 'Question', name: 'title', widget: 'string', tagname: 'h1' }
-      - { label: 'Answer', name: 'body', widget: 'markdown' }
-
-  - name: 'settings'
-    label: 'Settings'
-    delete: false # Prevent users from deleting documents in this collection
-    editor:
-      preview: false
-    files:
-      - name: 'general'
-        label: 'Site Settings'
-        file: '_data/settings.json'
-        description: 'General Site Settings'
+        widget: 'object'
         fields:
-          - { label: 'Global title', name: 'site_title', widget: 'string' }
-          - label: 'Post Settings'
-            name: posts
-            widget: 'object'
-            fields:
-              - {
-                  label: 'Number of posts on frontpage',
-                  name: front_limit,
-                  widget: number,
-                  min: 1,
-                  max: 10,
-                }
-              - { label: 'Default Author', name: author, widget: string }
-              - {
-                  label: 'Default Thumbnail',
-                  name: thumb,
-                  widget: image,
-                  class: 'thumb',
-                  required: false,
-                }
-
-      - name: 'authors'
-        label: 'Authors'
-        file: '_data/authors.yml'
-        description: 'Author descriptions'
+        - label: "Cell Size"
+          name: "size"
+          widget: "select"
+          required: false,
+          hint: 'Specify how many Geist grid columns cell should span for different device sizes'
+          options:
+          - { label: "xs", name: "xs", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
+          - { label: "sm", name: "sm", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
+          - { label: "md", name: "md", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
+          - { label: "lg", name: "md", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
+          - { label: "xl", name: "md", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
+          - { label: 'Image', name: 'image', widget: 'image', choose_url: true }
+          - { label: "width", name: "width", widget: "string", default: "100%" }
+          - { label: "height", name: "height", widget: "string", default: "auto" }
+          - { label: "Alt Text", name: "alt", widget: "string" }
+      - label: 'Card Cell'
+        name: 'card'
+        widget: 'object'
         fields:
-          - name: authors
-            label: Authors
-            label_singular: 'Author'
-            widget: list
-            fields:
-              - { label: 'Name', name: 'name', widget: 'string', hint: 'First and Last' }
-              - { label: 'Description', name: 'description', widget: 'markdown' }
-
+        - label: "Cell Size"
+          name: "size"
+          widget: "select"
+          required: false,
+          hint: 'Specify how many Geist grid columns cell should span for different device sizes'
+          options:
+          - { label: "xs", name: "xs", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
+          - { label: "sm", name: "sm", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
+          - { label: "md", name: "md", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
+          - { label: "lg", name: "md", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
+          - { label: "xl", name: "md", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
+          - { label: 'Image', name: 'image', widget: 'image', choose_url: true }
+          - { label: "width", name: "width", widget: "string", default: "100%" }
+          - { label: "height", name: "height", widget: "string", default: "auto" }
+          - { label: "Alt Text", name: "alt", widget: "string" }
+          - { label: 'text', name: 'markdown', widget: 'markdown' }
+ 
   - name: 'kitchenSink' # all the things in one entry, for documentation and quick testing
     label: 'Kitchen Sink'
     folder: "./src/collections/"
