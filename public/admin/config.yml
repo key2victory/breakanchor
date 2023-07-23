@@ -75,10 +75,10 @@ collections:
           - { label: "md", name: "md", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
           - { label: "lg", name: "md", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
           - { label: "xl", name: "md", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
-          - { label: 'Image', name: 'image', widget: 'image', choose_url: true }
-          - { label: "width", name: "width", widget: "string", default: "100%" }
-          - { label: "height", name: "height", widget: "string", default: "auto" }
-          - { label: "Alt Text", name: "alt", widget: "string" }
+        - { label: 'Image', name: 'image', widget: 'image', choose_url: true }
+        - { label: "width", name: "width", widget: "string", default: "100%" }
+        - { label: "height", name: "height", widget: "string", default: "auto" }
+        - { label: "Alt Text", name: "alt", widget: "string" }
       - label: 'Card Cell'
         name: 'card'
         widget: 'object'
@@ -94,11 +94,11 @@ collections:
           - { label: "md", name: "md", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
           - { label: "lg", name: "md", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
           - { label: "xl", name: "md", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
-          - { label: 'Image', name: 'image', widget: 'image', choose_url: true }
-          - { label: "width", name: "width", widget: "string", default: "100%" }
-          - { label: "height", name: "height", widget: "string", default: "auto" }
-          - { label: "Alt Text", name: "alt", widget: "string" }
-          - { label: 'text', name: 'markdown', widget: 'markdown' }
+        - { label: 'Image', name: 'image', widget: 'image', choose_url: true }
+        - { label: "width", name: "width", widget: "string", default: "100%" }
+        - { label: "height", name: "height", widget: "string", default: "auto" }
+        - { label: "Alt Text", name: "alt", widget: "string" }
+        - { label: 'text', name: 'markdown', widget: 'markdown' }
  
   - name: 'kitchenSink' # all the things in one entry, for documentation and quick testing
     label: 'Kitchen Sink'
