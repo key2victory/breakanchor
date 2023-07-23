@@ -54,7 +54,7 @@ collections:
     fields:
     - {label: "Page Layout", name: "layout", widget: "select", options: ["left", "center", "hero"]}
     - {label: "Title", name: "title", widget: "string", tagname: 'h1'}
-    - {label: "Subtitle", name: "subtitle", widget: "string", tagname: 'h2' required: false}
+    - {label: "Subtitle", name: "subtitle", widget: "string", tagname: 'h2', required: false}
     - {label: "Dates", name: "date", widget: "number", default: 2000, value_type: "int", min: 2000, max: 2100, step: 1, required: false}
     - {label: 'Color', name: 'color', widget: 'color', enableAlpha: true, allowInput: true, required: false}
     - {label: "Tags", name: "tags", widget: "select", multiple: true, options: ["case study", "presentation", "research", "design", "responsive", "desktop", "mobile"], default: ["case study"]}
