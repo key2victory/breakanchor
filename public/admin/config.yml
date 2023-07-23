@@ -50,15 +50,12 @@ collections:
         fields:
         - label: "Cell Size"
           name: "size"
-          widget: "select"
-          required: false,
+          widget: "list"
+          required: false
           hint: 'Specify how many Geist grid columns cell should span for different device sizes'
-          options:
-          - { label: "xs", name: "xs", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
-          - { label: "sm", name: "sm", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
-          - { label: "md", name: "md", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
-          - { label: "lg", name: "md", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
-          - { label: "xl", name: "md", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
+          fields:
+          - {label: "Device", name: "device", widget: "select", multiple: false, options: ["xs","sm","md","lg","xl"], default: ["xs"]}
+          - { label: "Columns", name: "columns", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
         - { label: 'text', name: 'markdown', widget: 'markdown' }
       - label: 'Image Cell'
         name: 'image'
@@ -66,15 +63,12 @@ collections:
         fields:
         - label: "Cell Size"
           name: "size"
-          widget: "select"
-          required: false,
+          widget: "list"
+          required: false
           hint: 'Specify how many Geist grid columns cell should span for different device sizes'
-          options:
-          - { label: "xs", name: "xs", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
-          - { label: "sm", name: "sm", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
-          - { label: "md", name: "md", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
-          - { label: "lg", name: "md", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
-          - { label: "xl", name: "md", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
+          fields:
+          - {label: "Device", name: "device", widget: "select", multiple: false, options: ["xs","sm","md","lg","xl"], default: ["xs"]}
+          - { label: "Columns", name: "columns", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
         - { label: 'Image', name: 'image', widget: 'image', choose_url: true }
         - { label: "width", name: "width", widget: "string", default: "100%" }
         - { label: "height", name: "height", widget: "string", default: "auto" }
@@ -85,15 +79,12 @@ collections:
         fields:
         - label: "Cell Size"
           name: "size"
-          widget: "select"
-          required: false,
+          widget: "list"
+          required: false
           hint: 'Specify how many Geist grid columns cell should span for different device sizes'
-          options:
-          - { label: "xs", name: "xs", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
-          - { label: "sm", name: "sm", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
-          - { label: "md", name: "md", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
-          - { label: "lg", name: "md", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
-          - { label: "xl", name: "md", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
+          fields:
+          - {label: "Device", name: "device", widget: "select", multiple: false, options: ["xs","sm","md","lg","xl"], default: ["xs"]}
+          - { label: "Columns", name: "columns", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
         - { label: 'Image', name: 'image', widget: 'image', choose_url: true }
         - { label: "width", name: "width", widget: "string", default: "100%" }
         - { label: "height", name: "height", widget: "string", default: "auto" }
