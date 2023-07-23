@@ -3,7 +3,7 @@ backend:
   #name: github
   repo: key2victory/breakanchor
   branch: main # master # Branch to update (optional; defaults to master)
-  backend: local_backend
+  #backend: local_backend
 # This line should *not* be indented
 #publish_mode: editorial_workflow
 
@@ -23,25 +23,6 @@ public_folder: "/img/" # The src attribute for uploaded media will begin with /i
 # {{hour}}: 2-digit hour of the file creation date
 # {{minute}}: 2-digit minute of the file creation date
 # {{second}}: 2-digit second of the file creation date
-
-collections:
-  - name: "case-study" # Used in routes, e.g., /admin/collections/blog
-    label: "Case Study" # Used in the UI
-    folder: "./src/collections/" # The path to the folder where the documents are stored
-    extension: "json" #
-    create: true # Allow users to create new documents in this collection
-    slug: "case/{{path}}" # Filename template, e.g., YYYY-MM-DD-title.md
-    fields:
-    - {label: "Page Layout", name: "layout", widget: "select", options: ["left", "center", "hero"]}
-    - {label: "Title", name: "title", widget: "string"}
-    - {label: "Subtitle", name: "subtitle", widget: "string"}
-    - {label: "Path", name: "path", widget: "string", ""}
-    - {label: "Dates", name: "date", widget: "number", default: 2000, value_type: "int", min: 2000, max: 2100, step: 1}
-    - {label: 'Color', name: 'color', widget: 'color', enableAlpha: true, allowInput: true }
-    - {label: "Tags", name: "tags", widget: "select", multiple: true, options: ["case study", "presentation", "research", "design", "responsive", "desktop", "mobile"], default: ["case study"]}
-    - {label: "Featured Image", name: "thumbnail", widget: "image"}
-    - {label: "Hero Image", name: "hero", widget: "image"}
-    - {label: "Grid Row", name: "gridContainer", widget: "markdown"}
 
 collections:
   - name: "case" # Used in routes, e.g., /admin/collections/blog
