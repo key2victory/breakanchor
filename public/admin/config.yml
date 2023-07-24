@@ -10,7 +10,7 @@ backend:
 site_url: https://breakanchor.com/
 
 # This line should *not* be indented
-media_folder: "img/" # Media files will be stored in the repo under images/uploads
+media_folder: "public/img/" # Media files will be stored in the repo under images/uploads
 
 # These lines should *not* be indented
 #media_folder: "static/img/uploads" # Media files will be stored in the repo under static/images/uploads
@@ -44,6 +44,21 @@ collections:
       name: "gridContainer"
       widget: 'list'
       types:
+      - label: 'Collapse Cell'
+        name: 'collapse'
+        widget: 'object'
+        fields:
+        - label: "Cell Size"
+          name: "size"
+          widget: "list"
+          required: false
+          hint: 'Specify how many Geist grid columns cell should span for different device sizes'
+          fields:
+          - {label: "Device", name: "device", widget: "select", multiple: false, options: ["xs","sm","md","lg","xl"], default: ["xs"]}
+          - { label: "Columns", name: "columns", widget: "number", default: 24, value_type: "int", min: 0, max: 24, step: 1 }
+        - {label: "Title", name: "title", widget: "string"},
+        - { label: 'Expanded?', name: 'initialVisible', widget: 'boolean', default: false}
+        - { label: 'text', name: 'markdown', widget: 'markdown' }
       - label: 'Text Cell'
         name: 'text'
         widget: 'object'
