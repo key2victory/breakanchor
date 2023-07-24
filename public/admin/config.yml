@@ -30,9 +30,10 @@ collections:
     folder: "./src/collections/" # The path to the folder where the documents are stored
     extension: "json" #
     create: true # Allow users to create new documents in this collection
-    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    slug: "{{path}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields:
     - {label: "Page Layout", name: "layout", widget: "select", options: ["left", "center", "hero"]}
+    - {label: "Path", name: "path", widget: "string", hint: 'breakanchor.com/{path}'}
     - {label: "Title", name: "title", widget: "string", tagname: 'h1'}
     - {label: "Subtitle", name: "subtitle", widget: "string", tagname: 'h2', required: false}
     - {label: "Dates", name: "date", widget: "number", default: 2000, value_type: "int", min: 2000, max: 2100, step: 1, required: false}
