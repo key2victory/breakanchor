@@ -43,7 +43,7 @@ collections:
     - label: "Grid Row"
       name: "gridContainer"
       widget: 'list'
-      field:
+      fields:
       - label: "Grid Cell"
         name: "gridContainer"
         widget: 'list'
