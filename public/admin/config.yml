@@ -14,7 +14,7 @@ media_folder: "public/img/" # Media files will be stored in the repo under image
 
 # These lines should *not* be indented
 #media_folder: "static/img/uploads" # Media files will be stored in the repo under static/images/uploads
-public_folder: "/img/" # The src attribute for uploaded media will begin with /images/uploads
+public_folder: "/public/img/" # The src attribute for uploaded media will begin with /images/uploads
 
 # {{slug}}: a url-safe version of the title field (or identifier field) for the file
 # {{year}}: 4-digit year of the file creation date
