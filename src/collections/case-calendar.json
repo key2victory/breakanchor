@@ -23,18 +23,6 @@
               "columns": 24
             }
           ]
-        },
-        {
-          "type": "collapse",
-          "initialVisible": false,
-          "cardTitle": "Research and Analysis",
-          "markdown": "When using traditional hand-written paper or dry-erase calendars, people tend to emphasize significant events with color highlighting, circling,or simply writing in big, bold letters, and they use more subtle styling such as smaller handwriting for events that are less significant. This creates a natural visual hierarchy that is lost when digital calendars represent events with equal emphasis.",
-          "size": [
-            {
-              "device": "xs",
-              "columns": 24
-            }
-          ]
         }
       ]
     },
@@ -62,8 +50,31 @@
             {
               "device": "xs",
               "columns": 24
+            },
+            {
+              "device": "sm",
+              "columns": 24
+            },
+            {
+              "device": "md",
+              "columns": 12
+            },
+            {
+              "device": "lg",
+              "columns": 12
+            },
+            {
+              "device": "xl",
+              "columns": 8
             }
           ]
+        },
+        {
+          "type": "image",
+          "width": "602px",
+          "height": "469px",
+          "image": "/public/img/calendar-04.png",
+          "alt": "magnetic calendar tiles arranged on a piece of sheet metal with colored labels marking weekends and holidays"
         }
       ]
     }
