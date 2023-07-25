@@ -42,8 +42,8 @@
         },
         {
           "type": "image",
-          "width": "1175px",
-          "height": "957px",
+          "width": "586px",
+          "height": "478px",
           "image": "/public/img/calendar-03.png",
           "alt": "a gold framed dry erase calendar with the word \"honeymoon\" in bold pink letters across the last week of the month.",
           "size": [
@@ -74,7 +74,29 @@
           "width": "602px",
           "height": "469px",
           "image": "/public/img/calendar-04.png",
-          "alt": "magnetic calendar tiles arranged on a piece of sheet metal with colored labels marking weekends and holidays"
+          "alt": "magnetic calendar tiles arranged on a piece of sheet metal with colored labels marking weekends and holidays",
+          "size": [
+            {
+              "device": "xs",
+              "columns": 24
+            },
+            {
+              "device": "sm",
+              "columns": 24
+            },
+            {
+              "device": "md",
+              "columns": 12
+            },
+            {
+              "device": "lg",
+              "columns": 12
+            },
+            {
+              "device": "xl",
+              "columns": 4
+            }
+          ]
         }
       ]
     }
