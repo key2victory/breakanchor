@@ -99,6 +99,67 @@
           ]
         }
       ]
+    },
+    {
+      "gridContainer": [
+        {
+          "type": "text",
+          "markdown": "In Google Calendar's month view, all-day events are highlighted with color blocks, while timed events are displayed with equal visual emphasis and may be hidden to conserve space. I noticed that timed significant events were being hidden to make room for displaying insignificant events just because they were all-day."
+        },
+        {
+          "type": "card",
+          "width": "100%",
+          "height": "auto",
+          "image": "/public/img/calendar-05.png",
+          "markdown": "1. Non-recurring significant appointment has low visual emphasis\n2. Non-recurring significant appointment is hidden\n3. Insignificant recurring weekly all-day events are emphasized months in advance",
+          "alt": "screenshot of Google Calendar's month view"
+        },
+        {
+          "type": "text",
+          "markdown": "While it's true that many significant events happen to be all-day, there is a fatal flaw with this logic. Birthdays, holidays, festivals, business conferences, etc. are not significant because they occur all day – they're significant because they occur once a year."
+        }
+      ]
+    },
+    {
+      "gridContainer": [
+        {
+          "type": "card",
+          "width": "100%",
+          "height": "auto",
+          "markdown": "I discovered an inverse relationship between recurrence and significance – the most important events occur the least frequently, and time-sensitive appointments with no recurrence may be more significant than all-day events. Rarity can be calculated based on recurrence patterns, which means significance can be detected more predictably and styled with appropriate emphasis in the visual hierarchy.",
+          "image": "/public/img/calendar-02.png",
+          "alt": "chart depicting the inverse relationship between recurrence and significance"
+        }
+      ]
+    },
+    {
+      "gridContainer": [
+        {
+          "type": "image",
+          "width": "100%",
+          "height": "auto",
+          "image": "/public/img/calendar-01.png",
+          "alt": "early sketch of layout composition"
+        }
+      ]
+    },
+    {
+      "gridContainer": [
+        {
+          "type": "collapse",
+          "initialVisible": false,
+          "markdown": "I designed and built a React web app that pulls weather and calendar information into a single prioritized view. To make sure the calendar app would be visible when the information is most relevant, I used a single-board tiny computer to automate turning on the bedroom TV to display the app each morning.\n\n\n\n#### Key Features\n\n* Hourly weather forecast graph in relation to daily events\n* 6-Day weather forecast graph in relation to weekly events\n* 6-month rolling view of significant events grouped by week\n* Dark theme to reduce screen brightness during morning hours",
+          "cardTitle": "Solution"
+        },
+        {
+          "type": "card",
+          "width": "100%",
+          "height": "auto",
+          "markdown": "#### Technical implementation\n\n* Events are created and stored in Google Calendars.\n* A Google Apps Script imports events into Google Sheets, where data is filtered, sorted, and prioritized.\n* A sanitized CSV endpoint is generated from the Sheets data using functions and published.\n* CSV data is converted to JSON using PapaParse.js, while weather data is obtained from Open Meteo's API.\n* The React web app renders the integrated weather and calendar information.\n* A small single-board computer automatically turns on the bedroom TV to display the app each morning.",
+          "image": "/public/img/calendar-diagram-v.png",
+          "alt": "flow diagram depicting the technical implementation"
+        }
+      ]
     }
   ]
 }
