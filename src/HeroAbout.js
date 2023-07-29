@@ -1,19 +1,19 @@
 import { memo, useState, useEffect, Fragment } from "react";
-import NavPanel from "./AppNav";
+
+
 import "./styles.css";
 
 export const HeroAbout = memo(function HeroAbout({
+  theme,
   deviceSize,
   hide = false,
-  // device = "small",
   style = {
-    //  background: "hsla(40,10%,70%,100%)", //"hsla(0,0%,20%,80%)", 
   }
 }) {
 
   const autoStyle = {
     small: { flexFlow: "row wrap", borderRadius: "1rem", background: "hsla(40,10%,70%,0%)" },
-    large: { flexFlow: "column nowrap", borderRadius: 0, background: "hsla(0,0%,0%,20%)" },
+    large: { flexFlow: "column nowrap", borderRadius: 0, background: "hsla(0,0%,0%,0%)" },
   }
 
   //const autoStyle = ["xs", "sm"].includes(media) ? deviceSize.small : deviceSize.large;
@@ -53,19 +53,18 @@ export const HeroAbout = memo(function HeroAbout({
       }}>
         <h3
           style={{
-            color: deviceSize === "small" ? "hsl(0,0%,40%)" : "hsl(0,0%,90%)",
+            color: deviceSize === "small" ? "hsla(0,0%,0%,60%)" : "hsla(0,0%,0%,50%)",
             width: "auto",
-            // minWidth: "max-content"
           }}
         >
           Janna Curtis
         </h3>
         <h5 style={{
-          color: deviceSize === "small" ? "hsl(0,0%,50%)" : "hsl(0,0%,70%)",
+          color: deviceSize === "small" ? "hsl(0,0%,50%)" : "hsla(0,0%,0%,30%)",
           width: "auto",
-          // minWidth: "max-content"
         }}>break anchor design</h5>
       </span>
+
     </div>
   );
 })

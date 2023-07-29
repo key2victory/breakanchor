@@ -160,64 +160,7 @@ const NavButton = memo(function NavCard({ item, style }) {
   );
 });
 
-const NavCardAbout = memo(function NavCardAbout({
-  style,
-  className,
-  size = "large"
-}) {
-  const styleOption = {
-    small: {
-      color: "hsl(0,0%,70%)",
-      textDecoration: "none",
-      fontSize: "1.25rem",
-      gap: "1rem",
-      padding: "1rem"
-    },
-    large: {
-      color: "hsl(0,0%,70%)",
-      textDecoration: "none",
-      fontSize: "1.25rem",
-      gap: "1rem",
-      padding: "1rem 2rem 1rem 1rem"
-    }
-  };
-  return (
-    <div
-      className={`${size === "small" ? "row left nowrap" : "col center"
-        } mobile-hide phablet-hide`}
-      // to="/"
-      style={styleOption[size]}
-    >
-      <img
-        className="mobile-hide phablet-hide"
-        width={size === "small" ? "56" : "120"}
-        src="./img/jmc.png"
-        alt=""
-      />
-      <div
-        className={`col center ${size === "small" ? "left" : ""} mobile-hide phablet-hide`}
-        style={{
-          gap: ".25rem",
-          width: size === "small" ? "auto" : "100%",
-          margin: size === "small" ? "0" : "-1rem 0 0 0"
-        }}
-      >
-        <h3
-          className="center"
-          style={{
-            color: "hsl(0,0%,90%)",
 
-            // transform: "translateY(-1.25rem)",
-            //  textShadow: "2px 2px 20px hsl(0,0%,0%)"
-          }}
-        >
-          Janna Curtis
-        </h3>
-        <h5>break anchor design</h5>
-      </div>
-    </div>
-  );
-});
 
 export const NavCard = memo(function NavCard({
   icon,
@@ -242,7 +185,7 @@ export const NavCard = memo(function NavCard({
     <Link
       className={`nav-link page ${className} umami--click--AppNav/${path}`}
       // key={`${item.path}-${index}`}
-      to={`/${path}`}
+      to={`${path}`}
       style={linkStyle}
     >
       <div
@@ -264,6 +207,7 @@ export const NavCard = memo(function NavCard({
             //  nonInteraction: true, // optional, true/false
             // transport: "xhr", // optional, beacon/xhr/image
           });
+
         }}
       >
         {icon !== undefined ? <IconRender /> : null}
@@ -349,7 +293,7 @@ export default function AppNavFlyout({ showNav, media, onClickExit }) {
 
 export function NavPanel({
   className, //= "mobile-hide phablet-hide box-shadow-edged",//nav-panel,
-  background = "hsl(0,0%,35%)",
+  background = "hsla(0,0%,35%,0%)",
   showNav,
   media,
   onClickExit
@@ -428,6 +372,7 @@ export function NavPanel({
           borderTop={borderStyle}
           borderBottom=""
         />
+
         {/* <NavCard
           icon={RiStackshareLine}
           title="Learning Connections"

@@ -4,7 +4,7 @@ import { createRoot } from "react-dom/client";
 
 import App from "./App";
 import {
-  createHashRouter,
+  // createHashRouter,
   createBrowserRouter,
   RouterProvider,
   Link
@@ -22,6 +22,8 @@ import { PageConference } from "./PageConference";
 //import { PageContainer } from "./PageContainer";
 import { PageClearanceTracker } from "./PageClearanceTracker";
 import { PageResearcherTools } from "./PageResearcherTools";
+import { Page404 } from "./Page404";
+import { PageContent } from "./Pages";
 /*
 import { pages } from "./Pages";
 
@@ -38,27 +40,14 @@ const router = createHashRouter(
     </Route>
   )
 );*/
-const router = createHashRouter([
+const router = createBrowserRouter([
   {
     path: "*",
     Component: App,
     children: [
       {
-        index: true,
-        Component: PageProjects,
+        Component: Page404,
       },
-      { path: "about", Component: PageAbout, },
-      { path: "projects", Component: PageProjects, },
-      { path: "presentations", Component: PagePresentations },
-      { path: "learning", Component: PageLearning },
-      { path: "projects/audiohand", Component: PageAudiohand },
-      { path: "projects/calendar", Component: PageCalendar },// handle: { crumb: () => <Link to="/projects">Projects</Link>, current: "Calendar" } },
-      { path: "projects/clearance-tracker", Component: PageClearanceTracker },
-      { path: "projects/finance", Component: PageFinance },
-      { path: "projects/flashcards", Component: PageFlashcards },
-      { path: "projects/gbc", Component: PageConference },
-      { path: "projects/loto", Component: PageLockOut },
-      { path: "projects/researcher-tools", Component: PageResearcherTools },
     ],
   },
   {
@@ -69,6 +58,7 @@ const router = createHashRouter([
         index: true,
         Component: PageProjects,
       },
+      { path: "geist", Component: PageContent, },
       { path: "about", Component: PageAbout, },
       { path: "projects", Component: PageProjects, },
       { path: "presentations", Component: PagePresentations },
@@ -91,4 +81,4 @@ const router = createHashRouter([
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
-root.render(<RouterProvider router={router} />);
+root.render(<RouterProvider router={router}><App /></RouterProvider>);

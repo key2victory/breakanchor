@@ -7,11 +7,14 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
+    "@geist-ui/core": "^2.3.8",
     "@uidotdev/usehooks": "^2.0.1",
+    "@umami/api-client": "^0.37.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-ga4": "^2.1.0",
     "react-icons": "^4.10.1",
+    "react-markdown": "^8.0.7",
     "react-router-dom": "6.12.1",
     "react-scripts": "5.0.1"
   },

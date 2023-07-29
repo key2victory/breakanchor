@@ -2,6 +2,7 @@ import { memo, useState, useEffect, Fragment } from "react";
 import { useHover } from "@uidotdev/usehooks";
 import { useLocation } from "react-router-dom";
 import ReactGA from "react-ga4";
+import { useUmami } from "./AnalyticsTracker";
 //styling
 //import './Count.css';
 
@@ -65,6 +66,7 @@ import {
   RiEdit2Line,
   RiBox2Line
 } from "react-icons/ri";
+import { umami } from "./AnalyticsTracker";
 
 const ChipTag = memo(function ChipTag({
   textColor = "hsla(0,0%,40%,100%)",
@@ -121,7 +123,6 @@ export const IconTag = memo(function IconTag({
   solid = true,
   style,
   onClick,
-  'data-umami-event': dataUmamiEvent,
 }) {
   const IconList = {
     mobile: MdOutlineSmartphone,
@@ -175,7 +176,7 @@ export const Note = memo(function Note({
   description,
   hsize = 4,
   children,
-  background = "hsl(40,10%,90%)",//hsl(39, 14%, 80%) 0%, hsl(40, 7%, 60%) 100%)
+  background = "hsl(40,10%,100%)",//hsl(39, 14%, 80%) 0%, hsl(40, 7%, 60%) 100%)
   color = "black",
   collapse = false,
   container = true,
@@ -349,13 +350,15 @@ export const Header = memo(function Header({
 }) {
   return (
     <div
-      className="row wrap center between"
+      className="row wrap bottom between"
       style={{
         //display:
         //gridTemplateColumns: "1fr auto",
         height: "auto",
         color: color,
         // zIndex: 10,
+        paddingBottom: ".8rem",
+        borderBottom: `4px solid ${color}`,
         overflow: "visible",
         gap: "1rem",
         ...style,
@@ -413,7 +416,7 @@ export const ButtonAction = memo(function ButtonAction({ label, color, backgroun
 
   if (url !== undefined) {
     return (<a
-      className={`umami--click--${location.pathname}/ButtonAction`}
+      // className={`umami--click--${location.pathname}/ButtonAction`}
       style={{
         outline: "none",
         textDecoration: "none",
@@ -442,6 +445,7 @@ export const ButtonAction = memo(function ButtonAction({ label, color, backgroun
           cursor: "pointer"
         }}
         onClick={() => {
+          useUmami("Action Button", { description: actionDescription });
           ReactGA.event({
             category: "button",
             action: "click",
@@ -460,43 +464,42 @@ export const ButtonAction = memo(function ButtonAction({ label, color, backgroun
   }
   else {
     return (
-      <span className={`umami--click--ActionButton${location.pathname}`}>
-        <button
-          ref={ref}
-          className="button box-shadow-shallow"
-          style={{
-            display: "flex",
-            flexFlow: "column nowrap",
-            alignItems: "center",
-            flexGrow: 0,
-            flexShrink: 0,
-            flexBasis: "auto",
-            width: "max-content",
-            height: "min-content",
-            outline: "none",
-            border: "none",
-            color: color,
-            backgroundColor: hover ? hoverColor : backgroundColor,
-            cursor: "pointer"
-          }}
-          onClick={() => {
-            ReactGA.event({
-              category: "jmc_button",
-              action: "jmc_click_button",
-              label: `clicked ${label} to ${actionDescription}, at ${location.pathname}`, // optional
+      <button
+        ref={ref}
+        className="button box-shadow-shallow"
+        style={{
+          display: "flex",
+          flexFlow: "column nowrap",
+          alignItems: "center",
+          flexGrow: 0,
+          flexShrink: 0,
+          flexBasis: "auto",
+          width: "max-content",
+          height: "min-content",
+          outline: "none",
+          border: "none",
+          color: color,
+          backgroundColor: hover ? hoverColor : backgroundColor,
+          cursor: "pointer"
+        }}
+        onClick={() => {
+          useUmami("Action Button", { description: actionDescription })
+          ReactGA.event({
+            category: "jmc_button",
+            action: "jmc_click_button",
+            label: `clicked ${label} to ${actionDescription}, at ${location.pathname}`, // optional
 
-              //value: 99, // optional, must be a number
-              //  nonInteraction: true, // optional, true/false
-              // transport: "xhr", // optional, beacon/xhr/image
-            });
-            onClick();
-          }}
-        >
-          {label}
-          {children}
+            //value: 99, // optional, must be a number
+            //  nonInteraction: true, // optional, true/false
+            // transport: "xhr", // optional, beacon/xhr/image
+          });
+          onClick();
+        }}
+      >
+        {label}
+        {children}
 
-        </button>
-      </span>
+      </button>
     );
   }
 });
@@ -594,11 +597,11 @@ export const BulletList = memo(function BulletList({ title, hsize = 4, items, or
   const List = `${ordered ? "o" : "u"}l`;
   return (
     <section className="p col" style={{
-      gap: ".75rem", margin: 0, padding: 0
+      gap: ".75rem", margin: 0, padding: 0, textAlign: "left"
     }}>
       {title !== "" && title !== undefined ? (<H>{title}</H>) : null}
       <List className="col" style={{
-        gap: ".5rem", margin: 0, padding: "0 0 0 1.5rem"
+        gap: "1rem", margin: 0, padding: "0 0 0 1.5rem",
       }}>
         {items !== undefined ? items.map((v, k) => (<li key={k}>{v}</li>)) : children}
       </List>
@@ -614,7 +617,9 @@ export const ImageCard = memo(function ImageCard({
   minImgSize = 248,
   children,
   imageBackground = "hsl(0,0%,80%)",
+  cardBackground = "hsl(0,0%,100%)",
   imageStyle,
+  shadow = true,
   style
 }) {
 
@@ -622,32 +627,29 @@ export const ImageCard = memo(function ImageCard({
     return (
       <div className="col center"
         style={{
-
           width: mediaSize === "small" ? "100%" : `${minImgSize}px`,
           height: mediaSize !== "small" ? "100%" : `${minImgSize}px`,
           minWidth: `${minImgSize}px`,
           maxWidth: "100%",
           minHeight: `${minImgSize}px`,
-
           overflow: "hidden",
-
-          background: `url(${src}), ${imageBackground}`,
+          backgroundImage: `url(${src})`,
+          backgroundColor: `${imageBackground}`,
           backgroundSize: mediaSize === "small" ? "auto 100%" : "100% auto",// 100% 100%",
           backgroundRepeat: "no-repeat",
           backgroundPosition: mediaSize === "small" ? "top right" : "center",
           flexGrow: 1,
           flexShrink: 3,
           ...style
-
         }}>
         {/* <img className="image" src={src} alt="" width="auto" height="auto" />*/}
       </div>)
   };
 
   return (
-    <div className="grid box-shadow"//row top wrap
+    <div className={`grid ${shadow ? "box-shadow" : ""}`}//row top wrap
       style={{
-        background: "hsla(40,5%,90%,100%)",
+        background: cardBackground,//"hsla(40,5%,90%,100%)",
         width: "100%",
         height: "auto",
         maxWidth: "800px",//`calc(${minImgSize}px + 38rem)`,
@@ -656,7 +658,7 @@ export const ImageCard = memo(function ImageCard({
         // overflow: "hidden",
         // gap: "1.5rem",
         flexShrink: 0,
-        borderTop: "1px solid hsla(0,0%,0%,20%)",
+        borderTop: shadow ? "1px solid hsla(0,0%,0%,20%)" : "none",
         padding: 0,//"1.5rem",//"1.5rem 0 0 0",
         margin: "0 0 .5rem 0",
         ...style
@@ -687,7 +689,8 @@ export const ImageCard = memo(function ImageCard({
   )
 });
 
-export const ImageCell = ({ src, background = "hsl(0,0%,100%)", className, style, imgStyle }) => {
+export const ImageCell = ({ src, background = "hsl(0,0%,100%)",
+  className, style, imgStyle }) => {
   return (
     <div
       className={className}

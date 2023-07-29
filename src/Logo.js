@@ -63,7 +63,7 @@ const LogoWatkins = memo(function LogoWatkins({ size = "100%" }) {
   );
 });
 
-const LogoCadre5 = memo(function LogoCadre5(size = "100%") {
+const LogoCadre5 = memo(function LogoCadre5({ size = "100%" }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +90,7 @@ const LogoCadre5 = memo(function LogoCadre5(size = "100%") {
   );
 });
 
-const LogoBechtel = memo(function LogoBechtel(size = "100%") {
+const LogoBechtel = memo(function LogoBechtel({ size = "100%" }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

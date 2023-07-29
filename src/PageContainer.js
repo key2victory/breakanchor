@@ -1,6 +1,7 @@
 import { memo, useState, useEffect, Fragment } from "react";
 import { Hero } from "./Hero";
 import { useOutletContext } from "react-router-dom";
+import { GeistProvider, CssBaseline, Page, Image, Grid, Collapse, Card, Text } from '@geist-ui/core';
 import PageAbout from "./PageAbout";
 import { PageAudiohand } from "./PageAudiohand";
 import { PageCalendar } from "./PageCalendar";
@@ -13,6 +14,7 @@ import { PageFlashcards } from "./PageFlashcards";
 import { PageFinance } from "./PageFinance";
 import { PageConference } from "./PageConference";
 import ReactGA from "react-ga4";
+
 
 
 const PageContent = ({ title }) => {
@@ -49,16 +51,16 @@ export const PageContainer = memo(function PageContainer({ layout = "hero", back
     }
     const pageLayout = {
         hero: {
-            xl: { gridTemplateColumns: "minmax(0,1fr) [content] minmax(589px,1000px) [hero] minmax(414px,800px) minmax(0,1fr)", gridTemplateRows: "100%", padding: "0 2rem", columnGap: "2rem" },
-            lg: { gridTemplateColumns: "[content] minmax(0,60%) [hero] minmax(0,40%)", gridTemplateRows: "100%", maxWidth: "100%", padding: "0 2rem 0rem 2rem", columnGap: "2rem" },
-            md: { gridTemplateColumns: "[content] minmax(400px,800px)", gridTemplateRows: "100%", maxWidth: "100%", padding: "0 1.5rem",/*"0 4vw",*/ columnGap: "0" },
-            sm: { gridTemplateColumns: "[content] 100%", gridTemplateRows: "100%", maxWidth: "100%", padding: "0 1.5rem",/*"0 4vw 0 4vw",*/ columnGap: "0" },
-            xs: { gridTemplateColumns: "[content] 100%", gridTemplateRows: "100%", maxWidth: "100%", padding: "0 1rem 0 1rem", columnGap: "0rem" },
+            xl: { gridTemplateColumns: "[content] minmax(589px,1000px) [hero] minmax(414px,800px) minmax(0,1fr)", gridTemplateRows: "100%", padding: "0", columnGap: "2rem" },
+            lg: { gridTemplateColumns: "[content] minmax(0,60%) [hero] minmax(0,40%)", gridTemplateRows: "100%", maxWidth: "100%", padding: "0", columnGap: "2rem" },
+            md: { gridTemplateColumns: "[content] minmax(400px,800px)", gridTemplateRows: "100%", maxWidth: "100%", padding: "0",/*"0 4vw",*/ columnGap: "0" },
+            sm: { gridTemplateColumns: "[content] 100%", gridTemplateRows: "100%", maxWidth: "100%", padding: "0",/*"0 4vw 0 4vw",*/ columnGap: "0" },
+            xs: { gridTemplateColumns: "[content] 100%", gridTemplateRows: "100%", maxWidth: "100%", padding: "0", columnGap: "0rem" },
         },
         center: {
-            xl: { gridTemplateColumns: "[content] 100%", gridTemplateRows: "100%", padding: "0 2rem", columnGap: "2rem" },
-            lg: { gridTemplateColumns: "[content] 100%", gridTemplateRows: "100%", maxWidth: "100%", padding: "0 2rem 0rem 2rem", columnGap: "2rem" },
-            md: { gridTemplateColumns: "[content] 100%", gridTemplateRows: "100%", maxWidth: "100%", padding: "0 1.5rem",/*"0 4vw",*/ columnGap: "0" },
+            xl: { gridTemplateColumns: "[content] 100%", gridTemplateRows: "100%", padding: "0", columnGap: "2rem" },
+            lg: { gridTemplateColumns: "[content] 100%", gridTemplateRows: "100%", maxWidth: "100%", padding: "0", columnGap: "2rem" },
+            md: { gridTemplateColumns: "[content] 100%", gridTemplateRows: "100%", maxWidth: "100%", padding: "0",/*"0 4vw",*/ columnGap: "0" },
             sm: { gridTemplateColumns: "[content] 100%", gridTemplateRows: "100%", maxWidth: "100%", padding: "0 1.5rem",/*"0 4vw 0 4vw",*/ columnGap: "0" },
             xs: { gridTemplateColumns: "[content] 100%", gridTemplateRows: "100%", maxWidth: "100%", padding: "0 1rem 0 1rem", columnGap: "0rem" },
         },
@@ -68,24 +70,25 @@ export const PageContainer = memo(function PageContainer({ layout = "hero", back
 
     const scrollContent = {
         hero: {
-            xl: { padding: "64px 0 4rem 0", gap: "1rem" },
-            lg: { padding: "64px 0 4rem 0", gap: "1rem" },
-            md: { padding: "64px 0 4rem 0", gap: "1rem" },
-            sm: { padding: "1rem 0 4rem 0", gap: "1rem" },
-            xs: { padding: "1rem 0 4rem 0", gap: "1rem" },
+            xl: { padding: "64px 4rem 4rem 4rem", gap: "1rem" },
+            lg: { padding: "64px 2rem 4rem 2rem", gap: "1rem" },
+            md: { padding: "64px 1.5rem 4rem 1.5rem", gap: "1rem" },
+            sm: { padding: "1rem 1.5rem 4rem 1.5rem", gap: "1rem" },
+            xs: { padding: "1rem 1rem 4rem 1rem", gap: "1rem" },
         },
         center: {
-            xl: { padding: "64px 0 4rem 0", gap: "1rem", margin: "0 auto 0 auto", maxWidth: "1200px" },
-            lg: { padding: "64px 0 4rem 0", gap: "1rem", margin: "0 auto 0 auto", maxWidth: "1200px" },
-            md: { padding: "64px 0 4rem 0", gap: "1rem", margin: "0 auto 0 auto" },
-            sm: { padding: "1rem 0 4rem 0", gap: "1rem", margin: "0 auto 0 auto" },
-            xs: { padding: "1rem 0 4rem 0", gap: "1rem", margin: "0 auto 0 auto" },
+            xl: { padding: "64px 4rem 4rem 4rem", gap: "1rem", margin: "0 auto 0 auto", maxWidth: "1200px" },
+            lg: { padding: "64px 2rem 4rem 2rem", gap: "1rem", margin: "0 auto 0 auto", maxWidth: "1200px" },
+            md: { padding: "64px 1.5rem 4rem 1.5rem", gap: "1rem", margin: "0 auto 0 auto" },
+            sm: { padding: "1rem 1.5rem 4rem 1.5rem", gap: "1rem", margin: "0 auto 0 auto" },
+            xs: { padding: "1rem 1rem 4rem 1rem", gap: "1rem", margin: "0 auto 0 auto" },
         }
 
         // hero: "scroll-content left",
         // center: "scroll-content",
         // left: "scroll-content left",
     }
+
     return (
         <div className="page-container col top center"
             style={{
@@ -94,14 +97,16 @@ export const PageContainer = memo(function PageContainer({ layout = "hero", back
                 gridRow: "content / span 1",
                 minHeight: 0,
                 minWidth: 0,
-                background: "linear-gradient(180deg, hsla(0,0%,20%,10%) 20%, transparent 20%)",
+                //  background: "linear-gradient(90deg, hsla(0,0%,100%,100%) 0%, transparent 100%)",
                 transitioProperty: "padding, margin",
                 transitionDuration: "2s",
                 transitionTimingFunction: "linear",
                 transitionOrigin: "center"
             }}
         >
-            <div className="grid-scroll-zone grid"
+            <div
+                id="scroll-container"
+                className="grid-scroll-zone grid"
                 style={{
                     //  position: "absolute",
                     //  top: 0, right: 0, bottom: 0, left: 0,
@@ -117,12 +122,16 @@ export const PageContainer = memo(function PageContainer({ layout = "hero", back
                     // minWidth: 0,
                     ...pageLayout[layout][media]
                 }}>
-                <div className="col top"//"scroll-content" 
+                <div
+                    id="scroll-content"
+                    className="col top"//"scroll-content" 
                     style={{
-                        gridColumn: "content / span 1", gridRow: "1 / span 1", width: "100%", height: "max-content", ...scrollContent[layout][media] //background: "hsl(0,0%,30%)" 
+                        gridColumn: "content / span 1", gridRow: "1 / span 1", width: "100%", height: "max-content", ...scrollContent[layout][media], background: "hsla(0,0%,100%,100%)"
                     }} >
                     {/* <PageContent title={component} />*/}
-                    {children}
+                    <GeistProvider>
+                        {children}
+                    </GeistProvider>
                 </div>
             </div>
             {layout === "hero" ? (

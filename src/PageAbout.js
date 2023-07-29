@@ -11,6 +11,9 @@ import {
   MdCircle,
 } from "react-icons/md";
 import { RiReactjsFill } from "react-icons/ri";
+import { AiFillLinkedin, AiOutlineLinkedin, AiOutlineFacebook, AiOutlineInstagram } from "react-icons/ai";
+import { BiLogoLinkedinSquare, BiLogoFacebookSquare, BiLogoInstagram } from "react-icons/bi";
+
 import { useOutletContext } from "react-router-dom";
 
 
@@ -82,7 +85,18 @@ export default function PageAbout(props) {
    
       */}
       <Header title="About Me"
-        color="hsla(0,0%,0%,50%)" style={{ margin: "0 0 0 0", width: "100%", maxWidth: maxCardWidth }} />
+        color="hsla(0,0%,0%,50%)" style={{ margin: "0 0 0 0", width: "100%", maxWidth: maxCardWidth }}>
+        <AiFillLinkedin size={22} /> <AiOutlineLinkedin size={22} /> <AiOutlineFacebook size={22} /> <AiOutlineInstagram size={22} />
+        <a href="https://www.linkedin.com/in/jannamicole/">
+          <BiLogoLinkedinSquare size={22} />
+        </a>
+        <a href="https://www.facebook.com/jannamicole/">
+          <BiLogoFacebookSquare size={22} />
+        </a>
+        <a href="https://www.instagram.com/jannamicole/">
+          <BiLogoInstagram size={22} />
+        </a>
+      </Header>
       <Group className="grid"//"col nowrap" 
         style={{
           gridTemplateColumns: ["xs", "sm"].includes(media) ? "100%" : "1fr 1fr", //maxWidth: maxCardWidth 
@@ -200,10 +214,6 @@ function CardSection({ title, children, style }) {
 
 
 const CardDates = ({ content, media }) => {
-  // gridColumn: "1 / span 1",
-  // display: "flex",
-  // width: "100%",
-  // height: "100%",
   const responsiveDates = {
     small: {
       gridColumn: "details / span 1",
@@ -211,7 +221,6 @@ const CardDates = ({ content, media }) => {
       textAlign: "left",
       display: "flex",
       flexFlow: "row wrap",
-
       justifyContent: "flex-start",
       alignContent: "flex-start",
       alignItems: "center",
@@ -220,16 +229,12 @@ const CardDates = ({ content, media }) => {
       gridColumn: "date / span 1",
       gridRow: "1 / span 1",
       textAlign: "right",
-
       display: "flex",
       flexFlow: "row wrap",
-
       justifyContent: "flex-end",
       alignContent: "flex-start"
-
     }
   }
-
 
   const responsiveMarker = {
     small: {
@@ -244,7 +249,6 @@ const CardDates = ({ content, media }) => {
   return (
     <Fragment>
       <span
-        // className="resume-dates responsive"
         style={{
           width: "100%",
           alignItems: "flex-start",
@@ -261,9 +265,6 @@ const CardDates = ({ content, media }) => {
                 fontSize: "1rem",
                 width: "auto",
                 height: "auto",
-                // flexGrow: 0,
-                // flexShrink: 0,
-
               }}
             >
               {content.dates[0]}
@@ -281,8 +282,6 @@ const CardDates = ({ content, media }) => {
             <span
               style={{
                 fontSize: "1.3rem",
-                // width: "min-content",
-                // height: "min-content",
                 width: "auto",
                 height: "auto",
               }}
@@ -299,20 +298,17 @@ const CardDates = ({ content, media }) => {
         )}
       </span>
       <span
-        //className="resume-marker responsive"
         style={{
           width: "2px",
           display: "flex",
           flexFlow: "column nowrap",
           alignItems: "center",
           justifyContent: "flex-start",
-          //height: "100%",
           borderRight: "2px solid hsl(0,0%,80%)",
           padding: ".7rem 0 0 0",
           margin: "0 1rem 0 auto",
           color: "hsl(0,0%,100%)",
           ...responsiveMarker[media]
-          // gap: "0"
         }}
       >
         <MdCircle style={{ transform: "translateX(1px)" }} />

@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useState, useRef } from "react";
 import AppNav, { AppHeader, AppSizer, NavPanel } from "./AppNav";
 import { Outlet, useLocation } from "react-router-dom";
 import { useMediaQuery, useWindowSize } from "@uidotdev/usehooks";
@@ -11,7 +11,7 @@ import "./styles_tablet.css";
 import "./styles_laptop.css";
 import "./styles_desktop.css";
 import ReactGA from "react-ga4";
-import { TRACKING_ID } from "./AnalyticsTracker";
+import { TRACKING_ID, useUmami } from "./AnalyticsTracker";
 //import umami from "https://analytics.umami.is/script.js";
 
 
@@ -19,6 +19,7 @@ export default function App(props) {
   const [showNav, setShowNav] = useState(false);
   const [media, setMedia] = useState(currentSize);
   const [browserSize, setBrowserSize] = useState();
+  const scrollProgress = useRef({ scrollProgress: 0 });
 
   ReactGA.initialize([{ trackingId: TRACKING_ID }])
 
@@ -40,13 +41,35 @@ export default function App(props) {
   }
   let pageLocation = titleDef[location.pathname] !== undefined ? titleDef[location.pathname] : "BreakAnchor";
 
+
+  const selectScrollContainer = document.querySelector("#scroll-container");
+  const selectScrollContent = document.querySelector("#scroll-content")
+  // const scrollTop = selectScrollContainer.scrollTop;
+  // const scrollHeight = selectScrollContainer.scrollHeight;
+  // const scrollClientHeight = selectScrollContainer.clientHeight;
+  // const scrollMax = selectScrollContainer.scrollHeight - selectScrollContainer.clientHeight;
+
+  const handleScroll = () => {
+    const position = Math.min(Math.ceil((selectScrollContainer.scrollTop / (selectScrollContainer.scrollHeight - selectScrollContainer.clientHeight)) * 100), 100);
+    /*console.log(
+       "SCROLL-TOP: ", selectScrollContainer.scrollTop,
+       "SCROLL-HEIGHT: ", selectScrollContainer.scrollHeight,
+       "SCROLL-CLIENT: ", selectScrollContainer.clientHeight,
+       "SCROLL MAX? ", selectScrollContainer.scrollHeight - selectScrollContainer.clientHeight,
+       "SCROLL PROGRESS: ", scrollProgress.current
+     );*/
+
+    if (position > scrollProgress.current) {
+      scrollProgress.current = position;
+    }
+  }
+
+
   useEffect(() => {
     // Google Analytics
-
-
     document.title = pageLocation;
-
-    //console.log(location, titleDef[location])
+    scrollProgress.current = 0;
+    console.log("detected page change and set scroll progress to ", scrollProgress.current)
 
     ReactGA.send({ hitType: "pageview", page: pageLocation, title: `${pageLocation}` });
     const events = document.querySelectorAll("[class*=umami--click]")
@@ -58,7 +81,20 @@ export default function App(props) {
       e.classList.remove(`umami--click--${value}`);
     })
 
+    if (selectScrollContainer !== "undefined" && selectScrollContainer !== null && selectScrollContent !== "undefined" && selectScrollContent !== null
+    ) {
+      selectScrollContainer.addEventListener("scroll", handleScroll);
+      //  return () => selectScrollContainer.removeEventListener("scroll", handleScroll);
+    }
+
   }, [location]);
+
+  useEffect(() => {
+    if (scrollProgress.current > 90) {
+      console.log("detected scroll progress > 90%");
+      useUmami("scrollProgress", { scrollProgress: scrollProgress.current });
+    }
+  }, [scrollProgress.current])
 
 
   const deviceMin = {
@@ -125,7 +161,7 @@ export default function App(props) {
           position: "relative",
           display: "grid",
           ...pageLayout[media],
-          background: "hsl(39, 14%, 80%)",
+          background: "hsl(39, 100%, 50%)",
           transitioProperty: "all",
           transitionDuration: "2s",
           transitionTimingFunction: "linear",

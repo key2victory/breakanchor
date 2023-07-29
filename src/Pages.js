@@ -1,4 +1,138 @@
+import { memo, useState, useEffect, Fragment } from "react";
+import { Hero } from "./Hero";
+import { useOutletContext } from "react-router-dom";
+import { GeistProvider, CssBaseline, Page, Image, Grid, Collapse, Card, Text } from '@geist-ui/core';
+import ReactMarkdown from 'react-markdown'
+import data from "./collections/case-calendar.json";
+
 const present = new Date().getFullYear();
+
+/*const JsonContent = ({ title }) => {
+  const pageList = {
+    audiohand: PageAudiohand,
+    calendar: PageCalendar,
+    loto: PageLockOut,
+    projects: PageProjects,
+    presentations: PagePresentations,
+    asl: PageFlashcards,
+    finance: PageFinance,
+    conference: PageConference
+  }
+  const Content = pageList[title];
+  return (<Content />)
+}*/
+
+export const PageContent = memo(function PageContent({ className = "col nowrap top stretch", heroComponent = "", heroInteraction = false, children }) {
+  const [media, setMedia] = useOutletContext();
+  useEffect(() => {
+    console.log("detected media change in PageContainer")
+  }, [media])
+
+  return (
+    <div //className="page-container col top center"
+      style={{
+        position: "relative",
+        gridColumn: "content / span 1",
+        gridRow: "content / span 1",
+        width: "100%",
+        height: "100%",
+        minHeight: 0,
+        minWidth: 0,
+        background: "linear-gradient(180deg, hsla(0,0%,20%,10%) 20%, transparent 20%)",
+        transitioProperty: "padding, margin",
+        transitionDuration: "2s",
+        transitionTimingFunction: "linear",
+        transitionOrigin: "center",
+        overflowY: "scroll"
+      }}
+    >
+      <GeistProvider>
+        <CssBaseline />
+        <Page style={{}}>
+          <Page.Header />
+          <Page.Content>
+            <Grid.Container >
+              <Grid xl={14} direction="column">
+                <Grid.Container>
+                  <Grid xs={24}>
+                    <h1>{data.title}</h1></Grid>
+                  <Grid xs={24}> <h3>{data.title}</h3></Grid>
+                </Grid.Container>
+                {data.pageContent.map((row_v, row_i) => (
+                  <Grid.Container key={`row${row_i}`} width="100%" height="100%" gap={2} >
+                    {row_v.gridContainer.map((cell_v, cell_i) => (
+                      <Grid
+                        xs={cell_v.xs !== undefined ? ell_v.xs : false}
+                        sm={cell_v.xs !== undefined ? ell_v.sm : false}
+                        md={cell_v.xs !== undefined ? ell_v.md : false}
+                        lg={cell_v.xs !== undefined ? ell_v.lg : false}
+                        xl={cell_v.xs !== undefined ? ell_v.xl : false}
+                        height="auto"
+                      >
+                        {cell_v.type === "collapse" ? (<Card>
+                          <Collapse title={cell_v.cardTitle} width="100%" initialVisible={cell_v.initialVisible}>
+
+                            <ReactMarkdown
+                              components={{
+                                p: ({ node, ...props }) => <Text {...props} />,
+                                //img: ({ node, ...props }) => <Image style={{ maxHeight: "40vh" }} {...props} />
+                              }}>
+                              {cell_v.markdown}
+                            </ReactMarkdown>
+                          </Collapse></Card>) : cell_v.type === "image" ? (<Image width={cell_v.width} height={cell_v.height}
+                            src={cell_v.image} alt={cell_v.alt} />
+                          ) : cell_v.type === "card" ? (<Card><Image width={cell_v.width} height={cell_v.height}
+                            src={cell_v.image} alt={cell_v.alt} />
+                            <ReactMarkdown
+                              components={{
+                                p: ({ node, ...props }) => <Text {...props} />,
+                                //img: ({ node, ...props }) => <Image style={{ maxHeight: "40vh" }} {...props} />
+                              }}>
+                              {cell_v.markdown}
+                            </ReactMarkdown>
+                          </Card>) : null
+                        }
+                      </Grid>)
+                    )}
+
+                  </Grid.Container>
+                ))}
+              </Grid>
+            </Grid.Container>
+
+          </Page.Content>
+          <Page.Footer />
+
+        </Page>
+      </GeistProvider>
+      {
+        data.layout === "hero" ? (
+          <div className="grid-hero grid"// tablet-hide phablet-hide mobile-hide"
+            style={{
+              display: ["xl", "lg"].includes(media) ? "grid" : "none",
+              position: "absolute",
+              pointerEvents: "none",
+              width: "100%",
+              height: "auto",
+              // alignItems: "start",
+              //  minWidth: 0,
+              //...pageLayout[layout][media]
+            }}>
+            <div className="col top center" style={{
+              gridColumn: "hero / span 1", gridRow: "1 / span 1", padding: "calc(64px + 2rem) 0 0 0",
+              pointerEvents: heroInteraction === false ? "none" : "auto",
+              //background: "linear-gradient(90deg,transparent 20%, hsl(0,0%,80%) 20%,transparent)" 
+            }}>
+              <Hero component={heroComponent} className="" />
+            </div>
+          </div>) : null
+      }
+    </div >
+
+  )
+
+});
+
 
 export const resume = {
   title: "Janna Curtis",
