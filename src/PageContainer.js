@@ -1,7 +1,7 @@
 import { memo, useState, useEffect, Fragment } from "react";
 import { Hero } from "./Hero";
 import { useOutletContext } from "react-router-dom";
-import { GeistProvider, CssBaseline, Page, Image, Grid, Collapse, Card, Text } from '@geist-ui/core';
+import { useTheme, Grid } from '@geist-ui/core'
 import PageAbout from "./PageAbout";
 import { PageAudiohand } from "./PageAudiohand";
 import { PageCalendar } from "./PageCalendar";
@@ -32,8 +32,9 @@ const PageContent = ({ title }) => {
     return (<Content />)
 }
 
-export const PageContainer = memo(function PageContainer({ layout = "hero", background = "cream", className = "col nowrap top stretch", heroComponent = "", heroInteraction = false, children }) {
+export const PageContainer = memo(function PageContainer({ layout = "hero", scheme = "light", background = "cream", className = "col nowrap top stretch", heroComponent = "", heroInteraction = false, children }) {
     const [media, setMedia] = useOutletContext();
+
     useEffect(() => {
         console.log("detected media change in PageContainer")
     }, [media])
@@ -77,8 +78,8 @@ export const PageContainer = memo(function PageContainer({ layout = "hero", back
             xs: { padding: "1rem 1rem 4rem 1rem", gap: "1rem" },
         },
         center: {
-            xl: { padding: "64px 4rem 4rem 4rem", gap: "1rem", margin: "0 auto 0 auto", maxWidth: "1200px" },
-            lg: { padding: "64px 2rem 4rem 2rem", gap: "1rem", margin: "0 auto 0 auto", maxWidth: "1200px" },
+            xl: { padding: "64px 4rem 4rem 4rem", gap: "1rem", margin: "0 auto 0 0", maxWidth: "1200px" },
+            lg: { padding: "64px 2rem 4rem 2rem", gap: "1rem", margin: "0 auto 0 0", maxWidth: "1200px" },
             md: { padding: "64px 1.5rem 4rem 1.5rem", gap: "1rem", margin: "0 auto 0 auto" },
             sm: { padding: "1rem 1.5rem 4rem 1.5rem", gap: "1rem", margin: "0 auto 0 auto" },
             xs: { padding: "1rem 1rem 4rem 1rem", gap: "1rem", margin: "0 auto 0 auto" },
@@ -97,11 +98,12 @@ export const PageContainer = memo(function PageContainer({ layout = "hero", back
                 gridRow: "content / span 1",
                 minHeight: 0,
                 minWidth: 0,
+                background: useTheme().palette.background,
                 //  background: "linear-gradient(90deg, hsla(0,0%,100%,100%) 0%, transparent 100%)",
-                transitioProperty: "padding, margin",
-                transitionDuration: "2s",
-                transitionTimingFunction: "linear",
-                transitionOrigin: "center"
+                // transitioProperty: "padding, margin",
+                // transitionDuration: "1s",
+                // transitionTimingFunction: "linear",
+                // transitionOrigin: "center"
             }}
         >
             <div
@@ -115,23 +117,28 @@ export const PageContainer = memo(function PageContainer({ layout = "hero", back
                     maxHeight: "100%",
                     overflowX: "hidden",
                     overflowY: "scroll",
-                    transitioProperty: "padding, margin",
-                    transitionDuration: "2s",
-                    transitionTimingFunction: "linear",
-                    transitionOrigin: "center",
+                    // transitioProperty: "padding, margin",
+                    // transitionDuration: "1s",
+                    // transitionTimingFunction: "linear",
+                    // transitionOrigin: "center",
+                    boxSizing: "border-box",
                     // minWidth: 0,
                     ...pageLayout[layout][media]
                 }}>
                 <div
                     id="scroll-content"
-                    className="col top"//"scroll-content" 
+                    // className="col top"//"scroll-content" 
                     style={{
-                        gridColumn: "content / span 1", gridRow: "1 / span 1", width: "100%", height: "max-content", ...scrollContent[layout][media], background: "hsla(0,0%,100%,100%)"
+                        gridColumn: "content / span 1",
+                        gridRow: "1 / span 1", width: "100%",
+                        height: "max-content",
+                        boxSizing: "border-box",
+                        ...scrollContent[layout][media], //background: "hsla(0,0%,100%,100%)"
                     }} >
                     {/* <PageContent title={component} />*/}
-                    <GeistProvider>
-                        {children}
-                    </GeistProvider>
+
+                    {children}
+
                 </div>
             </div>
             {layout === "hero" ? (

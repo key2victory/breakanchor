@@ -3,6 +3,7 @@ import { useHover } from "@uidotdev/usehooks";
 import { useLocation } from "react-router-dom";
 import ReactGA from "react-ga4";
 import { useUmami } from "./AnalyticsTracker";
+import { useTheme } from '@geist-ui/core'
 //styling
 //import './Count.css';
 
@@ -344,10 +345,13 @@ export const Header = memo(function Header({
   title1,
   title2,
   subtitle,
-  color,
   style,
   children,
 }) {
+  // const theme = useTheme()
+  const color = useTheme().palette.accents_3;//scheme === "light" ? "hsl(0,0%,0%)" : "hsl(0,0%,100%)";
+  // console.log("Header from PageElements.js:", theme, color)
+
   return (
     <div
       className="row wrap bottom between"
@@ -365,7 +369,7 @@ export const Header = memo(function Header({
       }}
     >
       <span style={{ display: "flex", flexFlow: "column nowrap", flexShrink: 1, width: "fit-content" }}>
-        <h1 style={{ color: color }}>
+        <h1 style={{ color: color, margin: 0, padding: 0 }}>
           {title2 ? (
             <Fragment>
               <span style={{ display: "flex", flexFlow: "row wrap" }}>
@@ -390,7 +394,7 @@ export const Header = memo(function Header({
             title
           )}
         </h1>
-        <h3 style={{ color: color }}> {subtitle} </h3>
+        <h3 style={{ color: color, margin: 0, padding: 0 }}> {subtitle} </h3>
       </span>
       {children}
     </div>

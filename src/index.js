@@ -81,4 +81,6 @@ const router = createBrowserRouter([
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
-root.render(<RouterProvider router={router}><App /></RouterProvider>);
+root.render(<RouterProvider router={router}>
+  <App />
+</RouterProvider>);

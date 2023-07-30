@@ -1,7 +1,9 @@
 import { Link, useMatches } from "react-router-dom";
-import { Fragment, memo } from "react";
+import { Fragment, memo, useState } from "react";
 import { HeroAbout } from "./HeroAbout";
 import { CgMenu, CgClose } from "react-icons/cg";
+import { useHover } from "@uidotdev/usehooks";
+import { useTheme } from '@geist-ui/core'
 import {
   RiDeviceLine,
   RiSlideshow3Line,
@@ -19,6 +21,7 @@ import {
 } from "react-icons/ri";
 import "./styles.css";
 import ReactGA from "react-ga4";
+import { transform } from "typescript";
 
 const hiddenStyle = {
   position: "absolute",
@@ -148,7 +151,7 @@ export const AppSizer = memo(function AppSizer({ height = "64px", children }) {
   )
 })
 
-const NavButton = memo(function NavCard({ item, style }) {
+const NavButton = memo(function NavButton({ item, style }) {
   return (
     <Link
       to={`/${item.path}`}
@@ -167,24 +170,51 @@ export const NavCard = memo(function NavCard({
   title,
   path,
   style,
-  className,
-  color = "hsl(0,0%,90%)",
-  borderTop = "",
-  borderBottom = "2px dotted hsla(0,0%,0%,10%)",
+  className = "",
+  // borderLeftColor = "transparent",
+  // hoverBorderLeftColor = "hsla(0,0%,0%,0%)",
+  // background = "transparent",
+  // hoverBackground = "hsla(0,0%,0%,10%)",
+  // color = "hsl(0,0%,90%)",
+  // hoverColor = "hsl(0,0%,80%)",
+  borderTop = true,
+  borderBottom = false,
   children
 }) {
+
+
+  const [ref, hover] = useHover();
+
+
+  const color = useTheme().palette.accents_8;
+  const hoverColor = useTheme().palette.cyanDark;
+  const backgroundColor = useTheme().palette.background;
+  const hoverBackground = useTheme().palette.accents_1;
+
+
+  console.log("Nav panel:", "color:", color, "background:", useTheme().palette.background)
+
+
   const linkStyle = {
     textDecoration: "none",
-    //padding: "1rem 0",
+
+
+    //    transition: "0.5s 0s linear",
+
+    cursor: "pointer",
     fontSize: "1.25rem",
-    padding: icon !== undefined ? "0 1rem 0 .5rem" : "0 1.5rem 0 1.5rem",
+    padding: icon !== undefined ? "0 1rem 0 2rem" : "0 1.5rem 0 1.5rem",
     ...style
   };
+
+
+
   const IconRender = icon;
+
   return (
     <Link
-      className={`nav-link page ${className} umami--click--AppNav/${path}`}
-      // key={`${item.path}-${index}`}
+      ref={ref}
+      className={`${className} umami--click--AppNav/${path}`}
       to={`${path}`}
       style={linkStyle}
     >
@@ -192,10 +222,23 @@ export const NavCard = memo(function NavCard({
         className="row nowrap center left"
         style={{
           gap: "1rem",
-          color: color,
-          padding: "1rem .5rem 1rem .5rem",
-          borderTop: borderTop,
-          borderBottom: borderBottom
+          transition: "0.5s 0s linear",
+          padding: "1rem .5rem 1rem 3rem",
+          color: hover ? hoverColor : color,
+          background: `linear-gradient(90deg, ${hoverColor} .5rem, transparent .5rem)`,//hover ? hoverBackground : "transparent",
+          //`linear-gradient(90deg, ${hoverColor} .5rem, ${hoverBackground} .5rem)` : `linear-gradient(90deg, ${hoverColor} 0rem, transparent 0rem)`,
+          backgroundSize: "200% 100%",
+          backgroundPositionX: hover ? "0" : "-1rem",
+          backgroundRepeat: "no-repeat",
+          borderTop: borderTop ? `2px solid ${useTheme().palette.accents_1}` : "none",
+          borderBottom: borderBottom ? `2px solid ${useTheme().palette.accents_1}` : "none",
+          // borderTop: borderTop && hover ? "0px solid transparent" : borderTop ? `2px solid ${useTheme().palette.accents_1}` : "none",
+          // borderBottom: borderBottom && hover ? "0px solid transparent" : borderBottom ? `2px solid ${useTheme().palette.accents_1}` : "none",
+          //borderLeft: hover ? `0.5rem solid ${hoverColor}` : "0px solid transparent",
+          // borderLeft: `0.5rem solid ${borderLeftColor}`,
+          // background: background,
+          // color: color,
+
         }}
         onClick={() => {
           ReactGA.event({
@@ -221,7 +264,7 @@ export const NavCard = memo(function NavCard({
           {children}
         </span>
       </div>
-    </Link>
+    </Link >
   );
 });
 
@@ -298,7 +341,9 @@ export function NavPanel({
   media,
   onClickExit
 }) {
-  const borderStyle = "2px solid hsla(0,0%,0%,10%)";
+
+  //  const borderTopStyle = "2px solid hsla(0,0%,0%,10%)";
+
   return (
     <div
       className={`grid ${className}`}
@@ -314,7 +359,7 @@ export function NavPanel({
         flexShrink: 0,
         padding: "0",
         gap: 0,
-        background: background,
+        background: useTheme().palette.accents_1,
         overflow: "hidden",
         boxShadow: showNav === true ? "0px 0px 4px 2px hsla(0, 0%, 0%, 20%), 2px 2px 2px 4px hsla(0, 0%, 0%, 20%)" : "0px 0px 4px 2px hsla(0, 0%, 0%, 0%), 2px 2px 2px 4px hsla(0, 0%, 0%, 0%)",
         zIndex: 1
@@ -352,25 +397,29 @@ export function NavPanel({
           icon={RiMapPinUserFill}
           path="about"
           title="About Me"
-          color="hsla(0,0%,100%,70%)"
-          borderTop={borderStyle}
-          borderBottom=""
+          borderTop={true}
+          borderBottom={false}
         />
         <NavCard
           icon={RiBox2Line}
           title="Projects"
           path="projects"
-          color="hsla(0,0%,100%,70%)"
-          borderTop={borderStyle}
-          borderBottom=""
+          // borderLeftColor={"transparent"}
+          // hoverBorderLeftColor={hoverColor}
+          // color={color}
+          // hoverColor={hoverColor}
+          // background={"transparent"}
+          // hoverBackground={hoverBackground}
+          borderTop={true}
+          borderBottom={false}
+
         />
         <NavCard
           icon={RiSlideshow3Line}
           title="Presentations"
           path="presentations"
-          color="hsla(0,0%,100%,70%)"
-          borderTop={borderStyle}
-          borderBottom=""
+          borderTop={true}
+          borderBottom={false}
         />
 
         {/* <NavCard

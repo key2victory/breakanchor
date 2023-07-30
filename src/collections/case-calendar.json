@@ -17,24 +17,22 @@
           "initialVisible": true,
           "markdown": "### U﻿se cases\n\n* I need to decide what to wear today based on the times I will be exposed to the weather or indoor temperatures I can't control.\n* I want to know if there any opportunities to between appointments when the weather is nice, so I can plan breaks to go for a walk outside with my dog. I may want to postpone if another day this week is expected to be nicer.\n* Birthdays, holidays, and other significant future events have a bad habit of sneaking up on me. I wish I could bring upcoming events to my awareness more gradually.\n\n\n\n### Existing solutions fall short\n\n* It's difficult to view weather and calendar information simultaneously for comparison\n* Significant events become lost among the clutter of less significant events\n* Poor visual hierarchy and context-switching between multiple apps increases cognitive load",
           "cardTitle": "Problem Space",
-          "size": [
-            {
-              "device": "xs",
-              "columns": 24
-            }
-          ]
+          "xl": false,
+          "lg": false,
+          "md": false,
+          "sm": false,
+          "xs": 24
         },
         {
           "type": "collapse",
           "initialVisible": false,
           "cardTitle": "Research and Analysis",
           "markdown": "When using traditional hand-written paper or dry-erase calendars, people tend to emphasize significant events with color highlighting, circling,or simply writing in big, bold letters, and they use more subtle styling such as smaller handwriting for events that are less significant. This creates a natural visual hierarchy that is lost when digital calendars represent events with equal emphasis.",
-          "size": [
-            {
-              "device": "xs",
-              "columns": 24
-            }
-          ]
+          "xl": false,
+          "lg": false,
+          "md": false,
+          "sm": false,
+          "xs": 24
         }
       ]
     },
@@ -45,12 +43,11 @@
           "initialVisible": false,
           "markdown": "When using traditional hand-written paper or dry-erase calendars, people tend to emphasize significant events with color highlighting, circling,or simply writing in big, bold letters, and they use more subtle styling such as smaller handwriting for events that are less significant. This creates a natural visual hierarchy that is lost when digital calendars represent events with equal emphasis.",
           "cardTitle": "Research and Analysis",
-          "size": [
-            {
-              "device": "xs",
-              "columns": 24
-            }
-          ]
+          "xl": false,
+          "lg": false,
+          "md": false,
+          "sm": false,
+          "xs": 24
         },
         {
           "type": "image",
@@ -58,12 +55,11 @@
           "height": "957px",
           "image": "/public/img/calendar-03.png",
           "alt": "a gold framed dry erase calendar with the word \"honeymoon\" in bold pink letters across the last week of the month.",
-          "size": [
-            {
-              "device": "xs",
-              "columns": 24
-            }
-          ]
+          "xl": false,
+          "lg": false,
+          "md": false,
+          "sm": false,
+          "xs": 24
         }
       ]
     }

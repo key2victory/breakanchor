@@ -5,6 +5,7 @@ import { HeroAbout } from "./HeroAbout";
 import { Logo } from "./Logo";
 import { Header, ButtonLink, Note, Group, Counter } from "./PageElements";
 import { PageContainer } from "./PageContainer";
+import { useTheme, Grid } from '@geist-ui/core'
 import { FaFigma } from "react-icons/fa";
 import { RxFramerLogo } from "react-icons/rx";
 import {
@@ -60,8 +61,10 @@ export default function PageAbout(props) {
   const borderRadius = ".5rem";
   // const color1 = "hsl(0,0%,80%)";
   // const color2 = "hsl(0,0%,90%)";
-  const color1 = "hsla(0,0%,0%,0%)";
-  const color2 = "hsla(0,0%,0%,10%)";
+  // const color1 = "hsla(0,0%,0%,0%)";
+  // const color2 = "hsla(0,0%,0%,10%)";
+  const textColor = useTheme().palette.accents_8;
+  const cardColor = useTheme().palette.accents_1;
 
   return (
     <PageContainer layout="center" //maxWidth="1200px"
@@ -103,11 +106,11 @@ export default function PageAbout(props) {
         }}>
         <Group className={`row wrap top ${["lg", "md"].includes(media) ? "left" : "center"}`} style={{ width: "100%" }}>
           <Group
-            className="col shadow"
+            className="col"// shadow"
             style={{
               padding: "1.5rem 2rem",
-              background: "hsla(0,0%,30%,85%)",
-              color: "hsla(0,0%,100%,80%)",
+              background: cardColor,// "hsla(0,0%,30%,85%)",
+              color: textColor,//"hsla(0,0%,100%,80%)",
               width: "100%",
               // maxWidth: maxCardWidth,
               gap: 0,
@@ -119,11 +122,11 @@ export default function PageAbout(props) {
             </p>
           </Group>
           <Group
-            className="col shadow"
+            className="col" //shadow"
             style={{
               padding: "1.5rem 2rem",
-              background: "hsla(0,0%,30%,85%)",
-              color: "hsla(0,0%,100%,80%)",
+              background: cardColor,
+              color: textColor,
               width: "100%",
               //  maxWidth: maxCardWidth,
               gap: 0,
@@ -137,11 +140,11 @@ export default function PageAbout(props) {
             </p>
           </Group>
           <Group
-            className="col shadow"
+            className="col" //shadow"
             style={{
               padding: "1.5rem 2rem",
-              background: "hsla(0,0%,30%,85%)",
-              color: "hsla(0,0%,100%,80%)",
+              background: cardColor,
+              color: textColor,
               width: "100%",
               //  maxWidth: maxCardWidth,
               gap: 0,
@@ -154,7 +157,7 @@ export default function PageAbout(props) {
               My degree program at Watkins College of Art taught me how to evaluate my work against the principles of design to make iterative improvements, and how to assist other designers in reaching the full potential of their work through collaborative feedback.I use these techniques often when mentoring for the Knoxville Entrepreneur Center and new designers in my spare time. I am always looking for ways to improve myself and support the success of others.
             </p>
           </Group>
-          <CardSection title="Education">
+          <CardSection title="Education" cardColor={cardColor} textColor={textColor}>
 
             {resume.education.map((item, index) => (
 
@@ -165,7 +168,7 @@ export default function PageAbout(props) {
           </CardSection>
         </Group>
         <Group className="col nowrap" >
-          <CardSection title="Experience">
+          <CardSection title="Experience" cardColor={cardColor} textColor={textColor}>
 
             {resume.experience.map((item, index) => (
 
@@ -180,16 +183,16 @@ export default function PageAbout(props) {
   );
 }
 
-function CardSection({ title, children, style }) {
+function CardSection({ title, textColor = "hsl(0,0%,100%)", cardColor = "hsl(0,0%,0%)", children, style }) {
   return (
     <div
-      className="col nowrap shadow"
+      className="col nowrap"// shadow"
       style={{
         // display: "flex",
         // flexFlow: "column nowrap",
         gap: 0,
         // background: "hsl(0,0%,40%)",
-        background: "hsla(0,0%,30%,85%)",
+        background: cardColor, //"hsla(0,0%,30%,85%)",
         padding: "1rem 2rem 1rem 1rem",
         width: "100%",
         // maxWidth: maxCardWidth,
@@ -198,7 +201,10 @@ function CardSection({ title, children, style }) {
         ...style,
       }}
     >
-      <h3 style={{ color: "hsl(0,0%,100%)", margin: "0 0 1rem 0" }}> {title} </h3>
+      <h3 style={{
+        color: textColor,//"hsl(0,0%,100%)", 
+        margin: "0 0 1rem 0"
+      }}> {title} </h3>
       {children}
     </div>
   );

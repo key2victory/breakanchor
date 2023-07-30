@@ -48,6 +48,7 @@ const LogoWatkins = memo(function LogoWatkins({ size = "100%" }) {
         padding: ".2rem",
         flexGrow: 1,
         flexShrink: 1,
+        overflow: "hidden"
       }}
     >
       <img

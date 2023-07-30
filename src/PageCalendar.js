@@ -123,12 +123,15 @@ export const PageCalendar = memo(function PageCalendar({
         </ButtonAction>
 
       </Header>
+
+
       {/*  <Group className="row wrap">
         <Note>
           This case study focuses on the design and development of a React web app that combines weather and calendar information into a single prioritized view. The goal of the project is to provide users with a convenient way to see their daily agenda in relation to the hourly weather forecast, enabling them to plan their activities accordingly.
         </Note>
       </Group>
       <h2 style={{ margin: "1rem 0 0 0" }}>Problem</h2>*/}
+
 
       <Grid.Container gap={3} direction="column" style={{ maxWidth: "100%" }}>
 
@@ -150,6 +153,7 @@ export const PageCalendar = memo(function PageCalendar({
           "Birthdays, holidays, and other significant future events have a bad habit of sneaking up on me. I wish I could bring upcoming events to my awareness more gradually."]}
         /></Grid>
       </Grid.Container>
+
       <Spacer />
 
       <Grid.Container gap={3} direction="column" style={{ maxWidth: "100%" }}>
