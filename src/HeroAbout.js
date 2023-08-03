@@ -1,5 +1,5 @@
 import { memo, useState, useEffect, Fragment } from "react";
-
+import { useTheme, Grid } from '@geist-ui/core'
 
 import "./styles.css";
 
@@ -53,15 +53,21 @@ export const HeroAbout = memo(function HeroAbout({
       }}>
         <h3
           style={{
-            color: deviceSize === "small" ? "hsla(0,0%,0%,60%)" : "hsla(0,0%,0%,50%)",
+            color: useTheme().palette.accents_6, //deviceSize === "small" ?  "hsla(0,0%,0%,60%)" : "hsla(0,0%,0%,50%)",
             width: "auto",
+            margin: 0,
+            padding: 0,
+            lineHeight: 1.2,
           }}
         >
           Janna Curtis
         </h3>
         <h5 style={{
-          color: deviceSize === "small" ? "hsl(0,0%,50%)" : "hsla(0,0%,0%,30%)",
+          color: useTheme().palette.accents_4,//deviceSize === "small" ? "hsl(0,0%,50%)" : "hsla(0,0%,0%,30%)",
           width: "auto",
+          margin: 0,
+          padding: 0,
+          lineHeight: 1.2,
         }}>break anchor design</h5>
       </span>
 

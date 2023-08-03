@@ -84,6 +84,10 @@ body,
   transition-duration: 0.5s;
 }
 
+ul li::before {
+  content: none !important;
+}
+
 .nav-link {
   cursor: pointer;
   background: hsla(240, 0%, 60%, 0%);

@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState, useRef } from "react";
+import { memo, Fragment, useEffect, useState, useRef } from "react";
 import AppNav, { AppHeader, AppSizer, NavPanel } from "./AppNav";
 import { Outlet, useLocation } from "react-router-dom";
 import { useMediaQuery, useWindowSize } from "@uidotdev/usehooks";
@@ -16,7 +16,7 @@ import { TRACKING_ID, useUmami } from "./AnalyticsTracker";
 //import umami from "https://analytics.umami.is/script.js";
 
 
-export default function App(props) {
+export const App = memo(function App(props) {
   const [showNav, setShowNav] = useState(false);
   const [media, setMedia] = useState(currentSize);
   const [browserSize, setBrowserSize] = useState();
@@ -250,4 +250,4 @@ export default function App(props) {
       </div>
     </GeistProvider>
   );
-}
+});

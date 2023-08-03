@@ -2,7 +2,7 @@ import React from "react";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
-import App from "./App";
+import { App } from "./App";
 import {
   // createHashRouter,
   createBrowserRouter,
@@ -24,6 +24,7 @@ import { PageClearanceTracker } from "./PageClearanceTracker";
 import { PageResearcherTools } from "./PageResearcherTools";
 import { Page404 } from "./Page404";
 import { PageContent } from "./Pages";
+import { GeistProvider, CssBaseline, Page, Image, Grid, Collapse, Card, Text, useTheme } from '@geist-ui/core';
 /*
 import { pages } from "./Pages";
 
@@ -82,5 +83,8 @@ const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
 root.render(<RouterProvider router={router}>
-  <App />
+  <GeistProvider>
+    <CssBaseline />
+    <App />
+  </GeistProvider>
 </RouterProvider>);

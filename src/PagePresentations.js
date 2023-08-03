@@ -189,12 +189,14 @@ export function PagePresentations(props) {
 
                     <div className="col left" style={{
                         borderTop: "1px solid hsla(0,0%,0%,20%)", padding: "1rem 0 0 0", gap: "1.5rem", maxWidth: "800px",
-                        filter: "sepia(100%) brightness(50%)",
+
+
                     }}>
                         <div className="col left">
                             <img src="./img/codestock-logo.png" alt="" width="auto" height="auto" style={{
                                 maxWidth: "200px",
-                                margin: "0 0 .75rem 0"
+                                margin: "0 0 .75rem 0",
+                                filter: "invert(50%)",
                             }} />
                             <span>CodeStock is an annual technology conference for developers, IT professionals, and entrepreneurs held in Knoxville, TN. The conference is run by the CodeStock Corporation, a 501(c)(3) organization. The conference spans two full days and is packed with technical & entrepreneurial content.
                             </span>
@@ -202,7 +204,8 @@ export function PagePresentations(props) {
                         <div className="col left">
                             <img src="./img/scs-logo.png" alt="" width="auto" height="auto" style={{
                                 maxWidth: "300px",
-                                margin: "0"
+                                margin: "0",
+                                filter: "grayscale(60%) brightness(150%)",
                             }} />
                             <span>Scenic City Summit is the largest local IT professional development program in Chattanooga! Brought to you by ChaTech and premier sponsor, Red Hat, this conference brings together coders, designers, database administrators, web developers, project managers and IT professionals to share real-world business problems, best practices and emerging technologies.
                             </span>

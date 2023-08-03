@@ -40,10 +40,13 @@ export const Counter = ({ label, number, duration }) => {
   }, [number, duration]);
 
   return (
-    <div className="Count">
-      <h3>
-        <i>{count} {label}</i>
-      </h3>
+    <div className="Count row nowrap" >
+      <h2 style={{ color: useTheme().palette.cyan }}>
+        {count}
+      </h2>
+      <h5 style={{ color: useTheme().palette.accents_8 }}>
+        {label}
+      </h5>
     </div>
   );
 }
@@ -177,8 +180,8 @@ export const Note = memo(function Note({
   description,
   hsize = 4,
   children,
-  background = "hsl(40,10%,100%)",//hsl(39, 14%, 80%) 0%, hsl(40, 7%, 60%) 100%)
-  color = "black",
+  background = useTheme().palette.accents_1,//"hsl(40,10%,100%)",
+  color = useTheme().palette.foreground,
   collapse = false,
   container = true,
   style = { gap: ".5rem" },
@@ -349,7 +352,7 @@ export const Header = memo(function Header({
   children,
 }) {
   // const theme = useTheme()
-  const color = useTheme().palette.accents_3;//scheme === "light" ? "hsl(0,0%,0%)" : "hsl(0,0%,100%)";
+  const color = useTheme().palette.accents_5;//scheme === "light" ? "hsl(0,0%,0%)" : "hsl(0,0%,100%)";
   // console.log("Header from PageElements.js:", theme, color)
 
   return (
@@ -605,7 +608,7 @@ export const BulletList = memo(function BulletList({ title, hsize = 4, items, or
     }}>
       {title !== "" && title !== undefined ? (<H>{title}</H>) : null}
       <List className="col" style={{
-        gap: "1rem", margin: 0, padding: "0 0 0 1.5rem",
+        gap: "1rem", margin: 0, padding: "0 0 0 1.5rem", listStyleType: "disc"
       }}>
         {items !== undefined ? items.map((v, k) => (<li key={k}>{v}</li>)) : children}
       </List>

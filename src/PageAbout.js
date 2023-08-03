@@ -63,8 +63,11 @@ export default function PageAbout(props) {
   // const color2 = "hsl(0,0%,90%)";
   // const color1 = "hsla(0,0%,0%,0%)";
   // const color2 = "hsla(0,0%,0%,10%)";
-  const textColor = useTheme().palette.accents_8;
+  const textColor1 = useTheme().palette.accents_8;
+  const textColor2 = useTheme().palette.accents_7;
   const cardColor = useTheme().palette.accents_1;
+  const cardColor2 = useTheme().palette.accents_2;
+  const cardColor3 = useTheme().palette.accents_2;
 
   return (
     <PageContainer layout="center" //maxWidth="1200px"
@@ -81,12 +84,9 @@ export default function PageAbout(props) {
         }}
       />*/}
       <HeroAbout hide={["xl", "lg", "md"].includes(media)} deviceSize="small" />
-      {/*   <Counter number="14" label="year professional designer" duration="2" />
-      <Counter number="11" label="year UX and product design" duration="2" />
-      <Counter number="6" label="time design mentor for KEC" duration="2" />
-      <Counter number="4" label="time event speaker" duration="2" />
-   
-      */}
+
+
+
       <Header title="About Me"
         color="hsla(0,0%,0%,50%)" style={{ margin: "0 0 0 0", width: "100%", maxWidth: maxCardWidth }}>
         <AiFillLinkedin size={22} /> <AiOutlineLinkedin size={22} /> <AiOutlineFacebook size={22} /> <AiOutlineInstagram size={22} />
@@ -100,6 +100,10 @@ export default function PageAbout(props) {
           <BiLogoInstagram size={22} />
         </a>
       </Header>
+      <Counter number="14" label=" yrs professional design" duration="2" />
+      <Counter number="11" label=" yrs UX and product design" duration="2" />
+      <Counter number="6" label="x design mentor for KEC" duration="2" />
+      <Counter number="4" label="x event speaker" duration="2" />
       <Group className="grid"//"col nowrap" 
         style={{
           gridTemplateColumns: ["xs", "sm"].includes(media) ? "100%" : "1fr 1fr", //maxWidth: maxCardWidth 
@@ -110,7 +114,7 @@ export default function PageAbout(props) {
             style={{
               padding: "1.5rem 2rem",
               background: cardColor,// "hsla(0,0%,30%,85%)",
-              color: textColor,//"hsla(0,0%,100%,80%)",
+              color: textColor1,//"hsla(0,0%,100%,80%)",
               width: "100%",
               // maxWidth: maxCardWidth,
               gap: 0,
@@ -126,7 +130,7 @@ export default function PageAbout(props) {
             style={{
               padding: "1.5rem 2rem",
               background: cardColor,
-              color: textColor,
+              color: textColor1,
               width: "100%",
               //  maxWidth: maxCardWidth,
               gap: 0,
@@ -144,7 +148,7 @@ export default function PageAbout(props) {
             style={{
               padding: "1.5rem 2rem",
               background: cardColor,
-              color: textColor,
+              color: textColor1,
               width: "100%",
               //  maxWidth: maxCardWidth,
               gap: 0,
@@ -157,22 +161,22 @@ export default function PageAbout(props) {
               My degree program at Watkins College of Art taught me how to evaluate my work against the principles of design to make iterative improvements, and how to assist other designers in reaching the full potential of their work through collaborative feedback.I use these techniques often when mentoring for the Knoxville Entrepreneur Center and new designers in my spare time. I am always looking for ways to improve myself and support the success of others.
             </p>
           </Group>
-          <CardSection title="Education" cardColor={cardColor} textColor={textColor}>
+          <CardSection title="Education" cardColor={cardColor} textColor1={textColor1}>
 
             {resume.education.map((item, index) => (
 
-              <CardDetails key={`resume-edu-${index}`} content={item} media={mediaSize} />
+              <CardDetails key={`resume-edu-${index}`} content={item} media={mediaSize} cardColor1={cardColor2} cardColor2={cardColor3} textColor1={textColor1} textColor2={textColor2} />
 
             ))}
 
           </CardSection>
         </Group>
         <Group className="col nowrap" >
-          <CardSection title="Experience" cardColor={cardColor} textColor={textColor}>
+          <CardSection title="Experience" cardColor={cardColor} textColor1={textColor1}>
 
             {resume.experience.map((item, index) => (
 
-              <CardDetails key={`resume-exp-${index}`} content={item} media={mediaSize} />
+              <CardDetails key={`resume-exp-${index}`} content={item} media={mediaSize} cardColor1={cardColor2} cardColor2={cardColor3} textColor1={textColor1} textColor2={textColor2} />
 
             ))}
           </CardSection>
@@ -183,7 +187,7 @@ export default function PageAbout(props) {
   );
 }
 
-function CardSection({ title, textColor = "hsl(0,0%,100%)", cardColor = "hsl(0,0%,0%)", children, style }) {
+function CardSection({ title, textColor1 = "hsl(0,0%,100%)", cardColor = "hsl(0,0%,0%)", children, style }) {
   return (
     <div
       className="col nowrap"// shadow"
@@ -202,7 +206,7 @@ function CardSection({ title, textColor = "hsl(0,0%,100%)", cardColor = "hsl(0,0
       }}
     >
       <h3 style={{
-        color: textColor,//"hsl(0,0%,100%)", 
+        color: textColor1,//"hsl(0,0%,100%)", 
         margin: "0 0 1rem 0"
       }}> {title} </h3>
       {children}
@@ -219,7 +223,7 @@ function CardSection({ title, textColor = "hsl(0,0%,100%)", cardColor = "hsl(0,0
 
 
 
-const CardDates = ({ content, media }) => {
+const CardDates = ({ content, media, textColor1, textColor2 }) => {
   const responsiveDates = {
     small: {
       gridColumn: "details / span 1",
@@ -259,7 +263,7 @@ const CardDates = ({ content, media }) => {
           width: "100%",
           alignItems: "flex-start",
           justifyContent: "flex-start",
-          color: "hsl(0,0%,100%)",
+          color: textColor1,//"hsl(0,0%,100%)",
           padding: ".5rem 0 0 0",
           ...responsiveDates[media]
         }}
@@ -310,10 +314,10 @@ const CardDates = ({ content, media }) => {
           flexFlow: "column nowrap",
           alignItems: "center",
           justifyContent: "flex-start",
-          borderRight: "2px solid hsl(0,0%,80%)",
+          borderRight: `2px solid ${textColor2}`,//hsl(0,0%,80%)
           padding: ".7rem 0 0 0",
           margin: "0 1rem 0 auto",
-          color: "hsl(0,0%,100%)",
+          color: textColor1,//"hsl(0,0%,100%)",
           ...responsiveMarker[media]
         }}
       >
@@ -328,7 +332,7 @@ const CardHeader = ({ content }) => (
     style={{
       display: "flex",
       flexFlow: "column nowrap",
-      gap: ".25rem",
+      gap: "0rem",
       padding: "0",
       width: "100%",
       minWidth: "100px",
@@ -337,29 +341,33 @@ const CardHeader = ({ content }) => (
       flexBasis: "100px"
     }}
   >
-    <h4> {content.title} </h4> <h5> {content.subtitle} </h5>
+    <h4 style={{ margin: 0, padding: 0 }}> {content.title} </h4> <h5 style={{ margin: 0, padding: 0 }}> {content.subtitle} </h5>
   </span>
 );
 
-const TimelineBubble = ({ content, children, style }) => {
+const TimelineBubble = ({ content, children, media, cardColor1, cardColor2, style }) => {
   const bubbleStyle = [
     {
-      borderRadius: "0rem 1rem 1rem 1rem",
-      background: "hsl(0,0%,100%)",
+      borderRadius: "0rem 1rem 0rem 0rem",
+      background: cardColor1, //"hsl(0,0%,100%)",
       padding: "1rem",
       zIndex: 1,
     },
     {
 
-      background: "hsl(0,0%,90%)",
-      padding: "2rem 2rem 2rem 2rem",
-      margin: "-1rem 0 0 0",
+      background: cardColor2, //"hsl(0,0%,90%)",
+      padding: ".5rem 1rem 1.5rem 2rem",
+      margin: "0 0 0 0",
       zIndex: 0,
     },
   ];
+  const logoSize = {
+    large: 38,
+    small: 28,
+  }
   return (
     <div
-      className="col nowrap box-shadow"
+      className="col nowrap" //box-shadow"
       style={{
         ...style,
         width: "100%",
@@ -373,7 +381,7 @@ const TimelineBubble = ({ content, children, style }) => {
       }}
     >
       <div
-        className="row wrap"
+        className="row top left wrap"
         style={{
           columnGap: ".8rem",
           rowGap: ".75rem",
@@ -382,14 +390,18 @@ const TimelineBubble = ({ content, children, style }) => {
         }}
       >
         <span
-          className="logo"
+          // className="logo"
           style={{
             display: "flex",
             alignItems: "stretch",
             justifyContent: "stretch",
-            background: "hsl(0,0%,90%)",
+            background: "hsl(0,0%,50%)",
             borderRadius: ".5rem",
+            padding: ".1rem",
+            margin: ".25rem 0 0 0",
             aspectRatio: "1/1",
+            width: `${logoSize[media]}px`,
+            height: `${logoSize[media]}px`,
           }}
         >
           <Logo name={content.logo} />
@@ -397,7 +409,7 @@ const TimelineBubble = ({ content, children, style }) => {
         <CardHeader content={content} />
       </div>
       <div
-        className="box-shadow"
+        // className="box-shadow"
         style={{
           display: "flex",
           flexFlow: "column nowrap",
@@ -419,7 +431,7 @@ const CardSummary = ({ content, style }) => (
   </Fragment>
 );*/
 
-const CardDetails = ({ content, media }) => {
+const CardDetails = ({ content, media, cardColor1, cardColor2, textColor1, textColor2 }) => {
 
   const ProjectDetails = ({ content, style }) => (
     <span
@@ -432,7 +444,7 @@ const CardDetails = ({ content, media }) => {
           style={{
             width: "100%",
             padding: "0 0 .25rem 0",
-            color: "hsl(0,0%,60%)",
+            color: textColor2,//"hsl(0,0%,60%)",
             // fontSize: ".9rem"
           }}
         >
@@ -449,7 +461,7 @@ const CardDetails = ({ content, media }) => {
         >
           <span
             style={{
-              color: "hsl(0,0%,60%)",
+              color: textColor2,//"hsl(0,0%,60%)",
               fontSize: "1.5rem",
               lineHeight: "1.2rem",
             }}
@@ -488,8 +500,8 @@ const CardDetails = ({ content, media }) => {
   }
   return (
     <div style={responsiveTimeline[media]}>
-      <CardDates content={content} media={media} />
-      <TimelineBubble content={content}>
+      <CardDates content={content} media={media} textColor1={textColor1} textColor2={textColor2} />
+      <TimelineBubble content={content} media={media} cardColor1={cardColor1} cardColor2={cardColor2} textColor1={textColor1} textColor2={textColor2}>
 
         {content.details
           ? content.details.map((v_detail, i_detail) =>
