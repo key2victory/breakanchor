@@ -30,7 +30,7 @@ const PageContent = ({ title }) => {
     return (<Content />)
 }
 
-export const PageContainer = memo(function PageContainer({ layout = "hero", background = "cream", className = "col nowrap top stretch", heroComponent = "", heroInteraction = false, children }) {
+export const PageContainer = memo(function PageContainer({ layout = "hero", background = "ice", className = "col nowrap top stretch", heroComponent = "", heroInteraction = false, children }) {
     const [media, setMedia] = useOutletContext();
     useEffect(() => {
         console.log("detected media change in PageContainer")
@@ -43,6 +43,7 @@ export const PageContainer = memo(function PageContainer({ layout = "hero", back
     }, []);
 
     const swatches = {
+        ice: `linear-gradient(90deg, hsla(0, 0%, 100%, 0%) 0%, hsla(0, 0%, 100%, 100%) 100%), linear-gradient(45deg, hsl(0, 0%, 80%) 0%, hsl(0, 0%, 60%) 100%)`,
         cream: `linear-gradient(90deg, hsla(39, 0%, 100%, 0%) 0%, hsla(40, 0%, 100%, 100%) 100%), linear-gradient(45deg, hsl(39, 14%, 80%) 0%, hsl(40, 7%, 60%) 100%)`,
         beige: "linear-gradient(45deg, hsl(39, 14%, 80%) 0%, hsl(40, 7%, 60%) 100%)",
         mocha: "linear-gradient(45deg, hsl(39, 14%, 72%) 0%, hsl(40, 7%, 39%) 100%)"
@@ -94,7 +95,7 @@ export const PageContainer = memo(function PageContainer({ layout = "hero", back
                 gridRow: "content / span 1",
                 minHeight: 0,
                 minWidth: 0,
-                background: "linear-gradient(180deg, hsla(0,0%,20%,10%) 20%, transparent 20%)",
+                // background: "linear-gradient(180deg, hsla(0,0%,20%,15%) 20%, transparent 20%)",
                 transitioProperty: "padding, margin",
                 transitionDuration: "2s",
                 transitionTimingFunction: "linear",

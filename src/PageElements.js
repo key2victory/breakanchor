@@ -175,7 +175,7 @@ export const Note = memo(function Note({
   description,
   hsize = 4,
   children,
-  background = "hsl(40,10%,90%)",//hsl(39, 14%, 80%) 0%, hsl(40, 7%, 60%) 100%)
+  background = "hsla(0,0%,90%,100%)",//hsl(39, 14%, 80%) 0%, hsl(40, 7%, 60%) 100%)
   color = "black",
   collapse = false,
   container = true,
@@ -593,7 +593,7 @@ export const BulletList = memo(function BulletList({ title, hsize = 4, items, or
   const H = `h${hsize}`;
   const List = `${ordered ? "o" : "u"}l`;
   return (
-    <section className="p col" style={{
+    <section className="col" style={{
       gap: ".75rem", margin: 0, padding: 0
     }}>
       {title !== "" && title !== undefined ? (<H>{title}</H>) : null}

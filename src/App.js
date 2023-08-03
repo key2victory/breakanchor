@@ -125,7 +125,7 @@ export default function App(props) {
           position: "relative",
           display: "grid",
           ...pageLayout[media],
-          background: "hsl(39, 14%, 80%)",
+          background: "linear-gradient(180deg, hsl(0, 0%, 80%) 20%, transparent 20%), linear-gradient(90deg, hsl(0, 0%, 70%) 0%, hsl(0, 0%, 75%) 100%)",//linear-gradient(180deg, hsl(0, 0%, 80%) 25%, transparent 25%)
           transitioProperty: "all",
           transitionDuration: "2s",
           transitionTimingFunction: "linear",
@@ -144,7 +144,7 @@ export default function App(props) {
           {sizeOptions.length > 1 ?
             <Fragment>
               {sizeOptions.map((item, index) => (
-                < IconTag key={`device-tag-${index}`} icon={deviceChips[item].icon} label={deviceChips[item].label} bgColor={media === sizeOptions[index] ? "hsl(39, 14%, 90%)" : "hsl(39, 14%, 80%)"} hoverColor={media === sizeOptions[index] ? "hsl(39, 14%, 90%)" : "hsl(39, 14%, 85%)"} style={{ display: deviceChips[item].hide.includes(currentSize) ? "none" : "flex" }} onClick={() => {
+                < IconTag key={`device-tag-${index}`} icon={deviceChips[item].icon} label={deviceChips[item].label} bgColor={media === sizeOptions[index] ? "hsl(39, 0%, 95%)" : "hsl(39, 0%, 85%)"} hoverColor="hsl(39, 0%, 95%)" style={{ display: deviceChips[item].hide.includes(currentSize) ? "none" : "flex" }} onClick={() => {
                   ReactGA.event({
                     category: "jmc_button",
                     action: "jmc_button_click",
@@ -160,7 +160,7 @@ export default function App(props) {
                 // dataUmamiEvent={`${item} sizer button on ${pageLocation}`} 
                 />
               ))}
-              <IconTag icon={deviceChips[currentSize].icon} label={deviceChips[currentSize].label} bgColor={media === currentSize ? "hsl(39, 14%, 90%)" : "hsl(39, 14%, 80%)"} hoverColor={media === currentSize ? "hsl(39, 14%, 90%)" : "hsl(39, 14%, 85%)"} onClick={() => {
+              <IconTag icon={deviceChips[currentSize].icon} label={deviceChips[currentSize].label} bgColor={media === currentSize ? "hsl(39, 0%, 95%)" : "hsl(39, 0%, 85%)"} hoverColor="hsl(39, 0%, 95%)" onClick={() => {
                 ReactGA.event({
                   category: "jmc_button",
                   action: "jmc_button_click",

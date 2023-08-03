@@ -97,119 +97,120 @@ export const PageCalendar = memo(function PageCalendar({
         </Note>
       </Group>
       <h2 style={{ margin: "1rem 0 0 0" }}>Problem</h2>*/}
-      <Group className="row wrap">
-        <Note >
-          <BulletList title="Problem" items={[
+      <Note >
+        <Group className="row wrap" style={{ gap: "2rem" }}>
+          <BulletList title="Problem Space" hsize={2} items={[
             "It's difficult to view weather and calendar information simultaneously for comparison",
             "Significant events become lost among the clutter of less significant events",
             "Poor visual hierarchy and context-switching between multiple apps increases cognitive load",
           ]}
+
           />
-        </Note>
-        <Note >
           <BulletList title="Use Cases" items={[
             "I need to decide what to wear today based on the times I will be exposed to the weather or indoor temperatures I can't control.",
             "I want to know if there any opportunities to between appointments when the weather is nice, so I can plan breaks to go for a walk outside with my dog. I may want to postpone if another day this week is expected to be nicer.",
             "Birthdays, holidays, and other significant future events have a bad habit of sneaking up on me. I wish I could bring upcoming events to my awareness more gradually."]}
           />
-        </Note>
-      </Group>
+        </Group>
+      </Note>
 
 
+      <Note className="col nowrap" style={{ gap: "2rem", ...styleSpan2[mediaSize] }}>
+        <h2 style={{ margin: "0", ...styleSpan2[mediaSize] }}>Research and Analysis</h2>
 
 
-
-      <h2 style={{ margin: "2rem 0 0 0", ...styleSpan2[mediaSize] }}>Research and Analysis</h2>
-      <Group className="grid"
-        style={{ ...autoStyleGridFlush[mediaSize], ...styleSpan2[mediaSize] }} >
-        <Note style={styleSpan2[mediaSize]}>
-          When using traditional hand-written paper or dry-erase calendars, people tend to emphasize significant events with color highlighting, circling,or simply writing in big, bold letters, and they use more subtle styling such as smaller handwriting for events that are less significant. This creates a natural visual hierarchy that is lost when digital calendars represent events with equal emphasis.
-        </Note>
+        When using traditional hand-written paper or dry-erase calendars, people tend to emphasize significant events with color highlighting, circling,or simply writing in big, bold letters, and they use more subtle styling such as smaller handwriting for events that are less significant. This creates a natural visual hierarchy that is lost when digital calendars represent events with equal emphasis.
 
 
-        <ImageCell src="./img/calendar-03.png" background="hsla(46,0%,0%,20%)" />
-        <ImageCell src="./img/calendar-04.png" background="hsla(46,0%,0%,20%)" />
-      </Group>
-
-      <Group className="grid"
-        style={autoStyleGrid[mediaSize]} >
-        <Note style={styleSpan1}>
-          In Google Calendar's month view, all-day events are highlighted with color blocks, while timed events are displayed with equal visual emphasis and may be hidden to conserve space. I noticed that timed significant events were being hidden to make room for displaying insignificant events just because they were all-day.
-        </Note>
-        <Note style={styleSpan1}>
-          While it's true that many significant events happen to be all-day, there is a fatal flaw with this logic. Birthdays, holidays, festivals, business conferences, etc. are not significant because they occur all day – they're significant because they occur once a year.
-        </Note>
         <Group className="grid"
           style={{ ...autoStyleGridFlush[mediaSize], ...styleSpan2[mediaSize] }} >
-
-          <ImageCell src="./img/calendar-05.png" />
-          <Note style={styleSpan1}>
-            <BulletList ordered={true} items={[
-              "Non-recurring significant appointment has low visual emphasis",
-              "Non-recurring significant appointment is hidden",
-              "Insignificant recurring weekly all-day events are emphasized months in advance"]} />
-          </Note>
+          <ImageCell src="./img/calendar-03.png" background="hsla(46,0%,0%,20%)" />
+          <ImageCell src="./img/calendar-04.png" background="hsla(46,0%,0%,20%)" />
         </Group>
 
 
 
+        In Google Calendar's month view, all-day events are highlighted with color blocks, while timed events are displayed with equal visual emphasis and may be hidden to conserve space. I noticed that timed significant events were being hidden to make room for displaying insignificant events just because they were all-day.
+
+
         <Group className="grid"
           style={{ ...autoStyleGridFlush[mediaSize], ...styleSpan2[mediaSize] }} >
-          <Note style={styleSpan1}>
+
+          <ImageCell src="./img/calendar-05.png" />
+          <div style={{
+            background: "hsl(250,50%,95%)", boxShadow: "inset -2rem .1rem 10rem hsl(250,30%,85%)",
+            padding: "1.5rem", height: "100%"
+          }}>
+            <BulletList ordered={true} items={[
+              "Non-recurring significant appointment has low visual emphasis",
+              "Non-recurring significant appointment is hidden",
+              "Insignificant recurring weekly all-day events are emphasized months in advance"]}
+            />
+          </div>
+        </Group>
+        While it's true that many significant events happen to be all-day, there is a fatal flaw with this logic. Birthdays, holidays, festivals, business conferences, etc. are not significant because they occur all day – they're significant because they occur once a year.
+
+
+
+        <Group className="grid"
+          style={{ ...autoStyleGridFlush[mediaSize], ...styleSpan2[mediaSize] }} >
+          <div style={{
+            background: "hsl(250,50%,95%)",
+            boxShadow: "inset 2rem .1rem 10rem hsl(250,30%,85%)",
+            padding: "1.5rem", height: "100%"
+          }}>
             I discovered an inverse relationship between recurrence and significance – the most important events occur the least frequently, and time-sensitive appointments with no recurrence may be more significant than all-day events.
             Rarity can be calculated based on recurrence patterns, which means significance can be detected more predictably and styled with appropriate emphasis in the visual hierarchy.
 
-          </Note>
+          </div>
           <ImageCell src="./img/calendar-02.png" />
 
         </Group>
 
         <img className="shadow" src="./img/calendar-01.png" alt="" width="100%" height="auto" style={styleSpan2[mediaSize]} />
 
-      </Group>
+      </Note>
 
-      <h2 style={{ margin: "2rem 0 0 0" }}>Solution</h2>
+      <Note className="column nowrap" style={{ gap: "2rem" }}>
+        <h2 style={{ margin: "0" }}>Solution</h2>
 
-      <Group className="row wrap">
-        <Note>
-          I designed and built a React web app that pulls weather and calendar information into a single prioritized view. To make sure the calendar app would be visible when the information is most relevant, I used a single-board tiny computer to automate turning on the bedroom TV to display the app each morning.
-        </Note>
-        <Note>
-          <BulletList title="Key Features" items={[
-            "Hourly weather forecast graph in relation to daily events",
-            "6-Day weather forecast graph in relation to weekly events",
-            "6-month rolling view of significant events grouped by week",
-            "Dark theme to reduce screen brightness during morning hours"]}
-          />
-        </Note>
 
-      </Group>
-      <Group className="col">
+
+        I designed and built a React web app that pulls weather and calendar information into a single prioritized view. To make sure the calendar app would be visible when the information is most relevant, I used a single-board tiny computer to automate turning on the bedroom TV to display the app each morning.
+
+
+        <BulletList title="Key Features" items={[
+          "Hourly weather forecast graph in relation to daily events",
+          "6-Day weather forecast graph in relation to weekly events",
+          "6-month rolling view of significant events grouped by week",
+          "Dark theme to reduce screen brightness during morning hours"]}
+        />
+
         <Hero component="calendar" />
 
-      </Group >
 
-      <Group className="grid shadow"
-        style={{ ...autoStyleGridFlush[mediaSize], ...styleSpan2[mediaSize] }} >
-        <Note style={styleSpan1}>
-          <BulletList title="Technical implementation" items={[
-            "Events are created and stored in Google Calendars.",
-            "A Google Apps Script imports events into Google Sheets, where data is filtered, sorted, and prioritized.",
-            "A sanitized CSV endpoint is generated from the Sheets data using functions and published.",
-            "CSV data is converted to JSON using PapaParse.js, while weather data is obtained from Open Meteo's API.",
-            "The React web app renders the integrated weather and calendar information.",
-            "A small single-board computer automatically turns on the bedroom TV to display the app each morning."]} />
-        </Note>
-        <ImageCell src="./img/calendar-diagram-v.png" background="hsla(46,0%,0%,20%)" style={{ padding: "1rem" }} />
-        {/* <img className="shadow"//desktop-hide laptop-hide tablet-hide phablet-hide" 
+        <Group className="grid"
+          style={{ ...autoStyleGridFlush[mediaSize], ...styleSpan2[mediaSize] }} >
+          <div style={{
+            background: "hsl(250,50%,95%)",
+            boxShadow: "inset 2rem .1rem 10rem hsl(250,30%,85%)",
+            padding: "1.5rem", height: "100%"
+          }}>
+            <BulletList title="Technical implementation" items={[
+              "Events are created and stored in Google Calendars.",
+              "A Google Apps Script imports events into Google Sheets, where data is filtered, sorted, and prioritized.",
+              "A sanitized CSV endpoint is generated from the Sheets data using functions and published.",
+              "CSV data is converted to JSON using PapaParse.js, while weather data is obtained from Open Meteo's API.",
+              "The React web app renders the integrated weather and calendar information.",
+              "A small single-board computer automatically turns on the bedroom TV to display the app each morning."]} />
+          </div>
+          <ImageCell src="./img/calendar-diagram-v.png" background="hsla(46,0%,0%,20%)" style={{ padding: "1rem" }} />
+          {/* <img className="shadow"//desktop-hide laptop-hide tablet-hide phablet-hide" 
           src="./img/calendar-diagram-v.png" alt="" width="100%" height="auto" style={{ flexGrow: 1, flexShrink: 2, flexBasis: "40%", minWidth: "200px" }} />
          <img className="shadow mobile-hide" src="./img/calendar-diagram-h.png" alt="" width="100%" height="auto" style={{ flexShrink: 2 }} />*/}
 
-
-
-
-
-      </Group>
+        </Group>
+      </Note>
 
 
       <Group className="row wrap center" style={{

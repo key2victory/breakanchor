@@ -587,23 +587,23 @@ a.card.hover:hover {
 
 @keyframes animate-wallpaper {
   0% {
-    background-color: hsl(174,20%,60%);
+    background-color: hsl(174,30%,60%);
     background-position: 0% 0%;
   }
   25% {
-    background-color: hsl(40,20%,60%);
+   background-color: hsl(200,30%,40%);
     background-position: -50% 50%;
   }
   50% {
-    background-color: hsl(174,20%,60%);
+   background-color: hsl(174,30%,60%);
     background-position: -100% 100%;
   }
   75% {
-    background-color: hsl(330,20%,60%);
+    background-color: hsl(200,30%,40%);
     background-position: -50% 50%;
   }
   100% {
-    background-color: hsl(174,20%,60%);
+    background-color: hsl(174,30%,60%);
     background-position: 0% 0%;
   }
 }
