@@ -6,8 +6,9 @@
 html,
 body,
 #app {
-/*  color-scheme: light dark;*/
-  font-family: Roboto, Open Sans, sans-serif;
+  /*  color-scheme: light dark;
+  font-family: Roboto, Open Sans, sans-serif;*/
+  font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   text-align: center;
   width: 100vw;
   height: 100vh;
@@ -113,22 +114,23 @@ ul li::before {
 }
 
 .nav-link.project {
-  outline:3px solid hsla(0,0%,40%,0%);
+  outline: 3px solid hsla(0, 0%, 40%, 0%);
   cursor: pointer;
   transition: 0.5s 0s linear;
 }
 
 .nav-link.project .label {
-  background-color: hsla(0,0%,40%,100%);
-color: hsla(0,0%,100%,100%);
-transition: .5s 0s ease-in;
+  background-color: hsla(0, 0%, 40%, 100%);
+  color: hsla(0, 0%, 100%, 100%);
+  transition: .5s 0s ease-in;
 }
 
 .nav-link.project:hover .label {
-  background-color: hsla(0,0%,40%,30%);
-color: hsla(0,0%,100%,0%);
+  background-color: hsla(0, 0%, 40%, 30%);
+  color: hsla(0, 0%, 100%, 0%);
   opacity: 1;
 }
+
 /*
 .nav-link.project .overlay {
     background: linear-gradient(to bottom, hsla(0,0%,0%,100%) 50%, hsla(0,0%,0%,0%) 50%,);
@@ -139,9 +141,9 @@ color: hsla(0,0%,100%,0%);
     background: linear-gradient(to bottom, hsla(0,0%,0%,100%) 50%, hsla(0,0%,0%,0%) 50%,);
     }*/
 
-    .nav-link.project:hover{
-      outline:3px solid hsla(0,0%,40%,100%);
-    }
+.nav-link.project:hover {
+  outline: 3px solid hsla(0, 0%, 40%, 100%);
+}
 
 .nav-panel {
   position: absolute;
@@ -288,14 +290,14 @@ color: hsla(0,0%,100%,0%);
 }
 
 a.card.hover {
- background:  hsl(0,0%,100%);
-transition: .5s 0s linear;
+  background: hsl(0, 0%, 100%);
+  transition: .5s 0s linear;
 }
 
 a.card.hover:hover {
- filter: opacity(80%);
- background: hsl(0,0%,90%);
-  }
+  filter: opacity(80%);
+  background: hsl(0, 0%, 90%);
+}
 
 .text-bubble {
   width: auto;
@@ -352,6 +354,7 @@ a.card.hover:hover {
 .animate-flow.audiohand {
   animation: animate-flow-audiohand 30s ease-in-out 0s infinite;
 }
+
 .animate-flow.loto {
   animation: animate-flow-loto 60s ease-in-out 0s infinite;
 }
@@ -406,7 +409,7 @@ a.card.hover:hover {
 
 .button.orange {
   color: hsl(0, 0%, 0%);
-  background:hsl(40, 100%, 70%); 
+  background: hsl(40, 100%, 70%);
 
 }
 
@@ -493,12 +496,15 @@ a.card.hover:hover {
   0% {
     opacity: 1;
   }
+
   30% {
     opacity: 1;
   }
+
   35% {
     opacity: 0;
   }
+
   95% {
     opacity: 0;
   }
@@ -508,18 +514,23 @@ a.card.hover:hover {
   0% {
     opacity: 0;
   }
+
   30% {
     opacity: 0;
   }
+
   34% {
     opacity: 1;
   }
+
   60% {
     opacity: 1;
   }
+
   65% {
     opacity: 0;
   }
+
   100% {
     opacity: 0;
   }
@@ -529,12 +540,15 @@ a.card.hover:hover {
   0% {
     opacity: 0;
   }
+
   55% {
     opacity: 0;
   }
+
   59% {
     opacity: 1;
   }
+
   95% {
     opacity: 1;
   }
@@ -544,12 +558,15 @@ a.card.hover:hover {
   0% {
     opacity: 1;
   }
+
   30% {
     opacity: 1;
   }
+
   35% {
     opacity: 0;
   }
+
   95% {
     opacity: 0;
   }
@@ -559,58 +576,87 @@ a.card.hover:hover {
   5% {
     opacity: 1;
   }
+
   60% {
     opacity: 1;
   }
+
   65% {
     opacity: 0;
   }
+
   95% {
     opacity: 0;
   }
 }
 
 @keyframes animate-flow-audiohand {
-  0%{background-position: top;
-    background-size: 100%;}
-  25%{background-position: left;
-  background-size: 200%;} 
-  75%{background-position: top;
-    background-size: 200%;} 
-  100%{background-position: top;
-    background-size: 100%;} 
+  0% {
+    background-position: top;
+    background-size: 100%;
+  }
+
+  25% {
+    background-position: left;
+    background-size: 200%;
+  }
+
+  75% {
+    background-position: top;
+    background-size: 200%;
+  }
+
+  100% {
+    background-position: top;
+    background-size: 100%;
+  }
 }
 
 @keyframes animate-flow-loto {
-  0%{background-position: top;
-    background-size: 100%;}
-  25%{background-position: top;
-  background-size: 500%;} 
-  75%{background-position: center;
-    background-size: 500%;} 
-  100%{background-position: top;
-    background-size: 100%;} 
+  0% {
+    background-position: top;
+    background-size: 100%;
+  }
+
+  25% {
+    background-position: top;
+    background-size: 500%;
+  }
+
+  75% {
+    background-position: center;
+    background-size: 500%;
+  }
+
+  100% {
+    background-position: top;
+    background-size: 100%;
+  }
 }
 
 @keyframes animate-wallpaper {
   0% {
-   /* background-color: hsl(174,20%,60%);*/
+    /* background-color: hsl(174,20%,60%);*/
     background-position: 0% 0%;
   }
+
   25% {
-   /* background-color: hsl(40,20%,60%);*/
+    /* background-color: hsl(40,20%,60%);*/
     background-position: -50% 50%;
   }
+
   50% {
-   /* background-color: hsl(174,20%,60%);*/
+    /* background-color: hsl(174,20%,60%);*/
     background-position: -100% 100%;
   }
+
   75% {
-   /* background-color: hsl(330,20%,60%);*/
+    /* background-color: hsl(330,20%,60%);*/
     background-position: -50% 50%;
   }
+
   100% {
-  /*  background-color: hsl(174,20%,60%);*/
+    /*  background-color: hsl(174,20%,60%);*/
     background-position: 0% 0%;
   }
 }

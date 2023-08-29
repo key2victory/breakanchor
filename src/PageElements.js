@@ -40,13 +40,15 @@ export const Counter = ({ label, number, duration }) => {
   }, [number, duration]);
 
   return (
-    <div className="Count row nowrap" >
-      <h2 style={{ color: useTheme().palette.cyan }}>
+    <div className="Count row left center nowrap" style={{ gap: ".5ch" }}>
+      <h1 style={{
+        color: useTheme().palette.cyan, width: "2ch", textAlign: "center", fontWeight: 800
+      }}>
         {count}
-      </h2>
-      <h5 style={{ color: useTheme().palette.accents_8 }}>
+      </h1>
+      <h6 style={{ color: useTheme().palette.accents_5, textTransform: "uppercase" }}>
         {label}
-      </h5>
+      </h6>
     </div>
   );
 }

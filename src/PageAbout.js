@@ -100,10 +100,14 @@ export default function PageAbout(props) {
           <BiLogoInstagram size={22} />
         </a>
       </Header>
-      <Counter number="14" label=" yrs professional design" duration="2" />
-      <Counter number="11" label=" yrs UX and product design" duration="2" />
-      <Counter number="6" label="x design mentor for KEC" duration="2" />
-      <Counter number="4" label="x event speaker" duration="2" />
+      <Group className="grid" style={{
+        gridTemplateColumns: ["xs", "sm"].includes(media) ? "100%" : "1fr 1fr", //maxWidth: maxCardWidth 
+      }}>
+        <Counter number="14" label="Years Design" duration="2" />
+        <Counter number="11" label="Years Product" duration="2" />
+        <Counter number="14" label="Years Mentoring" duration="2" />
+        <Counter number="4" label="Speaking Engagements" duration="2" />
+      </Group>
       <Group className="grid"//"col nowrap" 
         style={{
           gridTemplateColumns: ["xs", "sm"].includes(media) ? "100%" : "1fr 1fr", //maxWidth: maxCardWidth 
