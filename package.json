@@ -1,31 +1,13 @@
 {
-  "name": "break-anchor",
-  "version": "1.0.0",
-  "license": "SEE LICENSE IN <README.md>",
   "private": true,
-  "description": "",
-  "keywords": [],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "sass": "node-sass --watch public/static/scss/style.scss public/assets/css/style.css --source-map public/static/css/style.css.map",
-    "lint": "next lint"
+    "start": "next start"
   },
   "dependencies": {
-    "emailjs-com": "^3.2.0",
-    "isotope-layout": "^3.0.6",
-    "next": "12.3.1",
-    "node-sass": "^7.0.3",
+    "next": "latest",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-tsparticles": "^2.5.3",
-    "swiper": "^8.4.4",
-    "tsparticles": "^2.5.3",
-    "typed.js": "^2.0.12"
-  },
-  "devDependencies": {
-    "eslint": "8.24.0",
-    "eslint-config-next": "12.3.1"
+    "react-dom": "18.2.0"
   }
 }
