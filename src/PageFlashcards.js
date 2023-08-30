@@ -56,7 +56,7 @@ export const PageFlashcards = memo(function PageFlashcards({
                 <Header
                     title="ASL Flash Cards"
                     subtitle="Animated sign language card deck"
-                    color="hsl(0,0%,0%)"
+                // color="hsl(0,0%,0%)"
                 >
                 </Header>
 

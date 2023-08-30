@@ -1,7 +1,7 @@
 import { memo } from "react";
 //import { base64_calendar } from "./HeroCalendar";
-import { base64_iphone } from "./HeroAudiohand";
-import { base64_sonim } from "./HeroLockOut";
+import { base64_iphone } from "./Base64Audiohand";
+import { base64_sonim } from "./Base64LockOut";
 
 export const Hero = memo(function Hero({ component, className, style }) {
 
@@ -108,10 +108,11 @@ const HeroLockOut = memo(function HeroLockOut({/* className,*/style }) {
         </svg>
     );
 
-    return (<div className="col top center shadow"
+    return (<div className="col top center"// shadow"
         style={{
             minWidth: "248px",
             minHeight: "300px",
+            filter: "drop-shadow(20px 0px 50px hsla(0,0%,10%,100%))",
             ...style
         }}><Device /></div>);
 });
@@ -121,16 +122,16 @@ const HeroFlashcards = memo(function HeroFlashcards({ className, style = { width
         <iframe src="https://codesandbox.io/embed/asl-flashcards-s6t7to?fontsize=14&hidenavigation=1&theme=dark&view=preview"
             className={className}
             style={{
-                border: "none",
-                borderRadius: "1rem",
+                border: "6px solid #111",
+                borderRadius: "1.5rem",
                 outline: "none",
                 // width: "100%",
                 height: "500px",
-                maxWidth: "100%",
+                maxWidth: "600px",
                 maxHeight: "500px",
                 aspectRatio: "1/1",//"3 / 4",
                 overflow: "hidden",
-                background: "hsl(0,0%,0%)",
+                background: "#111",
                 ...style
             }}
             title="ASL Flashcards"
@@ -229,10 +230,11 @@ const HeroAudiohand = memo(function HeroAudiohand({ style }) {
 
     return (
         <div
-            className="col top center shadow"
+            className="col top center"// shadow"
             style={{
                 minWidth: "248px",
                 minHeight: "300px",
+                filter: "drop-shadow(-40px 0px 50px hsla(0,0%,10%,100%))",
                 ...style
             }}
         >

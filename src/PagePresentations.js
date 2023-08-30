@@ -53,20 +53,22 @@ export function PagePresentations(props) {
         const EmbeddedItem = embedType;
 
         return (
-            <div className="grid box-shadow"//row top wrap
+            <div className="grid box-shadow"
                 style={{
-                    background: "hsla(40,5%,90%,100%)",
+                    background: "#111", //"hsla(40,5%,90%,100%)",
+                    color: "#fff",
                     width: "100%",
                     height: "auto",
                     maxWidth: "800px",//`calc(${minImgSize}px + 38rem)`,
                     minHeight: "auto",
-                    gridTemplateColumns: media === "xs" ? "100%" : "auto 1fr",
+                    gridTemplateColumns: ["xs"].includes(media) ? "100%" : "auto 1fr",
                     // overflow: "hidden",
                     // gap: "1.5rem",
                     flexShrink: 0,
                     borderTop: "1px solid hsla(0,0%,0%,20%)",
                     padding: 0,//"1.5rem",//"1.5rem 0 0 0",
                     margin: "0 0 .5rem 0"
+
                 }}>
 
                 <EmbedImage src={src} imageBackground={imageBackground} minImgSize={minImgSize} style={imageStyle} />
@@ -96,16 +98,17 @@ export function PagePresentations(props) {
     });
 
     return (
-        <PageContainer layout="center"
+        <PageContainer layout="center" maxWidth={800}
         >
             <Header
                 title="Presentations"
                 subtitle=""
-                color="hsla(0,0%,0%,50%)"
+                color="hsla(18,90%,70%,100%)"//"hsla(350,90%,60%,100%)" //"hsla(20,90%,60%,100%)"
                 style={{
                     gridColumn: "content / span 1",
                     gridRowStart: "title",
-                    padding: "0 0 1rem 0"
+                    padding: "0 0 1rem 0",
+
                 }}
             ></Header>
 
@@ -128,8 +131,8 @@ export function PagePresentations(props) {
                         actionDescription="see 'What Makes UI Intuitive' slide deck from Presentations Page"
                         url="https://docs.google.com/presentation/d/1sX_i-tTYVkihPYqb25-01_tm7hDQsf-zdyhIPcvHed8/edit?usp=sharing"
                         color="hsla(0,0%,100%,100%)"
-                        backgroundColor="hsla(40,10%,45%,100%)"
-                        hoverColor="hsla(25,90%,60%,100%)"
+                        backgroundColor="hsla(20,70%,60%,100%)"
+                        hoverColor="hsla(0,75%,60%,100%)"
                     >Slide Deck ↗
                     </ButtonAction>
 
@@ -153,8 +156,8 @@ export function PagePresentations(props) {
                         actionDescription="see 'The UX Stack' slide deck from Presentations Page"
                         url="https://docs.google.com/presentation/d/1PE_Fx5LP3cq0JnYROtTiWgLajQSqTIo9zpyP5ySruco/edit?usp=sharing"
                         color="hsla(0,0%,100%,100%)"
-                        backgroundColor="hsla(40,10%,45%,100%)"
-                        hoverColor="hsla(350,90%,60%,100%)"
+                        backgroundColor="hsla(20,70%,60%,100%)"
+                        hoverColor="hsla(0,75%,60%,100%)"
                     >Slide Deck ↗
                     </ButtonAction>
 
@@ -181,10 +184,12 @@ export function PagePresentations(props) {
 
             <div className="col left" style={{
                 borderTop: "1px solid hsla(0,0%,0%,20%)", padding: "1rem 0 0 0", gap: "1.5rem", maxWidth: "800px",
-                filter: "sepia(100%) brightness(50%)",
+                // filter: "sepia(100%)",// brightness(50%)",
+                color: "hsla(0,0%,100%,80%)"
             }}>
                 <div className="col left">
                     <img src="./img/codestock-logo.png" alt="" width="auto" height="auto" style={{
+                        filter: "grayscale(1) invert(1) brightness(.5)",
                         maxWidth: "200px",
                         margin: "0 0 .75rem 0"
                     }} />
@@ -193,8 +198,9 @@ export function PagePresentations(props) {
                 </div>
                 <div className="col left">
                     <img src="./img/scs-logo.png" alt="" width="auto" height="auto" style={{
+                        filter: "contrast(.3) saturate(2) brightness(1.2)",
                         maxWidth: "300px",
-                        margin: "0"
+                        margin: "0 0 .25rem 0"
                     }} />
                     <span>Scenic City Summit is the largest local IT professional development program in Chattanooga! Brought to you by ChaTech and premier sponsor, Red Hat, this conference brings together coders, designers, database administrators, web developers, project managers and IT professionals to share real-world business problems, best practices and emerging technologies.
                     </span>

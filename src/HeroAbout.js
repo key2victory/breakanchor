@@ -12,8 +12,8 @@ export const HeroAbout = memo(function HeroAbout({
 }) {
 
   const autoStyle = {
-    small: { flexFlow: "row wrap", borderRadius: "1rem", background: "hsla(40,10%,70%,0%)" },
-    large: { flexFlow: "column nowrap", borderRadius: 0, background: "hsla(0,0%,0%,20%)" },
+    small: { flexFlow: "column nowrap", /*borderRadius: "1rem", background: "hsla(40,10%,70%,0%)",*/ padding: "1rem 1.5rem", },
+    large: { flexFlow: "column nowrap", borderRadius: 0, /*background: "hsla(0,0%,0%,20%)",*/ padding: "2rem 1.5rem", },
   }
 
   //const autoStyle = ["xs", "sm"].includes(media) ? deviceSize.small : deviceSize.large;
@@ -23,9 +23,8 @@ export const HeroAbout = memo(function HeroAbout({
       className="center"//{`center ${hide === true ? "hide" : ""}`}//`${deviceSize[device]} center`} //desktop-about tablet-about mobile-about"
       style={{
         display: hide === true ? "none" : "flex",
-        //visibility: hide === true ? "hidden" : "visible",
-        // flexFlow: ["xs", "sm"].includes(media) ? "row wrap" : "col nowrap",
-        padding: "1rem 1.5rem",
+
+        //  padding: "1rem 1.5rem",
         width: "100%",
         height: "auto",
         gap: "0rem",
@@ -53,7 +52,7 @@ export const HeroAbout = memo(function HeroAbout({
       }}>
         <h3
           style={{
-            color: deviceSize === "small" ? "hsl(0,0%,40%)" : "hsl(0,0%,90%)",
+            color: /*deviceSize === "small" ? "hsl(0,0%,40%)" :*/ "hsl(0,0%,90%)",
             width: "auto",
             // minWidth: "max-content"
           }}
@@ -61,7 +60,7 @@ export const HeroAbout = memo(function HeroAbout({
           Janna Curtis
         </h3>
         <h5 style={{
-          color: deviceSize === "small" ? "hsl(0,0%,50%)" : "hsl(0,0%,70%)",
+          color: /*deviceSize === "small" ? "hsl(0,0%,50%)" :*/ "hsl(0,0%,70%)",
           width: "auto",
           // minWidth: "max-content"
         }}>break anchor design</h5>

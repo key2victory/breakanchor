@@ -24,7 +24,7 @@ const present = new Date().getFullYear();
   column
 }) {*/
 
-const maxCardWidth = "590px";
+const maxCardWidth = 600;//"590px";
 
 const iconDefs = {
   Figma: FaFigma,
@@ -59,9 +59,9 @@ export default function PageAbout(props) {
   // const color2 = "hsl(0,0%,90%)";
   const color1 = "hsla(0,0%,0%,0%)";
   const color2 = "hsla(0,0%,0%,10%)";
-
+  const cardColor = "#111";
   return (
-    <PageContainer layout="center" //maxWidth="1200px"
+    <PageContainer layout="center" maxWidth={maxCardWidth}
     >
       {/*      <div
         className="page-bg"
@@ -74,7 +74,7 @@ export default function PageAbout(props) {
           zIndex: 0
         }}
       />*/}
-      <HeroAbout hide={["xl", "lg", "md"].includes(media)} deviceSize="small" />
+
       {/*   <Counter number="14" label="year professional designer" duration="2" />
       <Counter number="11" label="year UX and product design" duration="2" />
       <Counter number="6" label="time design mentor for KEC" duration="2" />
@@ -82,80 +82,55 @@ export default function PageAbout(props) {
    
       */}
       <Header title="About Me"
-        color="hsla(0,0%,0%,50%)" style={{ margin: "0 0 0 0", width: "100%", maxWidth: maxCardWidth }} />
+        color="hsl(167,64%,45%)" style={{
+          margin: "0 0 0 0", width: "100%", //maxWidth: maxCardWidth 
+        }} />
+
       <Group className="grid"//"col nowrap" 
         style={{
-          gridTemplateColumns: ["xs", "sm"].includes(media) ? "100%" : "1fr 1fr", //maxWidth: maxCardWidth 
+          gridTemplateColumns: "100%", //["xs", "sm"].includes(media) ? "100%" : "1fr 1fr",
+          //    maxWidth: maxCardWidth,
         }}>
+        <HeroAbout hide={["xl", "lg", "md"].includes(media)} deviceSize="small" />
         <Group className={`row wrap top ${["lg", "md"].includes(media) ? "left" : "center"}`} style={{ width: "100%" }}>
           <Group
             className="col shadow"
             style={{
-              padding: "1.5rem 2rem",
-              background: "hsla(0,0%,30%,85%)",
-              color: "hsla(0,0%,100%,80%)",
+              //  padding: "1.5rem 2rem",
+              //  background: cardColor,
+              //color: "hsla(0,0%,100%,80%)",
               width: "100%",
               // maxWidth: maxCardWidth,
               gap: 0,
             }}
           >
-            <h5 style={{ marginBottom: ".5rem" }}> I'm a team player</h5>
-            <p style={{ marginBottom: "1rem" }}>
-              Throughout my career, I've had the pleasure of working on many highly effective teams. I'm used to leveraging the strengths of each individual to work more efficiently and aid each other's personal growth. I understand the power of collaboration and I'm dedicated to the success of the team as a whole. I've spent a lot of time in both startup and enterprise environments.
-            </p>
+            <h4 style={{ marginBottom: "1rem", lineHeight: "1.5" }}>
+              Speaker, mentor, adventurer, and casual gamer. Living life one pixel at a time in Knoxville with my loving family and our four-legged friends.
+            </h4>
           </Group>
-          <Group
-            className="col shadow"
-            style={{
-              padding: "1.5rem 2rem",
-              background: "hsla(0,0%,30%,85%)",
-              color: "hsla(0,0%,100%,80%)",
-              width: "100%",
-              //  maxWidth: maxCardWidth,
-              gap: 0,
-            }}
-          >
-            <h5 style={{ marginBottom: ".5rem" }}>
-              My skills are also my hobbies
-            </h5>
-            <p style={{ marginBottom: "1rem" }}>
-              I'm well-versed in user experience and visual design principles, but have a personal fascination with psychology and reading material on human behavior, social patterns, and research for fun. I am always curious about new technology and always try to stay up-to-date on UX patterns, trends, UI frameworks, and the latest advancements. I've been a speaker at Codestock and Scenic City Summit developer conferences, and I'm comfortable presenting my ideas to clients.
-            </p>
-          </Group>
-          <Group
-            className="col shadow"
-            style={{
-              padding: "1.5rem 2rem",
-              background: "hsla(0,0%,30%,85%)",
-              color: "hsla(0,0%,100%,80%)",
-              width: "100%",
-              //  maxWidth: maxCardWidth,
-              gap: 0,
-            }}
-          >
-            <h5 style={{ marginBottom: ".5rem" }}>
-              It's my personal mission to empower others
-            </h5>
-            <p style={{ marginBottom: "0rem" }}>
-              My degree program at Watkins College of Art taught me how to evaluate my work against the principles of design to make iterative improvements, and how to assist other designers in reaching the full potential of their work through collaborative feedback.I use these techniques often when mentoring for the Knoxville Entrepreneur Center and new designers in my spare time. I am always looking for ways to improve myself and support the success of others.
-            </p>
-          </Group>
-          <CardSection title="Education">
+
+          <CardSection title="Education" style={{
+            background: "none"//cardColor, 
+          }}>
 
             {resume.education.map((item, index) => (
 
-              <CardDetails key={`resume-edu-${index}`} content={item} media={mediaSize} />
+              <CardDetails key={`resume-edu-${index}`} content={item} media="small"/*mediaSize*/ />
 
             ))}
 
           </CardSection>
         </Group>
         <Group className="col nowrap" >
-          <CardSection title="Experience">
+          <CardSection title="Experience" style={{
+            background: "none"//cardColor, 
+          }}>
 
             {resume.experience.map((item, index) => (
 
-              <CardDetails key={`resume-exp-${index}`} content={item} media={mediaSize} />
+              <CardDetails key={`resume-exp-${index}`} content={item} media="small"
+              /*mediaSize*/
+              />
 
             ))}
           </CardSection>
@@ -167,6 +142,7 @@ export default function PageAbout(props) {
 }
 
 function CardSection({ title, children, style }) {
+  const textColor = "hsl(167,64%,45%)"//"hsl(0,0%,50%)"
   return (
     <div
       className="col nowrap shadow"
@@ -175,16 +151,19 @@ function CardSection({ title, children, style }) {
         // flexFlow: "column nowrap",
         gap: 0,
         // background: "hsl(0,0%,40%)",
-        background: "hsla(0,0%,30%,85%)",
-        padding: "1rem 2rem 1rem 1rem",
+
+        padding: "1rem 0",//".5rem 1rem .5rem .5rem",
         width: "100%",
+
         // maxWidth: maxCardWidth,
         // minWidth: "300px",
         // maxWidth: "600px",
         ...style,
       }}
     >
-      <h3 style={{ color: "hsl(0,0%,100%)", margin: "0 0 1rem 0" }}> {title} </h3>
+      <h2 style={{
+        color: textColor, margin: "0 0 1rem 0",// padding: "0 0 .5rem 0", //borderBottom: `1px solid ${textColor}`, 
+      }}> {title} </h2>
       {children}
     </div>
   );
@@ -199,7 +178,7 @@ function CardSection({ title, children, style }) {
 
 
 
-const CardDates = ({ content, media }) => {
+const CardDates = ({ content, media, lineColor = "hsl(167,40%,30%)", markerColor = "hsl(167,64%,45%)", datesColor = "hsla(0,0%,100%,60%)" }) => {
   // gridColumn: "1 / span 1",
   // display: "flex",
   // width: "100%",
@@ -211,7 +190,6 @@ const CardDates = ({ content, media }) => {
       textAlign: "left",
       display: "flex",
       flexFlow: "row wrap",
-
       justifyContent: "flex-start",
       alignContent: "flex-start",
       alignItems: "center",
@@ -249,8 +227,8 @@ const CardDates = ({ content, media }) => {
           width: "100%",
           alignItems: "flex-start",
           justifyContent: "flex-start",
-          color: "hsl(0,0%,100%)",
-          padding: ".5rem 0 0 0",
+          color: datesColor,
+          padding: ".7rem 0 0 1rem",
           ...responsiveDates[media]
         }}
       >
@@ -299,25 +277,55 @@ const CardDates = ({ content, media }) => {
         )}
       </span>
       <span
-        //className="resume-marker responsive"
+
         style={{
-          width: "2px",
+          position: "relative",
           display: "flex",
-          flexFlow: "column nowrap",
-          alignItems: "center",
-          justifyContent: "flex-start",
-          //height: "100%",
-          borderRight: "2px solid hsl(0,0%,80%)",
-          padding: ".7rem 0 0 0",
-          margin: "0 1rem 0 auto",
-          color: "hsl(0,0%,100%)",
+          width: "100%",
           ...responsiveMarker[media]
-          // gap: "0"
-        }}
-      >
-        <MdCircle style={{ transform: "translateX(1px)" }} />
+        }}>
+        <span
+          //className="resume-marker responsive"
+          style={{
+            position: "absolute",
+            top: 0,
+            bottom: 0,
+            left: "32%",
+            width: "2px",
+            display: "flex",
+            flexFlow: "column nowrap",
+            alignItems: "center",
+            justifyContent: "flex-start",
+            //height: "100%",
+            borderRight: `4px solid ${lineColor}`,
+            padding: ".7rem 0 0 0",
+            margin: "0 1rem 0 auto",
+            //  color: markerColor,
+            //    ...responsiveMarker[media]
+            // gap: "0"
+          }}
+        />
+        <span
+          //   className="logo"
+          style={{
+            position: "absolute",
+            display: "flex",
+            width: "100%",
+            padding: ".2rem",
+            background: markerColor,//"hsl(167,72%,60%)",//"hsl(0,0%,50%)",
+            borderRadius: "100%",
+            aspectRatio: "1/1",
+            transform: "translate(0, .5rem)",
+            overflow: "hidden",
+            zIndex: 2,
+          }}
+        >
+          <Logo name={content.logo} />
+        </span>
+
       </span>
-    </Fragment>
+
+    </Fragment >
   )
 };
 
@@ -339,17 +347,17 @@ const CardHeader = ({ content }) => (
   </span>
 );
 
-const TimelineBubble = ({ content, children, style }) => {
+const TimelineBubble = ({ content, children = { undefined }, style }) => {
   const bubbleStyle = [
     {
       borderRadius: "0rem 1rem 1rem 1rem",
-      background: "hsl(0,0%,100%)",
-      padding: "1rem",
+      background: "hsl(0,0%,7%)",//"hsl(0,0%,100%)",
+      padding: "1.25rem 1.5rem 1.25rem 2rem",
       zIndex: 1,
     },
     {
 
-      background: "hsl(0,0%,90%)",
+      background: "hsl(0,0%,7%)",//"hsl(0,0%,90%)",
       padding: "2rem 2rem 2rem 2rem",
       margin: "-1rem 0 0 0",
       zIndex: 0,
@@ -368,6 +376,7 @@ const TimelineBubble = ({ content, children, style }) => {
         margin: "0.5rem 0 1rem 0",
         borderRadius: "0rem 1rem 1rem 1rem",
         overflow: "hidden",
+        transform: "translate(-1rem, 0)"
       }}
     >
       <div
@@ -379,46 +388,36 @@ const TimelineBubble = ({ content, children, style }) => {
           ...bubbleStyle[0],
         }}
       >
-        <span
-          className="logo"
-          style={{
-            display: "flex",
-            alignItems: "stretch",
-            justifyContent: "stretch",
-            background: "hsl(0,0%,90%)",
-            borderRadius: ".5rem",
-            aspectRatio: "1/1",
-          }}
-        >
-          <Logo name={content.logo} />
-        </span>
+
         <CardHeader content={content} />
       </div>
-      <div
-        className="box-shadow"
-        style={{
-          display: "flex",
-          flexFlow: "column nowrap",
-          gap: ".75rem",
-          ...bubbleStyle[1],
-        }}
-      >
-        {children}
-      </div>
+      {children !== undefined && children !== null ?
+        <div
+          className="box-shadow"
+          style={{
+            display: "flex",
+            flexFlow: "column nowrap",
+            gap: ".75rem",
+            ...bubbleStyle[1],
+          }}
+        >
+          {children}
+        </div> : null}
     </div>
   );
 
 };
 /*
-const CardSummary = ({ content, style }) => (
-  <Fragment>
-    <CardDates content={content} />
-    <TimelineBubble content={content} />
-  </Fragment>
-);*/
+const CardSummary = ({content, style}) => (
+        <Fragment>
+          <CardDates content={content} />
+          <TimelineBubble content={content} />
+        </Fragment>
+        );*/
 
 const CardDetails = ({ content, media }) => {
-
+  const textColor = "hsla(0,0%,100%,80%)";
+  const labelColor = "hsl(0,0%,60%)";
   const ProjectDetails = ({ content, style }) => (
     <span
       style={{
@@ -430,7 +429,7 @@ const CardDetails = ({ content, media }) => {
           style={{
             width: "100%",
             padding: "0 0 .25rem 0",
-            color: "hsl(0,0%,60%)",
+            color: labelColor,
             // fontSize: ".9rem"
           }}
         >
@@ -447,7 +446,7 @@ const CardDetails = ({ content, media }) => {
         >
           <span
             style={{
-              color: "hsl(0,0%,60%)",
+              color: labelColor,
               fontSize: "1.5rem",
               lineHeight: "1.2rem",
             }}
@@ -469,11 +468,13 @@ const CardDetails = ({ content, media }) => {
   );
   const responsiveTimeline = {
     small: {
+      position: "relative",
       display: "grid",
-      gridTemplateColumns: "[marker] 28px [details] 1fr",
+      gridTemplateColumns: "[marker] 56px [details] 1fr",
       gridAutoRows: "minmax(0,fit-content)",
       rowGap: 0,
       columnGap: 0,
+      color: textColor
     },
     large: {
       display: "grid",
@@ -481,6 +482,7 @@ const CardDetails = ({ content, media }) => {
       gridAutoRows: "min-content",
       rowGap: 0,
       columnGap: 0,
+      color: textColor
     }
 
   }
@@ -541,9 +543,26 @@ const resume = {
   ],
   experience: [
     {
-      title: "Cadre5",
-      subtitle: "Sr. Product Designer",
-      dates: [2019, present],
+      title: "Human-Centered Designer, Owner, Mentor",
+      subtitle: "Break Anchor",
+      dates: [2009, present],
+      logo: "breakanchor",
+      details: [
+        {
+          items: [
+            "Conceptual design, graphics, and presentations",
+            "UI design for mobile and web-based software",
+            "Logo, branding, advertising, and sales materials",
+            "Vectorizations and screen print formatting",
+            "Illustration designs and apparel",
+          ],
+        },
+      ],
+    },
+    {
+      title: "Sr. Product Designer",
+      subtitle: "Cadre5",
+      dates: [2019, 2023],
       logo: "cadre5",
       details: [
         {
@@ -568,8 +587,9 @@ const resume = {
       ],
     },
     {
-      title: "Bechtel National",
-      subtitle: "UX/UI Information Systems Senior",
+
+      title: "UX/UI Information Systems Senior",
+      subtitle: "Bechtel National",
       dates: [2016, 2019],
       logo: "bechtel",
       details: [
@@ -605,26 +625,10 @@ const resume = {
         },
       ],
     },
+
     {
-      title: "Break Anchor",
-      subtitle: "Owner, Lead Designer, Mentor",
-      dates: [2009, 2017],
-      logo: "breakanchor",
-      details: [
-        {
-          items: [
-            "Conceptual design, graphics, and presentations",
-            "UI design for mobile and web-based software",
-            "Logo, branding, advertising, and sales materials",
-            "Vectorizations and screen print formatting",
-            "Illustration designs and apparel",
-          ],
-        },
-      ],
-    },
-    {
-      title: "Audiohand",
-      subtitle: "Lead UX Designer",
+      title: "UX Design Lead",
+      subtitle: "Audiohand",
       dates: [2014, 2016],
       logo: "audiohand",
       details: [
@@ -632,8 +636,8 @@ const resume = {
       ],
     },
     {
-      title: "Connection Point",
-      subtitle: "Creative Director, UX Design",
+      title: "Creative Director, UX Design",
+      subtitle: "Connection Point",
       dates: [2014],
       logo: "connectionpoint",
       details: [
@@ -647,8 +651,8 @@ const resume = {
       ],
     },
     {
-      title: "K-Town Apartments, LLC",
-      subtitle: "Chief Creative Officer, UX Design",
+      title: "Chief Creative Officer, UX Design",
+      subtitle: "K-Town Apartments, LLC",
       dates: [2012, 2014],
       logo: "ktown",
       details: [

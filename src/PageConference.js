@@ -46,7 +46,7 @@ export function PageConference(props) {
             <Header
                 title="Conference Manager"
                 subtitle="for Global Bechtel Conference"
-                color="hsla(0,0%,0%,50%)"
+                color="hsla(190,60%,50%,100%)"//"hsla(199,42%,41%,100%)"
                 style={{
                     gridColumn: "content / span 1",
                     gridRowStart: "title",

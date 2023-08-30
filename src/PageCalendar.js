@@ -46,6 +46,7 @@ export const PageCalendar = memo(function PageCalendar({
     small: { gridColumn: "auto / span 1", gridRow: "auto / span 1" },
     large: { gridColumn: "auto / span 2", gridRow: "auto / span 1" },
   }
+  const accentColor = "hsla(270,20%,40%,100%)";
 
   const ImageCell = ({ src, background = "hsl(0,0%,100%)", style = { styleSpan1 } }) => {
     return (<div
@@ -78,7 +79,7 @@ export const PageCalendar = memo(function PageCalendar({
       <Header
         title="Priority Calendar"
         subtitle="Weather and events in perspective"
-        color="hsl(0,0%,0%)"
+        color="hsl(274,33%,55%)"
         style={{ width: "100%" }}
       >
         <ButtonAction
@@ -138,7 +139,8 @@ export const PageCalendar = memo(function PageCalendar({
 
           <ImageCell src="./img/calendar-05.png" />
           <div style={{
-            background: "hsl(250,50%,95%)", boxShadow: "inset -2rem .1rem 10rem hsl(250,30%,85%)",
+            background: accentColor, //"hsla(275,70%,60%,100%)" 
+            // boxShadow: "inset -2rem .1rem 10rem hsl(250,30%,85%)",
             padding: "1.5rem", height: "100%"
           }}>
             <BulletList ordered={true} items={[
@@ -155,8 +157,9 @@ export const PageCalendar = memo(function PageCalendar({
         <Group className="grid"
           style={{ ...autoStyleGridFlush[mediaSize], ...styleSpan2[mediaSize] }} >
           <div style={{
-            background: "hsl(250,50%,95%)",
-            boxShadow: "inset 2rem .1rem 10rem hsl(250,30%,85%)",
+            background: accentColor,
+            //  background:  "hsl(250,50%,95%)",
+            //  boxShadow: "inset 2rem .1rem 10rem hsl(250,30%,85%)",
             padding: "1.5rem", height: "100%"
           }}>
             I discovered an inverse relationship between recurrence and significance – the most important events occur the least frequently, and time-sensitive appointments with no recurrence may be more significant than all-day events.
@@ -192,8 +195,9 @@ export const PageCalendar = memo(function PageCalendar({
         <Group className="grid"
           style={{ ...autoStyleGridFlush[mediaSize], ...styleSpan2[mediaSize] }} >
           <div style={{
-            background: "hsl(250,50%,95%)",
-            boxShadow: "inset 2rem .1rem 10rem hsl(250,30%,85%)",
+            background: accentColor,
+            // background: "hsl(250,50%,95%)",
+            // boxShadow: "inset 2rem .1rem 10rem hsl(250,30%,85%)",
             padding: "1.5rem", height: "100%"
           }}>
             <BulletList title="Technical implementation" items={[

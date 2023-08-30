@@ -175,8 +175,8 @@ export const Note = memo(function Note({
   description,
   hsize = 4,
   children,
-  background = "hsla(0,0%,90%,100%)",//hsl(39, 14%, 80%) 0%, hsl(40, 7%, 60%) 100%)
-  color = "black",
+  background = "#111",//"hsla(0,0%,90%,100%)",
+  color = "white",//"black",
   collapse = false,
   container = true,
   style = { gap: ".5rem" },
@@ -343,13 +343,15 @@ export const Header = memo(function Header({
   title1,
   title2,
   subtitle,
-  color,
+  color = "hsl(167,64%,45%)",
   style,
   children,
 }) {
+  const color1 = "hsla(0,0%,100%,50%)";
+  const color2 = "hsla(0,0%,100%,80%)";
   return (
     <div
-      className="row wrap center between"
+      className="row wrap bottom between"
       style={{
         //display:
         //gridTemplateColumns: "1fr auto",
@@ -357,11 +359,14 @@ export const Header = memo(function Header({
         color: color,
         // zIndex: 10,
         overflow: "visible",
-        gap: "1rem",
+        borderBottom: `2px solid ${color}`,
+        paddingBottom: ".8rem",
+        marginBottom: "1rem",
+        //gap: ".5rem",
         ...style,
       }}
     >
-      <span style={{ display: "flex", flexFlow: "column nowrap", flexShrink: 1, width: "fit-content" }}>
+      <span style={{ display: "flex", flexFlow: "column nowrap", flexShrink: 1, width: "fit-content", gap: ".5rem", }}>
         <h1 style={{ color: color }}>
           {title2 ? (
             <Fragment>
@@ -387,7 +392,7 @@ export const Header = memo(function Header({
             title
           )}
         </h1>
-        <h3 style={{ color: color }}> {subtitle} </h3>
+        {subtitle !== "" ? <h3 style={{ color: color }}> {subtitle} </h3> : null}
       </span>
       {children}
     </div>

@@ -55,15 +55,15 @@ export const PageAudiohand = memo(function Page_Audiohand({
       <Header
         title="Audiohand"
         subtitle="Mobile music studio"
-        color="hsl(0,0%,0%)"
+        color="hsla(345,100%,60%,100%)"//"hsla(340,83%,60%,100%)"
       //background={background}
       >
         <ButtonAction
           actionDescription="go to App Store from Audiohand Page header button"
           url="https://apps.apple.com/us/app/audiohand/id973166513?platform=iphone"
           color="hsla(0,0%,100%,100%)"
-          backgroundColor="hsla(265,0%,20%,100%)"
-          hoverColor="hsla(337,83%,50%,100%)"
+          backgroundColor="hsla(337,83%,40%,100%)"//"hsla(265,0%,20%,100%)"
+          hoverColor="hsl(340,83%,65%,100%)"
         >App Store ↗
         </ButtonAction>
 
@@ -164,7 +164,7 @@ export const PageAudiohand = memo(function Page_Audiohand({
             flexGrow: 1,
             flexShrink: 1,
             flexBasis: 0,
-            backgroundColor: "hsl(0,0%,70%)",
+            backgroundColor: "#111",//"hsl(0,0%,70%)",
             padding: "1rem",
             margin: "1rem 0 0 0",
             gridTemplateColumns: "1fr",
@@ -203,8 +203,8 @@ export const PageAudiohand = memo(function Page_Audiohand({
           actionDescription="go to App Store from Audiohand Page footer button"
           url="https://apps.apple.com/us/app/audiohand/id973166513?platform=iphone"
           color="hsla(0,0%,100%,100%)"
-          backgroundColor="hsla(265,0%,20%,100%)"
-          hoverColor="hsla(337,83%,50%,100%)"
+          backgroundColor="hsla(337,83%,40%,100%)"//"hsla(265,0%,20%,100%)"
+          hoverColor="hsl(340,83%,65%,100%)"
         >App Store ↗
         </ButtonAction>
 

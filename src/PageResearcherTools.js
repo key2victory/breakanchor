@@ -50,7 +50,7 @@ export const PageResearcherTools = memo(function PageResearcherTools({
             <Header
                 title="Researcher Tools"
                 subtitle="for National Labs"
-                color="hsla(0,0%,0%,100%)"
+                // color="hsla(0,0%,0%,100%)"
                 style={{
                     gridColumn: "content / span 1",
                     gridRowStart: "title",

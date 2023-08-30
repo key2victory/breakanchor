@@ -38,28 +38,26 @@ export const Logo = memo(function Logo({
 
 const LogoWatkins = memo(function LogoWatkins({ size = "100%" }) {
   return (
-    <div
-      style={{
-        width: size,
-        height: size,
-        display: "flex",
-        justifyContent: "stretch",
-        alignItems: "stretch",
-        padding: ".2rem",
-        flexGrow: 1,
-        flexShrink: 1,
-      }}
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 200 200" //"0 0 324.21 156.03"
+      preserveAspectRatio="xMidYMid meet"
     >
-      <img
-        src="./img/watkins.jpg"
+      <image
+        href="./img/watkins.jpg"
         alt=""
-        width="auto"
-        height="auto"
+        x={10}
+        y={10}
+        width="180"
+        height="180"
         style={{ //flexGrow: 1, 
-          flexShrink: 1
+          // flexShrink: 1,
+          objectFit: "contain"
         }}
       />
-    </div>
+    </svg>
   );
 });
 

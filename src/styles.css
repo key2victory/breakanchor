@@ -21,7 +21,7 @@ body,
 .App {
   display: grid;
   position: relative;
-  background: hsl(0, 0%, 100%);
+
 }
 
 .app-nav {
@@ -57,7 +57,7 @@ body,
   width: 100%;
   /* grid-column: hero / span 2;
   grid-row: header / span 1;*/
-  background: hsla(0, 0%, 20%, 100%);
+  background: hsla(0, 0%, 10%, 100%);
   color: hsla(0, 0%, 100%, 80%);
   margin: 0;
   padding: 0rem 0.8rem 0rem 1.5rem;
@@ -107,22 +107,19 @@ body,
 }
 
 .nav-link.project {
-  outline:3px solid hsla(0,0%,40%,0%);
+  outline: 3px solid hsla(0, 0%, 40%, 0%);
   cursor: pointer;
   transition: 0.5s 0s linear;
 }
 
 .nav-link.project .label {
-  background-color: hsla(0,0%,40%,100%);
-color: hsla(0,0%,100%,100%);
-transition: .5s 0s ease-in;
+  background-color: hsla(0, 0%, 0%, 30%);
+  color: hsla(0, 0%, 100%, 100%);
+  transition: .5s 0s ease-in;
 }
 
-.nav-link.project:hover .label {
-  background-color: hsla(0,0%,40%,30%);
-color: hsla(0,0%,100%,0%);
-  opacity: 1;
-}
+
+
 /*
 .nav-link.project .overlay {
     background: linear-gradient(to bottom, hsla(0,0%,0%,100%) 50%, hsla(0,0%,0%,0%) 50%,);
@@ -133,9 +130,6 @@ color: hsla(0,0%,100%,0%);
     background: linear-gradient(to bottom, hsla(0,0%,0%,100%) 50%, hsla(0,0%,0%,0%) 50%,);
     }*/
 
-    .nav-link.project:hover{
-      outline:3px solid hsla(0,0%,40%,100%);
-    }
 
 .nav-panel {
   position: absolute;
@@ -282,14 +276,14 @@ color: hsla(0,0%,100%,0%);
 }
 
 a.card.hover {
- background:  hsl(0,0%,100%);
-transition: .5s 0s linear;
+  background: hsl(0, 0%, 100%);
+  transition: .5s 0s linear;
 }
 
 a.card.hover:hover {
- filter: opacity(80%);
- background: hsl(0,0%,90%);
-  }
+  filter: opacity(80%);
+  background: hsl(0, 0%, 90%);
+}
 
 .text-bubble {
   width: auto;
@@ -346,6 +340,7 @@ a.card.hover:hover {
 .animate-flow.audiohand {
   animation: animate-flow-audiohand 30s ease-in-out 0s infinite;
 }
+
 .animate-flow.loto {
   animation: animate-flow-loto 60s ease-in-out 0s infinite;
 }
@@ -399,7 +394,7 @@ a.card.hover:hover {
 
 .button.orange {
   color: hsl(0, 0%, 0%);
-  background:hsl(40, 100%, 70%); 
+  background: hsl(40, 100%, 70%);
 
 }
 
@@ -486,12 +481,15 @@ a.card.hover:hover {
   0% {
     opacity: 1;
   }
+
   30% {
     opacity: 1;
   }
+
   35% {
     opacity: 0;
   }
+
   95% {
     opacity: 0;
   }
@@ -501,18 +499,23 @@ a.card.hover:hover {
   0% {
     opacity: 0;
   }
+
   30% {
     opacity: 0;
   }
+
   34% {
     opacity: 1;
   }
+
   60% {
     opacity: 1;
   }
+
   65% {
     opacity: 0;
   }
+
   100% {
     opacity: 0;
   }
@@ -522,12 +525,15 @@ a.card.hover:hover {
   0% {
     opacity: 0;
   }
+
   55% {
     opacity: 0;
   }
+
   59% {
     opacity: 1;
   }
+
   95% {
     opacity: 1;
   }
@@ -537,12 +543,15 @@ a.card.hover:hover {
   0% {
     opacity: 1;
   }
+
   30% {
     opacity: 1;
   }
+
   35% {
     opacity: 0;
   }
+
   95% {
     opacity: 0;
   }
@@ -552,63 +561,96 @@ a.card.hover:hover {
   5% {
     opacity: 1;
   }
+
   60% {
     opacity: 1;
   }
+
   65% {
     opacity: 0;
   }
+
   95% {
     opacity: 0;
   }
 }
 
 @keyframes animate-flow-audiohand {
-  0%{background-position: top;
-    background-size: 100%;}
-  25%{background-position: left;
-  background-size: 200%;} 
-  75%{background-position: top;
-    background-size: 200%;} 
-  100%{background-position: top;
-    background-size: 100%;} 
+  0% {
+    background-position: top;
+    background-size: 100%;
+  }
+
+  25% {
+    background-position: left;
+    background-size: 200%;
+  }
+
+  75% {
+    background-position: top;
+    background-size: 200%;
+  }
+
+  100% {
+    background-position: top;
+    background-size: 100%;
+  }
 }
 
 @keyframes animate-flow-loto {
-  0%{background-position: top;
-    background-size: 100%;}
-  25%{background-position: top;
-  background-size: 500%;} 
-  75%{background-position: center;
-    background-size: 500%;} 
-  100%{background-position: top;
-    background-size: 100%;} 
+  0% {
+    background-position: top;
+    background-size: 100%;
+  }
+
+  25% {
+    background-position: top;
+    background-size: 500%;
+  }
+
+  75% {
+    background-position: center;
+    background-size: 500%;
+  }
+
+  100% {
+    background-position: top;
+    background-size: 100%;
+  }
 }
 
 @keyframes animate-wallpaper {
   0% {
-    background-color: hsl(174,30%,60%);
+    background-color: #50e3c2;
     background-position: 0% 0%;
   }
+
   25% {
-   background-color: hsl(200,30%,40%);
+    background-color: #29bc9b;
     background-position: -50% 50%;
   }
+
   50% {
-   background-color: hsl(174,30%,60%);
+    background-color: #50e3c2;
     background-position: -100% 100%;
   }
+
   75% {
-    background-color: hsl(200,30%,40%);
+    background-color: #29bc9b;
     background-position: -50% 50%;
   }
+
   100% {
-    background-color: hsl(174,30%,60%);
+    background-color: #50e3c2;
     background-position: 0% 0%;
   }
 }
 
 a {
+  text-decoration: none;
+}
+
+a:visited {
   text-decoration: none;
 }
 

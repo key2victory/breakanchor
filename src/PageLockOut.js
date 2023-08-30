@@ -31,6 +31,7 @@ export const PageLockOut = memo(function PageLockOut({
     },
   ];
   const [media, setMedia] = useOutletContext();
+  const lotoColor = "hsl(42,100%,50%)"//"hsl(45,100%,50%)" "hsl(37,95%,63%)";
 
   return (
     <PageContainer layout="hero" heroComponent="loto" heroInteraction={false}
@@ -40,7 +41,7 @@ export const PageLockOut = memo(function PageLockOut({
         title1="Lock Out,"
         title2="Tag Out"
         subtitle="Electrical safety tracking"
-        color="hsl(0,0%,0%)"
+        color={lotoColor}
       />
       <Group className="desktop-col laptop-col tablet-row phablet-col mobile-col">
         <Note container={true}>
@@ -57,7 +58,7 @@ export const PageLockOut = memo(function PageLockOut({
           flexGrow: 1,
           flexShrink: 1,
           flexBasis: 0,
-          background: "hsla(0,0%,100%,80%)",
+          background: "#111",// "hsla(0,0%,100%,80%)",
           padding: ".8rem .8rem .2rem .8rem",
           gridTemplateColumns: "1fr",
           gridTemplateRows: "1fr auto",
@@ -87,8 +88,8 @@ export const PageLockOut = memo(function PageLockOut({
           }}
         >
           p .31,
-          <a href="https://www.bechtel.com/getmedia/0f83daae-baa4-4124-b84b-bdea6c861bfc/2018-bechtel-report-final-ns.pdf">
-            Bechtel 2018 Annual Report↗
+          <a style={{ color: lotoColor, }} href="https://www.bechtel.com/getmedia/0f83daae-baa4-4124-b84b-bdea6c861bfc/2018-bechtel-report-final-ns.pdf">
+            <strong>  Bechtel 2018 Annual Report↗</strong>
           </a>
         </span>
       </div>
@@ -169,7 +170,7 @@ export const PageLockOut = memo(function PageLockOut({
           flexGrow: 1,
           flexShrink: 1,
           flexBasis: 0,
-          backgroundColor: "hsl(0,0%,70%)",
+          backgroundColor: "#111",//"hsl(0,0%,70%)",
           padding: "1rem",
           margin: "1rem 0 0 0",
           gridTemplateColumns: "1fr",

@@ -42,7 +42,7 @@ export function PageClearanceTracker(props) {
       <Header
         title="Clearance Tracker"
         subtitle="for Global Bechtel Conference"
-        color="hsla(0,0%,0%,50%)"
+        color="hsl(206,28%,59%)"//"hsla(350,100%,60%,100%)"//"hsla(345,100%,60%,100%)"
         style={{
           gridColumn: "content / span 1",
           gridRowStart: "title",

@@ -4,7 +4,7 @@ import { useOutletContext } from "react-router-dom";
 import PageAbout from "./PageAbout";
 import { PageAudiohand } from "./PageAudiohand";
 import { PageCalendar } from "./PageCalendar";
-import { PageIntuitive } from "./PageIntuitive";
+
 import { PageLockOut } from "./PageLockOut";
 import { PageProjects } from "./PageProjects";
 import { PagePresentations } from "./PagePresentations";
@@ -30,7 +30,7 @@ const PageContent = ({ title }) => {
     return (<Content />)
 }
 
-export const PageContainer = memo(function PageContainer({ layout = "hero", background = "ice", className = "col nowrap top stretch", heroComponent = "", heroInteraction = false, children }) {
+export const PageContainer = memo(function PageContainer({ layout = "hero", background = "ice", className = "col nowrap top stretch", heroComponent = "", heroInteraction = false, maxWidth = 1200, children }) {
     const [media, setMedia] = useOutletContext();
     useEffect(() => {
         console.log("detected media change in PageContainer")
@@ -76,11 +76,11 @@ export const PageContainer = memo(function PageContainer({ layout = "hero", back
             xs: { padding: "1rem 0 4rem 0", gap: "1rem" },
         },
         center: {
-            xl: { padding: "64px 0 4rem 0", gap: "1rem", margin: "0 auto 0 auto", maxWidth: "1200px" },
-            lg: { padding: "64px 0 4rem 0", gap: "1rem", margin: "0 auto 0 auto", maxWidth: "1200px" },
-            md: { padding: "64px 0 4rem 0", gap: "1rem", margin: "0 auto 0 auto" },
-            sm: { padding: "1rem 0 4rem 0", gap: "1rem", margin: "0 auto 0 auto" },
-            xs: { padding: "1rem 0 4rem 0", gap: "1rem", margin: "0 auto 0 auto" },
+            xl: { padding: "64px 0 4rem 0", gap: "1rem", margin: "0 auto 0 auto", maxWidth: `${maxWidth}px` },
+            lg: { padding: "64px 0 4rem 0", gap: "1rem", margin: "0 auto 0 auto", maxWidth: `${maxWidth}px` },
+            md: { padding: "64px 0 4rem 0", gap: "1rem", margin: "0 auto 0 auto", maxWidth: `min(${maxWidth}px,100%)` },
+            sm: { padding: "1rem 0 4rem 0", gap: "1rem", margin: "0 auto 0 auto", maxWidth: `min(${maxWidth}px,100%)` },
+            xs: { padding: "1rem 0 4rem 0", gap: "1rem", margin: "0 auto 0 auto", maxWidth: `min(${maxWidth}px,100%)` },
         }
 
         // hero: "scroll-content left",
@@ -95,11 +95,11 @@ export const PageContainer = memo(function PageContainer({ layout = "hero", back
                 gridRow: "content / span 1",
                 minHeight: 0,
                 minWidth: 0,
-                // background: "linear-gradient(180deg, hsla(0,0%,20%,15%) 20%, transparent 20%)",
                 transitioProperty: "padding, margin",
                 transitionDuration: "2s",
                 transitionTimingFunction: "linear",
-                transitionOrigin: "center"
+                transitionOrigin: "center",
+                color: "hsla(0,0%,100%,80%)"
             }}
         >
             <div className="grid-scroll-zone grid"
@@ -120,7 +120,7 @@ export const PageContainer = memo(function PageContainer({ layout = "hero", back
                 }}>
                 <div className="col top"//"scroll-content" 
                     style={{
-                        gridColumn: "content / span 1", gridRow: "1 / span 1", width: "100%", height: "max-content", ...scrollContent[layout][media] //background: "hsl(0,0%,30%)" 
+                        gridColumn: "content / span 1", gridRow: "1 / span 1", width: "100%", height: "max-content", ...scrollContent[layout][media]
                     }} >
                     {/* <PageContent title={component} />*/}
                     {children}
@@ -141,7 +141,7 @@ export const PageContainer = memo(function PageContainer({ layout = "hero", back
                     <div className="col top center" style={{
                         gridColumn: "hero / span 1", gridRow: "1 / span 1", padding: "calc(64px + 2rem) 0 0 0",
                         pointerEvents: heroInteraction === false ? "none" : "auto",
-                        //background: "linear-gradient(90deg,transparent 20%, hsl(0,0%,80%) 20%,transparent)" 
+
                     }}>
                         <Hero component={heroComponent} className="" />
                     </div>

@@ -1,6 +1,7 @@
 import { Link, useMatches } from "react-router-dom";
 import { Fragment, memo } from "react";
 import { HeroAbout } from "./HeroAbout";
+import { motion } from "framer-motion";
 import { CgMenu, CgClose } from "react-icons/cg";
 import {
   RiDeviceLine,
@@ -67,7 +68,7 @@ export const AppHeader = memo(function AppHeader({ onMenuClick, hide = false, me
         justifyContent: "space-between",
         alignItems: "center",
 
-        background: "hsla(0, 0%, 20%, 100%)",
+        background: "hsla(0, 0%, 7%, 100%)",
         color: "hsla(0, 0%, 100%, 80%)",
         margin: 0,
         padding: "0rem 0.8rem 0rem 1.5rem",
@@ -112,7 +113,7 @@ export const AppHeader = memo(function AppHeader({ onMenuClick, hide = false, me
   );
 });
 
-export const AppSizer = memo(function AppSizer({ height = "64px", children }) {
+export const AppSizer = memo(function AppSizer({ height = "64px", shadowColor = "hsla(37,10%,70%,100%)", children }) {
   return (
     <Fragment>
       <div
@@ -130,7 +131,7 @@ export const AppSizer = memo(function AppSizer({ height = "64px", children }) {
           borderRadius: "5rem",
           // width: "auto",
           zIndex: 10,
-          filter: "drop-shadow(4px 4px 0px hsla(37,10%,70%,100%))"
+          filter: `drop-shadow(4px 4px 0px ${shadowColor})`
         }}>
         {children}
       </div>
@@ -225,7 +226,7 @@ export const NavCard = memo(function NavCard({
   path,
   style,
   className,
-  color = "hsl(0,0%,90%)",
+  color = "hsl(0,0%,80%)",
   borderTop = "",
   borderBottom = "2px dotted hsla(0,0%,0%,10%)",
   children
@@ -233,19 +234,22 @@ export const NavCard = memo(function NavCard({
   const linkStyle = {
     textDecoration: "none",
     //padding: "1rem 0",
+    gridColumn: "label / span 1",
     fontSize: "1.25rem",
     padding: icon !== undefined ? "0 1rem 0 .5rem" : "0 1.5rem 0 1.5rem",
     ...style
   };
   const IconRender = icon;
   return (
+
     <Link
-      className={`nav-link page ${className} umami--click--AppNav/${path}`}
+      className={//`nav-link page 
+        `${className} umami--click--AppNav/${path}`}
       // key={`${item.path}-${index}`}
       to={`/${path}`}
       style={linkStyle}
     >
-      <div
+      <motion.div
         className="row nowrap center left"
         style={{
           gap: "1rem",
@@ -254,6 +258,7 @@ export const NavCard = memo(function NavCard({
           borderTop: borderTop,
           borderBottom: borderBottom
         }}
+        whileHover={{ color: "hsl(167,64%,45%)" }}
         onClick={() => {
           ReactGA.event({
             category: "jmc_nav",
@@ -276,8 +281,9 @@ export const NavCard = memo(function NavCard({
           <span>{title}</span>
           {children}
         </span>
-      </div>
+      </motion.div>
     </Link>
+
   );
 });
 
@@ -317,7 +323,7 @@ export default function AppNavFlyout({ showNav, media, onClickExit }) {
           transitionDuration: "0.5s, .2s",
           // padding: "1rem 0rem",
           gap: 0,
-          background: "hsla(0,0%,25%,0%)",
+          // background: "hsla(0,0%,25%,0%)",
 
           boxShadow: showNav === true ?
             "-2px 2px 6px 4px hsla(0, 0%, 0%, 20%), -2px 2px 50px 4px hsla(0, 0%, 0%, 50%)" : "-2px 2px 6px 4px hsla(0, 0%, 0%, 0%), -2px 2px 50px 4px hsla(0, 0%, 0%, 0%)",
@@ -349,7 +355,7 @@ export default function AppNavFlyout({ showNav, media, onClickExit }) {
 
 export function NavPanel({
   className, //= "mobile-hide phablet-hide box-shadow-edged",//nav-panel,
-  background = "hsl(0,0%,35%)",
+  background = "hsl(0,0%,7%)",//"#111",//"hsl(0,0%,35%)",
   showNav,
   media,
   onClickExit
@@ -391,24 +397,26 @@ export function NavPanel({
             padding: "1rem 1.1rem",
             margin: ".5rem .8rem .5rem auto",
             borderRadius: "2rem",
-            zIndex: 3
+            zIndex: 3,
+            //  color: 
           }}
           onClick={onClickExit}
         >
-          <CgClose size="18" />
+          <CgClose size="18" color="hsla(0,0%,100%,80%)" />
         </div>
         <HeroAbout deviceSize="large"
           hide={["xs", "sm"].includes(media)}
         />
 
       </div>
-      <div className="col top">
+
+      <motion.div style={{ display: "grid", gridTemplateColumns: "[gutter] minmax(0,1fr) [label] auto [gutter] minmax(0,1fr)", gridAutoRows: "min-content" }}>
         <NavCard
           //  className="desktop-hide laptop-hide tablet-hide"
           icon={RiMapPinUserFill}
           path="about"
           title="About Me"
-          color="hsla(0,0%,100%,70%)"
+          //color="hsla(0,0%,100%,70%)"
           borderTop={borderStyle}
           borderBottom=""
         />
@@ -416,7 +424,7 @@ export function NavPanel({
           icon={RiBox2Line}
           title="Projects"
           path="projects"
-          color="hsla(0,0%,100%,70%)"
+          // color="hsla(0,0%,100%,70%)"
           borderTop={borderStyle}
           borderBottom=""
         />
@@ -424,7 +432,7 @@ export function NavPanel({
           icon={RiSlideshow3Line}
           title="Presentations"
           path="presentations"
-          color="hsla(0,0%,100%,70%)"
+          // color="hsla(0,0%,100%,70%)"
           borderTop={borderStyle}
           borderBottom=""
         />
@@ -436,7 +444,7 @@ export function NavPanel({
           borderTop={borderStyle}
           borderBottom=""
         />*/}
-      </div>
+      </motion.div>
     </div>
   );
 }
