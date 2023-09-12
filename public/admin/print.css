@@ -1,0 +1,44 @@
+@page {
+    size: 8.5in 11in;
+    margin: 0;
+    padding: 0;
+}
+
+/* Targets all even-numbered pages
+  @page :left {
+    margin-top: 4in;
+  }
+  
+  // Targets all odd-numbered pages
+  @page :right {
+    size: 11in;
+    margin-top: 4in;
+  }
+  
+  // Targets all selectors with `page: wide;` set
+  @page wide {
+    size: a4 landscape;
+  }
+  
+  @page {
+    // margin box at top right showing page number
+    @top-right {
+      content: "Page " counter(pageNumber);
+    }
+  }*/
+
+.Page {
+    width: 100%;
+    height: 100%;
+    padding: .25in;
+}
+
+.Header {
+    background-color: #50E3C2;
+}
+
+.ColorBlock {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
