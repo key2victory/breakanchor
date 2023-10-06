@@ -1,8 +1,0 @@
-{
-    "livePreview.defaultPreviewPath": "/public/index.html",
-   // "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.codeActionsOnSave": { "source.fixAll.eslint": true }, 
-"editor.formatOnSave": true, 
-"eslint.alwaysShowStatus": true, 
-"files.autoSave": "onFocusChange"
-}
