@@ -1,10 +1,13 @@
+import { motion } from 'framer-motion';
+
 const CardTypes = Object.freeze({
   design: 'bg-sky-500',
   presentation: 'bg-amber-500',
   research: 'bg-rose-500',
   articles: 'bg-emerald-500',
 });
-const PortfolioCard = ({ type, title }) => {
+
+const PortfolioCard = ({ type, title, selectedType }) => {
   const getCardColor = () => {
     if (type !== null) {
       return CardTypes[type];
@@ -13,12 +16,16 @@ const PortfolioCard = ({ type, title }) => {
     return 'bg-zinc-800';
   };
 
-  const blah = 'blah';
-
-  blah;
   return (
-    <div
-      className={`rounded-lg min-w-[175px] grow h-[250px] flex items-end overflow-hidden ${getCardColor()}`}
+    <motion.div
+      layout
+      className={`relative rounded-lg h-[300px] flex items-end overflow-hidden before:transition-colors before:duration-200 before:ease-in-out before:absolute before:content-[''] before:inset-0  ${getCardColor()} ${
+        selectedType === null
+          ? ''
+          : selectedType === type
+          ? 'order-1'
+          : 'order-2 before:bg-black/40'
+      }`}
     >
       <div className="bg-gray-500 p-4 w-full">
         <h2 className="text-lg">{title}</h2>
@@ -26,7 +33,7 @@ const PortfolioCard = ({ type, title }) => {
           {type.toUpperCase()}
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
