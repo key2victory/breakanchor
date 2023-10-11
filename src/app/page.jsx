@@ -12,11 +12,12 @@ export default function Home() {
       <nav className="grid-rows-navbar rows-[1_/_span_2] cols-[side_/_span_1] bg-gray-600 flex flex-col items-center pt-12">
         <div id="name-group" className="flex flex-col items-center">
           <Image
-            src="/jmc.png"
+            src="/profile.png"
             alt="Portrait of Janna Curtis"
             className="mx-1"
-            width={120}
-            height={139}
+            style={{clipPath: "polygon(5% 25%, 5% 75%, 50% 100%, 95% 75%, 95% 25%, 50% 0%)"}}
+            width={138}
+            height={138}
           />
           <h1 className="text-2xl">Janna Curtis</h1>
           <h2 className="text-lg">break anchor design</h2>
