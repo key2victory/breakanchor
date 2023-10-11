@@ -25,3 +25,41 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+@media screen and (min-width: 700px) {
+a.nav-link {
+  transition: .2s linear;
+}
+
+a.nav-link:hover {
+  color: hsl(260,100%,80%)
+}
+
+a.nav-link .external {
+  opacity: 0;
+  transform-origin: bottom left;
+  transform: scale(0, 0);
+  transition: all .3s linear, color 0s;
+}
+
+a.nav-link:hover .external {
+  opacity: 1;
+  animation: external-link 1s 0s infinite;
+}
+
+@keyframes external-link {
+  0% {transform: scale(1, 1) translate(0, .5rem);}
+  50% {transform: scale(1, 1) translate(0.2rem, .2rem);}
+  100% {transform: scale(1, 1) translate(0, .5rem);}
+}
+}
+
+@media screen and (max-width: 699px) {
+  a.nav-link:active {
+    color: hsl(260,100%,80%)
+  }
+  a.nav-link .external {
+    opacity: .5;
+    transform: scale(1, 1) translate(0, .5rem);
+  }
+}
