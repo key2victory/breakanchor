@@ -30,7 +30,7 @@ const PortfolioCard = ({ type, title, selectedType, handleCardClick }) => {
       }`}
     >
       <div className="bg-gray-500 p-4 w-full">
-        <h2 className="text-lg">{title}</h2>
+        <h2 className="text-left text-lg">{title}</h2>
         <p className="rounded-full bg-white text-black px-3 py-1 mt-2 w-fit text-xs">
           {type.toUpperCase()}
         </p>
