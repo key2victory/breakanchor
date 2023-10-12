@@ -7,7 +7,7 @@ const CardTypes = Object.freeze({
   articles: 'bg-emerald-500',
 });
 
-const PortfolioCard = ({ type, title, selectedType }) => {
+const PortfolioCard = ({ type, title, selectedType, handleCardClick }) => {
   const getCardColor = () => {
     if (type !== null) {
       return CardTypes[type];
@@ -17,8 +17,10 @@ const PortfolioCard = ({ type, title, selectedType }) => {
   };
 
   return (
-    <motion.div
+    <motion.button
       layout
+      layoutScroll
+      onClick={() => handleCardClick()}
       className={`relative rounded-lg h-[300px] flex items-end overflow-hidden before:transition-colors before:duration-200 before:ease-in-out before:absolute before:content-[''] before:inset-0  ${getCardColor()} ${
         selectedType === null
           ? ''
@@ -33,7 +35,7 @@ const PortfolioCard = ({ type, title, selectedType }) => {
           {type.toUpperCase()}
         </p>
       </div>
-    </motion.div>
+    </motion.button>
   );
 };
 

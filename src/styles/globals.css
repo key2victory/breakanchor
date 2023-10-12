@@ -18,12 +18,19 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb)))
     rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .hexagon {
+    --hex-size: 150px;
+    padding: 1rem;
+    width: var(--hex-size);
+    height: var(--hex-size);
+    clip-path: polygon(5% 25%, 5% 75%, 50% 100%, 95% 75%, 95% 25%, 50% 0%);
+    /*polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);*/
+  }
 }
 
 @media screen and (min-width: 700px) {
