@@ -27,7 +27,7 @@ public_folder: "/public/img/" # The src attribute for uploaded media will begin 
 collections:
   - name: "case-studies" # Used in routes, e.g., /admin/collections/blog
     label: "Case Studies" # Used in the UI
-    folder: "/posts" # The path to the folder where the documents are stored
+    folder: "../src/posts" # The path to the folder where the documents are stored
     extension: "md" #
     format: "frontmatter"
     create: true # Allow users to create new documents in this collection
@@ -40,6 +40,6 @@ collections:
       - {label: "Last Updated", name: "updated", widget: "datetime"}
       - {label: "Start Date", name: "start", widget: "datetime"}
       - {label: "End Date", name: "end", widget: "datetime"}
-      - {label: "Featured Image", name: "thumbnail", widget: "image"}
+      - {label: "Featured Image", name: "thumbnail", widget: "image", required: false}
       - {label: "Type", name: "type", widget: "select", multiple: true, options: ["case study", "presentation", "research", "design", "articles"], default: ["design"]}
       - {label: "Body", name: "body", widget: "markdown"}

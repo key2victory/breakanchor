@@ -3,6 +3,7 @@ import { Header, Note, Group, } from "./PageElements";
 import { FaRegSmileWink } from "react-icons/fa";
 import { PageContainer } from "./PageContainer";
 import { useOutletContext } from "react-router-dom";
+import matter from 'gray-matter'
 
 export const PageTestPosts = memo(function PageTestPosts({
     title,
@@ -21,6 +22,22 @@ export const PageTestPosts = memo(function PageTestPosts({
         boxSizing: "border-box"
 
     };
+
+
+    async function getAllPosts() {
+        const context = require.context('../_posts', false, /\.md$/)
+        const posts = []
+        for (const key of context.keys()) {
+            const post = key.slice(2);
+            const content = await import(`../_posts/${post}`);
+            const meta = matter(content.default)
+            posts.push({
+                slug: post.replace('.md', ''),
+                title: meta.data.title
+            })
+        }
+        return posts;
+    }
 
     return (
         <PageContainer layout="center" heroComponent="asl" heroInteraction={true}
