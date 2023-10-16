@@ -22,6 +22,7 @@ import { PageConference } from "./PageConference";
 //import { PageContainer } from "./PageContainer";
 import { PageClearanceTracker } from "./PageClearanceTracker";
 import { PageResearcherTools } from "./PageResearcherTools";
+import { PageTestPosts } from "./PageTestPosts";
 /*
 import { pages } from "./Pages";
 
@@ -59,6 +60,7 @@ const router = createHashRouter([
       { path: "projects/gbc", Component: PageConference },
       { path: "projects/loto", Component: PageLockOut },
       { path: "projects/researcher-tools", Component: PageResearcherTools },
+      { path: "test-posts", Component: PageTestPosts },
     ],
   },
   {
@@ -81,6 +83,7 @@ const router = createHashRouter([
       { path: "projects/gbc", Component: PageConference },
       { path: "projects/loto", Component: PageLockOut },
       { path: "projects/researcher-tools", Component: PageResearcherTools },
+      { path: "test-posts", Component: PageTestPosts },
 
 
 
