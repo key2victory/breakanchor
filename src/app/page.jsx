@@ -139,7 +139,7 @@ export default function Home() {
               </div>
 
               {/* Porfolio Cards */}
-              <div className="mt-6 grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-x-4 gap-y-3 w-full h-full overflow-y-scroll pr-4">
+              <div className="mt-6 grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-3 w-full overflow-y-scroll pr-4">
                 {testCards.map((card, index) => (
                   <PortfolioCard
                     key={`card-${index}`}

@@ -21,7 +21,7 @@ const PortfolioCard = ({ type, title, selectedType, handleCardClick }) => {
       layout
       layoutScroll
       onClick={() => handleCardClick()}
-      className={`relative rounded-lg h-[300px] flex items-end overflow-hidden before:transition-colors before:duration-200 before:ease-in-out before:absolute before:content-[''] before:inset-0  ${getCardColor()} ${
+      className={`relative rounded-lg h-[240px] flex items-end overflow-hidden before:transition-colors before:duration-200 before:ease-in-out before:absolute before:content-[''] before:inset-0  ${getCardColor()} ${
         selectedType === null
           ? ''
           : selectedType === type
@@ -29,7 +29,7 @@ const PortfolioCard = ({ type, title, selectedType, handleCardClick }) => {
           : 'order-2 before:bg-black/40'
       }`}
     >
-      <div className="bg-gray-500 p-4 w-full">
+      <div className="bg-gray-500 px-4 py-2 w-full">
         <h2 className="text-left text-lg">{title}</h2>
         <p className="rounded-full bg-white text-black px-3 py-1 mt-2 w-fit text-xs">
           {type.toUpperCase()}
