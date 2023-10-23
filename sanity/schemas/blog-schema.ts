@@ -63,7 +63,12 @@ const blog = {
       description: 'The content of the blog post',
       type: 'array',
       of: [
-        { type: 'block' }, // Allows for rich text support straight out of Sanity IO
+         {
+          type: 'block'
+        },
+        {
+          type: 'image'
+         }, // Allows for rich text support straight out of Sanity IO
       ],
     },
   ],
