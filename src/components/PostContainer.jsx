@@ -1,8 +1,8 @@
-import Card from '@/components/Card';
+import Card from '@/src/components/Card';
 
 import { useState, useEffect } from 'react';
-import { getBlogs } from '../../sanity/api/getBlogs';
-import { testCards } from '@/utils/test-data';
+import { getBlogs } from '@/sanity/api/getBlogs';
+import { testCards } from '@/src/utils/test-data';
 
 const PostContainer = ({ selectedFilter }) => {
   const [blogs, setBlogs] = useState(null);
