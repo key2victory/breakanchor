@@ -24,7 +24,7 @@ export default function Home() {
           animate={'animateIn'}
           exit={'animateOutLeft'}
           id="portfolio-cards"
-          className="text-white max-h-screen w-full p-6 grid-rows-[150px_1fr]"
+          className="text-white max-h-screen flex flex-col w-full p-6"
         >
           <Portfolio selectedFilter={selectedFilter} handleFilterClick={handleFilterClick} />
         </motion.section>
