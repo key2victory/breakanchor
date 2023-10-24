@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
 import { pageAnimations } from '@/src/utils/animations';
 import Post from '@/src/components/Post';
+import LoadingSpinner from '@/src/components/LoadingSpinner';
 
 const PostPage = (props) => {
   const slug = props.params.slug;
@@ -21,7 +22,7 @@ const PostPage = (props) => {
     fetchPost(slug);
   }, [slug]);
 
-  if (!slug || !post) return null;
+  if (!slug || !post) return <LoadingSpinner height="h-16" width="w-16" />;
 
   return (
     <AnimatePresence mode="wait">
@@ -34,7 +35,7 @@ const PostPage = (props) => {
           animate={'animateIn'}
           exit={'animateOutRight'}
           id="card-data"
-          className="text-white max-h-screen w-full p-6"
+          className="text-white max-h-screen flex flex-col p-6"
         >
           <Post data={post} />
         </motion.section>

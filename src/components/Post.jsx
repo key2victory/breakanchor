@@ -1,14 +1,14 @@
-'use client';
-
+import { PortableText } from '@portabletext/react';
 import Link from 'next/link';
 
 const Post = ({ data }) => {
+  console.log('Post Data: ', data);
   return (
     <>
       <div className="flex items-center gap-6">
         <Link
           href={'/'}
-          className="p-4 rounded-lg hover:bg-indigo-400 transition-colors duration-500 ease-in-out"
+          className="p-4 rounded-lg hover:bg-indigo-400 transition-colors duration-500 ease-in-out h-full flex items-center"
         >
           <svg viewBox="0 0 24 24" className="fill-none h-8 w-8">
             <path
@@ -17,11 +17,16 @@ const Post = ({ data }) => {
             />
           </svg>
         </Link>
-        <h1 className="text-6xl font-semibold">{data.title}</h1>
+        <div>
+          <h1 className="text-6xl font-semibold">{data.title}</h1>
+          <p className="text-xl font-semibold italic mt-4">{data.tagLine}</p>
+        </div>
       </div>
-      <div className="h-1 w-full bg-white my-4"></div>
-      {/* <p>{testCards.find((card) => card.id === selectedCard)?.type ?? 'BLAH'}</p>
-      <p> This is some text on a screen!</p> */}
+      <div role="divider" className="h-1 w-full bg-white my-4" />
+
+      <div className="blog-post-content rounded-md p-2 flex-1 overflow-y-auto">
+        <PortableText value={data.content} />
+      </div>
     </>
   );
 };

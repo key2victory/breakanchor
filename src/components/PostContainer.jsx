@@ -3,6 +3,7 @@ import Card from '@/src/components/Card';
 import { useState, useEffect } from 'react';
 import { getBlogs } from '@/sanity/api/getBlogs';
 import { testCards } from '@/src/utils/test-data';
+import LoadingSpinner from '@/src/components/LoadingSpinner';
 
 const PostContainer = ({ selectedFilter }) => {
   const [blogs, setBlogs] = useState(null);
@@ -14,13 +15,10 @@ const PostContainer = ({ selectedFilter }) => {
       if (blogData) setBlogs(blogData);
     };
 
-    console.log('Fetching posts...');
     fetchBlogs();
   }, []);
 
-  console.log('Blog Data:', blogs);
-
-  if (blogs === null) return null;
+  if (blogs === null) return <LoadingSpinner height="h-16" width="w-16" />;
   return (
     <>
       {/* Porfolio Cards */}
@@ -35,7 +33,7 @@ const PostContainer = ({ selectedFilter }) => {
             selectedType={selectedFilter}
           />
         ))}
-        {testCards.map((card, index) => (
+        {/* {testCards.map((card, index) => (
           <Card
             key={`card-${index}`}
             id={card._id}
@@ -44,7 +42,7 @@ const PostContainer = ({ selectedFilter }) => {
             type={card.type}
             selectedType={selectedFilter}
           />
-        ))}
+        ))} */}
       </div>
     </>
   );
