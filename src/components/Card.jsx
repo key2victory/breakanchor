@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import MotionLink from './MotionLink';
 
 const CardTypes = Object.freeze({
   design: 'bg-sky-500',
@@ -24,10 +25,12 @@ const Card = (props) => {
   };
 
   return (
-    <motion.div
+    <MotionLink
       layout
       layoutScroll
-      className={`relative rounded-lg overflow-hidden before:transition-colors before:duration-200 before:ease-in-out before:absolute before:content-[''] before:inset-0  ${getCardColor()} ${
+      href={`/[slug]`}
+      as={`/${slug}`}
+      className={`relative rounded-lg h-[240px] flex items-end overflow-hidden before:transition-colors before:duration-200 before:ease-in-out before:absolute before:content-[''] before:inset-0  ${getCardColor()} ${
         selectedType === null
           ? ''
           : selectedType === type
@@ -35,15 +38,13 @@ const Card = (props) => {
           : 'order-2 before:bg-black/40'
       }`}
     >
-      <Link href="/[slug]" as={`/${slug}`} className="h-[240px] flex items-end cursor-pointer">
-        <div className="bg-gray-500 px-4 py-2 w-full">
-          <h2 className="text-left text-lg">{title}</h2>
-          <p className="rounded-full bg-white text-black px-3 py-1 mt-2 w-fit text-xs">
-            {type.toUpperCase()}
-          </p>
-        </div>
-      </Link>
-    </motion.div>
+      <div className="bg-gray-500 px-4 py-2 w-full">
+        <h2 className="text-left text-lg">{title}</h2>
+        <p className="rounded-full bg-white text-black px-3 py-1 mt-2 w-fit text-xs">
+          {type.toUpperCase()}
+        </p>
+      </div>
+    </MotionLink>
   );
 };
 

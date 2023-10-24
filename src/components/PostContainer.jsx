@@ -2,6 +2,7 @@ import Card from '@/components/Card';
 
 import { useState, useEffect } from 'react';
 import { getBlogs } from '../../sanity/api/getBlogs';
+import { testCards } from '@/utils/test-data';
 
 const PostContainer = ({ selectedFilter }) => {
   const [blogs, setBlogs] = useState(null);
@@ -30,7 +31,17 @@ const PostContainer = ({ selectedFilter }) => {
             id={card._id}
             slug={card.slug}
             title={card.title}
-            type={card.topics[0].toLowerCase()}
+            type={'presentation'}
+            selectedType={selectedFilter}
+          />
+        ))}
+        {testCards.map((card, index) => (
+          <Card
+            key={`card-${index}`}
+            id={card._id}
+            slug={card.slug}
+            title={card.title}
+            type={card.type}
             selectedType={selectedFilter}
           />
         ))}
