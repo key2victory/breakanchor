@@ -1,8 +1,7 @@
 import { groq } from 'next-sanity';
-import { type Blog } from '../types';
 import client from '../lib/client';
 
-export async function getBlog(slug: string): Promise<Blog> {
+export async function getBlog(slug) {
   return client.fetch(
     groq`*[_type == "blog" && slug.current == $slug][0]{
       _id,

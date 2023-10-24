@@ -1,8 +1,7 @@
-import { type SchemaTypeDefinition } from 'sanity';
 import blog from './blog-schema';
 import author from './author-schema';
 
-const schema: { types: SchemaTypeDefinition[] } = {
+const schema = {
   types: [author, blog],
 };
 
