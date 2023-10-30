@@ -1,4 +1,5 @@
 import PostContainer from './PostContainer';
+import ProjectList from './ProjectList';
 
 const Portfolio = ({ selectedFilter, handleFilterClick }) => {
   return (
@@ -60,7 +61,7 @@ const Portfolio = ({ selectedFilter, handleFilterClick }) => {
         </nav>
       </div>
 
-      <PostContainer selectedFilter={selectedFilter} />
+      <ProjectList selectedFilter={selectedFilter} />
     </>
   );
 };
