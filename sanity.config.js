@@ -4,6 +4,7 @@ import { visionTool } from '@sanity/vision';
 
 import { apiVersion, dataset, projectId } from './sanity/env';
 import schema from './sanity/schemas';
+import { colorInput } from '@sanity/color-input';
 
 export default defineConfig({
   title: 'Break Anchor',
@@ -11,5 +12,5 @@ export default defineConfig({
   projectId,
   dataset,
   schema,
-  plugins: [deskTool(), visionTool({ defaultApiVersion: apiVersion })],
+  plugins: [deskTool(), visionTool({ defaultApiVersion: apiVersion }), colorInput()],
 });
