@@ -12,8 +12,8 @@ const CardCategories = Object.freeze({
 
 const ProjectCard = ({ title, slug, category, selectedType }) => {
   const getCardColor = () => {
-    if (category.value.current !== null) {
-      return CardCategories[category.value.current];
+    if (category.value !== null) {
+      return CardCategories[category.value];
     }
 
     return 'bg-zinc-800';
@@ -30,7 +30,7 @@ const ProjectCard = ({ title, slug, category, selectedType }) => {
           className={`relative rounded-lg h-[240px] flex items-end overflow-hidden before:transition-colors before:duration-200 before:ease-in-out before:absolute before:content-[''] before:inset-0  ${getCardColor()} ${
             selectedType === null
               ? ''
-              : selectedType === category.value.current
+              : selectedType === category.value
               ? 'order-1'
               : 'order-2 before:bg-black/40'
           }`}
@@ -49,7 +49,7 @@ const ProjectCard = ({ title, slug, category, selectedType }) => {
           className={`relative rounded-lg h-[240px] flex items-end overflow-hidden before:transition-colors before:duration-200 before:ease-in-out before:absolute before:content-[''] before:inset-0  ${getCardColor()} ${
             selectedType === null
               ? ''
-              : selectedType === category.value.current
+              : selectedType === category.value
               ? 'order-1'
               : 'order-2 before:bg-black/40'
           }`}

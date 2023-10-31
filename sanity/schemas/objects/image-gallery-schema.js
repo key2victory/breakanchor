@@ -6,7 +6,7 @@ const imageGallery = defineType({
   title: 'Image Gallery',
   fields: [
     defineField({
-      name: 'addImageGallery',
+      name: 'enableImageGallery',
       title: 'Enable the image gallery?',
       type: 'boolean',
       initialValue: false,
