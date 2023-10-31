@@ -1,4 +1,3 @@
-import PostContainer from './PostContainer';
 import ProjectList from './ProjectList';
 
 const Portfolio = ({ selectedFilter, handleFilterClick }) => {

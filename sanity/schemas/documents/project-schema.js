@@ -61,7 +61,7 @@ const project = defineType({
       ],
     }),
     defineField({
-      name: 'gallery',
+      name: 'imageGallery',
       title: 'Image Gallery',
       fieldset: 'projectContent',
       type: 'imageGallery',

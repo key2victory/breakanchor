@@ -8,16 +8,12 @@ export async function getProject(slug) {
       title,
       tagLine,
       content,
-      "enableLink": externalLink.enableLink,
-      "externalLink": {
-        "name": externalLink.linkName,
-        "url": externalLink.linkUrl
+      externalLink,
+      "imageGallery": {
+        "isEnabled": imageGallery.enableImageGallery,
+        "displayMode": imageGallery.display,
+        "images": imageGallery.images[@._type == 'image'].asset->url,
       },
-      "enableGallery": gallery.enableImageGallery,
-      gallery: {
-        "images": gallery.images
-        "displayMode": gallery.display
-      }
       "image": {
         "url": headerImage.asset->url,
         "altText": headerImage.alt
@@ -30,7 +26,7 @@ export async function getProject(slug) {
       },
       tags,
     }`,
-    {},
-    { next: { revalidate: 15 } },
+    { slug },
+    { next: { revalidate: 10 } },
   );
 }

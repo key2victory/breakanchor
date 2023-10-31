@@ -2,7 +2,7 @@ import { PortableText } from '@portabletext/react';
 import Link from 'next/link';
 
 const Post = ({ data }) => {
-  console.log('Post Data: ', data);
+  //console.log('Post Data: ', data);
   return (
     <>
       <div className="flex items-center gap-6">

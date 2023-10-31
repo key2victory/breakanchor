@@ -1,28 +1,32 @@
 'use client';
 
-import { getBlog } from '@/sanity/api/getBlog';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
 import { pageAnimations } from '@/src/utils/animations';
-import Post from '@/src/components/Post';
+import Project from '@/src/components/Project';
 import LoadingSpinner from '@/src/components/LoadingSpinner';
+import { getProject } from '@/sanity/api/getProject';
 
-const PostPage = (props) => {
+const ProjectPage = (props) => {
   const slug = props.params.slug;
-  const [post, setPost] = useState(null);
+  const [project, setProject] = useState(null);
 
   useEffect(() => {
-    const fetchPost = async (slug) => {
+    const fetchProject = async (slug) => {
       if (!slug) return;
 
-      const postData = await getBlog(slug);
-      if (postData) setPost(postData);
+      const projectData = await getProject(slug);
+
+      if (projectData) {
+        setProject(projectData);
+        //console.log('Project Data: ', projectData);
+      }
     };
 
-    fetchPost(slug);
+    fetchProject(slug);
   }, [slug]);
 
-  if (!slug || !post) return <LoadingSpinner height="h-16" width="w-16" />;
+  if (!slug || !project) return <LoadingSpinner height="h-16" width="w-16" />;
 
   return (
     <AnimatePresence mode="wait">
@@ -37,11 +41,11 @@ const PostPage = (props) => {
           id="card-data"
           className="text-white max-h-screen flex flex-col p-6"
         >
-          <Post data={post} />
+          <Project data={project} />
         </motion.section>
       </LayoutGroup>
     </AnimatePresence>
   );
 };
 
-export default PostPage;
+export default ProjectPage;

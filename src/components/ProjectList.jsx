@@ -12,7 +12,7 @@ const ProjectList = ({ selectedFilter }) => {
 
       if (projectListData) {
         setProjectList(projectListData);
-        console.log('Project List Data: ', projectListData);
+        //console.log('Project List Data: ', projectListData);
       }
     };
 
