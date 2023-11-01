@@ -2,22 +2,24 @@
 
 import { motion } from 'framer-motion';
 import MotionLink from './MotionLink';
+import { useEffect, useRef } from 'react';
 
-const CardCategories = Object.freeze({
-  design: 'bg-sky-500',
-  presentation: 'bg-amber-500',
-  research: 'bg-rose-500',
-  articles: 'bg-emerald-500',
-});
+const ProjectCard = ({ _id, title, slug, category, selectedType }) => {
+  const cardRef = useRef(null);
 
-const ProjectCard = ({ title, slug, category, selectedType }) => {
-  const getCardColor = () => {
-    if (category.value !== null) {
-      return CardCategories[category.value];
-    }
+  const projectCardId = `project-card-${_id}`;
 
-    return 'bg-zinc-800';
-  };
+  // const primaryColor = `hsl(${category.color.hsl.h}, ${category.color.hsl.s * 100}%, ${
+  //   category.color.hsl.l * 100
+  // }%)`;
+  // const secondaryColor = `hsl(${category.color.hsl.h}, ${category.color.hsl.s * 0.7 * 100}%, ${
+  //   category.color.hsl.l * 100
+  // }%)`;
+
+  // useEffect(() => {
+  //   if (cardRef.current === null) cardRef.current = document.getElementById(projectCardId);
+  //   cardRef.current.style.setProperty('--project-card-primary', 'primaryColor');
+  // });
 
   return (
     <>
@@ -27,7 +29,8 @@ const ProjectCard = ({ title, slug, category, selectedType }) => {
           layoutScroll
           href={`/[slug]`}
           as={`/${slug}`}
-          className={`relative rounded-lg h-[240px] flex items-end overflow-hidden before:transition-colors before:duration-200 before:ease-in-out before:absolute before:content-[''] before:inset-0  ${getCardColor()} ${
+          id={projectCardId}
+          className={`project-card relative rounded-lg h-[240px] flex items-end overflow-hidden before:transition-colors before:duration-200 before:ease-in-out before:absolute before:content-[''] before:inset-0 ${
             selectedType === null
               ? ''
               : selectedType === category.value
@@ -46,7 +49,8 @@ const ProjectCard = ({ title, slug, category, selectedType }) => {
         <motion.div
           layout
           layoutScroll
-          className={`relative rounded-lg h-[240px] flex items-end overflow-hidden before:transition-colors before:duration-200 before:ease-in-out before:absolute before:content-[''] before:inset-0  ${getCardColor()} ${
+          id={projectCardId}
+          className={`project-card relative rounded-lg h-[240px] flex items-end overflow-hidden before:transition-colors before:duration-200 before:ease-in-out before:absolute before:content-[''] before:inset-0 ${
             selectedType === null
               ? ''
               : selectedType === category.value

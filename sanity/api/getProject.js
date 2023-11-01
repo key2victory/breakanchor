@@ -22,7 +22,7 @@ export async function getProject(slug) {
       "category": {
         "title": category->title,
         "value": category->value.current,
-        "color": category->colorTheme.hex
+        "color": category->colorTheme
       },
       tags,
     }`,

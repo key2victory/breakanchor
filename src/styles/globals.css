@@ -23,6 +23,11 @@ body {
 }
 
 @layer utilities {
+  .project-card {
+    --project-card-primary: hsl(0, 0%, 42%);
+    background-color: var(--project-card-primary);
+  }
+
   .hexagon {
     --hex-size: 150px;
     padding: 1rem;
