@@ -23,11 +23,6 @@ body {
 }
 
 @layer utilities {
-  .project-card {
-    --project-card-primary: hsl(0, 0%, 42%);
-    background-color: var(--project-card-primary);
-  }
-
   .hexagon {
     --hex-size: 150px;
     padding: 1rem;
@@ -45,7 +40,7 @@ body {
     h4,
     h5,
     h6 {
-      @apply font-bold underline  underline-offset-4 !important;
+      @apply font-bold !important;
     }
 
     h1 {
