@@ -1,6 +1,32 @@
-import ProjectList from './ProjectList';
+'use client';
 
-const Portfolio = ({ selectedFilter, handleFilterClick }) => {
+import { useEffect, useState } from 'react';
+import ProjectList from './ProjectList';
+import { getProjectCategories } from '@/sanity/api/getProjectCategories';
+
+const Portfolio = () => {
+  const [selectedFilter, setSelectedFilter] = useState(null);
+  const [categories, setCategories] = useState(null);
+
+  const handleFilterClick = (cardType) => {
+    setSelectedFilter(cardType);
+  };
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const projectCategories = await getProjectCategories();
+
+      if (projectCategories) {
+        setCategories(projectCategories);
+        console.log('Categories: ', projectCategories);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
+  if (categories === null) return null;
+
   return (
     <>
       <div>
@@ -22,40 +48,22 @@ const Portfolio = ({ selectedFilter, handleFilterClick }) => {
                 All
               </button>
             </li>
-            <li>
-              <button
-                className={`${selectedFilter === 'design' ? 'underline underline-offset-4' : ''}`}
-                onClick={() => handleFilterClick('design')}
-              >
-                Designs
-              </button>
-            </li>
-            <li>
-              <button
-                className={`${
-                  selectedFilter === 'presentation' ? 'underline underline-offset-4' : ''
-                }`}
-                onClick={() => handleFilterClick('presentation')}
-              >
-                Presentations
-              </button>
-            </li>
-            <li>
-              <button
-                className={`${selectedFilter === 'research' ? 'underline underline-offset-4' : ''}`}
-                onClick={() => handleFilterClick('research')}
-              >
-                Research
-              </button>
-            </li>
-            <li>
-              <button
-                className={`${selectedFilter === 'articles' ? 'underline underline-offset-4' : ''}`}
-                onClick={() => handleFilterClick('articles')}
-              >
-                Articles
-              </button>
-            </li>
+            {categories
+              .sort((a, b) => (a.title < b.title ? -1 : a.title < b.title ? 1 : 0)) // Sorts alphabetically
+              .map((category) => (
+                <li key={category._id}>
+                  <button
+                    className={`${
+                      selectedFilter === category.value
+                        ? 'transition duration-300 ease-in-out underline underline-offset-4'
+                        : ''
+                    }`}
+                    onClick={() => handleFilterClick(category.value)}
+                  >
+                    {category.title}
+                  </button>
+                </li>
+              ))}
           </ul>
         </nav>
       </div>

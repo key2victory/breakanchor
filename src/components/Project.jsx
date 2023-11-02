@@ -132,19 +132,6 @@ const colorThemes = {
   },
 };
 
-const arrowVariant = {
-  rest: {
-    x: -20,
-    y: 20,
-    opacity: 0,
-  },
-  hover: {
-    x: 0,
-    y: 0,
-    opacity: 1,
-  },
-};
-
 const components = {
   types: {
     image: ({ value, isInline }) => <ImageComponent value={value} isInline={isInline} />,

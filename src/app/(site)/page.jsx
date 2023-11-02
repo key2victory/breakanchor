@@ -1,18 +1,10 @@
 'use client';
 
-import { useState } from 'react';
-
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
 import Portfolio from '@/src/components/Portfolio';
 import { pageAnimations } from '@/src/utils/animations';
 
 export default function Home() {
-  const [selectedFilter, setSelectedFilter] = useState(null);
-
-  const handleFilterClick = (cardType) => {
-    setSelectedFilter(cardType);
-  };
-
   return (
     <AnimatePresence mode="wait">
       <LayoutGroup>
@@ -26,7 +18,7 @@ export default function Home() {
           id="portfolio-cards"
           className="text-white max-h-screen flex flex-col w-full p-6"
         >
-          <Portfolio selectedFilter={selectedFilter} handleFilterClick={handleFilterClick} />
+          <Portfolio />
         </motion.section>
       </LayoutGroup>
     </AnimatePresence>

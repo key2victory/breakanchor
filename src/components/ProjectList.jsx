@@ -28,6 +28,7 @@ const ProjectList = ({ selectedFilter }) => {
           id={project._id}
           slug={project.slug}
           title={project.title}
+          image={project.image}
           category={project.category}
           selectedType={selectedFilter}
         />
