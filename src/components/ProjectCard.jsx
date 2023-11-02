@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import MotionLink from './MotionLink';
 import Image from 'next/image';
 import { urlForImage } from '@/sanity/lib/image';
-//import { colorThemes } from '../utils/colors';
 
 const colorThemes = {
   red: {
@@ -99,30 +98,52 @@ const colorThemes = {
   },
 };
 
-const ProjectCard = ({ _id, title, slug, category, selectedType, image }) => {
+const ProjectCard = ({ project, selectedType }) => {
+  const { _id, title, tagLine, slug, category, image, tags } = project;
   const projectCardId = `project-card-${_id}`;
 
   const renderCardContent = () => (
     <>
-      <div
-        className={`shrink-0 overflow-hidden after:absolute after:inset-0 after:content-[''] ${
-          colorThemes[category.color ?? 'slate'].afterBg
-        }`}
-      >
-        <Image
-          src={urlForImage(image.url).width(1920).url()}
-          alt={image.alt}
-          fill={true}
-          className="object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
-        />
+      <div className="absolute -top-2 left-0 right-0 z-10">
+        <p
+          className={`overflow-hidden text-white text-center italic px-3 py-1 mt-2 text-xs relative after:absolute after:content-[''] after:inset-0 after:bg-black/10 ${
+            colorThemes[category.color ?? 'slate'].secondaryBg
+          }`}
+        >
+          {category?.title?.toUpperCase() ?? 'PROJECT'}
+        </p>
       </div>
+      {image.url ? (
+        <div
+          className={`shrink-0 overflow-hidden after:absolute after:inset-0 after:content-[''] ${
+            colorThemes[category.color ?? 'slate'].afterBg
+          }`}
+        >
+          <Image
+            src={urlForImage(image?.url).width(1920).url()}
+            alt={image.alt}
+            fill={true}
+            className="object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
+          />
+        </div>
+      ) : null}
       <div
         className={`px-4 py-2 w-full ${colorThemes[category.color ?? 'slate'].secondaryBg} z-10`}
       >
         <h2 className="text-left text-lg truncate">{title}</h2>
-        <p className="rounded-full bg-white text-black px-3 py-1 mt-2 w-fit text-xs">
-          {category?.title?.toUpperCase() ?? 'PROJECT'}
-        </p>
+        <p className="truncate text-xs">{tagLine}</p>
+        {/* {tags ? (
+          <p className="flex gap-0.5 mt-2 text-xs truncate">
+            {tags.map((tag) => (
+              <span
+                key={`proj-${_id}-tag-${tag}`}
+                className={`rounded-full px-2 py-[3px] text-white bg-black/10`}
+              >
+                {tag}
+              </span>
+            ))}
+          </p>
+        ) : null} */}
       </div>
     </>
   );

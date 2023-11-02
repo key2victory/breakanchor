@@ -20,16 +20,13 @@ const ProjectList = ({ selectedFilter }) => {
   }, []);
 
   if (projectList === null) return <LoadingSpinner height="h-16" width="w-16" />;
+
   return (
     <div className="mt-6 flex-1 overflow-y-auto grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-3 pr-4">
       {projectList.map((project, index) => (
         <ProjectCard
           key={`project-card-${index}`}
-          id={project._id}
-          slug={project.slug}
-          title={project.title}
-          image={project.image}
-          category={project.category}
+          project={project}
           selectedType={selectedFilter}
         />
       ))}

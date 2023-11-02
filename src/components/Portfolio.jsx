@@ -35,12 +35,12 @@ const Portfolio = () => {
 
         {/* Portfolio Filters */}
         <nav>
-          <ul className="flex gap-4 text-xl font-semibold ">
+          <ul className="flex gap-4 text-xl font-medium ">
             <li>
               <button
                 className={`${
                   selectedFilter === null
-                    ? 'transition duration-300 ease-in-out underline underline-offset-4'
+                    ? 'transition duration-300 ease-in-out underline underline-offset-4 font-semibold'
                     : ''
                 }`}
                 onClick={() => handleFilterClick(null)}
@@ -55,7 +55,7 @@ const Portfolio = () => {
                   <button
                     className={`${
                       selectedFilter === category.value
-                        ? 'transition duration-300 ease-in-out underline underline-offset-4'
+                        ? 'transition duration-300 ease-in-out underline underline-offset-4 font-semibold'
                         : ''
                     }`}
                     onClick={() => handleFilterClick(category.value)}
