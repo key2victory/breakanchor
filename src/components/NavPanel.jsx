@@ -47,7 +47,7 @@ const NavLink = ({ children, href = '', label = 'Label' }) => {
 
 const DesktopNavPanel = () => {
   return (
-    <nav className="bg-gray-600 z-10 hidden md:basis-[220px] lg:basis-[300px] md:flex flex-col items-center pt-12 px-4 lg:px-6">
+    <nav className="bg-slate-800 z-10 hidden md:basis-[220px] lg:basis-[300px] md:flex flex-col items-center pt-12 px-4 lg:px-6">
       <div id="name-group" className="flex flex-col items-center w-full whitespace-nowrap">
         <div className="relative h-[150px] w-[150px] hexagon">
           <Image src="/profile.png" alt="Portrait of Janna Curtis" className="" fill={true} />
@@ -84,11 +84,11 @@ const MobileNavPanel = () => {
   const [opened, toggle] = useToggle(false);
 
   return (
-    <nav className="bg-gray-600 sticky w-full md:hidden z-40 py-3 px-2 flex items-center justify-center">
+    <nav className="bg-slate-800 sticky w-full md:hidden z-40 py-3 px-2 flex items-center justify-center">
       <Burger opened={opened} onClick={toggle} className="absolute left-3 z-50" />
       <h1 className="text-2xl">Janna Curtis</h1>
       <motion.aside
-        className="fixed left-0 top-0 bottom-0 bg-gray-500 overflow-hidden"
+        className="fixed left-0 top-0 bottom-0 bg-slate-600 overflow-hidden"
         initial={false}
         animate={opened ? 'open' : 'closed'}
         variants={mobileAside}

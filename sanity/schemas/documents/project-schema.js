@@ -58,6 +58,18 @@ const project = defineType({
         defineArrayMember({
           type: 'image',
         }),
+        defineArrayMember({
+          name: 'embed',
+          type: 'object',
+          title: 'Embed',
+          fields: [
+            defineField({
+              name: 'url',
+              type: 'url',
+              title: 'Embed URL',
+            }),
+          ],
+        }),
       ],
     }),
     defineField({

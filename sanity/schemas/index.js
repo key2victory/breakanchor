@@ -4,9 +4,10 @@ import project from './documents/project-schema';
 import projectCategory from './documents/project-category-schema';
 import imageGallery from './objects/image-gallery-schema';
 import externalLink from './objects/external-link-schema';
+import embed from './objects/embed-schema';
 
 const schema = {
-  types: [imageGallery, externalLink, author, blog, project, projectCategory],
+  types: [imageGallery, externalLink, embed, author, blog, project, projectCategory],
 };
 
 export default schema;

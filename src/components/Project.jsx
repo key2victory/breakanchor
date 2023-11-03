@@ -1,7 +1,6 @@
+import ExpandingImage from '@/sanity/components/ExpandingImage';
 import { PortableText } from '@portabletext/react';
 import Link from 'next/link';
-import ImageComponent from '@/sanity/components/Image';
-import { motion } from 'framer-motion';
 
 const colorThemes = {
   red: {
@@ -134,7 +133,7 @@ const colorThemes = {
 
 const components = {
   types: {
-    image: ({ value, isInline }) => <ImageComponent value={value} isInline={isInline} />,
+    image: ({ value, isInline }) => <ExpandingImage value={value} isInline={isInline} />,
   },
 };
 

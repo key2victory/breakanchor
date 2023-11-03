@@ -43,7 +43,7 @@ export const navLinkVariant = {
     backgroundColor: 'transparent',
   },
   hover: {
-    backgroundColor: colors.indigo['400'],
+    backgroundColor: colors.indigo['900'],
   },
 };
 
@@ -69,7 +69,7 @@ export const mobileAside = {
     },
   },
   open: {
-    width: 220,
+    width: '50%',
     transition: {
       when: 'beforeChildren',
       duration: 0.2,
@@ -83,7 +83,7 @@ export const mobileMenuContainer = {
     transition: {
       when: 'afterChildren',
       duration: 0.1,
-      staggerChildren: 0.02,
+      staggerChildren: 0.1,
       staggerDirection: 1,
     },
   },
@@ -92,7 +92,7 @@ export const mobileMenuContainer = {
     transition: {
       when: 'beforeChildren',
       duration: 0.1,
-      staggerChildren: 0.02,
+      staggerChildren: 0.1,
       staggerDirection: -1,
     },
   },
