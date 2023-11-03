@@ -102,6 +102,14 @@ const ProjectCard = ({ project, selectedType }) => {
   const { _id, title, tagLine, slug, category, image, tags } = project;
   const projectCardId = `project-card-${_id}`;
 
+  const cardClassName = `group relative rounded-lg flex items-end overflow-hidden min-h-[240px] before:transition-colors before:duration-200 before:ease-in-out before:absolute before:content-[''] before:z-20 before:inset-0 ${
+    selectedType === null
+      ? ''
+      : selectedType === category.value
+      ? 'order-1'
+      : 'order-2 before:bg-black/40'
+  } ${colorThemes[category.color ?? 'slate'].primaryBg}`;
+
   const renderCardContent = () => (
     <>
       <div className="absolute -top-2 left-0 right-0 z-10">
@@ -157,29 +165,12 @@ const ProjectCard = ({ project, selectedType }) => {
           href={`/[slug]`}
           as={`/${slug}`}
           id={projectCardId}
-          className={`project-card group relative rounded-lg h-[240px] flex items-end overflow-hidden before:transition-colors before:duration-200 before:ease-in-out before:absolute before:content-[''] before:z-20 before:inset-0 ${
-            selectedType === null
-              ? ''
-              : selectedType === category.value
-              ? 'order-1'
-              : 'order-2 before:bg-black/40'
-          } ${colorThemes[category.color ?? 'slate'].primaryBg}`}
+          className={cardClassName}
         >
           {renderCardContent()}
         </MotionLink>
       ) : (
-        <motion.div
-          layout
-          layoutScroll
-          id={projectCardId}
-          className={`project-card group relative rounded-lg h-[240px] flex items-end overflow-hidden before:transition-colors before:duration-200 before:ease-in-out before:absolute before:content-[''] before:z-20 before:inset-0 ${
-            selectedType === null
-              ? ''
-              : selectedType === category.value
-              ? 'order-1'
-              : 'order-2 before:bg-black/40'
-          } ${colorThemes[category.color ?? 'slate'].primaryBg}`}
-        >
+        <motion.div layout layoutScroll id={projectCardId} className={cardClassName}>
           {renderCardContent()}
         </motion.div>
       )}
