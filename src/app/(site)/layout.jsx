@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body id="app-body" className={`relative min-h-screen min-w-[100vw] ${inter.className}`}>
-        <main className="overflow-hidden grid grid-cols-[300px_1fr] min-h-screen">
+        <main className="overflow-hidden flex flex-col md:flex-row min-h-screen">
           {/* Fixed positioned screen size buttons */}
 
           {/* Sidebar */}

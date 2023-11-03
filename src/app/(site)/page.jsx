@@ -16,7 +16,7 @@ export default function Home() {
           animate={'animateIn'}
           exit={'animateOutLeft'}
           id="portfolio-cards"
-          className="text-white max-h-screen flex flex-col w-full p-6"
+          className="text-white max-h-screen flex flex-col w-full p-3 sm:p-4 md:p-6"
         >
           <Portfolio />
         </motion.section>
