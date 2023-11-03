@@ -1,4 +1,5 @@
 import { defineType, defineField, defineArrayMember } from 'sanity';
+import { embed } from '../objects/embed-schema';
 
 const project = defineType({
   name: 'project',
@@ -58,6 +59,18 @@ const project = defineType({
         defineArrayMember({
           type: 'image',
         }),
+        defineArrayMember({
+          name: 'embed',
+          type: 'object',
+          title: 'Embed',
+          fields: [
+            defineField({
+              name: 'url',
+              type: 'url',
+              title: 'Embed URL'
+            })
+          ]
+        })
       ],
     }),
     defineField({

@@ -10,7 +10,7 @@ const navLinkVariant = {
     backgroundColor: 'transparent',
   },
   hover: {
-    backgroundColor: colors.indigo['400'],
+    backgroundColor: colors.indigo['900'],
   },
 };
 
@@ -60,7 +60,7 @@ const NavLink = ({ children, href = '', label = 'Label' }) => {
 
 const NavPanel = ({}) => {
   return (
-    <nav className="bg-gray-600 z-10 flex flex-col items-center pt-12 px-8">
+    <nav className="bg-slate-800 z-10 flex flex-col items-center pt-12 px-8">
       <div id="name-group" className="flex flex-col items-center">
         <div className="relative h-[150px] w-[150px] hexagon">
           <Image src="/profile.png" alt="Portrait of Janna Curtis" className="" fill={true} />
