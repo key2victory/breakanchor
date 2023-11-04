@@ -7,6 +7,7 @@ import { useState } from 'react';
 const ExpandingImage = ({ value, isInline }) => {
   const { width, height } = getImageDimensions(value);
   const [showModal, setShowModal] = useState(false);
+
   console.log(
     urlBuilder()
       .image(value)
@@ -23,18 +24,32 @@ const ExpandingImage = ({ value, isInline }) => {
     <>
       <div
         style={{
-          display: showModal ? 'block' : 'none',
+          display: showModal ? 'flex' : 'none',
+          justifyContent: "center",
+          alignItems: "center",
           position: 'fixed',
           top: showModal ? 0 : -1,
           left: showModal ? 0 : -1,
           width: showModal ? '100%' : '1',
           height: showModal ? '100%' : '1',
+          padding: showModal ? '2rem' : 0,
           background: 'hsla(0,0%,0%,.8)',
           overflow: 'hidden',
           zIndex: 1000,
         }}
         onClick={() => {
           setShowModal(false);
+        }}
+      >
+        <div
+        style={{
+        position: "relative",
+        width: width,
+        height: height,
+        maxWidth: "100%",
+         maxHeight: "100%",
+         margin: '0 0 1rem 0',
+         // paddingBottom: `min(350px, ${100 / (width / height)}%)` 
         }}
       >
         <Image
@@ -46,22 +61,29 @@ const ExpandingImage = ({ value, isInline }) => {
             .url()}
           alt={value.alt || ' '}
           loading="lazy"
-          width={width}
-          height={height}
+          layout="fill" 
+          objectFit="contain"
           style={{
+            maxWidth: "100%",
+            maxHeight: "100%",
             margin: '0 0 1rem 0',
             // Display alongside text if image appears inside a block text span
             display: isInline ? 'inline-block' : 'block',
-
             // Avoid jumping around with aspect-ratio CSS property
             aspectRatio: width / height,
           }}
         />
+        </div>
       </div>
       <div
         style={{
-          width: '100%',
-          height: 'min-content',
+        position: "relative",
+        width: width,
+        height: height,
+        maxWidth: "100%",
+         maxHeight: "350px",
+         margin: '0 0 1rem 0',
+         // paddingBottom: `min(350px, ${100 / (width / height)}%)` 
         }}
         onClick={() => {
           setShowModal(true);
@@ -76,18 +98,23 @@ const ExpandingImage = ({ value, isInline }) => {
             .url()}
           alt={value.alt || ' '}
           loading="lazy"
-          width={width}
-          height={height}
+          layout="fill" 
+          objectFit="contain"
           style={{
-            margin: '0 0 1rem 0',
+          //  maxWidth: "100%",
+         //   maxHeight: "400px",
+        // flexGrow: 0,
+        // flexShrink: 1,
+        // flexBasis: 0,
+          
             // Display alongside text if image appears inside a block text span
             display: isInline ? 'inline-block' : 'block',
 
             // Avoid jumping around with aspect-ratio CSS property
-            aspectRatio: width / height,
+          //  aspectRatio: width / height,
           }}
         />
-      </div>
+            </div>
     </>
   );
 };

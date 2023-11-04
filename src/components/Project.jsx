@@ -196,8 +196,14 @@ const Project = ({ data }) => {
         className={`h-1 w-full my-4 ${colorThemes[data.category.color ?? 'slate'].primaryBg}`}
       />
 
-      <div className="blog-post-content rounded-md p-2 flex-1 overflow-y-auto">
+      <div className="rounded-md flex-1 overflow-y-scroll" style={{width: "100%"}}>
+      <div className="blog-post-content rounded-md p-2 flex-1" 
+      style={{
+        maxWidth: "800px",//"75ch"
+        height: "max-content"
+    }}>
         <PortableText value={data.content} components={components} />
+      </div>
       </div>
     </>
   );
