@@ -2,6 +2,8 @@ import urlBuilder from '@sanity/image-url';
 import { getImageDimensions } from '@sanity/asset-utils';
 import Image from 'next/image';
 import { useState } from 'react';
+import CloseButton from '@/src/components/CloseButton';
+import LightboxModal from './LightboxModal';
 
 // Barebones lazy-loaded image component
 const ExpandingImage = ({ value, isInline }) => {
@@ -24,25 +26,8 @@ const ExpandingImage = ({ value, isInline }) => {
 
   return (
     <>
-      <div
-        style={{
-          display: showModal ? 'flex' : 'none',
-          justifyContent: "center",
-          alignItems: "center",
-          position: 'fixed',
-          top: showModal ? 0 : -1,
-          left: showModal ? 0 : -1,
-          width: showModal ? '100%' : '1',
-          height: showModal ? '100%' : '1',
-          padding: showModal ? '2rem' : 0,
-          background: 'hsla(0,0%,0%,.8)',
-          overflow: 'hidden',
-          zIndex: 1000,
-        }}
-        onClick={() => {
-          setShowModal(false);
-        }}
-      >
+    <LightboxModal showModal={showModal} onClickClose={()=>setShowModal(false)}>
+
         <div
         style={{
         position: "relative",
@@ -78,7 +63,8 @@ const ExpandingImage = ({ value, isInline }) => {
           }}
         />
         </div>
-      </div>
+  
+      </LightboxModal>
       <div
       className='image-caption-card bg-zinc-900 rounded-lg'
         style={{
