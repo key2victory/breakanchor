@@ -57,7 +57,16 @@ const project = defineType({
         }),
         defineArrayMember({
           type: 'image',
+         // options: {hotspot: true},
+          fields: [
+            {
+              name: 'alt',
+              type: 'string',
+              title: 'Alternative text',
+            },
+          ],
         }),
+       
         defineArrayMember({
           name: 'embed',
           type: 'object',
