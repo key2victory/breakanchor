@@ -1,4 +1,5 @@
 import ExpandingImage from '@/sanity/components/ExpandingImage';
+import ImageGallery from '@/sanity/components/ImageGallery';
 import { PortableText } from '@portabletext/react';
 import Link from 'next/link';
 
@@ -132,12 +133,16 @@ const colorThemes = {
 };
 
 const components = {
+/* block: {
+    h1: ({children}) => <h1 className='text-2xl leading-tight rounded-lg dark:bg-zinc-900 max-sm:text-center  sm:text-3xl' style={{marginTop: "100px !important"}}>{children}</h1>,
+  },*/
   types: {
     image: ({ value, isInline }) => <ExpandingImage value={value} isInline={isInline} />,
   },
 };
 
 const Project = ({ data }) => {
+  console.log(data)
   return (
     <>
       <div className="flex items-center gap-6">
@@ -193,15 +198,16 @@ const Project = ({ data }) => {
       </div>
       <div
         role="divider"
-        className={`h-1 w-full my-4 ${colorThemes[data.category.color ?? 'slate'].primaryBg}`}
+        className={`h-1 w-full mt-4 ${colorThemes[data.category.color ?? 'slate'].primaryBg}`}
       />
 
-      <div className="rounded-md flex-1 overflow-y-scroll" style={{width: "100%"}}>
+      <div className="rounded-md flex-1 w-full overflow-y-scroll">
       <div className="blog-post-content rounded-md p-2 flex-1" 
       style={{
-        maxWidth: "800px",//"75ch"
-        height: "max-content"
+       maxWidth: "800px",//"75ch"
+        height: "auto"//"max-content"
     }}>
+      <ImageGallery value={data.imageGallery}/>
         <PortableText value={data.content} components={components} />
       </div>
       </div>
