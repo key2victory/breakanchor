@@ -7,7 +7,8 @@ import { useState } from 'react';
 const ExpandingImage = ({ value, isInline }) => {
   const { width, height } = getImageDimensions(value);
   const [showModal, setShowModal] = useState(false);
-  console.log(
+
+/*  console.log(
     urlBuilder()
       .image(value)
       .width(isInline ? 100 : 800)
@@ -18,17 +19,22 @@ const ExpandingImage = ({ value, isInline }) => {
     isInline,
     'Image value:',
     value,
-  );
+  );*/
+  console.log(value.alt)
+
   return (
     <>
       <div
         style={{
-          display: showModal ? 'block' : 'none',
+          display: showModal ? 'flex' : 'none',
+          justifyContent: "center",
+          alignItems: "center",
           position: 'fixed',
           top: showModal ? 0 : -1,
           left: showModal ? 0 : -1,
           width: showModal ? '100%' : '1',
           height: showModal ? '100%' : '1',
+          padding: showModal ? '2rem' : 0,
           background: 'hsla(0,0%,0%,.8)',
           overflow: 'hidden',
           zIndex: 1000,
@@ -37,7 +43,19 @@ const ExpandingImage = ({ value, isInline }) => {
           setShowModal(false);
         }}
       >
+        <div
+        style={{
+        position: "relative",
+        width: width,
+        height: height,
+        maxWidth: "100%",
+         maxHeight: "100%",
+         margin: '0 0 1rem 0',
+         // paddingBottom: `min(350px, ${100 / (width / height)}%)` 
+        }}
+      >
         <Image
+           className='rounded-lg'
           src={urlBuilder({ projectId: 'k29n8cal', dataset: 'production' })
             .image(value)
             .width(800)
@@ -46,28 +64,55 @@ const ExpandingImage = ({ value, isInline }) => {
             .url()}
           alt={value.alt || ' '}
           loading="lazy"
-          width={width}
-          height={height}
+          layout="fill" 
+          objectFit="contain"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           style={{
+            maxWidth: "100%",
+            maxHeight: "100%",
             margin: '0 0 1rem 0',
             // Display alongside text if image appears inside a block text span
             display: isInline ? 'inline-block' : 'block',
-
             // Avoid jumping around with aspect-ratio CSS property
             aspectRatio: width / height,
           }}
         />
+        </div>
       </div>
       <div
+      className='image-caption-card bg-zinc-900 rounded-lg'
         style={{
-          width: '100%',
-          height: 'min-content',
+        display:"flex",
+        flexFlow: "column nowrap",
+        alignItems: "center",
+        width: "100%",
+        height: "min-content",
+        maxWidth: "100%",
+       maxHeight: "500px",
+         margin: '0 0 1rem 0',
+         padding: "1rem",
+         // paddingBottom: `min(350px, ${100 / (width / height)}%)` 
+        }}
+        onClick={() => {
+          setShowModal(true);
+        }}
+      >
+      <div
+      className='image-sizer-wrapper'
+        style={{
+        position: "relative",
+        width: width,
+        height: height,
+        maxWidth: "100%",
+         maxHeight: "350px",
+         // paddingBottom: `min(350px, ${100 / (width / height)}%)` 
         }}
         onClick={() => {
           setShowModal(true);
         }}
       >
         <Image
+      className='rounded-lg'
           src={urlBuilder({ projectId: 'k29n8cal', dataset: 'production' })
             .image(value)
             .width(isInline ? 100 : 800)
@@ -76,18 +121,16 @@ const ExpandingImage = ({ value, isInline }) => {
             .url()}
           alt={value.alt || ' '}
           loading="lazy"
-          width={width}
-          height={height}
+          layout="fill" 
+          objectFit="contain"
           style={{
-            margin: '0 0 1rem 0',
             // Display alongside text if image appears inside a block text span
             display: isInline ? 'inline-block' : 'block',
-
-            // Avoid jumping around with aspect-ratio CSS property
-            aspectRatio: width / height,
           }}
         />
-      </div>
+        </div>
+        {value.alt !== undefined && value.alt !== "" ? <span style={{fontSize: ".8rem", lineHeight: "1.5", maxWidth: "60ch"}}>{value.alt}</span>:null}
+            </div>
     </>
   );
 };

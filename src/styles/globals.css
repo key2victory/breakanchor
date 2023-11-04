@@ -54,7 +54,7 @@ body {
     }
 
     h1 {
-      @apply my-2 text-2xl leading-tight dark:bg-neutral-700 max-sm:text-center  sm:text-3xl !important;
+      @apply mb-2 mt-8 text-2xl leading-tight rounded-lg dark:bg-zinc-900 max-sm:text-center  sm:text-3xl !important;
     }
 
     h2 {
