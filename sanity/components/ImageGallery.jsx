@@ -47,12 +47,12 @@ const FilmstripGrid = ({ children }) => {
          )}
 
   
-const ImageGallery = ({ value }) => {
+const ImageGallery = ({ value, hasImageGallery=false }) => {
  // const { width, height } = getImageDimensions(value);
   const [showLightbox, setShowLightbox] = useState(false);
   const [selected, setSelected]=useState(0)
-  console.log("ImageGallery Log:",value)
-  return (
+
+  if(hasImageGallery){ return (
     <>
     <LightboxModal showModal={showLightbox}>
     <span
@@ -179,7 +179,7 @@ const ImageGallery = ({ value }) => {
           </div>)):null}
     </FilmstripGrid>
     </>
-  );
+  );}
 };
 
 export default ImageGallery;

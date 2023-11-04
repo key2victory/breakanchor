@@ -207,7 +207,8 @@ const Project = ({ data }) => {
        maxWidth: "800px",//"75ch"
         height: "auto"//"max-content"
     }}>
-      <ImageGallery value={data.imageGallery}/>
+      <ImageGallery value={data.imageGallery} hasImageGallery={data.imageGallery.isEnabled} 
+      />
         <PortableText value={data.content} components={components} />
       </div>
       </div>
