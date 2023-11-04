@@ -39,7 +39,7 @@ const ProjectPage = (props) => {
           animate={'animateIn'}
           exit={'animateOutRight'}
           id="card-data"
-          className="text-white max-h-screen flex flex-col p-6"
+          className="text-white max-h-screen flex flex-col w-full p-6"
         >
           <Project data={project} />
         </motion.section>
