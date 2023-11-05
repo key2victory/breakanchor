@@ -18,7 +18,7 @@ const LightboxModal = ({ children, showModal, onClickClose }) => {
           height: showModal ? '100%' : '1px',
           padding: showModal ? '2rem' : 0,
           opacity: showModal ? 1 :0,
-          background: 'hsla(0,0%,10%,.7)',
+          background: 'hsla(0,0%,0%,.7)',
           overflow: 'hidden',
           zIndex: 1000,
           backdropFilter: 'blur(10px) grayscale(90%) contrast(50%)',

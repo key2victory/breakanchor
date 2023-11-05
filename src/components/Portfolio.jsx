@@ -51,7 +51,7 @@ const Portfolio = () => {
               .sort((a, b) => (a.title < b.title ? -1 : a.title < b.title ? 1 : 0)) // Sorts alphabetically
               .map((category) => (
                 <Fragment key={category._id}>
-                  <span>{' / '}</span>
+                  <span  className='text-white/30'>{' • '}</span>
                   <li>
                     <button
                       className={`${
