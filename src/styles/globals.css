@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb)))
+    rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .hexagon {
+    --hex-size: 150px;
+    padding: 1rem;
+    width: var(--hex-size);
+    height: var(--hex-size);
+    clip-path: polygon(5% 25%, 5% 75%, 50% 100%, 95% 75%, 95% 25%, 50% 0%);
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* For IE, Edge and Firefox */
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .blog-post-content {
+    @apply text-sm xs:text-base !important;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      @apply font-bold !important;
+    }
+
+    h1 {
+      @apply mb-2 mt-8 text-2xl leading-tight rounded-lg dark:bg-zinc-900 max-sm:text-center  sm:text-3xl !important;
+    }
+
+    h2 {
+      @apply my-2 text-xl !important;
+    }
+
+    h3 {
+      @apply my-2 text-lg !important;
+    }
+
+    h4,
+    h5,
+    h6 {
+      @apply my-2 text-base !important;
+    }
+
+    p {
+      @apply mb-2 !important;
+    }
+
+    code {
+      @apply rounded-md font-mono font-normal leading-none !important;
+    }
+
+    p code,
+    pre code {
+      @apply my-2 block overflow-x-scroll rounded-md bg-neutral-400/40 px-3 py-2 leading-none dark:bg-neutral-900/50 !important;
+    }
+
+    ol {
+      @apply mb-4 ml-6 block list-decimal px-2 !important;
+
+      li {
+        @apply ml-1 list-item marker:font-semibold  !important;
+
+        & > ol {
+          @apply ml-0.5 !important;
+        }
+      }
+    }
+
+    ul {
+      @apply mb-4 ml-3 block list-disc px-2 !important;
+
+      li {
+        @apply ml-1 list-item marker:font-semibold !important;
+
+        ul {
+          @apply ml-0 !important;
+        }
+      }
+    }
+
+    a {
+      @apply rounded-sm px-px py-px font-medium transition-colors duration-300 ease-in-out !important;
+    }
+
+    img {
+      @apply mx-auto max-w-full rounded-md !important;
+    }
+
+    table {
+      @apply overflow-hidden rounded-md !important;
+
+      thead {
+        @apply bg-neutral-400 dark:bg-neutral-800/30 !important;
+
+        th + th {
+          @apply border-neutral-500 dark:border-neutral-300 !important;
+        }
+
+        th {
+          @apply px-2 py-1.5 !important;
+        }
+      }
+      tbody {
+        @apply !important;
+
+        tr {
+          @apply align-top odd:bg-neutral-300/50 even:bg-neutral-400/50 odd:dark:bg-neutral-500/50 even:dark:bg-neutral-600/50 !important;
+
+          td + td {
+            @apply border-l-[1px] border-neutral-300 dark:border-neutral-500/75 !important;
+          }
+
+          td {
+            @apply px-2 py-1.5 !important;
+          }
+        }
+      }
+    }
+  }
+}
