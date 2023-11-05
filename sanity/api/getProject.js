@@ -24,6 +24,7 @@ export async function getProject(slug) {
         "value": category->value.current,
         "color": category->colorTheme
       },
+      colorTheme,
       tags,
     }`,
     { slug },

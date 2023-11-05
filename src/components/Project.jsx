@@ -151,7 +151,7 @@ const Project = ({ data }) => {
             <Link
               href={'/'}
               className={`p-3 rounded-lg bg-zinc-900 ${
-                colorThemes[data.category.color ?? 'slate'].hoverBg
+                colorThemes[data.colorTheme ?? data.category.color ?? 'slate'].hoverBg
               } transition-colors duration-500 ease-in-out h-full flex items-center`}
             >
               <svg viewBox="0 0 24 24" className="fill-none h-8 w-8">
@@ -166,7 +166,7 @@ const Project = ({ data }) => {
                 href={data?.externalLink?.linkUrl}
                 target="_blank"
                 className={`px-6 py-3 rounded-lg bg-zinc-900 ${
-                  colorThemes[data.category.color ?? 'slate'].hoverBg
+                  colorThemes[data.colorTheme ?? data.category.color ?? 'slate'].hoverBg
                 } transition-colors duration-500 ease-in-out h-full flex items-center`}
               >
                 <div className="flex items-center gap-4 h-8">
@@ -183,14 +183,14 @@ const Project = ({ data }) => {
           <div className="w-full mt-4">
             <h1
               className={`text-4xl sm:text-5xl md:text-6xl font-semibold ${
-                colorThemes[data.category.color ?? 'slate'].text
+                colorThemes[data.colorTheme ?? data.category.color ?? 'slate'].text
               }`}
             >
               {data.title}
             </h1>
             <p
               className={`text-lg md:text-xl font-semibold italic mt-2 md:mt-4 ${
-                colorThemes[data.category.color ?? 'slate'].text
+                colorThemes[data.colorTheme ?? data.category.color ?? 'slate'].text
               }`}
             >
               {data.tagLine}
@@ -200,7 +200,7 @@ const Project = ({ data }) => {
       </div>
       <div
         role="divider"
-        className={`h-1 w-full mt-4 ${colorThemes[data.category.color ?? 'slate'].primaryBg}`}
+        className={`h-1 w-full mt-4 ${colorThemes[data.colorTheme ?? data.category.color ?? 'slate'].primaryBg}`}
       />
 
       <div className="rounded-md flex-1 w-full overflow-y-scroll">

@@ -18,6 +18,7 @@ export async function getProjects() {
           "value": category->value.current,
           "color": category->colorTheme
         },
+        colorTheme,
         tags,
       }`,
       {},

@@ -107,8 +107,8 @@ const ProjectCard = ({ project, selectedType }) => {
       ? ''
       : selectedType === category.value
       ? 'order-1'
-      : 'order-2 before:bg-black/40'
-  } ${colorThemes[category.color ?? 'slate'].primaryBg}`;
+      : 'order-2 before:bg-black/50'
+  } ${colorThemes[project.colorTheme ?? category.color ?? 'slate'].primaryBg}`;
 
   const renderCardContent = () => (
     <>
@@ -116,7 +116,7 @@ const ProjectCard = ({ project, selectedType }) => {
       {image.url ? (
         <div
           className={`shrink-0 overflow-hidden after:absolute after:inset-0 after:content-[''] ${
-            colorThemes[category.color ?? 'slate'].afterBg
+            colorThemes[project.colorTheme ?? category.color ?? 'slate'].afterBg
           }`}
         >
           <Image
@@ -124,11 +124,15 @@ const ProjectCard = ({ project, selectedType }) => {
             alt={image.alt}
             fill={true}
             className="object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
+            style={{
+             filter: selectedType === category.value ? "grayscale(0%) contrast(100%)" : "grayscale(0%) contrast(80%)"
+            
+            }}
           />
         </div>
       ) : null}
       <div
-        className={`px-4 py-2 w-full ${colorThemes[category.color ?? 'slate'].secondaryBg} z-10`}
+        className={`px-4 py-2 w-full ${colorThemes[project.colorTheme ?? category.color ?? 'slate'].secondaryBg} z-10`}
         style={{
         //  backdropFilter: "blur(5px)"
         }}
