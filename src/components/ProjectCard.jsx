@@ -105,8 +105,6 @@ const ProjectCard = ({ project, selectedType }) => {
   const randomNumberInRange = (min, max) => Math.random() * (max - min) + min;
 const [randomOrder, setRandomOrder]=useState(Math.floor(randomNumberInRange(0,500)))
  
-  console.log(project.title,"order:",project.order, randomOrder)
- 
 
   const cardClassName = `group relative rounded-lg flex items-end overflow-hidden min-h-[240px] before:transition-colors before:duration-200 before:ease-in-out before:absolute before:content-[''] before:z-20 before:inset-0 ${
     selectedType === null
@@ -171,11 +169,11 @@ const [randomOrder, setRandomOrder]=useState(Math.floor(randomNumberInRange(0,50
           as={`/${slug}`}
           id={projectCardId}
           className={cardClassName}
-          style={{order: project.order !== null ?
+          style={{order: /*project.order !== null ?*/
             selectedType === null || selectedType === category.value
-            ? project.order
+           /* ? project.order
             : project.order + 1000
-            : selectedType === null || selectedType === category.value
+            : selectedType === null || selectedType === category.value*/
         ? randomOrder
       : randomOrder+1000  }}
         >
