@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import MotionLink from './MotionLink';
 import Image from 'next/image';
 import { urlForImage } from '@/sanity/lib/image';
+import { useState } from 'react';
 
 const colorThemes = {
   red: {
@@ -101,13 +102,18 @@ const colorThemes = {
 const ProjectCard = ({ project, selectedType }) => {
   const { _id, title, tagLine, slug, category, image, tags } = project;
   const projectCardId = `project-card-${_id}`;
+  const randomNumberInRange = (min, max) => Math.random() * (max - min) + min;
+const [randomOrder, setRandomOrder]=useState(Math.floor(randomNumberInRange(0,500)))
+ 
+  console.log(project.title,"order:",project.order, randomOrder)
+ 
 
   const cardClassName = `group relative rounded-lg flex items-end overflow-hidden min-h-[240px] before:transition-colors before:duration-200 before:ease-in-out before:absolute before:content-[''] before:z-20 before:inset-0 ${
     selectedType === null
       ? ''
       : selectedType === category.value
-      ? 'order-1'
-      : 'order-2 before:bg-black/50'
+      ? ''
+      : 'before:bg-black/50'
   } ${colorThemes[project.colorTheme ?? category.color ?? 'slate'].primaryBg}`;
 
   const renderCardContent = () => (
@@ -165,6 +171,13 @@ const ProjectCard = ({ project, selectedType }) => {
           as={`/${slug}`}
           id={projectCardId}
           className={cardClassName}
+          style={{order: project.order !== null ?
+            selectedType === null || selectedType === category.value
+            ? project.order
+            : project.order + 1000
+            : selectedType === null || selectedType === category.value
+        ? randomOrder
+      : randomOrder+1000  }}
         >
           {renderCardContent()}
         </MotionLink>

@@ -19,6 +19,7 @@ export async function getProjects() {
           "color": category->colorTheme
         },
         colorTheme,
+        order,
         tags,
       }`,
       {},

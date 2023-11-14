@@ -165,7 +165,9 @@ const Project = ({ data }) => {
               <Link
                 href={data?.externalLink?.linkUrl}
                 target="_blank"
-                className={`px-6 py-3 rounded-lg bg-zinc-900 ${
+                className={`px-6 py-3 rounded-lg ${
+                  colorThemes[data.colorTheme ?? data.category.color ?? 'slate'].primaryBg
+                } ${
                   colorThemes[data.colorTheme ?? data.category.color ?? 'slate'].hoverBg
                 } transition-colors duration-500 ease-in-out h-full flex items-center`}
               >

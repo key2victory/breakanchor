@@ -46,6 +46,13 @@ const project = defineType({
       ],
     }),
     defineField({
+      name: 'order',
+      title: 'Sort Order',
+      fieldset: 'projectContent',
+      description: 'Rank projects from 1 to 999 in the order they should appear',
+      type: 'number',
+    }),
+    defineField({
       name: 'colorTheme',
       title: 'Color Theme',
       type: 'string',
