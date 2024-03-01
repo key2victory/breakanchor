@@ -1,8 +1,11 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { getAuthor } from '@/sanity/api/getAuthor';
+import { urlForImage } from '@/sanity/lib/image';
 import Link from 'next/link';
-import { LayoutGroup, motion } from 'framer-motion';
+import { LayoutGroup, motion, AnimatePresence  } from 'framer-motion';
 import Burger from './Burger';
 import { useToggle } from 'react-use';
 import {
@@ -13,6 +16,7 @@ import {
   mobileAside,
   mobileMenuContainer,
 } from '../utils/animations';
+import author from '@/sanity/schemas/documents/author-schema';
 
 const NavLink = ({ children, href = '', label = 'Label' }) => {
   return (
@@ -45,12 +49,25 @@ const NavLink = ({ children, href = '', label = 'Label' }) => {
   );
 };
 
-const DesktopNavPanel = () => {
+const DesktopNavPanel = ({author}) => {
   return (
     <nav className="bg-slate-800 z-10 hidden md:basis-[220px] lg:basis-[300px] md:flex flex-col items-center pt-12 px-4 lg:px-6">
       <div id="name-group" className="flex flex-col items-center w-full whitespace-nowrap">
-        <div className="relative h-[150px] w-[150px] hexagon">
-          <Image src="/profile.png" alt="Portrait of Janna Curtis" className="" fill={true} />
+        <div className="relative h-[150px] w-[150px] hexagon bg-stone-700">
+        <AnimatePresence>
+    {author? (
+      <motion.div
+        key="modal"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ ease: "easeOut", duration: 2 }}
+      >
+          <Image  src={urlForImage(author.image?.url).width(1920).url()}//"data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+          alt="Portrait of Janna Curtis" className="" fill={true} />
+          </motion.div>
+              ):null}
+  </AnimatePresence>
         </div>
         <h1 className="mt-5 text-3xl ">Janna Curtis</h1>
         <div className="h-0.5 w-full my-3 mb-0.5 bg-white/50"></div>
@@ -126,10 +143,25 @@ const MobileNavPanel = () => {
 };
 
 const NavPanel = ({}) => {
+  const [author, setAuthor] = useState(null);
+
+  useEffect(() => {
+    const fetchAuthor = async () => {
+      const authorData = await getAuthor();
+
+      if (authorData) {
+        setAuthor(authorData[0]);
+        console.log('NavPanel.jsx: ', authorData);
+      }
+    };
+
+    fetchAuthor();
+  }, []);
+
   return (
     <>
       <MobileNavPanel />
-      <DesktopNavPanel />
+      <DesktopNavPanel author={author} />
     </>
   );
 };
