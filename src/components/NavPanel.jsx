@@ -53,11 +53,11 @@ const DesktopNavPanel = ({author}) => {
   return (
     <nav className="bg-slate-800 z-10 hidden md:basis-[220px] lg:basis-[300px] md:flex flex-col items-center pt-12 px-4 lg:px-6">
       <div id="name-group" className="flex flex-col items-center w-full whitespace-nowrap">
-        <div className="relative h-[150px] w-[150px] hexagon bg-stone-700">
+        <div className="relative h-[150px] w-[150px] hexagon bg-slate-600">
         <AnimatePresence>
     {author? (
       <motion.div
-        key="modal"
+        key="profile-image"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
