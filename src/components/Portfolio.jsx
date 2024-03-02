@@ -33,8 +33,8 @@ const Portfolio = () => {
   return (
     <>
       <div>
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold">Portfolio</h1>
-        <div className="h-0.5 w-full bg-white my-2 sm:my-3"></div>
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold text-slate-600">Portfolio</h1>
+        <div className="h-1 w-full bg-slate-700 my-2 sm:my-3"></div>
 
         {/* Portfolio Filters */}
         <nav>

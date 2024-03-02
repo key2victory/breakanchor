@@ -24,10 +24,7 @@ body {
 
 @layer utilities {
   .hexagon {
-    --hex-size: 150px;
-    padding: 1rem;
-    width: var(--hex-size);
-    height: var(--hex-size);
+    padding: .3rem;
     clip-path: polygon(5% 25%, 5% 75%, 50% 100%, 95% 75%, 95% 25%, 50% 0%);
   }
 

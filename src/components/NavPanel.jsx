@@ -51,12 +51,13 @@ const NavLink = ({ children, href = '', label = 'Label' }) => {
 
 const DesktopNavPanel = ({author}) => {
   return (
-    <nav className="bg-slate-800 z-10 hidden md:basis-[220px] lg:basis-[300px] md:flex flex-col items-center pt-12 px-4 lg:px-6">
+    <nav className="bg-slate-800 z-10 hidden md:basis-[220px] lg:basis-[300px] md:flex flex-col items-center pt-8 px-4 lg:px-6">
       <div id="name-group" className="flex flex-col items-center w-full whitespace-nowrap">
-        <div className="relative h-[150px] w-[150px] hexagon bg-slate-600">
+        <div className="relative h-[160px] w-[160px] hexagon bg-slate-600">
         <AnimatePresence>
     {author? (
       <motion.div
+      className="relative h-[100%] w-[100%] hexagon"
         key="profile-image"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -69,9 +70,10 @@ const DesktopNavPanel = ({author}) => {
               ):null}
   </AnimatePresence>
         </div>
-        <h1 className="mt-5 text-3xl ">Janna Curtis</h1>
-        <div className="h-0.5 w-full my-3 mb-0.5 bg-white/50"></div>
+        <h1 className="mt-3 text-3xl ">Janna Curtis</h1>
+     
         <h2 className="text-xl">break anchor design</h2>
+        <div className="h-0.5 w-full mt-5 mb-0 bg-white/50"></div>
       </div>
       <div id="external-link-group" className="mt-10 w-full">
         <ul className="flex flex-col gap-2">
